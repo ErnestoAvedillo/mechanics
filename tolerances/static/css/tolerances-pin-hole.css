@@ -1,0 +1,362 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --line: #d6e0ef;
+  --text: #1a2436;
+  --muted: #5c6a83;
+  --accent: #0b6ca8;
+  --accent-2: #0f9158;
+  --danger: #ad2e2e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #eef6ff 0%, var(--bg) 40%);
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(16, 35, 61, 0.08);
+}
+
+h1 { margin: 0 0 8px; }
+h2 { margin: 16px 0 8px; font-size: 1.1rem; }
+h3 { margin: 0 0 8px; }
+
+.sub {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.pin-hole-form {
+  display: grid;
+  gap: 14px;
+}
+
+.overlay-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfdff;
+}
+
+.pin-hole-canvas {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: visible;
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+
+.pin-hole-canvas img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+}
+
+.input-groups {
+  position: absolute;
+  gap: 6px;
+  padding: 6px;
+  pointer-events: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.input-group {
+  position: relative;
+  display: block;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 24px 0 6px 6px;
+  min-inline-size: 0;
+  min-height: 100px;
+  min-width: 150px;
+  /* background: rgba(255, 255, 255, 0.96); */
+  pointer-events: auto;
+  box-shadow: 0 2px 8px rgba(15, 45, 86, 0.12);
+}
+.input-group legend {
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  right: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+  padding: 1px 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.compact-label,
+.compact-label_nominal,
+.compact-label_tol_sup,
+.compact-label_tol_inf {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px;
+  align-items: center;
+  font-size: 0.5rem;
+}
+
+.compact-label_nominal {
+  position: absolute;
+  top: 48%;
+  left: 2%;
+  width: 68%;
+}
+
+.compact-label_tol_sup {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 68%;
+}
+
+.compact-label_tol_inf {
+  position: absolute;
+  bottom: 5%;
+  left: 20%;
+  width: 68%;
+}
+
+.compact-label input,
+.compact-label_nominal input,
+.compact-label_tol_sup input,
+.compact-label_tol_inf input {
+  padding: 1px 4px;
+  font-size: 0.75rem;
+  width: 100%;
+  height: 22px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.92rem;
+}
+
+input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.extra-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfdff;
+}
+
+.extra-inputs h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.dropzone-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.dropzone {
+  border: 2px dashed #9bc2df;
+  background: #f7fbff;
+  border-radius: 12px;
+  padding: 12px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone.is-over {
+  border-color: #0b6ca8;
+  background: #e9f5ff;
+}
+
+.dropzone-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.dropzone-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.dropzone-input {
+  display: none;
+}
+
+.dropzone-preview {
+  margin-top: 10px;
+  max-width: 100%;
+  max-height: 190px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  object-fit: contain;
+  background: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+button:hover { opacity: 0.92; }
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.error {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid #efc7c7;
+  background: #fdeeee;
+  border-radius: 10px;
+  color: var(--danger);
+}
+
+.results {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.incoming-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.result-grid article {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fbfdff;
+}
+
+.result-grid p {
+  margin: 4px 0;
+}
+
+.histogram-block {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+}
+
+.histogram-block h3 {
+  margin: 0 0 10px;
+}
+
+.histogram-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .extra-inputs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .input-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .extra-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .dropzone-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .input-groups {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .input-group {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,19 @@
+[project]
+name = "djmenu"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.1",
+    "gunicorn>=25.3.0",
+    "matplotlib>=3.10.8",
+    "pandas>=3.0.0",
+    "pint>=0.25.2",
+    "pydantic>=2.12.5",
+    "pytest>=9.0.2",
+    "reportlab>=4.4.4",
+    "scikit-learn>=1.8.0",
+]
+[tool.flake8]
+max-line-length =120

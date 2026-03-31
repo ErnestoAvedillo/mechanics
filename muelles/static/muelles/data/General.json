@@ -1,0 +1,20 @@
+{
+    "name":"General",
+    "links":{
+        "0":{"name":"Carpeta Personal Ernesto", "link":"\\\\tubssvfs1\\users\\eavedillo"},
+        "1":{"name":"Carpeta Planos", "link":"\\\\tubssvfs1\\PlantShare\\CORPORATE\\5_PLANOS"},
+        "2":{"name":"Carpeta Peticiones","link":"\\\\tubssvfs1\\Departments\\INGENIERIA\\30_PETICIONES"},
+        "3":{"name":"Carpeta PM","link":"\\\\tubssvfs1\\Departments\\INGENIERIA\\30_PETICIONES\\PM"},
+        "4":{"name":"Carpeta PE","link":"\\\\tubssvfs1\\Departments\\INGENIERIA\\30_PETICIONES\\PE"},
+        "5":{"name":"Carpeta Rapid prototyping","link":"\\\\tubssvfs1\\Departments\\INGENIERIA\\70_IMPRESORA_3D\\5_PETICION_RAPID_PROTOTYPING"},
+        "6":{"name":"Carpeta Scripts","link":"C:\\Users\\eavedillo\\Scripts\\"},
+        "7":{"name":"Carpeta Ensayos","link":"\\\\tubssvfs1\\Departments\\INGENIERIA\\DESARROLLO\\100 ENSAYOS\\Ensayos"},
+        "8":{"name":"Carpeta Plásticos Transfer","link":"\\\\plassvfs1\\InternalFileTransfert\\"},
+        "9":{"name":"Doma","link":"http:%2F%2Fdoma%2FHome%2FIndex"},
+        "10":{"name":"PLM","link":"https:%2F%2Fplm.flexngate.com%2Flogin"},
+        "11":{"name":"Dayforce","link":"https:%2F%2Fwww.dayforcehcm.com%2Fmydayforce%2Flogin.aspx"},
+        "12":{"name":"B2B BMW","link":"https:%2F%2Fb2b.bmw.com%2Fen%2Fweb%2Fb2b"},
+        "13":{"name":"VW","link":"https:%2F%2Fwww.vwgroupsupply.com%2Fone-kbp-pub%2Fen%2Fkbp_public%2Fhomepage%2Fhomepage.html"},
+        "14":{"name":"FORD Share Point","LINK":"https:%2F%2Fazureford.sharepoint.com%2Fsites%2FBrakesSharingSite%2FShared%20Documents%2FForms%2FAllItems.aspx?e=5%3Acd3598a6ad9e4a65bd4e4d3ba25fdd89&sharingv2=true&fromShare=true&at=9&CID=1eab422d%2D1c14%2D4368%2D90b1%2Da36ad2e356c9&RootFolder=%2Fsites%2FBrakesSharingSite%2FShared%20Documents%2FCX735%2FPedals%2FFnG%20Docs&FolderCTID=0x012000E9F3B7375DBA804AAAD14F0E2ED91FF6"}
+    }
+}

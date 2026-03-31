@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+{% endblock %}
+
+{% block content %}
+  <main class="letter-page">
+    <article class="letter-card">
+      <header class="letter-header">
+        <img src="{% static 'images/Ernesto_Avedillo.png' %}" alt="Fotografia de Ernesto Avedillo" class="profile-photo">
+        <div class="letter-intro">
+          <p class="eyebrow">Carta de presentacion</p>
+          <h1>De la Ingenieria Industrial al Desarrollo de Software</h1>
+          <p class="lead">
+            Soy Ernesto Avedillo, Ingeniero Industrial orientado a la resolucion de problemas complejos
+            mediante tecnologia, analisis y desarrollo de soluciones de software con impacto real.
+          </p>
+        </div>
+      </header>
+
+      <section class="letter-section">
+        <h2>Trayectoria Profesional</h2>
+        <p>
+          A lo largo de mi experiencia en el sector automotriz e industrial, he liderado y ejecutado
+          proyectos tecnicos para fabricantes como BMW y VW, ademas de iniciativas de mejora en
+          procesos de fabricacion. Este recorrido me permitio identificar un patron constante:
+          los retos mas exigentes encuentran su mejor respuesta cuando se integran con software.
+        </p>
+      </section>
+
+      <section class="letter-section">
+        <h2>Resolucion de Problemas como Enfoque</h2>
+        <p>
+          Durante anos, traduje necesidades operativas en herramientas practicas. Disene sistemas
+          que redujeron tiempos de cotizacion de horas a minutos y plantillas para decisiones
+          criticas de diseno mecanico que mejoraron la eficiencia del equipo. Tambien desarrolle
+          el software ERP de una compania para reducir dependencia externa y optimizar costes.
+        </p>
+      </section>
+
+      <section class="letter-section">
+        <h2>Evolucion Tecnica</h2>
+        <p>
+          Mi formacion en 42 Barcelona marco un punto de inflexion en mi perfil profesional. Me
+          permitio elevar soluciones nacidas en hojas de calculo a implementaciones de ingenieria
+          de software, utilizando C, C++, Python y arquitecturas modernas para construir sistemas
+          robustos, escalables y mantenibles.
+        </p>
+      </section>
+
+      <section class="letter-section letter-section-contact">
+        <h2>Propuesta de Valor</h2>
+        <p>
+          Busco colaborar en proyectos donde la ingenieria, el analisis de datos y el desarrollo de
+          software converjan para crear soluciones tecnicas de alto impacto. Estoy abierto a explorar
+          ideas, mejorar algoritmos y contribuir en retos industriales con enfoque riguroso y practico.
+        </p>
+      </section>
+    </article>
+  </main>
+{% endblock %}

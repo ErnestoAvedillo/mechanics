@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <item id="1">
+        <name>Ejemplo</name>
+        <description>Descripción del elemento</description>
+        <value>100</value>
+    </item>
+    <item id="2">
+        <name>Otro ejemplo</name>
+        <description>Otra descripción</description>
+        <value>200</value>
+    </item>
+</root>

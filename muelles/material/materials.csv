@@ -1,0 +1,22 @@
+denomination,young_modulus,shear_modulus,factor_limite_elástico,poisson_coef,RMa_file,descripcion
+SL,206000,81500,0.5,0.3,SL_RMa.csv,SL - Acero al carbono para muelles
+SM,206000,81500,0.5,0.3,SM_RMa.csv,SM - Acero medio carbono para muelles
+DM,206000,81500,0.5,0.3,DM_RMa.csv,DM - Acero dulce para muelles
+SH,206000,81500,0.5,0.3,SH_RMa.csv,SH - Acero duro para muelles
+DH,206000,81500,0.5,0.3,DH_RMa.csv,DH - Acero muy duro para muelles
+TDC,206000,79500,0.45,0.3,TDC_RMa.csv,TDC - Acero aleado templado y revenido
+TDCrV,206000,79500,0.45,0.3,TDCrV_RMa.csv,TDCrV - Acero aleado Cr-V templado
+TDSiCr,206000,79500,0.45,0.3,TDSiCr_RMa.csv,TDSiCr - Acero aleado Si-Cr templado
+TDSiCrV,206000,79500,0.45,0.3,TDSiCrV_RMa.csv,TDSiCrV - Acero aleado Si-Cr-V templado
+FDC,206000,79500,0.45,0.3,FDC_RMa.csv,FDC - Acero de resorte alto carbono
+FDCr,206000,79500,0.45,0.3,FDCr_RMa.csv,FDCr - Acero de resorte cromo
+VFDSiCr,206000,79500,0.45,0.3,VFDSiCr_RMa.csv,VFDSiCr - Acero válvulas Si-Cr
+FDSiCrV,206000,79500,0.45,0.3,FDSiCrV_RMa.csv,FDSiCrV - Acero resorte Si-Cr-V
+VDC,206000,79500,0.45,0.3,VDC_RMa.csv,VDC - Acero válvulas alto carbono
+VDCrV,206000,79500,0.45,0.3,VDCrV_RMa.csv,VDCrV - Acero válvulas Cr-V
+VDSiCr,206000,79500,0.45,0.3,VDSiCr_RMa.csv,VDSiCr - Acero válvulas Si-Cr
+VDSiCrV,206000,79500,0.45,0.3,VDSiCrV_RMa.csv,VDSiCrV - Acero válvulas Si-Cr-V
+X10CrNi18-8,180000,70000,0.515,0.3,X10CrNi18-8_RMa.csv,X10CrNi18-8 - Acero inoxidable austenítico
+X5CrNiMo17-12-2,175000,68000,0.515,0.3,X5CrNiMo17-12-2_RMa.csv,X5CrNiMo17-12-2 - Acero inox. resistente ácidos
+X7CrNiAl17-7,190000,73000,0.515,0.3,X7CrNiAl17-7_RMa.csv,X7CrNiAl17-7 - Acero inox. endurecible
+X5CrNi18-10,185000,65000,0.515,0.3,X5CrNi18-10_RMa.csv,X5CrNi18-10 - Acero inoxidable estándar
