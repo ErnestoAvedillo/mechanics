@@ -14,5 +14,5 @@ wheels/
 .vscode/
 # Old files are not needed.
 *.old
-static_file
+static_files/
 
