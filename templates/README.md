@@ -79,7 +79,7 @@ Si prefieres no usar template base, puedes incluir solo el header:
 - Inicio (/)
 - Muelles (/muelles/)
 - Tolerancias (/tolerances/)
-- Contacto (#contact)
+- Contacto (/contacto/)
 
 ---
 

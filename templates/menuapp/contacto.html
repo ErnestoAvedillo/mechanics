@@ -9,6 +9,9 @@
 {% endblock %}
 
 {% block content %}
+  <!-- Fondo de página -->
+  <div class="page-background" style="background-image: url('{% static 'images/header-background.jpeg' %}');"></div>
+
   <!-- Botón del menú hamburguesa -->
   <button class="menu-toggle" aria-label="Abrir menú">
     <span></span>
@@ -30,7 +33,7 @@
   <!-- Overlay para cerrar menú -->
   <div class="sidebar-overlay"></div>
 
-  <main class="letter-page">
+  <div class="letter-page">
     <article class="letter-card">
       <header class="letter-header">
         <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="Fotografia de Ernesto Avedillo" class="profile-photo">
@@ -49,14 +52,14 @@
           Puedes contactarme a través de los siguientes medios:
         </p>
         <ul>
-          <li>Email: eavedillo@protonmail.com</li>
-          <li>LinkedIn: linkedin.com/in/ernestoavedillo</li>
-          <li>GitHub: github.com/ernestoavedillo</li>
+          <li><a href="mailto:eavedillo@protonmail.com">📧 Email: eavedillo@protonmail.com</a></li>
+          <li><a href="https://linkedin.com/in/ernestoavedillo" target="_blank">💼 LinkedIn: linkedin.com/in/ernestoavedillo</a></li>
+          <li><a href="https://github.com/ernestoavedillo" target="_blank">🐙 GitHub: github.com/ernestoavedillo</a></li>
         </ul>
       </section>
 
     </article>
-  </main>
+  </div>
 
   <script src="{% static 'menuapp/js/sidebar.js' %}"></script>
 {% endblock %}
