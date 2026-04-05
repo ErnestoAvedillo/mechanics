@@ -17,3 +17,10 @@ wheels/
 static_files/
 *.pem
 *.env*
+
+*.log
+*.bak
+*.backup
+*.tmp
+*.swp
+.DS_Store

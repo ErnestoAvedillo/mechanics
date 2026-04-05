@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto - Ernesto Avedillo Carretero{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+{% endblock %}
+
+{% block content %}
+  <!-- Botón del menú hamburguesa -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar emergente -->
+  <nav class="sidebar">
+    <h2>Menú</h2>
+    <ul class="sidebar-menu">
+      <li><a href="/">🏠 Inicio</a></li>
+      <li><a href="/muelles/">🔧 Muelles</a></li>
+      <li><a href="/tolerances/">📐 Tolerancias</a></li>
+      <li><a href="/contacto/">📞 Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay para cerrar menú -->
+  <div class="sidebar-overlay"></div>
+
+  <main class="letter-page">
+    <article class="letter-card">
+      <header class="letter-header">
+        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="Fotografia de Ernesto Avedillo" class="profile-photo">
+        <div class="letter-intro">
+          <p class="eyebrow">Contacto</p>
+          <h1>Ernesto Avedillo Carretero</h1>
+          <p class="lead">
+            Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos.
+          </p>
+        </div>
+      </header>
+
+      <section class="letter-section">
+        <h2>Información de Contacto</h2>
+        <p>
+          Puedes contactarme a través de los siguientes medios:
+        </p>
+        <ul>
+          <li>Email: eavedillo@protonmail.com</li>
+          <li>LinkedIn: linkedin.com/in/ernestoavedillo</li>
+          <li>GitHub: github.com/ernestoavedillo</li>
+        </ul>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="{% static 'menuapp/js/sidebar.js' %}"></script>
+{% endblock %}

@@ -1,14 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Indice de Tolerancias</title>
+
+{% block title %}Indice de Tolerancias{% endblock %}
+
+{% block extra_css %}
   <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">
-</head>
-<body>
-  <main class="wrap">
+  <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+{% endblock %}
+
+{% block content %}
     <section class="panel">
       <h1>Modulo de Tolerancias</h1>
       <p>
@@ -30,5 +30,27 @@
       <span class="badge">Plantilla base para futuras paginas</span>
     </section>
   </main>
-</body>
-</html>
+
+  <!-- Botón del menú hamburguesa -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar emergente -->
+  <nav class="sidebar">
+    <h2>Menú</h2>
+    <ul class="sidebar-menu">
+      <li><a href="/">🏠 Inicio</a></li>
+      <li><a href="/muelles/">🔧 Muelles</a></li>
+      <li><a href="/tolerances/">📐 Tolerancias</a></li>
+      <li><a href="/contacto/">📞 Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay para cerrar menú -->
+  <div class="sidebar-overlay"></div>
+
+  <script src="{% static 'menuapp/js/sidebar.js' %}"></script>
+{% endblock %}

@@ -1,15 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ titulo }} - El Menú de Ernesto®</title>
+
+{% block title %}{{ titulo }} - El Menú de Ernesto®{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/index.css' %}">
-</head>
-<body>
-    <div class="muelles-container">
+    <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+{% endblock %}
+
+{% block content %}
         <a href="{% url 'home' %}" class="back-button">← Volver al Menú Principal</a>
         
         <h1>{{ titulo }}</h1>
@@ -48,6 +48,27 @@
                 </a>
             </div>
         </div>
-    </div>
-</body>
-</html>
+
+    <!-- Botón del menú hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar emergente -->
+    <nav class="sidebar">
+        <h2>Menú</h2>
+        <ul class="sidebar-menu">
+            <li><a href="/">🏠 Inicio</a></li>
+            <li><a href="/muelles/">🔧 Muelles</a></li>
+            <li><a href="/tolerances/">📐 Tolerancias</a></li>
+            <li><a href="/contacto/">📞 Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay para cerrar menú -->
+    <div class="sidebar-overlay"></div>
+
+    <script src="{% static 'menuapp/js/sidebar.js' %}"></script>
+{% endblock %}

@@ -114,6 +114,13 @@ def home(request):
     })
 
 
+def contacto(request):
+    """
+    Vista para la página de contacto
+    """
+    return render(request, 'menuapp/contacto.html')
+
+
 def editor(request, datos, filename):
     parsed_data = re.sub(r'%2F', '/', datos)
     name, extension = os.path.splitext(filename)

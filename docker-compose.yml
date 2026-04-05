@@ -8,6 +8,9 @@ services:
     container_name: django
     volumes:
       - .:/app/
+      - ./src:/app/src
+      - ./templates:/app/templates
+      - ./assets:/app/assets
     env_file:
       - .env
     expose:
