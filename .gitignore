@@ -17,7 +17,8 @@ wheels/
 static_files/
 *.pem
 *.env*
-
+*.crt
+*.key
 *.log
 *.bak
 *.backup
