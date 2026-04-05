@@ -15,4 +15,5 @@ wheels/
 # Old files are not needed.
 *.old
 static_files/
-
+*.pem
+*.env*

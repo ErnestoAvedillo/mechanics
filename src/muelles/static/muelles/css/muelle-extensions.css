@@ -1,0 +1,305 @@
+/* ==================== ESTILOS PARA EXTENSIONES DE CALCULADORA MUELLES ==================== */
+
+/* Contenedores principales para ocupar todo el ancho */
+.muelle-specs-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    display: block !important;
+    clear: both;
+    float: none !important;
+    position: relative;
+    flex: none !important;
+}
+
+.info-calc-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    display: block !important;
+    clear: both;
+    float: none !important;
+    position: relative;
+    flex: none !important;
+}
+
+/* Asegurar que los contenedores estén uno debajo del otro */
+.muelle-specs-container+.info-calc-container,
+.info-calc-container {
+    margin-top: 30px;
+    clear: both;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Contenedor padre para asegurar layout vertical */
+.calculadora-container .muelle-specs-container,
+.calculadora-container .info-calc-container {
+    display: block !important;
+    width: 100% !important;
+    float: none !important;
+    flex: none !important;
+    clear: both;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Override cualquier CSS que pueda poner estos elementos en paralelo */
+.muelle-specs-container,
+.info-calc-container {
+    flex-direction: column !important;
+    flex: none !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+}
+
+/* Grids principales - distribución horizontal del contenido */
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info-calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 15px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info-calc-grid>div {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos para la etiqueta de especificaciones del muelle */
+.muelle-specs-tag {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.muelle-specs-tag h3 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.spec-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.spec-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.spec-card h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.spec-card .spec-content {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.spec-card .spec-content strong {
+    color: #495057;
+}
+
+/* Estilos para las secciones de gráficos */
+.chart-section {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.chart-section:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-info {
+    background: #e7f3ff;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 15px;
+    border-left: 4px solid #007bff;
+}
+
+.chart-info strong {
+    color: #0056b3;
+}
+
+/* Estilos para el análisis de Goodman */
+.goodman-analysis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.analysis-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.analysis-card h4 {
+    color: #495057;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+/* Estilos para el factor de seguridad */
+.safety-factor-display {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.safety-excellent {
+    color: #28a745;
+}
+
+.safety-acceptable {
+    color: #ffc107;
+}
+
+.safety-insufficient {
+    color: #dc3545;
+}
+
+.safety-status {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 992px) {
+    .specs-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px;
+    }
+
+    .info-calc-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px;
+    }
+
+    .muelle-specs-container,
+    .info-calc-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .specs-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px;
+    }
+
+    .info-calc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .goodman-analysis {
+        grid-template-columns: 1fr;
+    }
+
+    .muelle-specs-container,
+    .info-calc-container {
+        padding: 15px;
+        margin: 20px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .chart-section {
+        padding: 15px;
+    }
+
+    .spec-card {
+        padding: 12px;
+    }
+
+    .chart-container {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .specs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+
+    .info-calc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+
+    .muelle-specs-container,
+    .info-calc-container {
+        padding: 12px;
+        margin: 15px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}

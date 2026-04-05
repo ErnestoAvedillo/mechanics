@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu Principal - Mechanics{% endblock %}
+
+{% block extra_css %}
+<style>
+    main {
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .menu-container {
+        background: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+    
+    .menu-groups {
+        display: grid;
+        gap: 20px;
+    }
+    
+    .menu-item {
+        padding: 20px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-item:hover {
+        background: #efefef;
+        transform: translateX(5px);
+    }
+    
+    .menu-item a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    
+    .menu-item a:hover {
+        color: #764ba2;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="menu-container">
+    <h1>🔧 Mechanics</h1>
+    
+    <div class="menu-groups">
+        {% if grupos %}
+            {% for group_name, group_data in grupos.items %}
+            <div class="menu-item">
+                <strong>{{ group_name }}</strong>
+                {% if group_data.links %}
+                    <ul style="list-style: none; padding-top: 10px;">
+                        {% for link in group_data.links %}
+                        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="menu-item">
+            <strong>Muelles</strong>
+            <a href="/muelles/">Ir a Muelles</a>
+        </div>
+        
+        <div class="menu-item">
+            <strong>Tolerancias</strong>
+            <a href="/tolerances/">Ir a Tolerancias</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

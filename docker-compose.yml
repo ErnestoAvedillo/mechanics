@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  django:
+    build:
+      context: ./config/django/
+      dockerfile: Dockerfile
+    container_name: django
+    volumes:
+      - .:/app/
+    env_file:
+      - .env
+    expose:
+      - 8000
+    restart: unless-stopped
+  nginx:
+    build:
+      context: ./config/nginx/
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./certs:/etc/letsencrypt
+      - ./certs-www:/var/www/certbot
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - django
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./certs-www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
+    restart: unless-stopped
+    profiles:
+      - letsencrypt
+    env_file:
+      - .env
+volumes:
+  static_volume:
+  media_volume:
+  django_socket:
