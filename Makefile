@@ -1,4 +1,4 @@
-COMPOSE = docker compose
+COMPOSE = docker-compose
 
 LIST_VOLUMES = $(shell $(COMPOSE) config --volumes ls -q)
 DANGLING_IMAGES = $(shell docker images -f "dangling=true" -q)
