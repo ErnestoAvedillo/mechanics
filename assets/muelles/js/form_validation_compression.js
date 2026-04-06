@@ -20,6 +20,28 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
+    // Función para obtener el token CSRF
+    function getCsrfToken() {
+        // Intentar obtener del input hidden
+        let token = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+        if (token) return token;
+        
+        // Obtener de la cookie como respaldo
+        const name = 'csrftoken';
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
     // Variables para debounce
     let timeoutLongitudSolida = null;
     let timeoutPitch = null;
@@ -48,16 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('diametro_hilo', parseFloat(diametroHilo));
             formData.append('numero_espiras', parseFloat(numeroEspiras));
             
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
-            if (csrfToken) {
-                formData.append('csrfmiddlewaretoken', csrfToken);
-            }
+            const csrfToken = getCsrfToken();
             
             console.log('Llamando API con:', { material, diametroHilo, numeroEspiras });
             
             const response = await fetch('/muelles/api/calculate-blocking-length/', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken || ''
+                }
             });
             
             if (response.ok) {
@@ -88,12 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Solo calcular si están todos los datos
         if (!material || !diametroHilo || !numeroEspiras || !longitud_libre) {
             if (pitchInput) {
-                longitud_inicialInput.disabled = true;
-                longitud_inicialInput.style.opacity = '0.5';
-                longitud_inicialInput.style.cursor = 'not-allowed';
-                longitud_finalInput.disabled = true;
-                longitud_finalInput.style.opacity = '0.5';
-                longitud_finalInput.style.cursor = 'not-allowed';
+                // longitud_inicialInput.disabled = true;
+                // longitud_inicialInput.style.opacity = '0.5';
+                // longitud_inicialInput.style.cursor = 'not-allowed';
+                // longitud_finalInput.disabled = true;
+                // longitud_finalInput.style.opacity = '0.5';
+                // longitud_finalInput.style.cursor = 'not-allowed';
                 pitchInput.value = '';
             }
             return;
@@ -105,16 +127,16 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('numero_espiras', parseFloat(numeroEspiras));
             formData.append('longitud_libre', parseFloat(longitud_libre));
             
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
-            if (csrfToken) {
-                formData.append('csrfmiddlewaretoken', csrfToken);
-            }
+            const csrfToken = getCsrfToken();
             
             console.log('Llamando API para pitch con:', { material, diametroHilo, numeroEspiras, longitud_libre });
             
             const response = await fetch('/muelles/api/calculate-pitch/', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken || ''
+                }
             });
             
             if (response.ok) {

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Muelles - El Menú de Ernesto®</title>
+    <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">
+    <link rel="stylesheet" href="{% static 'muelles/css/calculadora-muelles.css' %}">
+    <link rel="stylesheet" href="{% static 'muelles/css/muelle-extensions.css' %}">
+    <link rel="stylesheet" href="{% static 'muelles/css/form_muelles_torsion.css' %}">
+</head>
+<body>
+    <div class="calculadora-container">
+        <a href="{% url 'muelles_index' %}" class="back-button">← Volver a Muelles</a>
+
+        <h1>Calculadora Avanzada de Muelles Helicoidales de torsión</h1>
+        <p>Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas.</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-grid torsion-form-grid">
+                <div class="torsion-sidebar-left">
+                    {% include 'muelles/partials/_material_form.html' %}
+                </div>
+                <div class="torsion-sidebar-right">
+                    {% include 'muelles/partials/_formulario_torsion.html' %}
+                </div>
+            </div>
+        </form>
+        {% include 'muelles/partials/_calculadora_results.html' %}
+        {% include 'muelles/partials/_calculadora_info.html' %}
+    </div>
+
+    <!-- Scripts externos -->
+     <!-- Scripts externos -->
+<script src="{% static 'muelles/js/diameter-sync.js' %}"></script>
+<script src="{% static 'muelles/js/calculadora-muelles.js' %}"></script>
+    <script src="{% static 'muelles/js/calculadora-muelles.js' %}"></script>
+    <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
+</body>
+</html>

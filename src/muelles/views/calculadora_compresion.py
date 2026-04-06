@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 import traceback
 from muelles.views.get_available_materials import get_available_materials
 from muelles.views.get_data_spring import get_data_spring
@@ -6,6 +7,8 @@ from muelles.pymodels.material import Material
 from muelles.lineal.compresion import MuelleCompresion
 
 
+@csrf_protect
+@ensure_csrf_cookie
 def calculadora_compresion(request):
     """Vista de la calculadora de muelles de compresión"""
     resultado = None

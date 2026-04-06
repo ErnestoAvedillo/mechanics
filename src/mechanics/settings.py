@@ -97,8 +97,14 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-
-# Static files (CSS, JavaScript, Images)
+# CSRF Configuration
+CSRF_TRUSTED_ORIGINS = [
+    'https://ernestoavedillo.com',
+    'https://www.ernestoavedillo.com',
+    'https://127.0.0.1',
+    'https://localhost',
+]
+CSRF_COOKIE_DOMAIN = 'ernestoavedillo.com'
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
