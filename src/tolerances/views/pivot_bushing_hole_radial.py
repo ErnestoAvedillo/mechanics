@@ -29,7 +29,7 @@ def get_fit_type(dimension:Dimension):
         return "Clearance"
 
 
-def pivot_bushing_hole_calculator(request):
+def pivot_bushing_hole_radial_calculator(request):
     values = {
         "pin_nominal": 0,
         "pin_tol_sup": 0,
@@ -196,7 +196,7 @@ def pivot_bushing_hole_calculator(request):
             print(exc)
     return render(
         request,
-        "tolerances/pivot_bushing_hole.html",
+        "tolerances/pivot_bushing_hole_radial.html",
         {
             "values": values,
             "result": result,

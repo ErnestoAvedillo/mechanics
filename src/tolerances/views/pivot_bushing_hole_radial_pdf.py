@@ -40,7 +40,7 @@ def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):
         pdf.drawString(x, y + height + 6, f"{label} (no se pudo renderizar)")
 
 
-def pivot_bushing_hole_pdf(request):
+def pivot_bushing_hole_radial_pdf(request):
     if request.method != "POST":
         return HttpResponse("Usa el formulario de pivot-bushing-hole para generar el PDF.", status=405)
 
@@ -127,7 +127,7 @@ def pivot_bushing_hole_pdf(request):
         hist_system_bytes = base64.b64decode(hist_system_b64)
 
         response = HttpResponse(content_type="application/pdf")
-        response["Content-Disposition"] = 'attachment; filename="pivot_bushing_hole_report.pdf"'
+        response["Content-Disposition"] = 'attachment; filename="pivot_bushing_hole_radial_report.pdf"'
 
         pdf = canvas.Canvas(response, pagesize=A4)
         width, height = A4

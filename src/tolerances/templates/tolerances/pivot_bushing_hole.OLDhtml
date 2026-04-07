@@ -108,7 +108,7 @@
         <div class="actions">
           <button type="submit">Calcular</button>
           <a class="link" href="/tolerances/">Volver al indice</a>
-          <button type="submit" formaction="{% url 'tolerances_pivot_bushing_hole_pdf' %}" formmethod="post">Descargar PDF</button>
+          <button type="submit" formaction="{% url 'tolerances_pivot_bushing_hole_radial_pdf' %}" formmethod="post">Descargar PDF</button>
         </div>
       </form>
 

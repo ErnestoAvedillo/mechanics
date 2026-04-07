@@ -18,7 +18,7 @@
 
       <ul class="links">
         <li><a href="{% url 'tolerances_pin_hole' %}">Ajuste Pin-Hole</a></li>
-        <li><a href="{% url 'tolerances_pivot_bushing_hole' %}">Tolerancias eje casquillo agujero</a></li>
+        <li><a href="{% url 'tolerances_pivot_bushing_hole_radial' %}">Tolerancias eje casquillo agujero</a></li>
         <li><a href="/tolerances/gaussian/">Tolerancia Gaussiana</a></li>
         <li><a href="/tolerances/skewed/">Tolerancia Sesgada (Skewed)</a></li>
         <li><a href="/tolerances/operators/">Operaciones entre Dimensiones</a></li>
