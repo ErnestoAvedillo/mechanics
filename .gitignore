@@ -25,3 +25,5 @@ static_files/
 *.tmp
 *.swp
 .DS_Store
+certs/
+certs-www/
