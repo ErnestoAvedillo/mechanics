@@ -1,0 +1,50 @@
+<!-- Segunda columna: Dimensiones -->
+<div class="form-section compact">
+    <h3>📏 Dimensiones del Muelle</h3>
+    <p class="field-note">💡 Complete solo uno de los diámetros</p>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="diametro_exterior">Diámetro exterior:</label>
+            <input type="number" 
+                name="diametro_exterior" 
+                id="diametro_exterior" 
+                step="0.1" 
+                min="0" 
+                placeholder="Auto"
+                value="{{ request.POST.diametro_exterior }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="longitud_libre">Longitud libre (mm):</label>
+        <input type="number" 
+                name="longitud_libre" 
+                id="longitud_libre" 
+                step="0.1" 
+                min="0" 
+                value="{{ request.POST.longitud_libre }}"
+                required>
+    </div>
+    
+    <div class="form-group">
+        <label for="numero_espiras">Número de espiras:</label>
+        <input type="number" 
+                name="numero_espiras" 
+                id="numero_espiras" 
+                step="0.5" 
+                min="1" 
+                value="{{ request.POST.numero_espiras }}"
+                required>
+    </div>
+
+    <div class="form-group" id="traccion_tension_group" style="display: none;">
+        <label for="tension_inicial">Tensión inicial (N):</label>
+        <input type="number"
+                name="tension_inicial"
+                id="tension_inicial"
+                step="0.1"
+                min="0"
+                value="{% firstof request.POST.tension_inicial '0' %}">
+        <small class="muted-small">Solo aplica para muelles de tracción</small>
+    </div>
+</div>

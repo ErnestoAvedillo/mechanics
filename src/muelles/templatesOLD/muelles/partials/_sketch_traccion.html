@@ -1,0 +1,9 @@
+{% load static %}
+<div class="image-preview"
+    {% if request.POST.tipo_muelle == 'traccion' or not request.POST.tipo_muelle and default_tipo == 'traccion' %}
+        style="display: block;"
+    {% else %}
+        style="display: none;"
+    {% endif %}> 
+    <img class="preview-img" src="{% static 'muelles/img/muelle traccion.png' %}" alt="diagrama muelle de tracción">
+</div>

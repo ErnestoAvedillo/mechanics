@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR ahora es /app/src, PROYECTO_ROOT es /app
+# BASE_DIR ahora es /app/src, PROJECT_ROOT es /app
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent  # /app
 BASE_DIR = Path(__file__).resolve().parent.parent  # /app/src
 
@@ -53,7 +53,7 @@ ROOT_URLCONF = 'mechanics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [PROJECT_ROOT / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
