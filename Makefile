@@ -1,20 +1,27 @@
-COMPOSE = docker-compose
-
+COMPOSE = docker compose
+MAKE = make
 LIST_VOLUMES = $(shell $(COMPOSE) config --volumes ls -q)
 DANGLING_IMAGES = $(shell docker images -f "dangling=true" -q)
 DOCKER_COMPOSE_FILE = ./docker-compose.yml
 CERTS_SELFSIGNED = selfsigned.crt selfsigned.key
 DOMAIN ?= ernestoavedillo.com
-EMAIL ?= admin@ernestoavedillo.com
+EMAIL ?= eavedillo@protonmail.com
 
 all: build
 
-build: build_certs
+production: setup-letsencrypt build switch-prod
+	@echo "✅ Aplicación lista en HTTPS: https://ernestoavedillo.com"
+
+build:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) build --no-cache
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
+	@echo "Limpiando contenedores y redes huérfanas..."
+	@docker rm -f $$(docker ps -a -q --filter "ancestor=certbot/certbot:latest") 2>/dev/null || true
+	@docker network rm $$(docker network ls -q --filter "type=custom" --filter "name=.*_default") 2>/dev/null || true
+	@echo "✓ Limpieza completada"
 
 restart: down
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
@@ -46,28 +53,54 @@ $(CERTS_SELFSIGNED):
 # Certificados Let's Encrypt (PRODUCCIÓN)
 setup-letsencrypt:
 	@echo "Generando certificados Let's Encrypt para $(DOMAIN)..."
-	@mkdir -p certs certs-www
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	@echo "  1. Iniciando nginx..."
+	@timeout 120 $(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
 	@sleep 5
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
+	@echo "  2. Generando certificados con certbot..."
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
+		--verbose \
 		--webroot \
 		-w /var/www/certbot \
 		-d $(DOMAIN) \
 		--email $(EMAIL) \
 		--agree-tos \
-		--no-eff-email
-	@echo "✓ Certificados Let's Encrypt generados para $(DOMAIN)"
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx
+		--no-eff-email \
+		--non-interactive \
+		--expand \
+		--force-renewal
+	@echo "3. Verificando generación..."
+	@if [ -f "./certs/live/$(DOMAIN)/fullchain.pem" ]; then \
+		echo "✅ Certificados creados correctamente."; \
+		@echo "  3. Reiniciando nginx..."
+		$(MAKE) switch-prod; \
+		@echo "✓ Certificados Let's Encrypt generados para $(DOMAIN)"
+		@echo "  Ubicación: ./certs/live/$(DOMAIN)/"
+	else \
+		echo "❌ Error: No se encontraron los certificados en ./certs/live/$(DOMAIN)/"; \
+		exit 1; \
+	fi
+
+renew-certificates:rm-letsencrypt setup-letsencrypt
+
+verify-cert:
+	@echo "Verificando certificado sirvido por nginx..."
+	@openssl s_client -connect ernestoavedillo.com:443 </dev/null 2>&1 | grep -E "issuer|subject|verify"
 
 rm-letsencrypt:
 	@echo "Eliminando certificados Let's Encrypt..."
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down certbot
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) stop certbot nginx || true
 	@rm -rf ./certs ./certs-www
+	@ls .certs 2>/dev/null || echo "✓ Certificados eliminados"
+	@ls .certs-www 2>/dev/null || echo "✓ Certificados eliminados"
+	@mkdir -p certs certs-www
+	@chmod 755 certs-www
+	@chmod 755 certs
 
 # Configuración nginx (DESARROLLO / PRODUCCIÓN)
 switch-dev:
 	@echo "🔄 Cambiando a configuración de DESARROLLO (HTTP)..."
 	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
+	@cp .env_dev .env
 	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx
 	@echo "✓ Sirviendo HTTP sin HTTPS (desarrollo)"
 	@echo "  Accede a: http://localhost"
@@ -79,8 +112,9 @@ switch-prod:
 		echo "  Primero ejecuta: make setup-letsencrypt DOMAIN=ernestoavedillo.com EMAIL=tu@email.com"; \
 		exit 1; \
 	fi
+	@cp .env_prod .env
 	@cp ./config/nginx/nginx.conf.prod ./config/nginx/nginx.conf
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx -d
 	@echo "✓ Sirviendo HTTPS con certificados"
 	@echo "  Accede a: https://ernestoavedillo.com"
 
@@ -112,10 +146,15 @@ status:
 	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) config --networks
 
 
-rm_none:
+clean-orphan:
 	@echo "Removing images not used..."
 	@echo "Dangling images: $(DANGLING_IMAGES)"
 	@docker image rm "$(DANGLING_IMAGES)" || true
+	@echo "🧹 Limpiando contenedores y redes huérfanas..."
+	@docker rm -f $$(docker ps -a -q --filter "ancestor=certbot/certbot:latest") 2>/dev/null || true
+	@docker rm -f $$(docker ps -a -q --filter "status=exited") 2>/dev/null || true
+	@docker network rm $$(docker network ls -q --filter "type=custom" --filter "name=.*_default") 2>/dev/null || true
+	@echo "✓ Limpieza completada"
 
 clean: stop 
 	@echo "Cleaning up..."
@@ -166,7 +205,7 @@ help:
 	@echo "LIMPIEZA"
 	@echo "═══════════════════════════════════════════════════════════════"
 	@echo "  clean              - Eliminar todos los contenedores/imágenes/volúmenes"
-	@echo "  rm_none            - Eliminar imágenes huérfanas"
+	@echo "  clean-orphan       - Limpiar contenedores y redes huérfanas"
 	@echo "  help               - Mostrar esta ayuda"
 	@echo ""
 	@echo "FLUJO RECOMENDADO (DESARROLLO)"
@@ -182,4 +221,4 @@ help:
 	@echo "  3. make switch-prod        (HTTPS con certificados válidos)"
 	@echo ""
 
-.PHONY: all build down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config
+.PHONY: all build down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   django:
     build:
@@ -38,9 +36,9 @@ services:
     image: certbot/certbot:latest
     container_name: certbot
     volumes:
-      - ./certs:/etc/letsencrypt
-      - ./certs-www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
+      - ./certs:/etc/letsencrypt:rw
+      - ./certs-www:/var/www/certbot:rw
+#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
     restart: unless-stopped
     profiles:
       - letsencrypt

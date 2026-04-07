@@ -47,7 +47,7 @@ http {
         server_name ernestoavedillo.com www.ernestoavedillo.com;
         
         # Certificados Let's Encrypt
-        ssl_certificate /etc/letsencrypt/live/ernestoavedillo.com/fullchain.pem;
+        ssl_certificate     /etc/letsencrypt/live/ernestoavedillo.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/ernestoavedillo.com/privkey.pem;
         
         # SSL Configuration
