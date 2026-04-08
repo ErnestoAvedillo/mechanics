@@ -4,7 +4,7 @@ LIST_VOLUMES = $(shell $(COMPOSE) config --volumes ls -q)
 DANGLING_IMAGES = $(shell docker images -f "dangling=true" -q)
 DOCKER_COMPOSE_FILE = ./docker-compose.yml
 CERTS_SELFSIGNED = selfsigned.crt selfsigned.key
-DOMAIN ?= ernestoavedillo.com
+DOMAIN ?= www.ernestoavedillo.com
 EMAIL ?= eavedillo@protonmail.com
 
 all: build
@@ -54,7 +54,9 @@ $(CERTS_SELFSIGNED):
 setup-letsencrypt:
 	@echo "Generando certificados Let's Encrypt para $(DOMAIN)..."
 	@echo "  1. Iniciando nginx..."
-	@timeout 120 $(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	# Copiamos la config de DEV que NO pide certificados SSL
+	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
 	@sleep 5
 	@echo "  2. Generando certificados con certbot..."
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
@@ -71,10 +73,10 @@ setup-letsencrypt:
 	@echo "3. Verificando generación..."
 	@if [ -f "./certs/live/$(DOMAIN)/fullchain.pem" ]; then \
 		echo "✅ Certificados creados correctamente."; \
-		@echo "  3. Reiniciando nginx..."
+		echo "  3. Reiniciando nginx..."; \
 		$(MAKE) switch-prod; \
-		@echo "✓ Certificados Let's Encrypt generados para $(DOMAIN)"
-		@echo "  Ubicación: ./certs/live/$(DOMAIN)/"
+		echo "✓ Certificados Let's Encrypt generados para $(DOMAIN)"; \
+		echo "  Ubicación: ./certs/live/$(DOMAIN)/"; \
 	else \
 		echo "❌ Error: No se encontraron los certificados en ./certs/live/$(DOMAIN)/"; \
 		exit 1; \
@@ -101,7 +103,7 @@ switch-dev:
 	@echo "🔄 Cambiando a configuración de DESARROLLO (HTTP)..."
 	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
 	@cp .env_dev .env
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
 	@echo "✓ Sirviendo HTTP sin HTTPS (desarrollo)"
 	@echo "  Accede a: http://localhost"
 
@@ -114,7 +116,7 @@ switch-prod:
 	fi
 	@cp .env_prod .env
 	@cp ./config/nginx/nginx.conf.prod ./config/nginx/nginx.conf
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx -d
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
 	@echo "✓ Sirviendo HTTPS con certificados"
 	@echo "  Accede a: https://ernestoavedillo.com"
 

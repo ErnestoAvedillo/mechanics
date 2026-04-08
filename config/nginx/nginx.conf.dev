@@ -7,6 +7,19 @@ events {
     worker_connections 1024;
 }
 
+server {
+    listen 80;
+    server_name ernestoavedillo.com;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        proxy_pass http://django:8000;
+    }
+}
+
 http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
