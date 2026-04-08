@@ -31,21 +31,18 @@ def get_fit_type(dimension:Dimension):
 
 def pivot_bushing_hole_axial_calculator(request):
     values = {
-        "tube_nominal": 0,
-        "tube_tol_sup": 0,
-        "tube_tol_inf": 0,
-        "bushing_flange_nominal1": 0,
-        "bushing_flange_tol_sup1": 0,
-        "bushing_flange_tol_inf1": 0,
-        "bushing_flange_nominal2": 0,
-        "bushing_flange_tol_sup2": 0,
-        "bushing_flange_tol_inf2": 0,
-        "waal_distance_nominal": 0,
-        "waal_distance_tol_sup": 0,
-        "waal_distance_tol_inf": 0,
-        "hole_nominal": 0,
-        "hole_tol_sup": 0,
-        "hole_tol_inf": 0,
+        "tube_length_nominal": 0,
+        "tube_length_tol_sup": 0,
+        "tube_length_tol_inf": 0,
+        "bushing_flange_1_nominal": 0,
+        "bushing_flange_1_tol_sup": 0,
+        "bushing_flange_1_tol_inf": 0,
+        "bushing_flange_2_nominal": 0,
+        "bushing_flange_2_tol_sup": 0,
+        "bushing_flange_2_tol_inf": 0,
+        "wall_distance_nominal": 0,
+        "wall_distance_tol_sup": 0,
+        "wall_distance_tol_inf": 0,
         "cp": 1.33,
         "samples": 100000,
     }
@@ -57,27 +54,27 @@ def pivot_bushing_hole_axial_calculator(request):
 
     if request.method == "POST":
         values = {
-            "tube_nominal": _to_float(request.POST.get("tube_nominal"), values["tube_nominal"]),
-            "tube_tol_sup": _to_float(request.POST.get("tube_tol_sup"), values["tube_tol_sup"]),
-            "tube_tol_inf": _to_float(request.POST.get("tube_tol_inf"), values["tube_tol_inf"]),
+            "tube_length_nominal": _to_float(request.POST.get("tube_length_nominal"), values["tube_length_nominal"]),
+            "tube_length_tol_sup": _to_float(request.POST.get("tube_length_tol_sup"), values["tube_length_tol_sup"]),
+            "tube_length_tol_inf": _to_float(request.POST.get("tube_length_tol_inf"), values["tube_length_tol_inf"]),
             "bushing_flange_1_nominal": _to_float(request.POST.get("bushing_flange_1_nominal"), values["bushing_flange_1_nominal"]),
             "bushing_flange_1_tol_sup": _to_float(request.POST.get("bushing_flange_1_tol_sup"), values["bushing_flange_1_tol_sup"]),
             "bushing_flange_1_tol_inf": _to_float(request.POST.get("bushing_flange_1_tol_inf"), values["bushing_flange_1_tol_inf"]),
             "bushing_flange_2_nominal": _to_float(request.POST.get("bushing_flange_2_nominal"), values["bushing_flange_2_nominal"]),
             "bushing_flange_2_tol_sup": _to_float(request.POST.get("bushing_flange_2_tol_sup"), values["bushing_flange_2_tol_sup"]),
             "bushing_flange_2_tol_inf": _to_float(request.POST.get("bushing_flange_2_tol_inf"), values["bushing_flange_2_tol_inf"]),
-            "waal_distance_nominal": _to_float(request.POST.get("waal_distance_nominal"), values["waal_distance_nominal"]),
-            "waal_distance_tol_sup": _to_float(request.POST.get("waal_distance_tol_sup"), values["waal_distance_tol_sup"]),
-            "waal_distance_tol_inf": _to_float(request.POST.get("waal_distance_tol_inf"), values["waal_distance_tol_inf"]),
+            "wall_distance_nominal": _to_float(request.POST.get("wall_distance_nominal"), values["wall_distance_nominal"]),
+            "wall_distance_tol_sup": _to_float(request.POST.get("wall_distance_tol_sup"), values["wall_distance_tol_sup"]),
+            "wall_distance_tol_inf": _to_float(request.POST.get("wall_distance_tol_inf"), values["wall_distance_tol_inf"]),
             "cp": _to_float(request.POST.get("cp"), values["cp"]),
             "samples": int(_to_float(request.POST.get("samples"), values["samples"])),
         }
 
         try:
             tube = GausianDimensionGenerator(
-                nominal=values["tube_nominal"],
-                tol_sup=values["tube_tol_sup"],
-                tol_inf=values["tube_tol_inf"],
+                nominal=values["tube_length_nominal"],
+                tol_sup=values["tube_length_tol_sup"],
+                tol_inf=values["tube_length_tol_inf"],
                 CP=values["cp"],
                 number_samples=values["samples"],
             )
@@ -118,7 +115,7 @@ def pivot_bushing_hole_axial_calculator(request):
 
 
             result = {
-                "tube": {
+                "tube_length": {
                     "max": _to_magnitude(tube.nominal + tube.tol_sup),
                     "min": _to_magnitude(tube.nominal + tube.tol_inf),
                     "mean": float(tube.mean.magnitude),
@@ -159,7 +156,7 @@ def pivot_bushing_hole_axial_calculator(request):
             print(exc)
     return render(
         request,
-        "tolerances/pivot_bushing_hole_radial.html",
+        "tolerances/pivot_bushing_hole_axial.html",
         {
             "values": values,
             "result": result,

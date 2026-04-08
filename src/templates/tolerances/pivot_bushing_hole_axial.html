@@ -26,57 +26,58 @@
 
             <div class="input-groups">
 
-              <fieldset class="input-group"style="position:absolute; top:0%; left:0%;">
+              <fieldset class="input-group" style="position:absolute; top:0%; left:0%;">
+                <legend>Wall distance</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="wall_distance_nominal" value="{{ values.wall_distance_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="wall_distance_tol_sup" value="{{ values.wall_distance_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="wall_distance_tol_inf" value="{{ values.wall_distance_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:20%; left:15%;">
+                <legend>Bushing flange</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="bushing_flange_1_nominal" value="{{ values.bushing_flange_1_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="bushing_flange_1_tol_sup" value="{{ values.bushing_flange_1_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="bushing_flange_1_tol_inf" value="{{ values.bushing_flange_1_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:0%; left:70%;">
+                <legend>Bushing flange</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="bushing_flange_2_nominal" value="{{ values.bushing_flange_2_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="bushing_flange_2_tol_sup" value="{{ values.bushing_flange_2_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="bushing_flange_2_tol_inf" value="{{ values.bushing_flange_2_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:70%; left:43%;">
                 <legend>Tube Length</legend>
                 <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="tube_length_nominal" value="{{ values.hole_nominal }}" required>
+                  <input type="number" step="0.1" name="tube_length_nominal" value="{{ values.tube_length_nominal }}" required>
                 </label>
                 <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="tube_length_tol_sup" value="{{ values.hole_tol_sup }}" required>
+                  <input type="number" step="0.1" name="tube_length_tol_sup" value="{{ values.tube_length_tol_sup }}" required>
                 </label>
                 <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="tube_length_tol_inf" value="{{ values.hole_tol_inf }}" required>
+                  <input type="number" step="0.1" name="tube_length_tol_inf" value="{{ values.tube_length_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <fieldset class="input-group"style="position:absolute; top:70%; left:0%;">
-                <legend>Bushing flange</legend>
-                <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="bushing_flange_1_nominal" value="{{ values.outer_bushing_nominal }}" required>
-                </label>
-                <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="bushing_flange_1_tol_sup" value="{{ values.outer_bushing_tol_sup }}" required>
-                </label>
-                <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="bushing_flange_1_tol_inf" value="{{ values.outer_bushing_tol_inf }}" required>
-                </label>
-              </fieldset>
-
-              <fieldset class="input-group"style="position:absolute; top:0%; left:18%;">
-                <legend>Bushing flange</legend>
-                <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="bushing_flange_2_nominal" value="{{ values.inner_bushing_nominal }}" required>
-                </label>
-                <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="bushing_flange_2_tol_sup" value="{{ values.inner_bushing_tol_sup }}" required>
-                </label>
-                <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="bushing_flange_2_tol_inf" value="{{ values.inner_bushing_tol_inf }}" required>
-                </label>
-              </fieldset>
-
-              <fieldset class="input-group" style="position:absolute; top:70%; left:18%;">
-                <legend>Waal distance</legend>
-                <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="waal_distance_nominal" value="{{ values.pin_nominal }}" required>
-                </label>
-                <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="waal_distance_tol_sup" value="{{ values.pin_tol_sup }}" required>
-                </label>
-                <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="waal_distance_tol_inf" value="{{ values.pin_tol_inf }}" required>
-                </label>
-              </fieldset>
               <div class="compact-label" style="position:absolute; top:50%; left:75%;">Interference <br> bushing-tube</div>
               <div class="compact-label" style="position:absolute; top:80%; left:90%;">Gap bushing-pin</div>
             </div>
@@ -126,107 +127,34 @@
         <h2>Incoming Data</h2>
         <div class="result-grid">
           <article>
-            <h3>Pin</h3>
-            <p>Max: {{ result.pin.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.pin.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.pin.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.pin.sigma|floatformat:3 }} mm</p>
+            <h3>Longitud del Tubo</h3>
+            <p>Max: {{ result.tube_length.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.tube_length.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.tube_length.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.tube_length.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Tubo</h3>
-            <p>Max: {{ result.hole.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.hole.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.hole.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.hole.sigma|floatformat:3 }} mm</p>
+            <h3>Distancia entre paredes</h3>
+            <p>Max: {{ result.wall_distance.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.wall_distance.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.wall_distance.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.wall_distance.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>&Oslash; Casquillo Exterior</h3>
-            <p>Max: {{ result.outer_bushing.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.outer_bushing.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.outer_bushing.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.outer_bushing.sigma|floatformat:3 }} mm</p>
+            <h3>Ancho casquillo 1</h3>
+            <p>Max: {{ result.bushing_flange_1.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.bushing_flange_1.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.bushing_flange_1.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.bushing_flange_1.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>&Oslash; Casquillo Interior</h3>
-            <p>Max: {{ result.inner_bushing.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.inner_bushing.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.inner_bushing.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.inner_bushing.sigma|floatformat:3 }} mm</p>
+            <h3>Ancho casquillo 2</h3>
+            <p>Max: {{ result.bushing_flange_2.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.bushing_flange_2.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.bushing_flange_2.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.bushing_flange_2.sigma|floatformat:3 }} mm</p>
           </article>
         </div>
-        <h2>Analysis connection Buching-Tube</h2>
-        <div class="result-grid">
-          <article>
-            <h3>Tubo</h3>
-            <p>Max: {{ result.hole.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.hole.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.hole.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.hole.sigma|floatformat:3 }} mm</p>
-          </article>
-          <article>
-            <h3> &Oslash; Casquillo Exterior</h3>
-            <p>Max: {{ result.outer_bushing.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.outer_bushing.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.outer_bushing.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.outer_bushing.sigma|floatformat:3 }} mm</p>
-          </article>
-          <article>
-            <h3>Interferencia Tubo-Casquillo</h3>
-            <p>Tipo: <strong>{{ result.interf_tube_bushing.fit_type }}</strong></p>
-            <p>Interferencia nominal: {{ result.interf_tube_bushing.nominal|floatformat:3 }} mm</p>
-            <p>Interferencia maxima: {{ result.interf_tube_bushing.max_interference|floatformat:3 }} mm</p>
-            <p>Interferencia minima: {{ result.interf_tube_bushing.min_interference|floatformat:3 }} mm</p>
-            <p>Media (samples): {{ result.interf_tube_bushing.mean_samples|floatformat:3 }} mm</p>
-            <p>Sigma (samples): {{ result.interf_tube_bushing.sigma_samples|floatformat:3 }} mm</p>
-          </article>
-        </div>
-        {% if result.interf_tube_bushing.histogram %}
-        <section class="histogram-block">
-          <h3>Histograma de la Interferencia Tubo-Casquillo</h3>
-          <img
-          class="histogram-image"
-          src="data:image/png;base64,{{ result.interf_tube_bushing.histogram }}"
-          alt="Histograma de la diferencia entre diametro del tubo y el casquillo"
-          >
-        </section>
-        {% endif %}
-        <h2>Analysis wall thickness Buching</h2>
-        <div class="result-grid">
-          <article>
-            <h3> &Oslash; Casquillo Exterior</h3>
-            <p>Max: {{ result.outer_bushing.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.outer_bushing.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.outer_bushing.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.outer_bushing.sigma|floatformat:3 }} mm</p>
-          </article>
-          <article>
-            <h3> &Oslash; Casquillo Interior</h3>
-            <p>Max: {{ result.inner_bushing.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.inner_bushing.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.inner_bushing.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.inner_bushing.sigma|floatformat:3 }} mm</p>
-          </article>
-          <article>
-            <h3>Espesor de Pared</h3>
-            <p>Tipo: <strong>{{ result.wall_thickness.fit_type }}</strong></p>
-            <p>Espesor nominal: {{ result.wall_thickness.nominal|floatformat:3 }} mm</p>
-            <p>Tol. Sup: {{ result.wall_thickness.tol_sup|floatformat:3 }} mm</p>
-            <p>Tol. Inf: {{ result.wall_thickness.tol_inf|floatformat:3 }} mm</p>
-            <p>Media (samples): {{ result.wall_thickness.mean_samples|floatformat:3 }} mm</p>
-            <p>Sigma (samples): {{ result.wall_thickness.sigma_samples|floatformat:3 }} mm</p>
-          </article>
-
-        </div>
-        {% if result.wall_thickness.histogram %}
-        <section class="histogram-block">
-          <h3>Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)</h3>
-          <img
-          class="histogram-image"
-          src="data:image/png;base64,{{ result.wall_thickness.histogram }}"
-          alt="Histograma del espesor de pared"
-          >
-        </section>
-        {% endif %}
         <h2>Analysis clearance system</h2>
         <div class="result-grid">
           <article>
