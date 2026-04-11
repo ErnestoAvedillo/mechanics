@@ -1,16 +1,14 @@
+DOCKER = docker
 COMPOSE = docker compose
 MAKE = make
 LIST_VOLUMES = $(shell $(COMPOSE) config --volumes ls -q)
 DANGLING_IMAGES = $(shell docker images -f "dangling=true" -q)
 DOCKER_COMPOSE_FILE = ./docker-compose.yml
 CERTS_SELFSIGNED = selfsigned.crt selfsigned.key
-DOMAIN ?= www.ernestoavedillo.com
+DOMAIN ?= ernestoavedillo.com
 EMAIL ?= eavedillo@protonmail.com
 
 all: build
-
-production: setup-letsencrypt build switch-prod
-	@echo "✅ Aplicación lista en HTTPS: https://ernestoavedillo.com"
 
 build:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) build --no-cache
@@ -22,6 +20,12 @@ down:
 	@docker rm -f $$(docker ps -a -q --filter "ancestor=certbot/certbot:latest") 2>/dev/null || true
 	@docker network rm $$(docker network ls -q --filter "type=custom" --filter "name=.*_default") 2>/dev/null || true
 	@echo "✓ Limpieza completada"
+
+production: 
+	@echo "Iniciando despliegue en producción..."
+	@$(DOCKER) exec django python manage.py collectstatic --noinput
+	@$(COMPOSE) restart django
+	@echo "✅ Aplicación lista en producción: https://www.ernestoavedillo.com"
 
 restart: down
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
@@ -56,7 +60,12 @@ setup-letsencrypt:
 	@echo "  1. Iniciando nginx..."
 	# Copiamos la config de DEV que NO pide certificados SSL
 	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	@# ELIMINAMOS EL AUTOFIRMADO GENERADO POR EL ENTRYPOINT DE NGINX
+	echo "  2. Eliminando certificados autofirmados (si existen) estos certificados los crea el entrypoint de nginx	..."
+	@sudo rm -rf ./certs/live/$(DOMAIN)
+	@sudo rm -rf ./certs/archive/$(DOMAIN)
+	@sudo rm -rf ./certs/renewal/$(DOMAIN).conf
 	@sleep 5
 	@echo "  2. Generando certificados con certbot..."
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
@@ -67,9 +76,13 @@ setup-letsencrypt:
 		--email $(EMAIL) \
 		--agree-tos \
 		--no-eff-email \
+		--duplicate \
 		--non-interactive \
-		--expand \
-		--force-renewal
+		--force-renewal  || { \
+			echo "❌ Error: Falló la generación de certificados Let's Encrypt para $(DOMAIN)"; \
+			exit 1; \
+		}
+		# usar --staging para pruebas sin límites de tasa en el comando anterior: --staging
 	@echo "3. Verificando generación..."
 	@if [ -f "./certs/live/$(DOMAIN)/fullchain.pem" ]; then \
 		echo "✅ Certificados creados correctamente."; \
@@ -91,7 +104,7 @@ verify-cert:
 rm-letsencrypt:
 	@echo "Eliminando certificados Let's Encrypt..."
 	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) stop certbot nginx || true
-	@rm -rf ./certs ./certs-www
+	@rm -rfd ./certs ./certs-www
 	@ls .certs 2>/dev/null || echo "✓ Certificados eliminados"
 	@ls .certs-www 2>/dev/null || echo "✓ Certificados eliminados"
 	@mkdir -p certs certs-www

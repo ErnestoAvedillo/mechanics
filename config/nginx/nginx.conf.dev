@@ -7,19 +7,6 @@ events {
     worker_connections 1024;
 }
 
-server {
-    listen 80;
-    server_name ernestoavedillo.com;
-
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
-
-    location / {
-        proxy_pass http://django:8000;
-    }
-}
-
 http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
@@ -39,17 +26,14 @@ http {
 
     # HTTP (desarrollo)
     server {
-        listen 80 default_server;
-        server_name _;
+        listen 80;
+        server_name ernestoavedillo.com www.ernestoavedillo.com _;
         
         client_max_body_size 100M;
         
-        location / {
-            proxy_pass http://django:8000;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+        # Let's Encrypt challenge
+        location /.well-known/acme-challenge/ {
+            root /var/www/certbot;
         }
         
         location /static/ {
@@ -57,8 +41,13 @@ http {
             expires 30d;
             add_header Cache-Control "public, immutable";
         }
-        location /.well-known/acme-challenge/ {
-           root /var/www/certbot;
+        
+        location / {
+            proxy_pass http://django:8000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
         }
     }
 }

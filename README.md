@@ -1,13 +1,4 @@
-# El Menú de Ernesto® - Versión Django Optimizada
-
-Sistema de gestión de menús y enlaces desarrollado en Django. Permite editar archivos CSV y JSON de forma visual e intuitiva.
-
-## Características ✨
-- 📊 **Editor CSV Interactivo**: Vista tabla y texto con drag & drop
-- 🔧 **Editor JSON Visual**: Edición de estructuras JSON complejas  
-- 📱 **Interfaz Responsive**: Optimizado para móvil, tablet y escritorio
-- 📁 **Gestión de Enlaces**: Organización de carpetas y URLs
-- ⚡ **Código Optimizado**: Reducción de dependencias y archivos innecesarios
+# Página web de Ernesto Avedillo
 
 ## Tecnologías 🛠️
 - Django 6.0.1 (minimalista)
@@ -56,61 +47,13 @@ La configuración principal está en `mechanics/settings.py`:
 
 ## Cómo Ejecutar
 
-### Opción 1: Usando el script
-
-```bash
-./run_server.sh
+### Para iniciar el proyecto
+``` bash
+make build
 ```
 
-### Opción 2: Comando directo
-
-```bash
-uv run python manage.py runserver
+### Para renovar certificados:
+``` bash
+make renew-certificates
 ```
-
-### Opción 3: Con comando corregido
-
-```bash
-uv run python manage.py runserver
-```
-
-El servidor estará disponible en: `http://127.0.0.1:8000/`
-
-## Comandos Útiles
-
-### Crear migraciones
-```bash
-uv run python manage.py makemigrations
-```
-
-### Aplicar migraciones
-```bash
-uv run python manage.py migrate
-```
-
-### Verificar el proyecto
-```bash
-uv run python manage.py check
-```
-
-### Crear superusuario
-```bash
-uv run python manage.py createsuperuser
-```
-
-## Errores Corregidos
-
-1. ✅ Configuración de INSTALLED_APPS (añadido 'menuapp')
-2. ✅ Configuración de directorios de templates y static
-3. ✅ Conversión de sintaxis Flask a Django en templates
-4. ✅ Creación de filtros personalizados para templates
-5. ✅ Configuración de URLs
-6. ✅ Añadido CSRF token en formularios
-7. ✅ Migraciones aplicadas
-
-## Notas
-
-- El proyecto usa `uv` para gestionar el entorno Python
-- Django 6.0.1 está instalado
-- La base de datos SQLite se crea automáticamente
-- Los archivos estáticos se sirven desde el directorio `static/`
+en make help están todas las opciones

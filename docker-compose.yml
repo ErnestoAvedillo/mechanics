@@ -38,6 +38,7 @@ services:
     volumes:
       - ./certs:/etc/letsencrypt:rw
       - ./certs-www:/var/www/certbot:rw
+      - ./certbot-logs:/var/log/letsencrypt  # <--- Añade esto
 #    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
     restart: unless-stopped
     profiles:
