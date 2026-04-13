@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ titulo }} - Estudios de tolerancias {% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">
+    <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-pin-hole.css' %}">
+    <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>{{ titulo }}</h1>
+  <p>{{ descripcion }}</p>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en un alojamiento de plástico</h1>
+      <p class="sub">Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante.</p>
+
+      <form method="post" class="pin-hole-form" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <section class="overlay-panel">
+          <figure class="pin-hole-canvas" aria-label="Diagrama pin-hole con campos editables">
+            <img src="{% static 'tolerances/img/Spacer_Housing.png' %}" alt="Diagrama pin casquillo y agujero">
+
+            <div class="input-groups">
+
+              <fieldset class="input-group" style="position:absolute; top:0%; left:0%;">
+                <legend>Altura soporte</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="wall_height_nominal" value="{{ values.support_high_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="wall_height_tol_sup" value="{{ values.support_high_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="wall_height_tol_inf" value="{{ values.support_high_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:20%; left:15%;">
+                <legend>Altura inserto</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="wall_diameter_nominal" value="{{ values.insert_height_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="wall_diameter_tol_sup" value="{{ values.insert_height_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="wall_diameter_tol_inf" value="{{ values.insert_height_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:0%; left:70%;">
+                <legend>Diametro soporte</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="spacer_height_nominal" value="{{ values.support_diameter_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="spacer_height_tol_sup" value="{{ values.support_diameter_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="spacer_height_tol_inf" value="{{ values.support_diameter_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <fieldset class="input-group"style="position:absolute; top:70%; left:43%;">
+                <legend>Diametro inserto</legend>
+                <label class="compact-label_nominal">Nominal
+                  <input type="number" step="0.1" name="spacer_diameter_nominal" value="{{ values.insert_diameter_nominal }}" required>
+                </label>
+                <label class="compact-label_tol_sup">Tol. Sup
+                  <input type="number" step="0.1" name="spacer_diameter_tol_sup" value="{{ values.insert_diameter_tol_sup }}" required>
+                </label>
+                <label class="compact-label_tol_inf">Tol. Inf
+                  <input type="number" step="0.1" name="spacer_diameter_tol_inf" value="{{ values.insert_diameter_tol_inf }}" required>
+                </label>
+              </fieldset>
+
+              <div class="compact-label" style="position:absolute; top:50%; left:75%;">Interference <br> bushing-tube</div>
+              <div class="compact-label" style="position:absolute; top:80%; left:90%;">Gap bushing-pin</div>
+            </div>
+          </figure>
+        </section>
+
+        <section class="extra-inputs">
+          <h2>Distribucion</h2>
+          <label>Cp
+            <input type="number" step="0.01" min="1" name="cp" value="{{ values.cp }}" required>
+          </label>
+          <label>Numero de muestras
+            <input type="number" min="100" step="100" name="samples" value="{{ values.samples }}" required>
+          </label>
+
+          <div class="dropzone-wrap">
+            <div class="dropzone" data-target="file-zone-1">
+              <input id="file-zone-1" class="dropzone-input" type="file" name="image_1" accept="image/*">
+              <p class="dropzone-title">Imagen 1</p>
+              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
+              <img class="dropzone-preview" alt="Vista previa imagen 1" hidden> 
+            </div>
+
+            <div class="dropzone" data-target="file-zone-2">
+              <input id="file-zone-2" class="dropzone-input" type="file" name="image_2" accept="image/*">
+              <p class="dropzone-title">Imagen 2</p>
+              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
+              <img class="dropzone-preview" alt="Vista previa imagen 2" hidden>
+            </div>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="submit">Calcular</button>
+          <a class="link" href="/tolerances/">Volver al indice</a>
+          <button type="submit" formaction="{% url 'tolerances_pivot_bushing_hole_axial_pdf' %}" formmethod="post">Descargar PDF</button>
+        </div>
+      </form>
+
+      {% if error %}
+      <div class="error">Error: {{ error }}</div>
+      {% endif %}
+
+      {% if result %}
+      <section class="results">
+        <h2>Resultados</h2>
+        <h2>Incoming Data</h2>
+        <div class="result-grid">
+          <article>
+            <h3>Diametro del Inserto</h3>
+            <p>Max: {{ result.insert_diameter.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.insert_diameter.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.insert_diameter.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.insert_diameter.sigma|floatformat:3 }} mm</p>
+          </article>
+          <article>
+            <h3>Diametro del soporte</h3>
+            <p>Max: {{ result.support_diameter.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.support_diameter.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.support_diameter.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.support_diameter.sigma|floatformat:3 }} mm</p>
+          </article>
+          <article>
+            <h3>Altura del inserto</h3>
+            <p>Max: {{ result.insert_height.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.insert_height.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.insert_height.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.insert_height.sigma|floatformat:3 }} mm</p>
+          </article>
+          <article>
+            <h3>Altura del soporte</h3>
+            <p>Max: {{ result.support_height.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.support_height.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.support_height.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.support_height.sigma|floatformat:3 }} mm</p>
+          </article>
+        </div>
+        <h2>Analysis clearance system</h2>
+        <div class="result-grid">
+          <article>
+            <h3>Clearance system</h3>
+            <p>Tipo: <strong>{{ result.diameter_interference.fit_type }}</strong></p>
+            <p>Espesor nominal: {{ result.diameter_interference.nominal|floatformat:3 }} mm</p>
+            <p>Tol. Sup: {{ result.diameter_interference.tol_sup|floatformat:3 }} mm</p>
+            <p>Tol. Inf: {{ result.diameter_interference.tol_inf|floatformat:3 }} mm</p>
+            <p>Media (samples): {{ result.diameter_interference.mean_samples|floatformat:3 }} mm</p>
+            <p>Sigma (samples): {{ result.diameter_interference.sigma_samples|floatformat:3 }} mm</p>
+          </article>
+          
+        </div>
+        {% if result.diameter_interfierence.histogram %}
+
+        <h2>Analysis sobrealtura</h2>
+        <div class="result-grid">
+          <article>
+            <h3>Clearance system</h3>
+            <p>Tipo: <strong>{{ result.clearance_height.fit_type }}</strong></p>
+            <p>Espesor nominal: {{ result.clearance_height.nominal|floatformat:3 }} mm</p>
+            <p>Tol. Sup: {{ result.clearance_height.tol_sup|floatformat:3 }} mm</p>
+            <p>Tol. Inf: {{ result.clearance_height.tol_inf|floatformat:3 }} mm</p>
+            <p>Media (samples): {{ result.clearance_height.mean_samples|floatformat:3 }} mm</p>
+            <p>Sigma (samples): {{ result.clearance_height.sigma_samples|floatformat:3 }} mm</p>
+          </article>
+        </div>
+        {% if result.overhigh.histogram %}
+
+
+
+        <section class="histogram-block">
+          <h3>Histograma del Clearance System</h3>
+          <img
+          class="histogram-image"
+          src="data:image/png;base64,{{ result.system_clearance.histogram }}"
+          alt="Histograma del espesor de pared"
+          >
+        </section>
+        {% endif %}
+      </section>
+      {% endif %}
+  </main>
+{% endblock %}
+{% block extra_js %}
+  <script src="{% static 'tolerances/js/pin-hole-dropzones.js' %}"></script>
+{% endblock %}

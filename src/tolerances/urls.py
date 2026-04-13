@@ -6,7 +6,8 @@ from tolerances.views.pivot_bushing_hole_radial import pivot_bushing_hole_radial
 from tolerances.views.pivot_bushing_hole_radial_pdf import pivot_bushing_hole_radial_pdf
 from tolerances.views.pivot_bushing_hole_axial import pivot_bushing_hole_axial_calculator
 from tolerances.views.pivot_bushing_hole_axial_pdf import pivot_bushing_hole_axial_pdf
-
+from tolerances.views.pivot_insert_support import pivot_insert_support_calculator
+from tolerances.views.pivot_insert_support_pdf import pivot_insert_support_pdf
 urlpatterns = [
     path('', index, name='tolerances_index'),
     path('index/', index, name='tolerances_index_legacy'),
@@ -16,4 +17,6 @@ urlpatterns = [
     path('pivot-bushing-hole-radial/', pivot_bushing_hole_radial_calculator, name='tolerances_pivot_bushing_hole_radial'),
     path('pivot-bushing-hole-radial/pdf/', pivot_bushing_hole_radial_pdf, name='tolerances_pivot_bushing_hole_radial_pdf'),
     path('pivot-bushing-hole-axial/pdf/', pivot_bushing_hole_axial_pdf, name='tolerances_pivot_bushing_hole_axial_pdf'),
+    path('pivot-insert-support/', pivot_insert_support_calculator, name='tolerances_pivot_insert_support'),
+    path('pivot-insert-support/pdf/', pivot_insert_support_pdf, name='tolerances_pivot_insert_support_pdf'),
     ]
