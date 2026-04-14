@@ -1,32 +1,10 @@
 from django.shortcuts import render
 
 from tolerances.classes.hystogram import Hystogram
-from tolerances.pymodels.dimension import Dimension, GausianDimensionGenerator
+from tolerances.pymodels.dimension import GausianDimensionGenerator
 
-
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _to_magnitude(value):
-    try:
-        return float(value.magnitude)
-    except AttributeError:
-        return float(value)
-
-def get_fit_type(dimension:Dimension):
-    max_clearance = dimension.nominal + dimension.tol_sup
-    min_clearance = dimension.nominal + dimension.tol_inf
-
-    if max_clearance < min_clearance:
-        return "Interference"
-    elif max_clearance == min_clearance:
-        return "Transition"
-    else:
-        return "Clearance"
+from tolerances.tools.conversion import _to_float, _to_magnitude
+from tolerances.tools.get_fit_type import get_fit_type
 
 
 def pivot_bushing_hole_axial_calculator(request):

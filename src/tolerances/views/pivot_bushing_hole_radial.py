@@ -1,32 +1,10 @@
 from django.shortcuts import render
 
 from tolerances.classes.hystogram import Hystogram
-from tolerances.pymodels.dimension import Dimension, GausianDimensionGenerator
+from tolerances.pymodels.dimension import GausianDimensionGenerator
 
-
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _to_magnitude(value):
-    try:
-        return float(value.magnitude)
-    except AttributeError:
-        return float(value)
-
-def get_fit_type(dimension:Dimension):
-    max_clearance = dimension.nominal + dimension.tol_sup
-    min_clearance = dimension.nominal + dimension.tol_inf
-
-    if max_clearance < min_clearance:
-        return "Interference"
-    elif max_clearance == min_clearance:
-        return "Transition"
-    else:
-        return "Clearance"
+from tolerances.tools.conversion import _to_float, _to_magnitude
+from tolerances.tools.get_fit_type import get_fit_type
 
 
 def pivot_bushing_hole_radial_calculator(request):
@@ -53,21 +31,32 @@ def pivot_bushing_hole_radial_calculator(request):
     hist_wall_thickness_base64 = None
     hist_system_clearance_base64 = None
 
-
     if request.method == "POST":
         values = {
-            "pin_nominal": _to_float(request.POST.get("pin_nominal"), values["pin_nominal"]),
-            "pin_tol_sup": _to_float(request.POST.get("pin_tol_sup"), values["pin_tol_sup"]),
-            "pin_tol_inf": _to_float(request.POST.get("pin_tol_inf"), values["pin_tol_inf"]),
-            "hole_nominal": _to_float(request.POST.get("hole_nominal"), values["hole_nominal"]),
-            "hole_tol_sup": _to_float(request.POST.get("hole_tol_sup"), values["hole_tol_sup"]),
-            "hole_tol_inf": _to_float(request.POST.get("hole_tol_inf"), values["hole_tol_inf"]),
-            "inner_bushing_nominal": _to_float(request.POST.get("inner_bushing_nominal"), values["inner_bushing_nominal"]),
-            "inner_bushing_tol_sup": _to_float(request.POST.get("inner_bushing_tol_sup"), values["inner_bushing_tol_sup"]),
-            "inner_bushing_tol_inf": _to_float(request.POST.get("inner_bushing_tol_inf"), values["inner_bushing_tol_inf"]),
-            "outer_bushing_nominal": _to_float(request.POST.get("outer_bushing_nominal"), values["outer_bushing_nominal"]),
-            "outer_bushing_tol_sup": _to_float(request.POST.get("outer_bushing_tol_sup"), values["outer_bushing_tol_sup"]),
-            "outer_bushing_tol_inf": _to_float(request.POST.get("outer_bushing_tol_inf"), values["outer_bushing_tol_inf"]),
+            "pin_nominal": _to_float(request.POST.get("pin_nominal"),
+                                     values["pin_nominal"]),
+            "pin_tol_sup": _to_float(request.POST.get("pin_tol_sup"),
+                                     values["pin_tol_sup"]),
+            "pin_tol_inf": _to_float(request.POST.get("pin_tol_inf"),
+                                     values["pin_tol_inf"]),
+            "hole_nominal": _to_float(request.POST.get("hole_nominal"),
+                                      values["hole_nominal"]),
+            "hole_tol_sup": _to_float(request.POST.get("hole_tol_sup"),
+                                      values["hole_tol_sup"]),
+            "hole_tol_inf": _to_float(request.POST.get("hole_tol_inf"),
+                                      values["hole_tol_inf"]),
+            "inner_bushing_nominal": _to_float(request.POST.get("inner_bushing_nominal"),
+                                               values["inner_bushing_nominal"]),
+            "inner_bushing_tol_sup": _to_float(request.POST.get("inner_bushing_tol_sup"),
+                                               values["inner_bushing_tol_sup"]),
+            "inner_bushing_tol_inf": _to_float(request.POST.get("inner_bushing_tol_inf"),
+                                               values["inner_bushing_tol_inf"]),
+            "outer_bushing_nominal": _to_float(request.POST.get("outer_bushing_nominal"),
+                                               values["outer_bushing_nominal"]),
+            "outer_bushing_tol_sup": _to_float(request.POST.get("outer_bushing_tol_sup"),
+                                               values["outer_bushing_tol_sup"]),
+            "outer_bushing_tol_inf": _to_float(request.POST.get("outer_bushing_tol_inf"),
+                                               values["outer_bushing_tol_inf"]),
             "cp": _to_float(request.POST.get("cp"), values["cp"]),
             "samples": int(_to_float(request.POST.get("samples"), values["samples"])),
         }

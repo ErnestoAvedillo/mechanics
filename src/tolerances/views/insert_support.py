@@ -1,35 +1,13 @@
 from django.shortcuts import render
 
 from tolerances.classes.hystogram import Hystogram
-from tolerances.pymodels.dimension import Dimension, GausianDimensionGenerator
+from tolerances.pymodels.dimension import GausianDimensionGenerator
+
+from tolerances.tools.conversion import _to_float, _to_magnitude
+from tolerances.tools.get_fit_type import get_fit_type
 
 
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _to_magnitude(value):
-    try:
-        return float(value.magnitude)
-    except AttributeError:
-        return float(value)
-
-def get_fit_type(dimension:Dimension):
-    max_clearance = dimension.nominal + dimension.tol_sup
-    min_clearance = dimension.nominal + dimension.tol_inf
-
-    if max_clearance < min_clearance:
-        return "Interference"
-    elif max_clearance == min_clearance:
-        return "Transition"
-    else:
-        return "Clearance"
-
-
-def pivot_insert_support_calculator(request):
+def insert_support_calculator(request):
     values = {
         "support_height_nominal": 0,
         "support_height_tol_sup": 0,
@@ -40,34 +18,45 @@ def pivot_insert_support_calculator(request):
         "support_diameter_nominal": 0,
         "support_diameter_tol_sup": 0,
         "support_diameter_tol_inf": 0,
-        "outer_bushing_nominal": 0,
-        "outer_bushing_tol_sup": 0,
-        "outer_bushing_tol_inf": 0,
+        "spacer_diameter_nominal": 0,
+        "spacer_diameter_tol_sup": 0,
+        "spacer_diameter_tol_inf": 0,
         "cp": 1.33,
         "samples": 100000,
     }
 
     result = None
     error = None
-    hist_interf_tube_bushing_base64 = None
-    hist_wall_thickness_base64 = None
-    hist_system_clearance_base64 = None
+    hist_clearance_height_base64 = None
+    hist_diameter_interference_base64 = None
 
 
     if request.method == "POST":
         values = {
-            "support_height_nominal": _to_float(request.POST.get("support_height_nominal"), values["support_height_nominal"]),
-            "support_height_tol_sup": _to_float(request.POST.get("support_height_tol_sup"), values["support_height_tol_sup"]),
-            "support_height_tol_inf": _to_float(request.POST.get("support_height_tol_inf"), values["support_height_tol_inf"]),
-            "spacer_height_nominal": _to_float(request.POST.get("spacer_height_nominal"), values["spacer_height_nominal"]),
-            "spacer_height_tol_sup": _to_float(request.POST.get("spacer_height_tol_sup"), values["spacer_height_tol_sup"]),
-            "spacer_height_tol_inf": _to_float(request.POST.get("spacer_height_tol_inf"), values["spacer_height_tol_inf"]),
-            "support_diameter_nominal": _to_float(request.POST.get("support_diameter_nominal"), values["support_diameter_nominal"]),
-            "support_diameter_tol_sup": _to_float(request.POST.get("support_diameter_tol_sup"), values["support_diameter_tol_sup"]),
-            "support_diameter_tol_inf": _to_float(request.POST.get("support_diameter_tol_inf"), values["support_diameter_tol_inf"]),
-            "spacer_diameter_nominal": _to_float(request.POST.get("spacer_diameter_nominal"), values["spacer_diameter_nominal"]),
-            "spacer_diameter_tol_sup": _to_float(request.POST.get("spacer_diameter_tol_sup"), values["spacer_diameter_tol_sup"]),
-            "spacer_diameter_tol_inf": _to_float(request.POST.get("spacer_diameter_tol_inf"), values["spacer_diameter_tol_inf"]),
+            "support_height_nominal": _to_float(request.POST.get("support_height_nominal"),
+                                                values["support_height_nominal"]),
+            "support_height_tol_sup": _to_float(request.POST.get("support_height_tol_sup"),
+                                                values["support_height_tol_sup"]),
+            "support_height_tol_inf": _to_float(request.POST.get("support_height_tol_inf"),
+                                                values["support_height_tol_inf"]),
+            "spacer_height_nominal": _to_float(request.POST.get("spacer_height_nominal"),
+                                               values["spacer_height_nominal"]),
+            "spacer_height_tol_sup": _to_float(request.POST.get("spacer_height_tol_sup"),
+                                               values["spacer_height_tol_sup"]),
+            "spacer_height_tol_inf": _to_float(request.POST.get("spacer_height_tol_inf"),
+                                               values["spacer_height_tol_inf"]),
+            "support_diameter_nominal": _to_float(request.POST.get("support_diameter_nominal"),
+                                                  values["support_diameter_nominal"]),
+            "support_diameter_tol_sup": _to_float(request.POST.get("support_diameter_tol_sup"),
+                                                  values["support_diameter_tol_sup"]),
+            "support_diameter_tol_inf": _to_float(request.POST.get("support_diameter_tol_inf"),
+                                                  values["support_diameter_tol_inf"]),
+            "spacer_diameter_nominal": _to_float(request.POST.get("spacer_diameter_nominal"),
+                                                 values["spacer_diameter_nominal"]),
+            "spacer_diameter_tol_sup": _to_float(request.POST.get("spacer_diameter_tol_sup"),
+                                                 values["spacer_diameter_tol_sup"]),
+            "spacer_diameter_tol_inf": _to_float(request.POST.get("spacer_diameter_tol_inf"),
+                                                 values["spacer_diameter_tol_inf"]),
             "cp": _to_float(request.POST.get("cp"), values["cp"]),
             "samples": int(_to_float(request.POST.get("samples"), values["samples"])),
         }
@@ -157,7 +146,7 @@ def pivot_insert_support_calculator(request):
                     "mean_samples": float(clearance_height.vector_samples.mean()),
                     "sigma_samples": float(clearance_height.vector_samples.std()),
                     "fit_type": get_fit_type(clearance_height),
-                    "histogram": hist_system_clearance_base64,
+                    "histogram": hist_clearance_height_base64,
                 },
                 "diameter_interference": {
                     "nominal": _to_magnitude(diameter_interference.nominal),
@@ -176,7 +165,7 @@ def pivot_insert_support_calculator(request):
             print(exc)
     return render(
         request,
-        "tolerances/pivot_bushing_hole_radial.html",
+        "tolerances/insert_support.html",
         {
             "values": values,
             "result": result,

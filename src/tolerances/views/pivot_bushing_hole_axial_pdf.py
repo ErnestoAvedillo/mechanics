@@ -9,35 +9,8 @@ from reportlab.pdfgen import canvas
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
 
-
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _to_magnitude(value):
-    try:
-        return float(value.magnitude)
-    except AttributeError:
-        return float(value)
-
-
-def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):
-    if not uploaded_file:
-        return
-
-    try:
-        image_bytes = uploaded_file.read()
-        image_stream = io.BytesIO(image_bytes)
-        image = ImageReader(image_stream)
-        pdf.setFont("Helvetica-Bold", 10)
-        pdf.drawString(x, y + height + 6, label)
-        pdf.drawImage(image, x, y, width=width, height=height, preserveAspectRatio=True, mask='auto')
-    except Exception:
-        pdf.setFont("Helvetica", 9)
-        pdf.drawString(x, y + height + 6, f"{label} (no se pudo renderizar)")
+from tolerances.tools.conversion import _to_float, _to_magnitude
+from tolerances.tools.draw_image_if_present import _draw_image_if_present
 
 
 def pivot_bushing_hole_axial_pdf(request):

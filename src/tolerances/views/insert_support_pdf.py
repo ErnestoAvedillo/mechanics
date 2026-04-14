@@ -9,38 +9,10 @@ from reportlab.pdfgen import canvas
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
 
+from tolerances.tools.conversion import _to_float, _to_magnitude
+from tolerances.tools.draw_image_if_present import _draw_image_if_present
 
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _to_magnitude(value):
-    try:
-        return float(value.magnitude)
-    except AttributeError:
-        return float(value)
-
-
-def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):
-    if not uploaded_file:
-        return
-
-    try:
-        image_bytes = uploaded_file.read()
-        image_stream = io.BytesIO(image_bytes)
-        image = ImageReader(image_stream)
-        pdf.setFont("Helvetica-Bold", 10)
-        pdf.drawString(x, y + height + 6, label)
-        pdf.drawImage(image, x, y, width=width, height=height, preserveAspectRatio=True, mask='auto')
-    except Exception:
-        pdf.setFont("Helvetica", 9)
-        pdf.drawString(x, y + height + 6, f"{label} (no se pudo renderizar)")
-
-
-def pivot_bushing_hole_radial_pdf(request):
+def insert_support_pdf(request):
     if request.method != "POST":
         return HttpResponse("Usa el formulario de pivot-bushing-hole para generar el PDF.", status=405)
 
@@ -61,28 +33,28 @@ def pivot_bushing_hole_radial_pdf(request):
         "samples": int(_to_float(request.POST.get("samples"), values["samples"])),
     }
     try:
-        pin = GausianDimensionGenerator(
+        support_height = GausianDimensionGenerator(
             nominal=values["support_height_nominal"],
             tol_sup=values["support_height_tol_sup"],
             tol_inf=values["support_height_tol_inf"],
             CP=values["cp"],
             number_samples=values["samples"],
         )
-        hole = GausianDimensionGenerator(
+        spacer_height = GausianDimensionGenerator(
             nominal=values["spacer_height_nominal"],
             tol_sup=values["spacer_height_tol_sup"],
             tol_inf=values["spacer_height_tol_inf"],
             CP=values["cp"],
             number_samples=values["samples"],
         )
-        inner_bushing = GausianDimensionGenerator(
+        support_diameter = GausianDimensionGenerator(
             nominal=values["support_diameter_nominal"],
             tol_sup=values["support_diameter_tol_sup"],
             tol_inf=values["support_diameter_tol_inf"],
             CP=values["cp"],
             number_samples=values["samples"],
         )
-        outer_bushing = GausianDimensionGenerator(
+        spacer_diameter = GausianDimensionGenerator(
             nominal=values["spacer_diameter_nominal"],
             tol_sup=values["spacer_diameter_tol_sup"],
             tol_inf=values["spacer_diameter_tol_inf"],
@@ -90,8 +62,7 @@ def pivot_bushing_hole_radial_pdf(request):
             number_samples=values["samples"],
         )
 
- 
-        diameter_interference = spacer_height - spacer_diameter
+        diameter_interference = spacer_diameter - support_diameter
         clearance_height = spacer_height - support_height
 
         histogram = Hystogram(
@@ -134,10 +105,10 @@ def pivot_bushing_hole_radial_pdf(request):
 
         pdf.setFont("Helvetica", 9)
         lines = [
-            f"Pin - Nominal: {values['pin_nominal']:.3f} mm | Tol. Sup: {values['pin_tol_sup']:.3f} mm | Tol. Inf: {values['pin_tol_inf']:.3f} mm",
-            f"Hole - Nominal: {values['hole_nominal']:.3f} mm | Tol. Sup: {values['hole_tol_sup']:.3f} mm | Tol. Inf: {values['hole_tol_inf']:.3f} mm",
-            f"Inner Bushing - Nominal: {values['inner_bushing_nominal']:.3f} mm | Tol. Sup: {values['inner_bushing_tol_sup']:.3f} mm | Tol. Inf: {values['inner_bushing_tol_inf']:.3f} mm",
-            f"Outer Bushing - Nominal: {values['outer_bushing_nominal']:.3f} mm | Tol. Sup: {values['outer_bushing_tol_sup']:.3f} mm | Tol. Inf: {values['outer_bushing_tol_inf']:.3f} mm",
+            f"Support diameter- Nominal: {values['support_diameter_nominal']:.3f} mm | Tol. Sup: {values['support_diameter_tol_sup']:.3f} mm | Tol. Inf: {values['support_diameter_tol_inf']:.3f} mm",
+            f"Spacer diameter- Nominal: {values['spacer_diameter_nominal']:.3f} mm | Tol. Sup: {values['spacer_diameter_tol_sup']:.3f} mm | Tol. Inf: {values['spacer_diameter_tol_inf']:.3f} mm",
+            f"Support height- Nominal: {values['support_height_nominal']:.3f} mm | Tol. Sup: {values['support_height_tol_sup']:.3f} mm | Tol. Inf: {values['support_height_tol_inf']:.3f} mm",
+            f"Spacer height- Nominal: {values['spacer_height_nominal']:.3f} mm | Tol. Sup: {values['spacer_height_tol_sup']:.3f} mm | Tol. Inf: {values['spacer_height_tol_inf']:.3f} mm",
         ]
 
         for line in lines:
@@ -189,7 +160,7 @@ def pivot_bushing_hole_radial_pdf(request):
         # Histograma 1
         pdf.setFont("Helvetica-Bold", 11)
         pdf.drawString(40, height - 70, "Interferencia Casquillo soporte")
-        hist_stream = io.BytesIO(hist_interf_bytes)
+        hist_stream = io.BytesIO(hist_diameter_interference_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
             hist_img,
@@ -208,7 +179,7 @@ def pivot_bushing_hole_radial_pdf(request):
 
         pdf.setFont("Helvetica-Bold", 11)
         pdf.drawString(40, height - 70, "Juego del Sistema")
-        hist_stream = io.BytesIO(hist_system_bytes)
+        hist_stream = io.BytesIO(hist_clearance_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
             hist_img,

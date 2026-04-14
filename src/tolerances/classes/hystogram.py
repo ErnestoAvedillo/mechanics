@@ -3,6 +3,7 @@ import base64
 import io
 from tolerances.pymodels.dimension import Dimension
 
+
 class Hystogram:
     def __init__(self, dimension: Dimension, bins: int = 50, xlabel: str = "Value", ylabel: str = "Density", title: str = "Hystogram"):
         self.dimension = dimension
