@@ -1,5 +1,5 @@
 
-from src.tolerances.pymodels.dimension import Dimension
+from tolerances.pymodels.dimension import Dimension
 
 
 def get_fit_type(dimension: Dimension):
