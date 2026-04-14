@@ -86,25 +86,31 @@ if DEBUG:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+    CSRF_COOKIE_DOMAIN = None
+    CSRF_TRUSTED_ORIGINS = [
+        'http://127.0.0.1',
+        'http://localhost',
+        'http://localhost:8000',
+        'http://django:8000',
+    ]
 else:
     # En producción
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_COOKIE_DOMAIN = 'ernestoavedillo.com'
+    CSRF_TRUSTED_ORIGINS = [
+        'https://ernestoavedillo.com',
+        'https://www.ernestoavedillo.com',
+    ]
 
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 # CSRF Configuration
-CSRF_TRUSTED_ORIGINS = [
-    'https://ernestoavedillo.com',
-    'https://www.ernestoavedillo.com',
-    'https://127.0.0.1',
-    'https://localhost',
-]
-CSRF_COOKIE_DOMAIN = 'ernestoavedillo.com'
+# (Configurado arriba en el bloque if DEBUG)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
