@@ -45,6 +45,20 @@ services:
       - letsencrypt
     env_file:
       - .env
+
+  # Nuevo servicio para pruebas
+  tests:
+    image: mcr.microsoft.com/playwright/python:v1.58.0-jammy
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - DJANGO_URL=http://django:8000
+    depends_on:
+      - django
+    # Este comando instala la librería y mantiene el contenedor encendido
+    command: /bin/bash -c "pip install playwright && sleep infinity"
+
 volumes:
   static_volume:
   media_volume:

@@ -117,7 +117,7 @@ switch-dev:
 	@echo "🔄 Cambiando a configuración de DESARROLLO (HTTP)..."
 	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
 	@cp .env_dev .env
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	@$(MAKE) build
 	@echo "✓ Sirviendo HTTP sin HTTPS (desarrollo)"
 	@echo "  Accede a: http://localhost"
 
@@ -130,7 +130,7 @@ switch-prod:
 	fi
 	@cp .env_prod .env
 	@cp ./config/nginx/nginx.conf.prod ./config/nginx/nginx.conf
-	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	@$(MAKE) build
 	@echo "✓ Sirviendo HTTPS con certificados"
 	@echo "  Accede a: https://ernestoavedillo.com"
 
