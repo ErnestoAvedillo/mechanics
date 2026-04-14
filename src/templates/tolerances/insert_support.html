@@ -26,60 +26,60 @@
 
             <div class="input-groups">
 
-              <fieldset class="input-group" style="position:absolute; top:0%; left:0%;">
+              <fieldset class="input-group" style="position:absolute; top:40%; left:2%;">
                 <legend>Altura soporte</legend>
                 <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="wall_height_nominal" value="{{ values.support_high_nominal }}" required>
+                  <input type="number" step="0.1" name="support_height_nominal" value="{{ values.support_height_nominal }}" required>
                 </label>
                 <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="wall_height_tol_sup" value="{{ values.support_high_tol_sup }}" required>
+                  <input type="number" step="0.1" name="support_height_tol_sup" value="{{ values.support_height_tol_sup }}" required>
                 </label>
                 <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="wall_height_tol_inf" value="{{ values.support_high_tol_inf }}" required>
+                  <input type="number" step="0.1" name="support_height_tol_inf" value="{{ values.support_height_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <fieldset class="input-group"style="position:absolute; top:20%; left:15%;">
+              <fieldset class="input-group"style="position:absolute; top: 42%; left:45%;">
                 <legend>Altura inserto</legend>
                 <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="wall_diameter_nominal" value="{{ values.insert_height_nominal }}" required>
+                  <input type="number" step="0.1" name="spacer_height_nominal" value="{{ values.spacer_height_nominal }}" required>
                 </label>
                 <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="wall_diameter_tol_sup" value="{{ values.insert_height_tol_sup }}" required>
+                  <input type="number" step="0.1" name="spacer_height_tol_sup" value="{{ values.spacer_height_tol_sup }}" required>
                 </label>
                 <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="wall_diameter_tol_inf" value="{{ values.insert_height_tol_inf }}" required>
+                  <input type="number" step="0.1" name="spacer_height_tol_inf" value="{{ values.spacer_height_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <fieldset class="input-group"style="position:absolute; top:0%; left:70%;">
+              <fieldset class="input-group"style="position:absolute; top:0%; left:8%;">
                 <legend>Diametro soporte</legend>
                 <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="spacer_height_nominal" value="{{ values.support_diameter_nominal }}" required>
+                  <input type="number" step="0.1" name="support_diameter_nominal" value="{{ values.support_diameter_nominal }}" required>
                 </label>
                 <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="spacer_height_tol_sup" value="{{ values.support_diameter_tol_sup }}" required>
+                  <input type="number" step="0.1" name="support_diameter_tol_sup" value="{{ values.support_diameter_tol_sup }}" required>
                 </label>
                 <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="spacer_height_tol_inf" value="{{ values.support_diameter_tol_inf }}" required>
+                  <input type="number" step="0.1" name="support_diameter_tol_inf" value="{{ values.support_diameter_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <fieldset class="input-group"style="position:absolute; top:70%; left:43%;">
+              <fieldset class="input-group"style="position:absolute; top:75%; left:10%;">
                 <legend>Diametro inserto</legend>
                 <label class="compact-label_nominal">Nominal
-                  <input type="number" step="0.1" name="spacer_diameter_nominal" value="{{ values.insert_diameter_nominal }}" required>
+                  <input type="number" step="0.1" name="spacer_diameter_nominal" value="{{ values.spacer_diameter_nominal }}" required>
                 </label>
                 <label class="compact-label_tol_sup">Tol. Sup
-                  <input type="number" step="0.1" name="spacer_diameter_tol_sup" value="{{ values.insert_diameter_tol_sup }}" required>
+                  <input type="number" step="0.1" name="spacer_diameter_tol_sup" value="{{ values.spacer_diameter_tol_sup }}" required>
                 </label>
                 <label class="compact-label_tol_inf">Tol. Inf
-                  <input type="number" step="0.1" name="spacer_diameter_tol_inf" value="{{ values.insert_diameter_tol_inf }}" required>
+                  <input type="number" step="0.1" name="spacer_diameter_tol_inf" value="{{ values.spacer_diameter_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <div class="compact-label" style="position:absolute; top:50%; left:75%;">Interference <br> bushing-tube</div>
-              <div class="compact-label" style="position:absolute; top:80%; left:90%;">Gap bushing-pin</div>
+              <div class="compact-label" style="position:absolute; top:85%; left:85%;">Interference <br> spacer-support</div>
+              <div class="compact-label" style="position:absolute; top:10%; left:55%;">Gap spacer support</div>
             </div>
           </figure>
         </section>
@@ -128,10 +128,10 @@
         <div class="result-grid">
           <article>
             <h3>Diametro del Inserto</h3>
-            <p>Max: {{ result.insert_diameter.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.insert_diameter.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.insert_diameter.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.insert_diameter.sigma|floatformat:3 }} mm</p>
+            <p>Max: {{ result.spacer_diameter.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.spacer_diameter.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.spacer_diameter.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.spacer_diameter.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
             <h3>Diametro del soporte</h3>
@@ -142,10 +142,10 @@
           </article>
           <article>
             <h3>Altura del inserto</h3>
-            <p>Max: {{ result.insert_height.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.insert_height.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.insert_height.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.insert_height.sigma|floatformat:3 }} mm</p>
+            <p>Max: {{ result.spacer_height.max|floatformat:3 }} mm</p>
+            <p>Min: {{ result.spacer_height.min|floatformat:3 }} mm</p>
+            <p>Media: {{ result.spacer_height.mean|floatformat:3 }} mm</p>
+            <p>Sigma: {{ result.spacer_height.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
             <h3>Altura del soporte</h3>
@@ -160,20 +160,18 @@
           <article>
             <h3>Clearance system</h3>
             <p>Tipo: <strong>{{ result.diameter_interference.fit_type }}</strong></p>
-            <p>Espesor nominal: {{ result.diameter_interference.nominal|floatformat:3 }} mm</p>
-            <p>Tol. Sup: {{ result.diameter_interference.tol_sup|floatformat:3 }} mm</p>
-            <p>Tol. Inf: {{ result.diameter_interference.tol_inf|floatformat:3 }} mm</p>
+            <p>Interferencia nominal: {{ result.diameter_interference.nominal|floatformat:3 }} mm</p>
+            <p>Max. Interferencia: {{ result.diameter_interference.max_interference|floatformat:3 }} mm</p>
+            <p>Min. Interferencia: {{ result.diameter_interference.min_interference|floatformat:3 }} mm</p>
             <p>Media (samples): {{ result.diameter_interference.mean_samples|floatformat:3 }} mm</p>
             <p>Sigma (samples): {{ result.diameter_interference.sigma_samples|floatformat:3 }} mm</p>
           </article>
-          
         </div>
-        {% if result.diameter_interfierence.histogram %}
-
+        {% if result.clearance_height.histogram %}
         <h2>Analysis sobrealtura</h2>
         <div class="result-grid">
           <article>
-            <h3>Clearance system</h3>
+            <h3>Sobrealtura</h3>
             <p>Tipo: <strong>{{ result.clearance_height.fit_type }}</strong></p>
             <p>Espesor nominal: {{ result.clearance_height.nominal|floatformat:3 }} mm</p>
             <p>Tol. Sup: {{ result.clearance_height.tol_sup|floatformat:3 }} mm</p>
@@ -182,16 +180,15 @@
             <p>Sigma (samples): {{ result.clearance_height.sigma_samples|floatformat:3 }} mm</p>
           </article>
         </div>
-        {% if result.overhigh.histogram %}
+        {% endif %}
 
-
-
+        {% if result.clearance_height.histogram %}
         <section class="histogram-block">
           <h3>Histograma del Clearance System</h3>
           <img
           class="histogram-image"
-          src="data:image/png;base64,{{ result.system_clearance.histogram }}"
-          alt="Histograma del espesor de pared"
+          src="data:image/png;base64,{{ result.clearance_height.histogram }}"
+          alt="Histograma del gap entre el soporte y el inserto"
           >
         </section>
         {% endif %}
