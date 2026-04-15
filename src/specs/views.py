@@ -36,14 +36,22 @@ def upload_document(request):
                 )
 
                 # 3. Crear referencia en Django
-                UserDocument.objects.create(
+                doc = UserDocument.objects.create(
                     user=request.user,
                     mongo_id=str(mongo_id),
                     filename=pdf_file.name,
                     company=company
                 )
 
-                messages.success(request, f"¡Documento '{pdf_file.name}' subido con éxito a MongoDB!")
+                # 4. Lanzar indexación RAG (En background sería ideal, aquí síncrono para el MVP)
+                from .rag_engine import index_document_to_rag
+                success, msg = index_document_to_rag(doc.id)
+
+                if success:
+                    messages.success(request, f"¡'{pdf_file.name}' subido e indexado en el RAG!")
+                else:
+                    messages.warning(request, f"Subido a MongoDB, pero fallo al indexar: {msg}")
+                
                 return redirect('specs:document_list')
 
             except Exception as e:
