@@ -9,3 +9,7 @@ reportlab>=4.4.4
 scikit-learn>=1.8.0
 playwright
 pytest-playwright
+llama-index
+openai
+python-dotenv
+psycopg[binary]
