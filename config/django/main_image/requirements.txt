@@ -13,3 +13,4 @@ llama-index
 openai
 python-dotenv
 psycopg[binary]
+llama-parse

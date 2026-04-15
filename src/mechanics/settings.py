@@ -126,5 +126,6 @@ MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
 MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME', 'mechanics_db')
 MONGO_URL = os.environ.get('MONGO_URL', 'mongodb://mongodb:27017/')
 QDRANT_URL = os.environ.get('QDRANT_URL', 'http://qdrant:6333')
+LLAMA_CLOUD_API_KEY = os.environ.get('LLAMA_CLOUD_API_KEY', '')
 
 
