@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'menuapp',
     'muelles',
     'tolerances',
+    'specs',
 ]
 
 MIDDLEWARE = [
@@ -120,5 +121,10 @@ STATIC_ROOT = PROJECT_ROOT / 'static_files/'  # Django colecta aquí en producci
 # Paths compartidos para datos de la app muelles
 MUELLES_MATERIAL_DIR = BASE_DIR / 'muelles' / 'material'
 MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
+
+# Configuración de MongoDB y Qdrant
+MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME', 'mechanics_db')
+MONGO_URL = os.environ.get('MONGO_URL', 'mongodb://mongodb:27017/')
+QDRANT_URL = os.environ.get('QDRANT_URL', 'http://qdrant:6333')
 
 
