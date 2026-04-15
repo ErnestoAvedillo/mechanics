@@ -1,70 +1,41 @@
-import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.conf import settings
-from pymongo import MongoClient
-import gridfs
-from .forms import DocumentUploadForm
-from .models import UserDocument
+from django.http import JsonResponse
+from .rag_engine import get_rag_engine
 
 @login_required
-def upload_document(request):
-    """
-    Gestiona la subida de un PDF: lo guarda en MongoDB (GridFS) 
-    y crea la referencia en el modelo Django del usuario.
-    """
+def chat_view(request):
+    """Renderiza la página principal del chat."""
+    return render(request, 'specs/chat.html')
+
+@login_required
+def chat_query(request):
+    """Endpoint API para procesar preguntas al RAG."""
     if request.method == 'POST':
-        form = DocumentUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            pdf_file = request.FILES['pdf_file']
-            company = form.cleaned_data.get('company')
+        query_text = request.POST.get('query')
+        if not query_text:
+            return JsonResponse({'error': 'No se proporcionó ninguna pregunta'}, status=400)
+        
+        try:
+            # Obtener el motor RAG filtrado para este usuario
+            query_engine = get_rag_engine(request.user.id)
+            
+            # Ejecutar consulta
+            response = query_engine.query(query_text)
+            
+            # Formatear fuentes (opcional, para dar trazabilidad)
+            sources = []
+            for node in response.source_nodes:
+                sources.append({
+                    'filename': node.metadata.get('filename', 'Desconocido'),
+                    'score': float(node.score or 0)
+                })
 
-            try:
-                # 1. Conexión a MongoDB
-                client = MongoClient(settings.MONGO_URL)
-                db = client[settings.MONGO_DB_NAME]
-                fs = gridfs.GridFS(db)
-
-                # 2. Guardar binario en GridFS
-                mongo_id = fs.put(
-                    pdf_file.read(),
-                    filename=pdf_file.name,
-                    content_type='application/pdf',
-                    company=company,
-                    user_id=request.user.id
-                )
-
-                # 3. Crear referencia en Django
-                doc = UserDocument.objects.create(
-                    user=request.user,
-                    mongo_id=str(mongo_id),
-                    filename=pdf_file.name,
-                    company=company
-                )
-
-                # 4. Lanzar indexación RAG (En background sería ideal, aquí síncrono para el MVP)
-                from .rag_engine import index_document_to_rag
-                success, msg = index_document_to_rag(doc.id)
-
-                if success:
-                    messages.success(request, f"¡'{pdf_file.name}' subido e indexado en el RAG!")
-                else:
-                    messages.warning(request, f"Subido a MongoDB, pero fallo al indexar: {msg}")
-                
-                return redirect('specs:document_list')
-
-            except Exception as e:
-                messages.error(request, f"Error al subir a MongoDB: {str(e)}")
-    else:
-        form = DocumentUploadForm()
-
-    return render(request, 'specs/upload.html', {'form': form})
-
-@login_required
-def document_list(request):
-    """
-    Lista los documentos del usuario actual.
-    """
-    documents = UserDocument.objects.filter(user=request.user).order_by('-upload_date')
-    return render(request, 'specs/document_list.html', {'documents': documents})
+            return JsonResponse({
+                'response': str(response),
+                'sources': sources
+            })
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Método no permitido'}, status=405)

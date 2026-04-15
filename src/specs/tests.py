@@ -48,3 +48,22 @@ class TestSpecsArchitecture:
             print("\n✅ Conexión con MongoDB establecida correctamente.")
         except Exception as e:
             pytest.fail(f"Error de conexión con MongoDB: {e}")
+
+    @pytest.mark.django_db
+    def test_chat_query_endpoint(self):
+        """
+        Valida que el endpoint del chat responde correctamente (al menos con error 400 si no hay query).
+        """
+        from django.test import Client
+        from django.urls import reverse
+        
+        c = Client()
+        user = User.objects.create_user(username='tester', password='pass')
+        c.login(username='tester', password='pass')
+        
+        url = reverse('specs:chat_query')
+        response = c.post(url, {'query': ''})
+        
+        assert response.status_code == 400
+        assert 'error' in response.json()
+        print("\n✅ API del Chat validada correctamente.")

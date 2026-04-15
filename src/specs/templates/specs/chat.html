@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg" style="height: 80vh;">
+        <div class="card-header bg-dark text-white d-flex justify-content-between">
+            <h4 class="mb-0">💃 Lola Specs: Asistente de Ingeniería</h4>
+            <span class="badge bg-success align-self-center">RAG Conectado</span>
+        </div>
+        
+        <div class="card-body d-flex flex-column" style="overflow-y: auto;" id="chat-window">
+            <div class="alert alert-info small">
+                Bienvenido, Ernesto. Pregúntame cualquier cosa sobre las normativas que has subido. 
+                Citaré las fuentes para que puedas verificar la información.
+            </div>
+            <!-- Los mensajes aparecerán aquí -->
+        </div>
+
+        <div class="card-footer bg-light">
+            <form id="chat-form">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" id="user-input" class="form-control" placeholder="Escribe tu duda técnica (ej. ¿Qué dice ISO 26262 sobre ASIL D?)..." required>
+                    <button class="btn btn-primary" type="submit" id="send-btn">Consultar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('chat-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const input = document.getElementById('user-input');
+    const window = document.getElementById('chat-window');
+    const query = input.value;
+    if (!query) return;
+
+    // Añadir mensaje del usuario
+    window.innerHTML += `<div class="text-end mb-3"><span class="bg-primary text-white p-2 rounded-3 d-inline-block">${query}</span></div>`;
+    input.value = '';
+
+    // Spinner de carga
+    const loaderId = 'loader-' + Date.now();
+    window.innerHTML += `<div class="text-start mb-3" id="${loaderId}"><span class="bg-light p-2 rounded-3">🤔 Pensando...</span></div>`;
+    window.scrollTop = window.scrollHeight;
+
+    try {
+        const response = await fetch('{% url "specs:chat_query" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: `query=${encodeURIComponent(query)}`
+        });
+        
+        const data = await response.json();
+        document.getElementById(loaderId).remove();
+
+        if (data.response) {
+            let sourcesHtml = data.sources.map(s => `<small class="d-block text-muted">📍 Fuente: ${s.filename}</small>`).join('');
+            window.innerHTML += `
+                <div class="text-start mb-4">
+                    <div class="bg-white border p-3 rounded-3 shadow-sm" style="white-space: pre-wrap;">${data.response}</div>
+                    ${sourcesHtml}
+                </div>`;
+        } else {
+            window.innerHTML += `<div class="text-start mb-3"><span class="bg-danger text-white p-2 rounded-3">Error: ${data.error}</span></div>`;
+        }
+    } catch (err) {
+        document.getElementById(loaderId).remove();
+        window.innerHTML += `<div class="text-start mb-3"><span class="bg-danger text-white p-2 rounded-3">Error de conexión.</span></div>`;
+    }
+    window.scrollTop = window.scrollHeight;
+});
+</script>
+{% endblock %}
