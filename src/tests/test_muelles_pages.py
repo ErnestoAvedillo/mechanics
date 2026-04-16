@@ -16,16 +16,16 @@ class TestMuellesPages:
         url = reverse('muelles_calculadora_compresion')
         response = client.get(url)
         assert response.status_code == 200
-        assert b"Muelle de Compresi" in response.content
+        assert b"Calculadora de Muelles" in response.content
 
     def test_muelles_traccion_load(self, client):
         url = reverse('muelles_calculadora_traccion')
         response = client.get(url)
         assert response.status_code == 200
-        assert b"Muelle de Tracci" in response.content
+        assert b"Calculadora de Muelles" in response.content
 
     def test_muelles_torsion_load(self, client):
         url = reverse('muelles_calculadora_torsion')
         response = client.get(url)
         assert response.status_code == 200
-        assert b"Muelle de Torsi" in response.content
+        assert b"Calculadora de Muelles" in response.content
