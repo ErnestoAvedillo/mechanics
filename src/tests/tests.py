@@ -31,3 +31,8 @@ def test_rellenar_formulario():
 
 if __name__ == "__main__":
     test_rellenar_formulario()
+
+    """crea tambien tests de prueba en diferentes scripts para la s siguientes páginas:
+/home/eavedillo/Desktop/mechanics2/src/templates/muelles/calculadora_compresion.html
+/home/eavedillo/Desktop/mechanics2/src/templates/muelles/calculadora_torsion.html
+/home/eavedillo/Desktop/mechanics2/src/templates/muelles/calculadora_torsion.html"""
