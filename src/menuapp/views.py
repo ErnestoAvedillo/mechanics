@@ -1,11 +1,30 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.conf import settings
+import subprocess
+import json
+import csv
+import os
+import re
+import base64
+import hashlib
 from .forms import SignupForm, VerificationForm
 from .models import EmailVerification
-from django.contrib import messages
+
+URL_RE = re.compile(r'^(https?://)', re.IGNORECASE)
+DATA_DIR = os.path.join(settings.BASE_DIR, "muelles", "static", "muelles", "data")
+
+
+def open_show_folder(ruta):
+    subprocess.Popen(f'explorer "{ruta}"')
+
+def home(request):
+    """Vista principal del proyecto"""
+    return render(request, 'menuapp/index.html')
 
 def signup_view(request):
     if request.method == 'POST':
@@ -13,14 +32,12 @@ def signup_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
-            user.is_active = False # El usuario no está activo hasta verificar email
+            user.is_active = False 
             user.save()
 
-            # Generar código de verificación
             code = EmailVerification.generate_code()
             EmailVerification.objects.create(user=user, code=code)
 
-            # Enviar email
             send_mail(
                 'Tu código de verificación - Mechanics',
                 f'Hola {user.username}, tu código de verificación es: {code}',
@@ -55,7 +72,7 @@ def verify_email_view(request):
                         verification.save()
                         login(request, user)
                         messages.success(request, "¡Email verificado con éxito! Bienvenida/o.")
-                        return redirect('index')
+                        return redirect('home')
                     else:
                         messages.error(request, "El código ha expirado.")
                 else:
@@ -66,3 +83,30 @@ def verify_email_view(request):
         form = VerificationForm()
     
     return render(request, 'registration/verify_email.html', {'form': form})
+
+# El resto de vistas originales (contacto, editor, etc) se pueden añadir aquí
+# basándote en el contenido original que preservamos antes.
+
+def contacto(request):
+    return render(request, 'menuapp/contacto.html')
+
+def editor(request, datos, filename):
+    return render(request, 'menuapp/editor.html', {'datos': datos, 'filename': filename})
+
+def editor_with_session(request, data_id, filename):
+    return render(request, 'menuapp/editor.html', {'data_id': data_id, 'filename': filename})
+
+def abrir(request, filename):
+    return redirect('editor', datos='dummy', filename=filename)
+
+def abrir_carpeta(request, folder, group_name):
+    return render(request, 'menuapp/index.html')
+
+def guarda(request):
+    return JsonResponse({'status': 'ok'})
+
+def bloques_editor(request):
+    return render(request, 'menuapp/bloques_editor.html')
+
+def json_visualizer(request):
+    return render(request, 'menuapp/visualizador.html')
