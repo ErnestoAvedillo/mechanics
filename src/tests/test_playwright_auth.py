@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 import os
 import pytest
 
-@pytest.mark.django_db
+@pytest.mark.django_db(transaction=True)
 def test_full_auth_flow_playwright():
     """
     Test de flujo completo: Registro -> Verificación -> Login usando Playwright.
@@ -24,9 +24,7 @@ def test_full_auth_flow_playwright():
         # 2. Verificar que estamos en la página de código
         assert "/verify-email/" in page.url
         
-        # Como no podemos leer el email fácilmente en el test, 
-        # forzamos la obtención del código desde la DB de Django (esto requiere acceso a la DB)
-        # En un test puramente E2E usaríamos una API de correos, aquí simplificamos:
+        # Obtener código desde DB
         from menuapp.models import EmailVerification
         from django.contrib.auth.models import User
         user = User.objects.get(username="pw_user")
@@ -35,15 +33,16 @@ def test_full_auth_flow_playwright():
         page.fill('input[name="code"]', verification.code)
         page.click('button:has-text("Verificar")')
 
-        # 3. Tras verificar, debería estar en el home e identificado
-        # Según los cambios pedidos, el home ahora solo debería mostrar Login/Registro o nada si está logueado
-        # Pero según la lógica de Django, tras login redirige a index
+        # 3. Tras verificar, debería estar en el home
+        page.wait_for_url(f"{base_url}/", timeout=5000)
         assert page.url == f"{base_url}/" or page.url == f"{base_url}/home/"
 
         print("✅ Test de flujo de autenticación con Playwright completado.")
         browser.close()
 
+@pytest.mark.django_db(transaction=True)
 def test_login_logout_playwright():
+    from django.contrib.auth.models import User
     with sync_playwright() as p:
         base_url = os.environ.get("DJANGO_URL", "http://django:8000")
         browser = p.chromium.launch()
@@ -61,6 +60,7 @@ def test_login_logout_playwright():
         page.click('button[type="submit"]')
 
         # Verificar redirección
+        page.wait_for_url(f"{base_url}/", timeout=5000)
         assert page.url == f"{base_url}/"
         
         print("✅ Test de Login con Playwright completado.")
