@@ -188,6 +188,14 @@ in_django:
 	@echo "Starting interactive shell in the django container..."
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) exec django -it bash
 
+test:
+	@echo "🚀 Ejecutando batería de tests (Unitarios e Integración)..."
+	@$(DOCKER) exec django /bin/bash -c "cd /app/src && export PYTHONPATH=/app/src && export DJANGO_SETTINGS_MODULE=mechanics.settings && pytest tests/test_auth_pages.py tests/test_muelles_pages.py"
+	@echo ""
+	@echo "🎭 Ejecutando tests de extremo a extremo con Playwright..."
+	@$(DOCKER) exec django /bin/bash -c "cd /app/src && export PYTHONPATH=/app/src && export DJANGO_SETTINGS_MODULE=mechanics.settings && pytest tests/test_playwright_auth.py tests/test_calculadora_compresion.py"
+	@echo "✅ Verificación de tests completada."
+
 help:
 	@echo "═══════════════════════════════════════════════════════════════"
 	@echo "CONTENEDORES"
