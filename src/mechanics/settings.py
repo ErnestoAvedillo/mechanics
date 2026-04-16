@@ -128,7 +128,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [PROJECT_ROOT / 'assets']  # Apunta a assets/ donde están los archivos
 STATIC_ROOT = PROJECT_ROOT / 'static_files/'  # Django colecta aquí en producción
 
-# Paths compartidos para datos de la app muelles
+# Configuración de email (usar variables de entorno en producción)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG else 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@ernestoavedillo.com'
 MUELLES_MATERIAL_DIR = BASE_DIR / 'muelles' / 'material'
 MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
 

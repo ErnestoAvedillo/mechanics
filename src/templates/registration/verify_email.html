@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center">
+                    <h3 class="mb-0">Verificar Email</h3>
+                </div>
+                <div class="card-body p-4 text-center">
+                    <p>Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:</p>
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            {{ form.code }}
+                            {% if form.code.errors %}
+                                <div class="text-danger small">{{ form.code.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">Verificar y Entrar</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="small text-muted">¿No recibiste el código? Revisa tu carpeta de spam o intenta registrarte de nuevo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
