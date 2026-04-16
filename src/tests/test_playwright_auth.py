@@ -49,16 +49,15 @@ def test_login_logout_playwright():
         browser = p.chromium.launch()
         page = browser.new_page()
 
-        # Crear usuario previo
-        from django.contrib.auth.models import User
+        test_pass = os.environ.get('TEST_PASSWORD', 'test_pass_fallback')
         if not User.objects.filter(username="login_test").exists():
-            u = User.objects.create_user(username="login_test", password="password123")
+            u = User.objects.create_user(username="login_test", password=test_pass)
             u.is_active = True
             u.save()
 
         page.goto(f"{base_url}/login/")
         page.fill('input[name="username"]', "login_test")
-        page.fill('input[name="password"]', "password123")
+        page.fill('input[name="password"]', test_pass)
         page.click('button[type="submit"]')
 
         # Verificar redirección

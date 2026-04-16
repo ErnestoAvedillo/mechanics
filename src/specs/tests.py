@@ -15,7 +15,7 @@ class TestSpecsArchitecture:
 
     def test_user_document_creation(self):
         # 1. Crear usuario en Django
-        user = User.objects.create_user(username='test_engineer', password='password123')
+        user = User.objects.create_user(username='test_engineer', password=os.environ.get('TEST_PASSWORD', 'test_pass_fallback'))
         
         # 2. Simular un ID de MongoDB
         simulated_mongo_id = "507f1f77bcf86cd799439011"
