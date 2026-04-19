@@ -22,9 +22,11 @@ DATA_DIR = os.path.join(settings.BASE_DIR, "muelles", "static", "muelles", "data
 def open_show_folder(ruta):
     subprocess.Popen(f'explorer "{ruta}"')
 
+
 def home(request):
     """Vista principal del proyecto"""
     return render(request, 'menuapp/index.html')
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -32,7 +34,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
-            user.is_active = False 
+            user.is_active = False
             user.save()
 
             code = EmailVerification.generate_code()
@@ -51,6 +53,7 @@ def signup_view(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
+
 
 def verify_email_view(request):
     user_id = request.session.get('verification_user_id')
