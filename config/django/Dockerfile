@@ -14,6 +14,7 @@ ENV DJANGO_DEBUG=True
 WORKDIR /app/src
 
 # Script para ejecutar runserver en desarrollo o gunicorn en producción
-RUN echo '#!/bin/bash\nif [ "$DJANGO_DEBUG" = "True" ]; then\n  echo "Ejecutando Django en modo DESARROLLO (runserver)"\n  python manage.py runserver 0.0.0.0:8000\nelse\n  echo "Ejecutando Django en modo PRODUCCION (gunicorn)"\n  gunicorn mechanics.wsgi:application --bind 0.0.0.0:8000 --workers=4 --timeout=120\nfi' > /start.sh && chmod +x /start.sh
+COPY ./start.sh /start.sh
+RUN chmod +x /start.sh
 
 CMD ["/start.sh"]

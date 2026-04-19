@@ -15,11 +15,12 @@ build:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
-	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
 	@echo "Limpiando contenedores y redes huérfanas..."
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down --volumes --remove-orphans
 	@docker rm -f $$(docker ps -a -q --filter "ancestor=certbot/certbot:latest") 2>/dev/null || true
 	@docker network rm $$(docker network ls -q --filter "type=custom" --filter "name=.*_default") 2>/dev/null || true
 	@echo "✓ Limpieza completada"
+
 
 production: 
 	@echo "Iniciando despliegue en producción..."
@@ -78,6 +79,7 @@ setup-letsencrypt:
 		--agree-tos \
 		--no-eff-email \
 		--duplicate \
+		--staging \
 		--non-interactive \
 		--force-renewal  || { \
 			echo "❌ Error: Falló la generación de certificados Let's Encrypt para $(DOMAIN)"; \
