@@ -84,32 +84,40 @@ def verify_email_view(request):
                 return redirect('signup')
     else:
         form = VerificationForm()
-    
+
     return render(request, 'registration/verify_email.html', {'form': form})
 
 # El resto de vistas originales (contacto, editor, etc) se pueden añadir aquí
 # basándote en el contenido original que preservamos antes.
 
+
 def contacto(request):
     return render(request, 'menuapp/contacto.html')
+
 
 def editor(request, datos, filename):
     return render(request, 'menuapp/editor.html', {'datos': datos, 'filename': filename})
 
+
 def editor_with_session(request, data_id, filename):
     return render(request, 'menuapp/editor.html', {'data_id': data_id, 'filename': filename})
+
 
 def abrir(request, filename):
     return redirect('editor', datos='dummy', filename=filename)
 
+
 def abrir_carpeta(request, folder, group_name):
     return render(request, 'menuapp/index.html')
 
+
 def guarda(request):
-    return JsonResponse({'status': 'ok'})
+    return json.JsonResponse({'status': 'ok'})
+
 
 def bloques_editor(request):
     return render(request, 'menuapp/bloques_editor.html')
+
 
 def json_visualizer(request):
     return render(request, 'menuapp/visualizador.html')
