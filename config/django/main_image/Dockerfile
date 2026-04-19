@@ -9,3 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # copiar requerimientros e instalar dependencias de python
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python manage.py collectstatic --noinput
+RUN python manage.py makemigrations
+RUN python manage.py migrate

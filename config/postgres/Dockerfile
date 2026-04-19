@@ -1,6 +1,6 @@
 FROM postgres:latest
 
-COPY sql_init.sql /docker-entrypoint-initdb.d/
+COPY db_init.sql /docker-entrypoint-initdb.d/
 
 EXPOSE $POSTGRES_PORT
 

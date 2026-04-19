@@ -53,7 +53,7 @@ services:
     env_file:
       - .env
     ports:
-      - "$MONGO_HOST:$MONGO_PORT"
+      - "$MONGO_PORT:$MONGO_PORT"
     volumes:
       - mongodb_data:/data/db
     restart: unless-stopped
@@ -65,7 +65,7 @@ services:
     env_file:
       - .env
     ports:
-      - "$MONGO_EXPRESS_HOST:$MONGO_EXPRESS_PORT"
+      - "$MONGO_EXPRESS_PORT:$MONGO_EXPRESS_PORT"
     restart: unless-stopped
     depends_on:
       - mongodb
@@ -79,7 +79,7 @@ services:
     env_file:
       - .env
     ports:
-      - "$POSTGRES_HOST:$POSTGRES_PORT"
+      - "$POSTGRES_PORT:$POSTGRES_PORT"
     restart: unless-stopped
   qdrant:
     image: qdrant/qdrant:latest
