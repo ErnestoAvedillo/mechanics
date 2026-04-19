@@ -28,3 +28,12 @@ static_files/
 certs/
 certs-www/
 ernestoavedillo.com.conf
+db.sqlite3
+build
+*.png~
+*.jpg~
+*.jpeg~
+*.gif~
+*.bmp~
+*.svg~
+*.ico~

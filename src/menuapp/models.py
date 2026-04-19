@@ -5,6 +5,7 @@ import string
 from django.utils import timezone
 from datetime import timedelta
 
+
 class EmailVerification(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=6)

@@ -46,16 +46,41 @@ services:
       - .env
 
   mongodb:
-    image: mongo:latest
+    build:
+      context: ./config/mongo/
+      dockerfile: Dockerfile
     container_name: mongodb
-    ports:
-      - "27018:27017"
-    volumes:
-      - mongodb_data:/data/db
     env_file:
       - .env
+    ports:
+      - "$MONGO_HOST:$MONGO_PORT"
+    volumes:
+      - mongodb_data:/data/db
     restart: unless-stopped
-
+  mongo-express:
+    build:
+      context: ./config/mongo_express/
+      dockerfile: Dockerfile
+    container_name: mongo-express
+    env_file:
+      - .env
+    ports:
+      - "$MONGO_EXPRESS_HOST:$MONGO_EXPRESS_PORT"
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+  postgres:
+  build:
+      context: ./config/postgres/
+      dockerfile: Dockerfile
+    container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    env_file:
+      - .env
+    ports:
+      - "$POSTGRES_HOST:$POSTGRES_PORT"
+    restart: unless-stopped
   qdrant:
     image: qdrant/qdrant:latest
     container_name: qdrant
@@ -74,3 +99,4 @@ volumes:
   django_socket:
   mongodb_data:
   qdrant_data:
+  postgres_data:

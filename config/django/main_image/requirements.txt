@@ -19,3 +19,4 @@ pymongo
 qdrant-client 
 llama-index-vector-stores-qdrant
 llama-cloud
+psycopg2-binary

@@ -74,10 +74,20 @@ WSGI_APPLICATION = 'mechanics.wsgi.application'
 
 
 # Database - Configuración para SQLite (necesaria para sessions)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': PROJECT_ROOT / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': PROJECT_ROOT / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', None),
+        'USER': os.environ.get('POSTGRES_USER', None),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', None),
+        'HOST': os.environ.get('POSTGRES_HOST', None),
+        'PORT': os.environ.get('POSTGRES_PORT', None),
     }
 }
 
