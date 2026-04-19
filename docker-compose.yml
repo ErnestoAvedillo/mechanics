@@ -70,7 +70,7 @@ services:
     depends_on:
       - mongodb
   postgres:
-  build:
+    build:
       context: ./config/postgres/
       dockerfile: Dockerfile
     container_name: postgres
