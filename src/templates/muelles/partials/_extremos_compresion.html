@@ -6,7 +6,7 @@
         
         <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'abierto' %}selected{% endif %}" data-value="abierto" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
             <div class="spring-image">
-                    <img class="spring-thumb" src="{% static 'muelles/img/open-end-compression-rectified.jpg' %}" 
+                    <img class="spring-thumb" src="{% static 'muelles/images/open-end-compression-rectified.jpg' %}" 
                         alt="Muelle con extremos abiertos rectificados">
             </div>
             <div class="end-label">Abierto rectificado</div>
@@ -14,7 +14,7 @@
         
         <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'cerrado' %}selected{% endif %}" data-value="cerrado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
             <div class="spring-image">
-                    <img class="spring-thumb" src="{% static 'muelles/img/closed-end-compression-rectified.jpg' %}" 
+                    <img class="spring-thumb" src="{% static 'muelles/images/closed-end-compression-rectified.jpg' %}" 
                         alt="Muelle con extremos cerrados rectificados">
             </div>
             <div class="end-label">Cerrado rectificado</div>
@@ -22,7 +22,7 @@
         
         <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'semi-cerrado' %}selected{% endif %}" data-value="semi-cerrado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
             <div class="spring-image">
-                    <img class="spring-thumb" src="{% static 'muelles/img/open-end-compression-not-rectified.gif' %}" 
+                    <img class="spring-thumb" src="{% static 'muelles/images/open-end-compression-not-rectified.gif' %}" 
                         alt="Muelle con extremos abiertos no rectificados">
             </div>
             <div class="end-label">Abierto no rectificado</div>
@@ -30,7 +30,7 @@
         
         <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'rectificado' or not request.POST.tipo_final %}selected{% endif %}" data-value="rectificado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
             <div class="spring-image">
-                    <img class="spring-thumb" src="{% static 'muelles/img/closed-end-compression-not-rectified.jpg' %}" 
+                    <img class="spring-thumb" src="{% static 'muelles/images/closed-end-compression-not-rectified.jpg' %}" 
                         alt="Muelle con extremos cerrados no rectificados">
             </div>
             <div class="end-label">Cerrado no rectificado</div>

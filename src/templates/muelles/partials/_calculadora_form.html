@@ -56,7 +56,7 @@
                         {% else %}
                             style="display: none;"
                         {% endif %}> 
-                        <img class="preview-img" src="{% static 'muelles/img/muelle compresion.png' %}" alt="Diagrama muelle compresión"> 
+                        <img class="preview-img" src="{% static 'muelles/images/muelle compresion.png' %}" alt="Diagrama muelle compresión"> 
                     </div>
                     <div class="image-preview"
                         {% if request.POST.tipo_muelle == 'traccion' or not request.POST.tipo_muelle and default_tipo == 'traccion' %}
@@ -64,7 +64,7 @@
                         {% else %}
                             style="display: none;"
                         {% endif %}> 
-                        <img class="preview-img" src="{% static 'muelles/img/muelle traccion.png' %}" alt="diagrama muelle de tracción">
+                        <img class="preview-img" src="{% static 'muelles/images/muelle traccion.png' %}" alt="diagrama muelle de tracción">
                     </div>
                 </div>
                 
@@ -125,7 +125,7 @@
                             
                             <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'abierto' %}selected{% endif %}" data-value="abierto" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/open-end-compression-rectified.jpg' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/open-end-compression-rectified.jpg' %}" 
                                          alt="Muelle con extremos abiertos rectificados">
                                 </div>
                                 <div class="end-label">Abierto rectificado</div>
@@ -133,7 +133,7 @@
                             
                             <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'cerrado' %}selected{% endif %}" data-value="cerrado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/closed-end-compression-rectified.jpg' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/closed-end-compression-rectified.jpg' %}" 
                                          alt="Muelle con extremos cerrados rectificados">
                                 </div>
                                 <div class="end-label">Cerrado rectificado</div>
@@ -141,7 +141,7 @@
                             
                             <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'semi-cerrado' %}selected{% endif %}" data-value="semi-cerrado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/open-end-compression-not-rectified.gif' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/open-end-compression-not-rectified.gif' %}" 
                                          alt="Muelle con extremos abiertos no rectificados">
                                 </div>
                                 <div class="end-label">Abierto no rectificado</div>
@@ -149,7 +149,7 @@
                             
                             <div class="end-option compresion-end-option {% if request.POST.tipo_final == 'rectificado' or not request.POST.tipo_final %}selected{% endif %}" data-value="rectificado" {% if request.POST.tipo_muelle == 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/closed-end-compression-not-rectified.jpg' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/closed-end-compression-not-rectified.jpg' %}" 
                                          alt="Muelle con extremos cerrados no rectificados">
                                 </div>
                                 <div class="end-label">Cerrado no rectificado</div>
@@ -157,7 +157,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'anillo_doble_aleman_entero_centrado' or not request.POST.tipo_final %}selected{% endif %}" data-value="anillo_doble_aleman_entero_centrado" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_doble_aleman_entero_centrado.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_doble_aleman_entero_centrado.png' %}" 
                                          alt="Muelle con anillo doble aleman entero centrado">
                                 </div>
                                 <div class="end-label">Anillo doble aleman entero centrado</div>
@@ -165,7 +165,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'anillo_doble_aleman_entero_lateral' or not request.POST.tipo_final %}selected{% endif %}" data-value="anillo_doble_aleman_entero_lateral" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_doble_aleman_entero_lateral.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_doble_aleman_entero_lateral.png' %}" 
                                          alt="Muelle con anillo doble aleman entero lateral">
                                 </div>
                                 <div class="end-label">Anillo doble aleman entero lateral</div>
@@ -173,7 +173,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'anillo_simple_aleman_centrado' or not request.POST.tipo_final %}selected{% endif %}" data-value="anillo_simple_aleman_centrado" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_simple_aleman_centrado.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_simple_aleman_centrado.png' %}" 
                                          alt="Muelle con anillo simple aleman centrado">
                                 </div>
                                 <div class="end-label">Anillo simple aleman centrado</div>
@@ -181,7 +181,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'static/img/anillo_simple_aleman_entero_lateral.png' or not request.POST.tipo_final %}selected{% endif %}" data-value="static/img/anillo_simple_aleman_entero_lateral.png" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_simple_aleman_entero_lateral.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_simple_aleman_entero_lateral.png' %}" 
                                          alt="Muelle con anillo simple aleman entero lateral">
                                 </div>
                                 <div class="end-label">Anillo simple aleman entero lateral</div>
@@ -189,7 +189,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'static/img/anillo_simple_aleman_entero_centrado.png' or not request.POST.tipo_final %}selected{% endif %}" data-value="static/img/anillo_simple_aleman_entero_centrado.png" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_simple_aleman_entero_centrado.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_simple_aleman_entero_centrado.png' %}" 
                                          alt="Muelle con anillo simple aleman entero centrado">
                                 </div>
                                 <div class="end-label">Anillo simple aleman entero centrado</div>
@@ -197,7 +197,7 @@
 
                             <div class="end-option traccion-end-option {% if request.POST.tipo_final == 'anillo_especial' or not request.POST.tipo_final %}selected{% endif %}" data-value="anillo_especial" {% if request.POST.tipo_muelle != 'traccion' %}style="display: none;"{% endif %}>
                                 <div class="spring-image">
-                                     <img class="spring-thumb" src="{% static 'muelles/img/anillo_especial.png' %}" 
+                                     <img class="spring-thumb" src="{% static 'muelles/images/anillo_especial.png' %}" 
                                          alt="Muelle con anillo especial">
                                 </div>
                                 <div class="end-label">Anillo especial</div>
