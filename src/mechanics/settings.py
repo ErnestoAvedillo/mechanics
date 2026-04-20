@@ -135,11 +135,21 @@ SECURE_HSTS_PRELOAD = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [PROJECT_ROOT / 'assets']  # Apunta a assets/ donde están los archivos
-STATIC_ROOT = PROJECT_ROOT / 'static_files/'  # Django colecta aquí en producción
+# Apunta a assets/ donde están los archivos
+STATICFILES_DIRS = [PROJECT_ROOT / 'assets']
+# Django colecta aquí en producción
+STATIC_ROOT = PROJECT_ROOT / 'static_files/'
 
 # Configuración de email (usar variables de entorno en producción)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG else 'django.core.mail.backends.smtp.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.example.com')
+    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+    EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = 'noreply@ernestoavedillo.com'
 MUELLES_MATERIAL_DIR = BASE_DIR / 'muelles' / 'material'
 MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
