@@ -1,0 +1,20 @@
+{% load static %}
+<!-- Boton hamburgesa menu emergente -->
+ <button class="menu-toggle" aria-label="Abrir menú">
+   <span></span>
+   <span></span>
+   <span></span>
+ </button>
+<!-- Sidebar emergente -->
+<nav class="sidebar">
+<h2>Menú</h2>
+<ul class="sidebar-menu">
+  <li><a href="/">🏠 Inicio</a></li>
+  <li><a href="/muelles/">🔧 Muelles</a></li>
+  <li><a href="/tolerances/">📐 Tolerancias</a></li>
+  <li><a href="/specs/index/">📄 Especificaciones</a></li>
+  <li><a href="/contacto/">📞 Contacto</a></li>
+</ul>
+</nav>
+<div class="sidebar-overlay"></div>
+<script src="{% static 'menuapp/js/sidebar.js' %}"></script>

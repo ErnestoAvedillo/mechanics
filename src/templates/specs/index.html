@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Especificaciones Técnicas{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="specs-header">
+        <h1>Especificaciones Técnicas</h1>
+        <p>Gestiona, consulta y chatea con tus documentos y normativas (RAG)</p>
+    </div>
+
+    <div class="specs-grid">
+        <a href="{% url 'specs:handling' %}" class="spec-card text-decoration-none" style="text-decoration: none;">
+            <h3>Gestor de Documentos</h3>
+            <p>Sube PDFs, clasifícalos por OEM y verifica su estado de indexación.</p>
+            <span class="btn btn-primary" style="margin-top: auto;">Ver Documentos</span>
+        </a>
+
+        <a href="{% url 'specs:chat_view' %}" class="spec-card text-decoration-none" style="text-decoration: none;">
+            <h3>Asistente Chat RAG</h3>
+            <p>Realiza consultas técnicas y normativas a tus documentos subidos. Extrae información exacta referenciada.</p>
+            <span class="btn btn-primary" style="margin-top: auto;">Ir al Chat RAG</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

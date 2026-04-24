@@ -1,4 +1,7 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+
+{% include 'includes/sidebar.html' %}
 <header class="site-header">
   <nav class="header-nav">
     <div class="nav-container">
@@ -20,9 +23,9 @@
         <li><a href="/tolerances/" class="nav-link">Tolerancias</a></li>
         <li><a href="/specs/chat/" class="nav-link">Especificaciones</a></li>
         <li><a href="/contacto/" class="nav-link nav-cta">Contacto</a></li>
-      </ul>
+      </ul>-->
       <ul class="nav-menu" id="navMenu">
-          {% if not user.is_authenticated %} -->
+          {% if not user.is_authenticated %} 
             <li><a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a></li>
             <li><a href="{% url 'signup' %}" class="nav-link">Crear Cuenta</a></li>
           {% else %}
