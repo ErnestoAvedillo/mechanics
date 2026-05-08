@@ -14,34 +14,26 @@
 
   <main class="wrap">
     <section class="card form-card">
-      <h1>Iniciar Sesión</h1>
+      <h1>Recuperar Contraseña</h1>
       
-      <form method="post" action="{% url 'login' %}">
+      <form method="post" action="{% url 'recall_psw' %}">
         {% csrf_token %}
         <div class="form-group">
-          <label for="id_username">Usuario:</label>
-          <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+          <label for="id_email">Email:</label>
+          <input type="text" name="email" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_email">
         </div>
         
-        <div class="form-group">
-          <label for="id_password">Contraseña:</label>
-          <input type="password" name="password" autocomplete="current-password" required id="id_password">
-        </div>
-        
-        {% if form.errors %}
+        {% if not form.errors %}
           <div class="error-msg">
-            Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo.
+            Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña.
           </div>
         {% endif %}
         
-        <button type="submit" class="button button-submit">Entrar</button>
+        <button type="submit" class="button button-submit">Recuperar</button>
         <input type="hidden" name="next" value="{{ next }}">
       </form>
       <div class="signup-link">
         ¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a>.
-      </div>
-      <div class="signup-link">
-        ¿Olvidaste tu contraseña? <a href="{% url 'recall_psw' %}">Recupérala aquí</a>.
       </div>
     </section>
     

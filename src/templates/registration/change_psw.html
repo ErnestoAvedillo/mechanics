@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cambiar Contraseña{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% static 'global/images/header-background.jpeg' as bg_url %}
+  <div class="page-background" style="background-image: url('{{ bg_url }}');"></div>
+
+  <main class="wrap">
+    <section class="card form-card">
+      <h1>Cambiar Contraseña</h1>
+      
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_new_password1">Nueva Contraseña:</label>
+          <input type="password" name="new_password1" autofocus autocomplete="new-password" required id="id_new_password1">
+        </div>
+        <div class="form-group">
+          <label for="id_new_password2">Confirmar Nueva Contraseña:</label>
+          <input type="password" name="new_password2" autocomplete="new-password" required id="id_new_password2">
+        </div>
+
+        {% if form.errors %}
+          <div class="error-msg">
+            {% for field in form %}
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <button type="submit" class="button button-submit">Cambiar Contraseña</button>
+      </form>
+      
+      <div class="auth-links">
+        <small>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></small>
+      </div>
+    </section>
+  </main>
+{% endblock %}

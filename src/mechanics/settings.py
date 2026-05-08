@@ -155,9 +155,23 @@ MUELLES_MATERIAL_DIR = BASE_DIR / 'muelles' / 'material'
 MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
 
 # Configuración de MongoDB y Qdrant
-MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME', 'mechanics_db')
-MONGO_URL = os.environ.get('MONGO_URL', 'mongodb://mongodb:27017/')
+import urllib.parse
+
+MONGO_DB_NAME = os.environ.get('MONGO_INITDB_DATABASE', os.environ.get('MONGO_DB_NAME', 'mechanics'))
+_mongo_user = os.environ.get('MONGO_INITDB_ROOT_USERNAME', '')
+_mongo_pass = os.environ.get('MONGO_INITDB_ROOT_PASSWORD', '')
+_mongo_host = os.environ.get('MONGO_HOST', 'mongodb')
+_mongo_port = os.environ.get('MONGO_PORT', '27017')
+
+if _mongo_user and _mongo_pass:
+    _mongo_pass_encoded = urllib.parse.quote_plus(_mongo_pass)
+    _default_mongo_url = f"mongodb://{_mongo_user}:{_mongo_pass_encoded}@{_mongo_host}:{_mongo_port}/?authSource=admin"
+else:
+    _default_mongo_url = f"mongodb://{_mongo_host}:{_mongo_port}/"
+
+MONGO_URL = os.environ.get('MONGO_URL', _default_mongo_url)
 QDRANT_URL = os.environ.get('QDRANT_URL', 'http://qdrant:6333')
 LLAMA_CLOUD_API_KEY = os.environ.get('LLAMA_CLOUD_API_KEY', '')
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
 
 

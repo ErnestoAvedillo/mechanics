@@ -55,11 +55,13 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
     window.scrollTop = window.scrollHeight;
 
     try {
+        // Retrieve standard Django CSRF token properly from the DOM.
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         const response = await fetch('{% url "specs:chat_query" %}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': '{{ csrf_token }}'
+                'X-CSRFToken': csrfToken
             },
             body: `query=${encodeURIComponent(query)}`
         });
