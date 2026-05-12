@@ -1,3 +1,3 @@
-from .dimension import Dimension, GausianDimensionGenerator, SkewedDimensionGenerator, DimensionOperator
+from .dimension import Dimension, GausianDimensionGenerator, SkewedDimensionGenerator
 
-__all__ = ['Dimension', 'GausianDimensionGenerator', 'SkewedDimensionGenerator', 'DimensionOperator']
+__all__ = ['Dimension', 'GausianDimensionGenerator', 'SkewedDimensionGenerator']

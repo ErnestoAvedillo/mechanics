@@ -171,7 +171,9 @@ else:
 
 MONGO_URL = os.environ.get('MONGO_URL', _default_mongo_url)
 QDRANT_URL = os.environ.get('QDRANT_URL', 'http://qdrant:6333')
+QDRANT_API_KEY = os.environ.get('QDRANT_API_KEY', '')
 LLAMA_CLOUD_API_KEY = os.environ.get('LLAMA_CLOUD_API_KEY', '')
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
-
-
+GOOGLE_MODEL = os.environ.get('GOOGLE_MODEL', 'models/gemini-3.1-flash-lite-preview')
+HF_MODEL = os.environ.get('HF_MODEL', 'BAAI/bge-m3')
+HF_TOKEN = os.environ.get('HF_TOKEN', '')

@@ -56,6 +56,7 @@ def chat_query(request):
 
         try:
             # Obtener el motor RAG filtrado para este usuario
+            print(f"Obteniendo motor RAG para usuario {request.user.id}")
             query_engine = get_rag_engine(request.user.id)
             print(f"Ejecutando consulta RAG para usuario {request.user.id}: '{query_text}'")
             # Ejecutar consulta
@@ -75,6 +76,7 @@ def chat_query(request):
                 'sources': sources
             })
         except Exception as e:
+            import traceback; traceback.print_exc()
             return JsonResponse({'error': str(e)}, status=500)
     
     return JsonResponse({'error': 'Método no permitido'}, status=405)
@@ -128,6 +130,7 @@ def upload_document(request):
                 return redirect('specs:handling')
 
             except Exception as e:
+                import traceback; traceback.print_exc()
                 messages.error(request, f'Error general durante la subida: {str(e)}')
                 return redirect('specs:upload_document')
     else:

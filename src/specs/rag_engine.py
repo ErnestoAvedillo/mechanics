@@ -24,10 +24,11 @@ from .models import UserDocument
 TARGET_COLLECTION = "engineering_specs_bge" 
 
 def _configure_models():
-    """Configura el LLM (Gemini) y el Embedding Multilingüe (BGE-M3) en LlamaIndex"""
+    """Configura el LLM (Gemini) y el Embedding Multilingüe (BGE-M3) en Settings para su uso en todo el RAG."""
     # Mantenemos Gemini o cualquier otro LLM para la generación de texto
     if settings.GOOGLE_API_KEY:
-        Settings.llm = Gemini(api_key=settings.GOOGLE_API_KEY, model_name="models/gemini-3.1-flash-lite-preview")
+        Settings.llm = Gemini(api_key=settings.GOOGLE_API_KEY,
+                              model_name=settings.GOOGLE_MODEL)
     else:
         Settings.llm = Gemini(model_name="models/gemini-3.1-flash-lite-preview")
         
@@ -41,12 +42,18 @@ def get_rag_engine(user_id):
     añadiendo un paso de re-clasificación (reranking) multilingüe.
     """
     _configure_models()
-    client = QdrantClient(url=settings.QDRANT_URL)
+    client = QdrantClient(url=settings.QDRANT_URL,
+                          api_key=settings.QDRANT_API_KEY)
     
     if not client.collection_exists(TARGET_COLLECTION):
         client.create_collection(
             collection_name=TARGET_COLLECTION,
             vectors_config=VectorParams(size=1024, distance=Distance.COSINE)  # BGE-M3 proyecta a 1024 dims
+        )
+        client.create_payload_index(
+            collection_name=TARGET_COLLECTION,
+            field_name="user_id",
+            field_schema="integer"
         )
         
     vector_store = QdrantVectorStore(client=client, collection_name=TARGET_COLLECTION)
@@ -96,8 +103,10 @@ def index_document_to_rag(document_id):
                 verbose=True,
                 language="es"
             )
+            print(f"Enviando documento a LlamaParse para procesamiento: '{temp_path}'")
             documents = parser.load_data(temp_path)
         else:
+            print(f"Procesando documento local: '{temp_path}'")
             from llama_index.readers.file import PDFReader
             reader = PDFReader()
             documents = reader.load_data(temp_path)
@@ -115,7 +124,22 @@ def index_document_to_rag(document_id):
                 "doc_id": doc_ref.id
             })
 
-        q_client = QdrantClient(url=settings.QDRANT_URL)
+        q_client = QdrantClient(
+            url=settings.QDRANT_URL,
+            api_key=settings.QDRANT_API_KEY
+        )
+        
+        if not q_client.collection_exists(TARGET_COLLECTION):
+            q_client.create_collection(
+                collection_name=TARGET_COLLECTION,
+                vectors_config=VectorParams(size=1024, distance=Distance.COSINE)
+            )
+            q_client.create_payload_index(
+                collection_name=TARGET_COLLECTION,
+                field_name="user_id",
+                field_schema="integer"
+            )
+
         vector_store = QdrantVectorStore(client=q_client, collection_name=TARGET_COLLECTION)
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
         
