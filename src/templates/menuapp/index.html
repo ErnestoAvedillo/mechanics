@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software{% endblock %}
+{% block title %}{% trans "Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software" %}{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
@@ -9,78 +9,78 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Fondo de página -->
+  <!-- Page background -->
   <div class="page-background" style="background-image: url('{% static 'global/images/header-background.jpeg' %}');"></div>
 
 
-  <!-- Overlay para cerrar menú -->
+  <!-- Overlay to close the menu -->
   <div class="sidebar-overlay"></div>
 
   <div class="letter-page">
     <article class="letter-card">
       <header class="letter-header">
-        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="Fotografia de Ernesto Avedillo" class="profile-photo">
+        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="{% trans 'Fotografia de Ernesto Avedillo' %}" class="profile-photo">
         <div class="letter-intro">
-          <p class="eyebrow">Carta de presentacion</p>
-          <h1>De la Ingenieria Industrial al Desarrollo de Software</h1>
+          <p class="eyebrow">{% trans "Carta de presentacion" %}</p>
+          <h1>{% trans "De la Ingenieria Industrial al Desarrollo de Software" %}</h1>
           <p class="lead">
-            Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto.
+            {% trans "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto." %}
           </p>
         </div>
       </header>
 
       <section class="letter-section">
-        <h2>Trayectoria Profesional</h2>
+        <h2>{% trans "Trayectoria Profesional" %}</h2>
         <p>
-          A lo largo de mi experiencia en los sectores automotriz e industrial, he liderado y ejecutado proyectos 
-          técnicos para fabricantes de primer nivel como BMW, VW y FORD, además de encabezar iniciativas de mejora en procesos 
-          de fabricación. Este recorrido me permitió identificar un patrón constante: los retos más exigentes encuentran 
-          su mejor respuesta cuando se integran con soluciones de software.
+          {% blocktrans %}A lo largo de mi experiencia en los sectores automotriz e industrial, he liderado y ejecutado proyectos
+          técnicos para fabricantes de primer nivel como BMW, VW y FORD, además de encabezar iniciativas de mejora en procesos
+          de fabricación. Este recorrido me permitió identificar un patrón constante: los retos más exigentes encuentran
+          su mejor respuesta cuando se integran con soluciones de software.{% endblocktrans %}
         </p>
       </section>
 
       <section class="letter-section">
-        <h2>Resolucion de Problemas como Enfoque</h2>
+        <h2>{% trans "Resolucion de Problemas como Enfoque" %}</h2>
         <p>
-          Durante años, he convertido necesidades operativas en herramientas prácticas. Diseñé sistemas de ayudas que redujeron
+          {% blocktrans %}Durante años, he convertido necesidades operativas en herramientas prácticas. Diseñé sistemas de ayudas que redujeron
           los tiempos de cotización de horas a minutos y creé plantillas para decisiones críticas de diseño mecánico que optimizaron
-          la eficiencia del equipo. Asimismo, desarrollé el software ERP de una compañía para reducir la dependencia externa 
-          y minimizar costes operativos.
+          la eficiencia del equipo. Asimismo, desarrollé el software ERP de una compañía para reducir la dependencia externa
+          y minimizar costes operativos.{% endblocktrans %}
         </p>
       </section>
 
       <section class="letter-section">
-        <h2>Evolucion Tecnica</h2>
+        <h2>{% trans "Evolucion Tecnica" %}</h2>
         <p>
-          Mi formación en <a href="https://42barcelona.com" target="_blank">42 Barcelona</a> marcó un punto de inflexión en mi perfil profesional. 
-          Me permitió elevar soluciones —originalmente concebidas en hojas de cálculo— a implementaciones de ingeniería 
-          de software de alto nivel, utilizando C, C++, Python y arquitecturas modernas para construir sistemas robustos, 
-          escalables y mantenibles.
+          {% blocktrans %}Mi formación en <a href="https://42barcelona.com" target="_blank">42 Barcelona</a> marcó un punto de inflexión en mi perfil profesional.
+          Me permitió elevar soluciones —originalmente concebidas en hojas de cálculo— a implementaciones de ingeniería
+          de software de alto nivel, utilizando C, C++, Python y arquitecturas modernas para construir sistemas robustos,
+          escalables y mantenibles.{% endblocktrans %}
         </p>
       </section>
 
       <section class="letter-section letter-section-contact">
-        <h2>Propuesta de Valor</h2>
+        <h2>{% trans "Propuesta de Valor" %}</h2>
         <p>
-          Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el desarrollo de software converjan
+          {% blocktrans %}Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el desarrollo de software converjan
           para crear soluciones técnicas de alto impacto. Estoy abierto a explorar ideas innovadoras, optimizar algoritmos
-          y contribuir en retos industriales complejos con un enfoque riguroso y práctico.
+          y contribuir en retos industriales complejos con un enfoque riguroso y práctico.{% endblocktrans %}
         </p>
       </section>
 
       <section class="letter-section letter-section-contact">
-        <h2>¿Qué presento en esta página web?</h2>
+        <h2>{% trans "¿Qué presento en esta página web?" %}</h2>
         <p>
-          En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,
-          de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería.
+          {% blocktrans %}En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,
+          de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería.{% endblocktrans %}
         </p>
-        
+
         <div class="auth-links mt-4">
           {% if not user.is_authenticated %}
-            <a href="{% url 'login' %}" class="btn btn-primary me-2">Iniciar Sesión</a>
-            <a href="{% url 'signup' %}" class="btn btn-outline-primary">Crear Cuenta</a>
+            <a href="{% url 'menuapp:login' %}" class="btn btn-primary me-2">{% trans "Iniciar Sesión" %}</a>
+            <a href="{% url 'menuapp:signup' %}" class="btn btn-outline-primary">{% trans "Crear Cuenta" %}</a>
           {% else %}
-            <p class="text-success">Bienvenido, <strong>{{ user.username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.</p>
+            <p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p>
           {% endif %}
         </div>
       </section>

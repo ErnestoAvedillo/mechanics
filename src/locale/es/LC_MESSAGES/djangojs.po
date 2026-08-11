@@ -1,0 +1,97 @@
+# djangojs translations for Spanish.
+msgid ""
+msgstr ""
+"Project-Id-Version: mechanics2\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+
+msgid "Activado"
+msgstr "Activado"
+
+msgid "Arrastra una imagen aqui o haz clic para seleccionar"
+msgstr "Arrastra una imagen aqui o haz clic para seleccionar"
+
+msgid "Buscando en tus normativas..."
+msgstr "Buscando en tus normativas..."
+
+msgid "Debes seleccionar un material antes de calcular."
+msgstr "Debes seleccionar un material antes de calcular."
+
+msgid "Desactivado"
+msgstr "Desactivado"
+
+msgid "El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados."
+msgstr "El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados."
+
+msgid "Entendido"
+msgstr "Entendido"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Error interno de conexión al servidor RAG."
+msgstr "Error interno de conexión al servidor RAG."
+
+msgid "Factor límite elástico"
+msgstr "Factor límite elástico"
+
+msgid "Geometría bloqueada: selecciona material y diámetro de hilo"
+msgstr "Geometría bloqueada: selecciona material y diámetro de hilo"
+
+msgid "La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+
+msgid "La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados."
+msgstr "La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados."
+
+msgid "La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados."
+msgstr "La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados."
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+
+msgid "La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+
+msgid "Longitud final (mm):"
+msgstr "Longitud final (mm):"
+
+msgid "Longitud final estirada (mm):"
+msgstr "Longitud final estirada (mm):"
+
+msgid "Longitud final no válida"
+msgstr "Longitud final no válida"
+
+msgid "Longitud inicial (mm):"
+msgstr "Longitud inicial (mm):"
+
+msgid "Longitud inicial estirada (mm):"
+msgstr "Longitud inicial estirada (mm):"
+
+msgid "Longitud inicial no válida"
+msgstr "Longitud inicial no válida"
+
+msgid "Material no seleccionado"
+msgstr "Material no seleccionado"
+
+msgid "Módulo de corte"
+msgstr "Módulo de corte"
+
+msgid "Pitch no válido"
+msgstr "Pitch no válido"
+
+msgid "Por favor complete todos los campos obligatorios"
+msgstr "Por favor complete todos los campos obligatorios"
+
+msgid "Propiedades del Material"
+msgstr "Propiedades del Material"
+
+msgid "Relevancia"
+msgstr "Relevancia"
+

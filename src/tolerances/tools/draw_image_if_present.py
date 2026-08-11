@@ -2,6 +2,7 @@
 otherwise it just skips it. This is used to draw the histograms
 in the PDF report. """
 import io
+from django.utils.translation import gettext as _
 from reportlab.lib.utils import ImageReader
 
 
@@ -23,4 +24,4 @@ def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):
                       preserveAspectRatio=True, mask='auto')
     except Exception:
         pdf.setFont("Helvetica", 9)
-        pdf.drawString(x, y + height + 6, f"{label} (no se pudo renderizar)")
+        pdf.drawString(x, y + height + 6, f"{label} ({_('no se pudo renderizar')})")

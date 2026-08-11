@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import UserDocument
 
 class MultipleFileInput(forms.ClearableFileInput):
@@ -19,9 +20,9 @@ class MultipleFileField(forms.FileField):
 
 class DocumentUploadForm(forms.ModelForm):
     company = forms.CharField(
-        max_length=100, 
-        required=False, 
-        widget=forms.TextInput(attrs={'placeholder': 'Ej. VW, BMW, ISO...'})
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': _('Ej. VW, BMW, ISO...')})
     )
     pdf_file = MultipleFileField(required=True)
 

@@ -13,7 +13,7 @@
       if (title) {
         title.hidden = false;
       }
-      hint.textContent = 'Arrastra una imagen aqui o haz clic para seleccionar';
+      hint.textContent = gettext('Arrastra una imagen aqui o haz clic para seleccionar');
       return;
     }
 

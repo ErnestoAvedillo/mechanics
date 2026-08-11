@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}Crear Cuenta{% endblock %}
+{% load static i18n %}
+{% block title %}{% trans "Crear Cuenta" %}{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
@@ -14,8 +14,8 @@
 
   <main class="wrap">
     <section class="card form-card">
-      <h1>Crear Cuenta</h1>
-      
+      <h1>{% trans "Crear Cuenta" %}</h1>
+
       <form method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -30,12 +30,13 @@
             {% endif %}
           </div>
         {% endfor %}
-        
-        <button type="submit" class="button button-submit">Registrarse</button>
+
+        <button type="submit" class="button button-submit">{% trans "Registrarse" %}</button>
       </form>
-      
+
+      {% url 'menuapp:login' as login_url %}
       <div class="auth-links">
-        <small>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></small>
+        <small>{% blocktrans %}¿Ya tienes cuenta? <a href="{{ login_url }}">Inicia sesión</a>{% endblocktrans %}</small>
       </div>
     </section>
   </main>

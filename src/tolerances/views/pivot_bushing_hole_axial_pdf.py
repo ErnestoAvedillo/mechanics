@@ -2,6 +2,7 @@ import base64
 import io
 
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
@@ -15,7 +16,7 @@ from tolerances.tools.draw_image_if_present import _draw_image_if_present
 
 def pivot_bushing_hole_axial_pdf(request):
     if request.method != "POST":
-        return HttpResponse("Usa el formulario de pivot-bushing-hole-axial para generar el PDF.", status=405)
+        return HttpResponse(_("Usa el formulario de pivot-bushing-hole-axial para generar el PDF."), status=405)
 
     values = {
         "tube_nominal": _to_float(request.POST.get("tube_nominal"), 0.0),
@@ -69,9 +70,9 @@ def pivot_bushing_hole_axial_pdf(request):
         histogram = Hystogram(
             dimension=system_clearance,
             bins=50,
-            xlabel="Juego del sistema (mm)",
-            ylabel="Densidad",
-            title="Histograma del juego del sistema",
+            xlabel=_("Juego del sistema (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma del juego del sistema"),
         )
         hist_system_b64 = histogram.plot_to_base64_png()
         hist_system_bytes = base64.b64decode(hist_system_b64)
@@ -82,16 +83,16 @@ def pivot_bushing_hole_axial_pdf(request):
         pdf = canvas.Canvas(response, pagesize=A4)
         width, height = A4
 
-        # Página 1
+        # Page 1
         pdf.setFont("Helvetica-Bold", 16)
-        pdf.drawString(40, height - 40, "Reporte de Tolerancia Pivot-Bushing-Waal Axial")
+        pdf.drawString(40, height - 40, _("Reporte de Tolerancia Pivot-Bushing-Waal Axial"))
 
         pdf.setFont("Helvetica", 10)
         pdf.drawString(40, height - 62, f"Cp: {values['cp']:.3f} | Samples: {values['samples']}")
 
         y = height - 95
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Datos de Entrada")
+        pdf.drawString(40, y, _("Datos de Entrada"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -108,7 +109,7 @@ def pivot_bushing_hole_axial_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Resultados Calculados")
+        pdf.drawString(40, y, _("Resultados Calculados"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -130,7 +131,7 @@ def pivot_bushing_hole_axial_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, y, "Imagenes adjuntas")
+        pdf.drawString(40, y, _("Imagenes adjuntas"))
 
         image_1 = request.FILES.get("image_1")
         image_2 = request.FILES.get("image_2")
@@ -139,22 +140,22 @@ def pivot_bushing_hole_axial_pdf(request):
         image_height = 100
         image_y = y - 120
 
-        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, "Imagen 1")
-        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, "Imagen 2")
+        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, _("Imagen 1"))
+        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, _("Imagen 2"))
 
-        # Página 2: Histogramas
+        # Page 2: Histograms
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histogramas")
+        pdf.drawString(40, height - 40, _("Histogramas"))
 
 
-        # Página 3: Histograma Sistema
+        # Page 3: System histogram
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histograma del Sistema")
+        pdf.drawString(40, height - 40, _("Histograma del Sistema"))
 
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, height - 70, "Juego del Sistema")
+        pdf.drawString(40, height - 70, _("Juego del Sistema"))
         hist_stream = io.BytesIO(hist_system_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -172,4 +173,4 @@ def pivot_bushing_hole_axial_pdf(request):
         return response
 
     except Exception as exc:
-        return HttpResponse(f"Error al generar PDF: {str(exc)}", status=500)
+        return HttpResponse(_("Error al generar PDF: %(error)s") % {"error": str(exc)}, status=500)

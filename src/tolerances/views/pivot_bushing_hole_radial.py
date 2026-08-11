@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
@@ -100,27 +101,27 @@ def pivot_bushing_hole_radial_calculator(request):
             histogram = Hystogram(
                 dimension=interf_tube_bushing,
                 bins=50,
-                xlabel="Diferencia de diametros (mm)",
-                ylabel="Densidad",
-                title="Histograma de interferencia Tubo Casquillo",
+                xlabel=_("Diferencia de diametros (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma de interferencia Tubo Casquillo"),
             )
             hist_interf_tube_bushing_base64 = histogram.plot_to_base64_png()
 
             histogram = Hystogram(
                 dimension=wall_thickness,
                 bins=50,
-                xlabel="Espesor de pared (mm)",
-                ylabel="Densidad",
-                title="Histograma de espesor de pared",
+                xlabel=_("Espesor de pared (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma de espesor de pared"),
             )
             hist_wall_thickness_base64 = histogram.plot_to_base64_png()
             
             histogram = Hystogram(
                 dimension=system_clearance,
                 bins=50,
-                xlabel="Juego del sistema (mm)",
-                ylabel="Densidad",
-                title="Histograma del juego del sistema",
+                xlabel=_("Juego del sistema (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma del juego del sistema"),
             )
             hist_system_clearance_base64 = histogram.plot_to_base64_png()
 

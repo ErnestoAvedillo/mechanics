@@ -1,18 +1,65 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Mis Documentos - Specs{% endblock %}
+{% block title %}{% trans "Mis Documentos" %} - Specs{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
 {% endblock %}
 
 {% block content %}
+<script>
+    function toggleEdit(docId) {
+        const filenameInput = document.getElementById(`filename-input-${docId}`);
+        const companyInput = document.getElementById(`company-input-${docId}`);
+        const companyHidden = document.getElementById(`company-hidden-${docId}`);
+        const editBtn = document.getElementById(`edit-btn-${docId}`);
+        const saveBtn = document.getElementById(`save-btn-${docId}`);
+        const cancelBtn = document.getElementById(`cancel-btn-${docId}`);
+        
+        filenameInput.removeAttribute('readonly');
+        companyInput.removeAttribute('readonly');
+        
+        filenameInput.focus();
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'inline-block';
+        cancelBtn.style.display = 'inline-block';
+    }
+    
+    function cancelEdit(docId) {
+        const filenameInput = document.getElementById(`filename-input-${docId}`);
+        const companyInput = document.getElementById(`company-input-${docId}`);
+        const editBtn = document.getElementById(`edit-btn-${docId}`);
+        const saveBtn = document.getElementById(`save-btn-${docId}`);
+        const cancelBtn = document.getElementById(`cancel-btn-${docId}`);
+        
+        // Restore the original values
+        const originalFilename = filenameInput.getAttribute('data-original');
+        const originalCompany = companyInput.getAttribute('data-original');
+        
+        filenameInput.value = originalFilename;
+        companyInput.value = originalCompany;
+        
+        filenameInput.setAttribute('readonly', '');
+        companyInput.setAttribute('readonly', '');
+        
+        editBtn.style.display = 'inline-block';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+    }
+    
+    // Function to sync the company value before submitting
+    function syncCompanyValue(docId) {
+        const companyInput = document.getElementById(`company-input-${docId}`);
+        const companyHidden = document.getElementById(`company-hidden-${docId}`);
+        companyHidden.value = companyInput.value;
+    }
+</script>
 <div class="container mt-4">
     <div class="card-container">
         <div class="card-title d-flex justify-between">
-            <h2 style="margin: 0; display: inline-block;">📚 Mis Documentos RAG</h2>
-            <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ Subir Nuevo PDF</a>
+            <h2 style="margin: 0; display: inline-block;">📚 {% trans "Mis Documentos RAG" %}</h2>
+            <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ {% trans "Subir Nuevo PDF" %}</a>
         </div>
 
         {% if messages %}
@@ -28,43 +75,45 @@
                 <table class="specs-table">
                     <thead>
                         <tr>
-                            <th>Archivo / Título</th>
-                            <th>OEM / Empresa</th>
-                            <th>Fecha Subida</th>
-                            <th>Estado RAG</th>
-                            <th>Acciones</th>
+                            <th>{% trans "Archivo / Título" %}</th>
+                            <th>{% trans "OEM / Empresa" %}</th>
+                            <th>{% trans "Fecha Subida" %}</th>
+                            <th>{% trans "Estado RAG" %}</th>
+                            <th>{% trans "Acciones" %}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for doc in documents %}
                             <tr>
-                                <td>
-                                    <!-- Formulario para editar título -->
-                                    <form action="{% url 'specs:document_update' doc.id %}" method="post" class="d-flex align-items-center" style="gap: 10px;">
+                                <form action="{% url 'specs:document_update' doc.id %}" method="post" style="display: flex; gap: 6px; align-items: center;">
+                                    <td style="min-width: 200px;">
                                         {% csrf_token %}
-                                        <input type="text" name="filename" value="{{ doc.filename }}" class="form-control form-control-sm" style="width: auto; flex: 1;">
-                                        <button type="submit" class="btn btn-sm btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">💾</button>
-                                    </form>
-                                </td>
-                                <td><span style="background: #edf2f7; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">{{ doc.company|default:"General" }}</span></td>
-                                <td style="color: #718096; font-size: 0.9em;">{{ doc.upload_date|date:"d/m/Y H:i" }}</td>
-                                <td>
+                                        <input type="text" id="filename-input-{{ doc.id }}" name="filename" value="{{ doc.filename }}" class="form-control form-control-sm" style="flex: 1; font-size: 0.9rem;" readonly data-original="{{ doc.filename }}">
+                                    </td>
+                                    <td style="min-width: 150px;">
+                                        <input type="text" id="company-input-{{ doc.id }}" name="company" value="{{ doc.company|default:'' }}" class="form-control form-control-sm" style="width: 100%; font-size: 0.9rem;" placeholder="General" readonly data-original="{{ doc.company|default:'' }}">
+                                    </td>
+                                    <td style="min-width: 150px;">
+                                    <!-- <input type="hidden" id="company-hidden-{{ doc.id }}" name="company" value="{{ doc.company|default:'' }}"> -->
+                                        <button type="button" id="edit-btn-{{ doc.id }}" class="btn btn-sm btn-info" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap;" onclick="toggleEdit({{ doc.id }})">✏️ {% trans "Editar" %}</button>
+                                        <button type="submit" id="save-btn-{{ doc.id }}" class="btn btn-sm btn-primary" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; display: none;" onclick="syncCompanyValue({{ doc.id }})">💾 {% trans "Guardar" %}</button>
+                                        <button type="button" id="cancel-btn-{{ doc.id }}" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; display: none;" onclick="cancelEdit({{ doc.id }})">✕ {% trans "Cancelar" %}</button>
+                                    </td>
+                                </form>
+                                <td style="white-space: nowrap; font-size: 0.9em; color: #718096;">{{ doc.upload_date|date:"d/m/Y H:i" }}</td>
+                                <td style="white-space: nowrap;">
                                     {% if doc.is_indexed %}
-                                        <span class="status-badge status-success">● Indexado</span>
+                                        <span class="status-badge status-success">● {% trans "Indexado" %}</span>
                                     {% else %}
-                                        <span class="status-badge status-warning">○ Pendiente</span>
+                                        <span class="status-badge status-warning">○ {% trans "Pendiente" %}</span>
                                     {% endif %}
                                 </td>
-                                <td>
-                                    <div style="display: flex; gap: 8px;">
-                                        <!-- Abrir/Ver Documento -->
-                                        <!-- Requiere un endpoint en el futuro que se comunique con Mongo. De momento redirige o intenta abrir. -->
-                                        <button onclick="alert('Funcionalidad de abrir PDF de Mongo no implementada aún.')" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">👁️ Abrir</button>
-                                        
-                                        <!-- Borrar Documento -->
-                                        <form action="{% url 'specs:document_delete' doc.id %}" method="post" onsubmit="return confirm('¿Seguro que deseas eliminar este documento?');">
+                                <td style="white-space: nowrap;">
+                                    <div style="display: flex; gap: 6px;">
+                                        <a href="{% url 'specs:document_view' doc.id %}" target="_blank" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; text-decoration: none; display: inline-flex; align-items: center;">👁️ {% trans "Ver" %}</a>
+                                        <form action="{% url 'specs:document_delete' doc.id %}" method="post" onsubmit="return confirm('{% trans "¿Seguro que deseas eliminar este documento?" %}');" style="display: inline;">
                                             {% csrf_token %}
-                                            <button type="submit" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.8rem; background: #fee2e2; color: #c53030;">🗑️</button>
+                                            <button type="submit" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; background: #fee2e2; color: #c53030;">🗑️ {% trans "Borrar" %}</button>
                                         </form>
                                     </div>
                                 </td>
@@ -75,9 +124,9 @@
             </div>
         {% else %}
             <div class="text-center" style="padding: 4rem 1rem;">
-                <h3 style="color: #4a5568; margin-bottom: 1rem;">Aún no has subido normativas.</h3>
-                <p style="color: #718096; margin-bottom: 2rem;">Sube tu primer PDF técnico para empezar a usar la búsqueda RAG.</p>
-                <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">Empezar a subir</a>
+                <h3 style="color: #4a5568; margin-bottom: 1rem;">{% trans "Aún no has subido normativas." %}</h3>
+                <p style="color: #718096; margin-bottom: 2rem;">{% trans "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG." %}</p>
+                <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">{% trans "Empezar a subir" %}</a>
             </div>
         {% endif %}
     </div>

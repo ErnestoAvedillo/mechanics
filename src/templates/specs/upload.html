@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Subir Normativa - Specs{% endblock %}
+{% block title %}{% trans "Subir Normativa" %} - Specs{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
@@ -10,27 +10,27 @@
 {% block content %}
 <div class="container mt-4" style="max-width: 800px;">
     <div class="card-container">
-        <h2 class="card-title">Añadir Documento al RAG</h2>
-        <p style="color: #718096; margin-bottom: 2rem;">El PDF se almacenará de forma segura y se auto-indexará para tu asistente de usuario.</p>
-        
+        <h2 class="card-title">{% trans "Añadir Documento al RAG" %}</h2>
+        <p style="color: #718096; margin-bottom: 2rem;">{% trans "El PDF se almacenará de forma segura y se auto-indexará para tu asistente de usuario." %}</p>
+
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            
+
             <div class="form-group">
-                <label for="id_company" class="form-label">OEM / Empresa Relacionada (Opcional)</label>
+                <label for="id_company" class="form-label">{% trans "OEM / Empresa Relacionada (Opcional)" %}</label>
                 {{ form.company.errors }}
-                <input type="text" name="company" class="form-control" id="id_company" placeholder="Ej. VW, BMW, Ford o General">
+                <input type="text" name="company" class="form-control" id="id_company" placeholder="{% trans 'Ej. VW, BMW, Ford o General' %}">
             </div>
 
             <div class="form-group" style="margin-bottom: 2.5rem;">
-                <label for="id_pdf_file" class="form-label">Archivo PDF Técnico (Normativa, TL, ISO...)</label>
+                <label for="id_pdf_file" class="form-label">{% trans "Archivo PDF Técnico (Normativa, TL, ISO...)" %}</label>
                 {{ form.pdf_file.errors }}
                 <input type="file" name="pdf_file" class="form-control" id="id_pdf_file" accept=".pdf" multiple required>
             </div>
 
             <div class="d-flex justify-between gap-2">
-                <a href="{% url 'specs:handling' %}" class="btn btn-secondary" style="flex: 1;">Volver</a>
-                <button type="submit" class="btn btn-primary" style="flex: 2;">Subir y Analizar Documento</button>
+                <a href="{% url 'specs:handling' %}" class="btn btn-secondary" style="flex: 1;">{% trans "Volver" %}</a>
+                <button type="submit" class="btn btn-primary" style="flex: 2;">{% trans "Subir y Analizar Documento" %}</button>
             </div>
         </form>
     </div>

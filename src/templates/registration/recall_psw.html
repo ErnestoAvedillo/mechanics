@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}Iniciar Sesión{% endblock %}
+{% load static i18n %}
+{% block title %}{% trans "Iniciar Sesión" %}{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
@@ -14,26 +14,27 @@
 
   <main class="wrap">
     <section class="card form-card">
-      <h1>Recuperar Contraseña</h1>
-      
-      <form method="post" action="{% url 'recall_psw' %}">
+      <h1>{% trans "Recuperar Contraseña" %}</h1>
+
+      <form method="post" action="{% url 'menuapp:recall_psw' %}">
         {% csrf_token %}
         <div class="form-group">
           <label for="id_email">Email:</label>
           <input type="text" name="email" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_email">
         </div>
-        
+
         {% if not form.errors %}
           <div class="error-msg">
-            Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña.
+            {% trans "Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña." %}
           </div>
         {% endif %}
-        
-        <button type="submit" class="button button-submit">Recuperar</button>
+
+        <button type="submit" class="button button-submit">{% trans "Recuperar" %}</button>
         <input type="hidden" name="next" value="{{ next }}">
       </form>
+      {% url 'menuapp:signup' as signup_url %}
       <div class="signup-link">
-        ¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a>.
+        {% blocktrans %}¿No tienes una cuenta? <a href="{{ signup_url }}">Regístrate aquí</a>.{% endblocktrans %}
       </div>
     </section>
     

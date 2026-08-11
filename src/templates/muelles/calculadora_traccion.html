@@ -1,21 +1,22 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Muelles - El Menú de Ernesto®</title>
+    <title>{% trans "Calculadora de Muelles" %} - El Menú de Ernesto®</title>
     <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/calculadora-muelles.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/muelle-extensions.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/form_muelles_traccion.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/form-loading.css' %}">
 </head>
 <body>
     <div class="calculadora-container">
-        <a href="{% url 'muelles_index' %}" class="back-button">← Volver a Muelles</a>
+        <a href="{% url 'muelles_index' %}" class="back-button">← {% trans "Volver a Muelles" %}</a>
 
-        <h1>🌀 Calculadora Avanzada de Muelles Helicoidales de tracción</h1>
-        <p>Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas.</p>
+        <h1>🌀 {% trans "Calculadora Avanzada de Muelles Helicoidales de tracción" %}</h1>
+        <p>{% trans "Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas." %}</p>
         <form method="post">
             {% csrf_token %}
             <div class="form-grid traccion-form-grid">
@@ -32,10 +33,10 @@
         {% include 'muelles/partials/_calculadora_info.html' %}
     </div>
 
-    <!-- Scripts externos -->
-     <!-- Scripts externos -->
+    <!-- External scripts -->
+<script src="{% url 'javascript-catalog' %}"></script>
 <script src="{% static 'muelles/js/diameter-sync.js' %}"></script>
 <script src="{% static 'muelles/js/calculadora-muelles.js' %}"></script>
-    <script src="{% static 'muelles/js/calculadora-muelles.js' %}"></script>
+<script src="{% static 'global/js/form-loading.js' %}"></script>
 </body>
 </html>

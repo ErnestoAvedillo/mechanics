@@ -1,11 +1,11 @@
-{% load static %}
+{% load static i18n %}
 
 <div class="spring-form-container">
     <div class="diagram-wrapper">
-        <img src="{% static 'muelles/images/plano_muelle_torsion.jpg' %}" alt="Diagrama de muelle" class="spring-diagram">
+        <img src="{% static 'muelles/images/plano_muelle_torsion.jpg' %}" alt="{% trans 'Diagrama de muelle' %}" class="spring-diagram">
 
         <!-- <div class="input-overlay d-field" style="top: 23%; left: 64%;">
-        
+
             {{ form.d }}
             <span class="label">d</span>
         </div> -->
@@ -17,7 +17,7 @@
                     id="diametro_exterior"
                     value="{{ request.POST.diametro_exterior }}"
                     required>
-            <span class="label" data-tooltip="Diametro exterior (De) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro exterior (De) en mm' %}"></span>
         </div>
 
         <div class="input-overlay Dm-field" style="top: 45%; left: 13%;">
@@ -27,7 +27,7 @@
                     id="diametro_medio"
                     value="{{ request.POST.diametro_medio }}"
                     required>
-            <span class="label" data-tooltip="Diametro medio (Dm) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro medio (Dm) en mm' %}"></span>
         </div>
 
         <div class="input-overlay Di-field" style="top: 40%; left: 18%;">
@@ -37,7 +37,7 @@
                     id="diametro_interior"
                     value="{{ request.POST.diametro_interior }}"
                     required>
-            <span class="label" data-tooltip="Diametro interior (Di) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro interior (Di) en mm' %}"></span>
         </div>
 
         <div class="input-overlay Ls-field" style="top: 25%; left: 47.5%;">
@@ -47,7 +47,7 @@
                     id="longitud_sujecion"
                     value="{{ request.POST.longitud_sujecion }}"
                     required>
-            <span class="label" data-tooltip="Longitud de pata fija (Ls) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Longitud de pata fija (Ls) en mm' %}"></span>
         </div>
         <div class="input-overlay Ra-field" style="top: 55%; left: 20%;">
             <input type="number"
@@ -56,7 +56,7 @@
                     id="Radio_sujecion"
                     value="{{ request.POST.Radio_sujecion }}"
                     required>
-            <span class="label" data-tooltip="Radio de sujeción (Ra) pata móvil en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Radio de sujeción (Ra) pata móvil en mm' %}"></span>
         </div>
         <div class="input-overlay A1-field" style="top: 69%; left: 33%;">
             <input type="number"
@@ -65,7 +65,7 @@
                     id="angulo_inicial"
                     value="{{ request.POST.angulo_inicial }}"
                     required>
-            <span class="label" data-tooltip="Primera posición de carga (A1)"></span>
+            <span class="label" data-tooltip="{% trans 'Primera posición de carga (A1)' %}"></span>
         </div>
         <div class="input-overlay A2-field" style="top: 65%; left: 48%;">
             <input type="number"
@@ -74,7 +74,7 @@
                     id="angulo_final"
                     value="{{ request.POST.angulo_final }}"
                     required>
-            <span class="label" data-tooltip="Primera posición de carga (A2)"></span>
+            <span class="label" data-tooltip="{% trans 'Primera posición de carga (A2)' %}"></span>
         </div>
         <div class="input-overlay angulo_libre" style="top: 75%; left: 50%;">
             <input type="number"
@@ -83,7 +83,7 @@
                     id="angulo_libre"
                     value="{{ request.POST.angulo_libre }}"
                     required>
-            <span class="label" data-tooltip="Ángulo de libre (A0)"></span>
+            <span class="label" data-tooltip="{% trans 'Ángulo de libre (A0)' %}"></span>
         </div>
         <div class="input-overlay nt-field" style="top: 38%; left: 83%;">
             <input type="number"
@@ -92,8 +92,8 @@
                     id="numero_espiras"
                     value="{{ request.POST.numero_espiras }}"
                     required>
-            <span class="label" data-tooltip="Número de espiras (nt)"></span>
-        
+            <span class="label" data-tooltip="{% trans 'Número de espiras (nt)' %}"></span>
+
         </div>
         <div class="input-overlay pitch-field" style="top: 37%; left: 93%;">
             <input type="number"
@@ -102,11 +102,15 @@
                     id="pitch"
                     value="{{ request.POST.pitch }}"
                     required>
-            <span class="label" data-tooltip="Paso (pitch) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Paso (pitch) en mm' %}"></span>
         </div>
     </div>
 
-    <h3>Calcular</h3>
-    <p>Complete los datos del muelle para obtener sus especificaciones tecnicas completas.</p>
-    <button type="submit" class="calculate-btn">Calcular Especificaciones</button>
+    <h3>{% trans "Calcular" %}</h3>
+    <p>{% trans "Complete los datos del muelle para obtener sus especificaciones tecnicas completas." %}</p>
+    <div class="form-actions">
+        <button type="submit" class="calculate-btn">{% trans "Calcular Especificaciones" %}</button>
+        <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_torsion_animacion' %}" formmethod="post" formtarget="_blank">{% trans "Crear Animación" %}</button>
+        <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_torsion_pdf' %}" formmethod="post" formtarget="_blank">{% trans "Crear Reporte PDF" %}</button>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ titulo }} - El Menú de Ernesto®{% endblock %}
 
@@ -16,35 +16,42 @@
         <div class="menu-options">
             <div class="option-card">
                 <a href="{% url 'muelles_calculadora_compresion' %}">
-                    <h3>Calculadora de Muelles de compresión</h3>
-                    <img class="preview-img" src="{% static '/muelles/img/muelle_compresion.jpg' %}" alt="Muelle de compresión">
+                    <h3>{% trans "Calculadora de Muelles de compresión" %}</h3>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_compresion.jpg' %}" alt="{% trans 'Muelle de compresión' %}">
                 </a>
             </div>
             <div class="option-card">
                 <a href="{% url 'muelles_calculadora_traccion' %}">
-                    <h3>Calculadora de Muelles de tracción</h3>
-                    <img class="preview-img" src="{% static '/muelles/img/muelle_traccion.png' %}" alt="Muelle de tracción">
+                    <h3>{% trans "Calculadora de Muelles de tracción" %}</h3>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_traccion.png' %}" alt="{% trans 'Muelle de tracción' %}">
                 </a>
             </div>
             <div class="option-card">
                 <a href="{% url 'muelles_calculadora_torsion' %}">
-                    <h3>Calculadora de Muelles de torsión</h3>
-                    <img class="preview-img" src="{% static '/muelles/img/muelle_torsion.jpg' %}" alt="Muelle de torsión">
+                    <h3>{% trans "Calculadora de Muelles de torsión" %}</h3>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_torsion.jpg' %}" alt="{% trans 'Muelle de torsión' %}">
                 </a>
             </div>
             <div class="option-card">
-                <a href="#" onclick="alert('Próximamente disponible')">
-                    <h3>Muelles cónicos</h3>
-                    <p>Calculadora para muelles cónicos</p>
-                    <img class="preview-img" src="{% static '/muelles/img/muelle_conico.png' %}" alt="Muelle cónico">
+                <a href="{% url 'muelles_calculadora_conico' %}">
+                    <h3>{% trans "Muelles cónicos" %}</h3>
+                    <p>{% trans "Calculadora para muelles cónicos" %}</p>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_conico.png' %}" alt="{% trans 'Muelle cónico' %}">
                 </a>
             </div>
-            
             <div class="option-card">
-                <a href="#" onclick="alert('Próximamente disponible')">
-                    <h3>Muelles no lineales 2K</h3>
-                    <p>Calculadora para muelles no lineales de doble constante</p>
-                    <img class="preview-img" src="{% static '/muelles/img/muelle_no_lineal_2K.png' %}" alt="Muelle no lineal">
+                <a href="{% url 'muelles_calculadora_conico_pitch_variable' %}">
+                    <h3>{% trans "Muelles cónicos paso variable" %}</h3>
+                    <p>{% trans "Calculadora para muelles cónicos con paso variable" %}</p>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_conico.png' %}" alt="{% trans 'Muelle cónico' %}">
+                </a>
+            </div>
+
+            <div class="option-card">
+                <a href="{% url 'muelles_calculadora_2k' %}">
+                    <h3>{% trans "Muelles no lineales 2K" %}</h3>
+                    <p>{% trans "Calculadora para muelles no lineales de doble constante" %}</p>
+                    <img class="preview-img" src="{% static '/muelles/images/muelle_no_lineal_2K.png' %}" alt="{% trans 'Muelle no lineal' %}">
                 </a>
             </div>
         </div>

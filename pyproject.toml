@@ -14,9 +14,10 @@ dependencies = [
     "pytest>=9.0.2",
     "reportlab>=4.4.4",
     "scikit-learn>=1.8.0",
-    "llama-index>=0.10.0",
-    "llama-index-llms-gemini>=0.1.0",
-    "llama-index-embeddings-gemini>=0.1.0",
+    "google-genai>=1.75.0",
+    "llama-index>=0.12.52,<0.13.0",
+    "llama-index-llms-google-genai>=0.2.6",
+    "llama-index-embeddings-google-genai>=0.2.1",
+    "playwright>=1.60.0",
+    "springcalc>=0.1.2",
 ]
-[tool.flake8]
-max-line-length =120

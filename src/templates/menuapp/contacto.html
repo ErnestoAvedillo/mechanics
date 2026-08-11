@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Contacto - Ernesto Avedillo Carretero{% endblock %}
+{% block title %}{% trans "Contacto" %} - Ernesto Avedillo Carretero{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
@@ -9,29 +9,29 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Fondo de página -->
+  <!-- Page background -->
   <div class="page-background" style="background-image: url('{% static 'global/images/header-background.jpeg' %}');"></div>
 
-  <!-- Overlay para cerrar menú -->
+  <!-- Overlay to close the menu -->
   <div class="sidebar-overlay"></div>
 
   <div class="letter-page">
     <article class="letter-card">
       <header class="letter-header">
-        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="Fotografia de Ernesto Avedillo" class="profile-photo">
+        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="{% trans 'Fotografia de Ernesto Avedillo' %}" class="profile-photo">
         <div class="letter-intro">
-          <p class="eyebrow">Contacto</p>
+          <p class="eyebrow">{% trans "Contacto" %}</p>
           <h1>Ernesto Avedillo Carretero</h1>
           <p class="lead">
-            Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos.
+            {% trans "Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos." %}
           </p>
         </div>
       </header>
 
       <section class="letter-section">
-        <h2>Información de Contacto</h2>
+        <h2>{% trans "Información de Contacto" %}</h2>
         <p>
-          Puedes contactarme a través de los siguientes medios:
+          {% trans "Puedes contactarme a través de los siguientes medios:" %}
         </p>
         <ul>
           <li><a href="mailto:eavedillo@protonmail.com">📧 Email: eavedillo@protonmail.com</a></li>

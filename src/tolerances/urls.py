@@ -8,6 +8,10 @@ from tolerances.views.pivot_bushing_hole_axial import pivot_bushing_hole_axial_c
 from tolerances.views.pivot_bushing_hole_axial_pdf import pivot_bushing_hole_axial_pdf
 from tolerances.views.insert_support import insert_support_calculator
 from tolerances.views.insert_support_pdf import insert_support_pdf
+from tolerances.views.videos import video_tolerancias_absolutas
+
+
+
 urlpatterns = [
     path('', index, name='tolerances_index'),
     path('index/', index, name='tolerances_index_legacy'),
@@ -19,4 +23,5 @@ urlpatterns = [
     path('pivot-bushing-hole-axial/pdf/', pivot_bushing_hole_axial_pdf, name='tolerances_pivot_bushing_hole_axial_pdf'),
     path('insert-support/', insert_support_calculator, name='tolerances_insert_support'),
     path('insert-support/pdf/', insert_support_pdf, name='tolerances_insert_support_pdf'),
+    path('video-tolerancias-absolutas/', video_tolerancias_absolutas, name='video_tolerancias_absolutas'),
     ]

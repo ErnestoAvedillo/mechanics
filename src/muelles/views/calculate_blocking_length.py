@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
-from muelles.pymodels.material import Material
-from muelles.lineal.compresion import MuelleCompresion
+from django.utils.translation import gettext as _
+from springcalc import Material, CompressionSpring
 
 
 
@@ -10,62 +10,62 @@ from muelles.lineal.compresion import MuelleCompresion
 @require_http_methods(["POST"])
 def calculate_blocking_length(request):
     """
-    Calcula la longitud de bloqueo de un muelle de compresión.
-    
-    Recibe por POST:
-    - material: código del material
-    - diametro_hilo: diámetro del hilo en mm
-    - numero_espiras: número total de espiras
-    
-    Retorna JSON con:
-    - longitud_bloqueo: longitud de bloqueo en mm
-    - error: mensaje de error si ocurre
+    Calculates the solid (blocking) length of a compression spring.
+
+    Receives via POST:
+    - material: material code
+    - diametro_hilo: wire diameter in mm
+    - numero_espiras: total number of coils
+
+    Returns JSON with:
+    - longitud_bloqueo: solid length in mm
+    - error: error message if one occurs
     """
     try:
         material_code = request.POST.get('material', '').strip()
         diametro_hilo = request.POST.get('diametro_hilo', '').strip()
         numero_espiras = request.POST.get('numero_espiras', '').strip()
-        
-        # Validar que están presentes
+
+        # Validate that they are present
         if not material_code:
             return JsonResponse({
-                'error': 'Material no seleccionado'
+                'error': _('Material no seleccionado')
             }, status=400)
-        
+
         if not diametro_hilo:
             return JsonResponse({
-                'error': 'Diámetro del hilo no proporcionado'
+                'error': _('Diámetro del hilo no proporcionado')
             }, status=400)
-        
+
         if not numero_espiras:
             return JsonResponse({
-                'error': 'Número de espiras no proporcionado'
+                'error': _('Número de espiras no proporcionado')
             }, status=400)
-        
-        # Convertir a números
+
+        # Convert to numbers
         try:
             diametro_hilo = float(diametro_hilo)
             numero_espiras = float(numero_espiras)
         except ValueError:
             return JsonResponse({
-                'error': 'Valores numéricos no válidos'
+                'error': _('Valores numéricos no válidos')
             }, status=400)
-        
-        # Crear objeto Material y Muelle
-        material_obj = Material(nombre_material=material_code)
-        muelle = MuelleCompresion(
+
+        # Create the Material and Spring objects
+        material_obj = Material(material_name=material_code)
+        muelle = CompressionSpring(
             material=material_obj,
-            diametro_hilo=diametro_hilo
+            wire_diameter=diametro_hilo
         )
-        
-        # Asignar número de espiras y calcular longitud de bloqueo
-        muelle.numero_espiras = numero_espiras
-        longitud_bloqueo = muelle.calcular_longitud_bloqueo()
 
-        # Calcular el pitch para devolverlo también (opcional, pero útil para validación)
-        pitch = muelle.calcular_paso()
+        # Assign the number of coils and calculate the solid length
+        muelle.nr_coils = numero_espiras
+        longitud_bloqueo = muelle.calculate_solid_length()
 
-        # Convertir a float si es una Quantity
+        # Also calculate the pitch to return it (optional, but useful for validation)
+        pitch = muelle.calculate_pitch()
+
+        # Convert to float if it's a Quantity
         longitud_bloqueo_value = float(longitud_bloqueo.magnitude) if hasattr(longitud_bloqueo, 'magnitude') else float(longitud_bloqueo)
         pitch_value = float(pitch.magnitude) if hasattr(pitch, 'magnitude') else float(pitch)
         
@@ -76,5 +76,5 @@ def calculate_blocking_length(request):
     
     except Exception as e:
         return JsonResponse({
-            'error': f'Error al calcular longitud de bloqueo: {str(e)}'
+            'error': _('Error al calcular longitud de bloqueo: %(error)s') % {'error': str(e)}
         }, status=500)

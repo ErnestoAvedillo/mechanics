@@ -1,37 +1,55 @@
 {% extends "base.html" %}
+{% load static i18n %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'menuapp/css/verify_email.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white text-center">
-                    <h3 class="mb-0">Verificar Email</h3>
-                </div>
-                <div class="card-body p-4 text-center">
-                    <p>Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:</p>
-                    
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                        {% endfor %}
-                    {% endif %}
+<div class="verify-email-container">
+    <div class="verify-email-card">
+        <div class="verify-email-header">
+            <span class="verify-email-icon">✉️</span>
+            <h3>{% trans "Verificar Email" %}</h3>
+        </div>
 
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="mb-4">
-                            {{ form.code }}
-                            {% if form.code.errors %}
-                                <div class="text-danger small">{{ form.code.errors }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-lg">Verificar y Entrar</button>
-                        </div>
-                    </form>
-                    <hr>
-                    <p class="small text-muted">¿No recibiste el código? Revisa tu carpeta de spam o intenta registrarte de nuevo.</p>
+        <div class="verify-email-body">
+            <p class="verify-email-description">
+                {% trans "Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:" %}
+            </p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" class="verify-email-form">
+                {% csrf_token %}
+
+                <div class="code-input-wrapper">
+                    <label for="id_code">{% trans "Código de Verificación" %}</label>
+                    {{ form.code }}
+                    {% if form.code.errors %}
+                        <span class="text-danger">{{ form.code.errors }}</span>
+                    {% endif %}
                 </div>
+
+                <button type="submit" class="verify-btn">
+                    ✓ {% trans "Verificar y Entrar" %}
+                </button>
+            </form>
+
+            <hr class="verify-email-divider">
+
+            <div class="verify-email-footer">
+                {% url 'menuapp:signup' as signup_url %}
+                <p class="verify-email-footer-text">
+                    {% blocktrans %}¿No recibiste el código? Revisa tu carpeta de spam o
+                    <a href="{{ signup_url }}">intenta registrarte de nuevo</a>.{% endblocktrans %}
+                </p>
             </div>
         </div>
     </div>

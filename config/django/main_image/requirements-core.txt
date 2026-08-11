@@ -1,0 +1,19 @@
+# Ciencia de Datos y Análisis
+pandas>=2.2.0,<3.0.0
+scikit-learn>=1.8.0
+scipy>=1.15.0
+matplotlib>=3.10.8
+
+# IA y LlamaIndex (Los más pesados)
+llama-index>=0.13.0,<0.14.0
+llama-parse
+llama-index-vector-stores-qdrant>=0.7.0
+llama-index-llms-google-genai>=0.2.6
+llama-index-embeddings-google-genai>=0.2.1
+llama-index-embeddings-huggingface>=0.5.5
+llama-index-postprocessor-flag-embedding-reranker>=0.3.0
+llama-index-readers-file>=0.4.8
+transformers>=4.44.0,<5.0.0
+FlagEmbedding>=1.4.0
+pypdf
+google-genai>=1.75.0

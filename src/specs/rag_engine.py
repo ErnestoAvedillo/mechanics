@@ -10,45 +10,58 @@ from llama_index.core import Document, StorageContext, VectorStoreIndex, Setting
 from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 
-# Nuevos imports de HuggingFace y FlagEmbedding
+# New HuggingFace and FlagEmbedding imports
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
-from llama_index.llms.gemini import Gemini
+from llama_index.llms.google_genai import GoogleGenAI
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance
 from llama_parse import LlamaParse
 from .models import UserDocument
 
-# Cambiamos de nombre la colección para evitar choques con los vectores de 3072 dimensiones actuales de Gemini
+# Renamed the collection to avoid clashing with Gemini's current 3072-dimension vectors
 TARGET_COLLECTION = "engineering_specs_bge" 
 
+_QDRANT_CLIENT = None
+
+def get_qdrant_client():
+    global _QDRANT_CLIENT
+    if _QDRANT_CLIENT is None:
+        _QDRANT_CLIENT = QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY)
+    return _QDRANT_CLIENT
+
+
+# Global variables for in-memory persistence
+_EMBED_MODEL = None
+_RERANKER = None
+
+
 def _configure_models():
-    """Configura el LLM (Gemini) y el Embedding Multilingüe (BGE-M3) en Settings para su uso en todo el RAG."""
-    # Mantenemos Gemini o cualquier otro LLM para la generación de texto
+    """Configures the LLM (Gemini) and the multilingual Embedding (BGE-M3) in Settings for use across the whole RAG."""
+    # We keep Gemini or any other LLM for text generation
     if settings.GOOGLE_API_KEY:
-        Settings.llm = Gemini(api_key=settings.GOOGLE_API_KEY,
-                              model_name=settings.GOOGLE_MODEL)
+        Settings.llm = GoogleGenAI(api_key=settings.GOOGLE_API_KEY,
+                                   model=settings.GOOGLE_MODEL)
     else:
-        Settings.llm = Gemini(model_name="models/gemini-3.1-flash-lite-preview")
+        Settings.llm = GoogleGenAI(model="models/gemini-3.1-flash-lite-preview")
         
-    # Mejoramos a BGE-M3 para Cross-lingual retrieval
+    # Upgraded to BGE-M3 for cross-lingual retrieval
     Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-m3")
 
 
 def get_rag_engine(user_id):
     """
-    Configura y devuelve el motor de consulta RAG para un usuario específico,
-    añadiendo un paso de re-clasificación (reranking) multilingüe.
+    Configures and returns the RAG query engine for a specific user,
+    adding a multilingual re-ranking step.
     """
     _configure_models()
-    client = QdrantClient(url=settings.QDRANT_URL,
-                          api_key=settings.QDRANT_API_KEY)
-    
+    client = get_qdrant_client()
+
     if not client.collection_exists(TARGET_COLLECTION):
         client.create_collection(
             collection_name=TARGET_COLLECTION,
-            vectors_config=VectorParams(size=1024, distance=Distance.COSINE)  # BGE-M3 proyecta a 1024 dims
+            vectors_config=VectorParams(size=1024, distance=Distance.COSINE)  # BGE-M3 projects to 1024 dims
         )
         client.create_payload_index(
             collection_name=TARGET_COLLECTION,
@@ -64,15 +77,15 @@ def get_rag_engine(user_id):
         filters=[MetadataFilter(key="user_id", value=user_id)]
     )
     
-    # Reranker configurado con BGE-Reranker-v2-m3
-    # Le da un escaneo detallado ("cross-encoder") para alinear semántica en varios idiomas
+    # Reranker configured with BGE-Reranker-v2-m3
+    # Gives a detailed scan ("cross-encoder") to align semantics across languages
     reranker = FlagEmbeddingReranker(
         top_n=4,
         model="BAAI/bge-reranker-v2-m3"
     )
     
-    # Pedimos similarity_top_k=10 o 15 para traer más contexto candidato bruto, 
-    # y que el reranker elija los 4 mejores definitivos cross-lingual.
+    # We request similarity_top_k=10 or 15 to bring in more raw candidate context,
+    # letting the reranker pick the final 4 best cross-lingual results.
     return index.as_query_engine(
         filters=filters,
         similarity_top_k=15,
@@ -81,7 +94,7 @@ def get_rag_engine(user_id):
 
 def index_document_to_rag(document_id):
     """
-    Lee un documento de MongoDB GridFS, procesa y lo indexa usando BGE-M3.
+    Reads a document from MongoDB GridFS, processes it and indexes it using BGE-M3.
     """
     try:
         _configure_models()
@@ -103,10 +116,10 @@ def index_document_to_rag(document_id):
                 verbose=True,
                 language="es"
             )
-            print(f"Enviando documento a LlamaParse para procesamiento: '{temp_path}'")
+            print(f"Sending document to LlamaParse for processing: '{temp_path}'")
             documents = parser.load_data(temp_path)
         else:
-            print(f"Procesando documento local: '{temp_path}'")
+            print(f"Processing local document: '{temp_path}'")
             from llama_index.readers.file import PDFReader
             reader = PDFReader()
             documents = reader.load_data(temp_path)
@@ -114,7 +127,7 @@ def index_document_to_rag(document_id):
         os.remove(temp_path)
 
         if not documents:
-            return False, "Error: No se pudo extraer texto del documento."
+            return False, "Error: Could not extract text from the document."
 
         for d in documents:
             d.metadata.update({
@@ -124,11 +137,8 @@ def index_document_to_rag(document_id):
                 "doc_id": doc_ref.id
             })
 
-        q_client = QdrantClient(
-            url=settings.QDRANT_URL,
-            api_key=settings.QDRANT_API_KEY
-        )
-        
+        q_client = get_qdrant_client()
+
         if not q_client.collection_exists(TARGET_COLLECTION):
             q_client.create_collection(
                 collection_name=TARGET_COLLECTION,
@@ -151,7 +161,7 @@ def index_document_to_rag(document_id):
 
         doc_ref.is_indexed = True
         doc_ref.save()
-        return True, f"Indexado con éxito ({len(documents)} páginas/secciones)"
+        return True, f"Successfully indexed ({len(documents)} pages/sections)"
 
     except Exception as e:
-        return False, f"Error en LlamaParse/Indexación: {str(e)}"
+        return False, f"Error in LlamaParse/Indexing: {str(e)}"

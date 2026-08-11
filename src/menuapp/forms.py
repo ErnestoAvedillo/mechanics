@@ -1,17 +1,18 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 class SignupForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'}))
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirmar Contraseña'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo electrónico'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Contraseña')}))
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Confirmar Contraseña')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Correo electrónico')}))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de usuario'}),
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Nombre de usuario')}),
         }
 
     def clean(self):
@@ -20,7 +21,7 @@ class SignupForm(forms.ModelForm):
         confirm_password = cleaned_data.get("confirm_password")
 
         if password != confirm_password:
-            raise forms.ValidationError("Las contraseñas no coinciden.")
+            raise forms.ValidationError(_("Las contraseñas no coinciden."))
         return cleaned_data
 
 class VerificationForm(forms.Form):

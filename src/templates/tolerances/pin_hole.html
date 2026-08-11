@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}{{ titulo }} - Estudios de tolerancias {% endblock %}
+{% load static i18n %}
+{% block title %}{{ titulo }} - {% trans "Estudios de tolerancias" %} {% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-pin-hole.css' %}">
+  <link rel="stylesheet" href="{% static 'global/css/form-loading.css' %}">
 {% endblock %}
 
 {% block content %}
   <h1>{{ titulo }}</h1>
   <p>{{ descripcion }}</p>
-  <title>Calculo Pin-Hole</title>
+  <title>{% trans "Calculo Pin-Hole" %}</title>
   <main class="wrap">
     <section class="card">
-      <h1>Calculo de Tolerancia Pin-Hole</h1>
-      <p class="sub">Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante.</p>
+      <h1>{% trans "Calculo de Tolerancia Pin-Hole" %}</h1>
+      <p class="sub">{% trans "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante." %}</p>
 
       <form method="post" class="pin-hole-form" enctype="multipart/form-data">
         {% csrf_token %}
 
         <section class="overlay-panel">
           <p class="overlay-help">
-            Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en el atributo
-            <strong>style</strong> de cada etiqueta <strong>label.field-chip</strong>.
+            {% blocktrans %}Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en el atributo
+            <strong>style</strong> de cada etiqueta <strong>label.field-chip</strong>.{% endblocktrans %}
           </p>
 
-          <figure class="pin-hole-canvas" aria-label="Diagrama pin-hole con campos editables">
-            <img src="{% static 'tolerances/images/PinHole.png' %}" alt="Diagrama pin y agujero">
+          <figure class="pin-hole-canvas" aria-label="{% trans 'Diagrama pin-hole con campos editables' %}">
+            <img src="{% static 'tolerances/images/PinHole.png' %}" alt="{% trans 'Diagrama pin y agujero' %}">
 
-            <label class="field-chip chip-pin-nominal" style="position:absolute; top:40%; left:0%;">Pin Nominal
+            <label class="field-chip chip-pin-nominal" style="position:absolute; top:40%; left:0%;">{% trans "Pin Nominal" %}
               <input type="number"
                     step="0.001"
                     name="pin_nominal"
@@ -35,15 +36,15 @@
                     required>
             </label>
 
-            <label class="field-chip chip-pin-sup" style="position:absolute; top:10%; left:9%;">Pin Tol. Sup
-              <input type="number" 
+            <label class="field-chip chip-pin-sup" style="position:absolute; top:10%; left:9%;">{% trans "Pin Tol. Sup" %}
+              <input type="number"
                     step="0.001"
                     name="pin_tol_sup"
                     value="{{ values.pin_tol_sup }}"
                     required>
             </label>
 
-            <label class="field-chip chip-pin-inf" style="position:absolute; top:70%; left:9%;">Pin Tol. Inf
+            <label class="field-chip chip-pin-inf" style="position:absolute; top:70%; left:9%;">{% trans "Pin Tol. Inf" %}
               <input type="number"
                     step="0.001"
                     name="pin_tol_inf"
@@ -51,7 +52,7 @@
                     required>
             </label>
 
-            <label class="field-chip chip-hole-nominal" style="position:absolute; top:40%; left:80%;">Hole Nominal
+            <label class="field-chip chip-hole-nominal" style="position:absolute; top:40%; left:80%;">{% trans "Hole Nominal" %}
               <input type="number"
                     step="0.001"
                     name="hole_nominal"
@@ -59,7 +60,7 @@
                     required>
             </label>
 
-            <label class="field-chip chip-hole-sup" style="position:absolute; top:10%; left:70%;">Hole Tol. Sup
+            <label class="field-chip chip-hole-sup" style="position:absolute; top:10%; left:70%;">{% trans "Hole Tol. Sup" %}
               <input type="number"
                     step="0.001"
                     name="hole_tol_sup"
@@ -67,7 +68,7 @@
                     required>
             </label>
 
-            <label class="field-chip chip-hole-inf" style="position:absolute; top:70%; left:70%;">Hole Tol. Inf
+            <label class="field-chip chip-hole-inf" style="position:absolute; top:70%; left:70%;">{% trans "Hole Tol. Inf" %}
               <input type="number"
                     step="0.001"
                     name="hole_tol_inf"
@@ -78,77 +79,77 @@
         </section>
 
         <section class="extra-inputs">
-          <h2>Distribucion</h2>
+          <h2>{% trans "Distribucion" %}</h2>
           <label>Cp
             <input type="number" step="0.01" min="0.1" name="cp" value="{{ values.cp }}" required>
           </label>
-          <label>Numero de muestras
+          <label>{% trans "Numero de muestras" %}
             <input type="number" min="100" step="1" name="samples" value="{{ values.samples }}" required>
           </label>
 
           <div class="dropzone-wrap">
             <div class="dropzone" data-target="file-zone-1">
               <input id="file-zone-1" class="dropzone-input" type="file" name="image_1" accept="image/*">
-              <p class="dropzone-title">Imagen 1</p>
-              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
-              <img class="dropzone-preview" alt="Vista previa imagen 1" hidden>
+              <p class="dropzone-title">{% trans "Imagen 1" %}</p>
+              <p class="dropzone-hint">{% trans "Arrastra una imagen aqui o haz clic para seleccionar" %}</p>
+              <img class="dropzone-preview" alt="{% trans 'Vista previa imagen 1' %}" hidden>
             </div>
 
             <div class="dropzone" data-target="file-zone-2">
               <input id="file-zone-2" class="dropzone-input" type="file" name="image_2" accept="image/*">
-              <p class="dropzone-title">Imagen 2</p>
-              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
-              <img class="dropzone-preview" alt="Vista previa imagen 2" hidden>
+              <p class="dropzone-title">{% trans "Imagen 2" %}</p>
+              <p class="dropzone-hint">{% trans "Arrastra una imagen aqui o haz clic para seleccionar" %}</p>
+              <img class="dropzone-preview" alt="{% trans 'Vista previa imagen 2' %}" hidden>
             </div>
           </div>
         </section>
 
         <div class="actions">
-          <button type="submit">Calcular</button>
-          <a class="link" href="/tolerances/">Volver al indice</a>
-          <button type="submit" formaction="{% url 'tolerances_pin_hole_pdf' %}" formmethod="post">Descargar PDF</button>
+          <button type="submit">{% trans "Calcular" %}</button>
+          <a class="link" href="/tolerances/">{% trans "Volver al indice" %}</a>
+          <button type="submit" formaction="{% url 'tolerances_pin_hole_pdf' %}" formmethod="post" formtarget="_blank">{% trans "Descargar PDF" %}</button>
         </div>
       </form>
 
       {% if error %}
-      <div class="error">Error: {{ error }}</div>
+      <div class="error">{% trans "Error:" %} {{ error }}</div>
       {% endif %}
 
       {% if result %}
       <section class="results">
-        <h2>Resultados</h2>
+        <h2>{% trans "Resultados" %}</h2>
         <div class="result-grid">
           <article>
             <h3>Pin</h3>
-            <p>Max: {{ result.pin.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.pin.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.pin.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.pin.sigma|floatformat:3 }} mm</p>
+            <p>{% trans "Max:" %} {{ result.pin.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.pin.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.pin.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.pin.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Agujero</h3>
-            <p>Max: {{ result.hole.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.hole.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.hole.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.hole.sigma|floatformat:3 }} mm</p>
+            <h3>{% trans "Agujero" %}</h3>
+            <p>{% trans "Max:" %} {{ result.hole.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.hole.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.hole.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.hole.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Ajuste</h3>
-            <p>Tipo: <strong>{{ result.gap.fit_type }}</strong></p>
-            <p>Holgura maxima: {{ result.gap.max_clearance|floatformat:3 }} mm</p>
-            <p>Holgura minima: {{ result.gap.min_clearance|floatformat:3 }} mm</p>
-            <p>Media (samples): {{ result.gap.mean_samples|floatformat:3 }} mm</p>
-            <p>Sigma (samples): {{ result.gap.sigma_samples|floatformat:3 }} mm</p>
+            <h3>{% trans "Ajuste" %}</h3>
+            <p>{% trans "Tipo:" %} <strong>{{ result.gap.fit_type }}</strong></p>
+            <p>{% trans "Holgura maxima:" %} {{ result.gap.max_clearance|floatformat:3 }} mm</p>
+            <p>{% trans "Holgura minima:" %} {{ result.gap.min_clearance|floatformat:3 }} mm</p>
+            <p>{% trans "Media (samples):" %} {{ result.gap.mean_samples|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma (samples):" %} {{ result.gap.sigma_samples|floatformat:3 }} mm</p>
           </article>
         </div>
 
         {% if histogram_base64 %}
         <section class="histogram-block">
-          <h3>Histograma de la Resta de Diametros (Agujero - Pin)</h3>
+          <h3>{% trans "Histograma de la Resta de Diametros (Agujero - Pin)" %}</h3>
           <img
             class="histogram-image"
             src="data:image/png;base64,{{ histogram_base64 }}"
-            alt="Histograma de la diferencia entre diametro del agujero y del pin"
+            alt="{% trans 'Histograma de la diferencia entre diametro del agujero y del pin' %}"
           >
         </section>
         {% endif %}
@@ -158,5 +159,7 @@
   </main>
 {% endblock %}
 {% block extra_js %}
+  <script src="{% url 'javascript-catalog' %}"></script>
   <script src="{% static 'tolerances/js/pin-hole-dropzones.js' %}"></script>
+  <script src="{% static 'global/js/form-loading.js' %}"></script>
 {% endblock %}

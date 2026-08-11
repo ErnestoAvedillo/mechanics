@@ -2,6 +2,7 @@ import base64
 import io
 
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
@@ -15,7 +16,7 @@ from tolerances.tools.draw_image_if_present import _draw_image_if_present
 
 def pivot_bushing_hole_radial_pdf(request):
     if request.method != "POST":
-        return HttpResponse("Usa el formulario de pivot-bushing-hole para generar el PDF.", status=405)
+        return HttpResponse(_("Usa el formulario de pivot-bushing-hole para generar el PDF."), status=405)
 
     values = {
         "pin_nominal": _to_float(request.POST.get("pin_nominal"), 0.0),
@@ -68,13 +69,13 @@ def pivot_bushing_hole_radial_pdf(request):
         wall_thickness = (outer_bushing - inner_bushing) / 2
         system_clearance = hole - pin - (outer_bushing - inner_bushing)
 
-        # Generar histogramas
+        # Generate histograms
         histogram = Hystogram(
             dimension=interf_tube_bushing,
             bins=50,
-            xlabel="Interferencia Tubo-Casquillo (mm)",
-            ylabel="Densidad",
-            title="Histograma de Interferencia Tubo-Casquillo",
+            xlabel=_("Interferencia Tubo-Casquillo (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma de Interferencia Tubo-Casquillo"),
         )
         hist_interf_b64 = histogram.plot_to_base64_png()
         hist_interf_bytes = base64.b64decode(hist_interf_b64)
@@ -82,9 +83,9 @@ def pivot_bushing_hole_radial_pdf(request):
         histogram = Hystogram(
             dimension=wall_thickness,
             bins=50,
-            xlabel="Espesor de pared (mm)",
-            ylabel="Densidad",
-            title="Histograma de espesor de pared",
+            xlabel=_("Espesor de pared (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma de espesor de pared"),
         )
         hist_wall_b64 = histogram.plot_to_base64_png()
         hist_wall_bytes = base64.b64decode(hist_wall_b64)
@@ -92,9 +93,9 @@ def pivot_bushing_hole_radial_pdf(request):
         histogram = Hystogram(
             dimension=system_clearance,
             bins=50,
-            xlabel="Juego del sistema (mm)",
-            ylabel="Densidad",
-            title="Histograma del juego del sistema",
+            xlabel=_("Juego del sistema (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma del juego del sistema"),
         )
         hist_system_b64 = histogram.plot_to_base64_png()
         hist_system_bytes = base64.b64decode(hist_system_b64)
@@ -105,16 +106,16 @@ def pivot_bushing_hole_radial_pdf(request):
         pdf = canvas.Canvas(response, pagesize=A4)
         width, height = A4
 
-        # Página 1
+        # Page 1
         pdf.setFont("Helvetica-Bold", 16)
-        pdf.drawString(40, height - 40, "Reporte de Tolerancia Pivot-Bushing-Hole")
+        pdf.drawString(40, height - 40, _("Reporte de Tolerancia Pivot-Bushing-Hole"))
 
         pdf.setFont("Helvetica", 10)
         pdf.drawString(40, height - 62, f"Cp: {values['cp']:.3f} | Samples: {values['samples']}")
 
         y = height - 95
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Datos de Entrada")
+        pdf.drawString(40, y, _("Datos de Entrada"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -131,7 +132,7 @@ def pivot_bushing_hole_radial_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Resultados Calculados")
+        pdf.drawString(40, y, _("Resultados Calculados"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -157,7 +158,7 @@ def pivot_bushing_hole_radial_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, y, "Imagenes adjuntas")
+        pdf.drawString(40, y, _("Imagenes adjuntas"))
 
         image_1 = request.FILES.get("image_1")
         image_2 = request.FILES.get("image_2")
@@ -166,17 +167,17 @@ def pivot_bushing_hole_radial_pdf(request):
         image_height = 100
         image_y = y - 120
 
-        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, "Imagen 1")
-        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, "Imagen 2")
+        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, _("Imagen 1"))
+        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, _("Imagen 2"))
 
-        # Página 2: Histogramas
+        # Page 2: Histograms
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histogramas")
+        pdf.drawString(40, height - 40, _("Histogramas"))
 
-        # Histograma 1
+        # Histogram 1
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, height - 70, "Interferencia Tubo-Casquillo")
+        pdf.drawString(40, height - 70, _("Interferencia Tubo-Casquillo"))
         hist_stream = io.BytesIO(hist_interf_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -189,8 +190,8 @@ def pivot_bushing_hole_radial_pdf(request):
             mask='auto',
         )
 
-        # Histograma 2
-        pdf.drawString(40, height - 330, "Espesor de Pared")
+        # Histogram 2
+        pdf.drawString(40, height - 330, _("Espesor de Pared"))
         hist_stream = io.BytesIO(hist_wall_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -203,13 +204,13 @@ def pivot_bushing_hole_radial_pdf(request):
             mask='auto',
         )
 
-        # Página 3: Histograma Sistema
+        # Page 3: System histogram
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histograma del Sistema")
+        pdf.drawString(40, height - 40, _("Histograma del Sistema"))
 
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, height - 70, "Juego del Sistema")
+        pdf.drawString(40, height - 70, _("Juego del Sistema"))
         hist_stream = io.BytesIO(hist_system_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -227,4 +228,4 @@ def pivot_bushing_hole_radial_pdf(request):
         return response
 
     except Exception as exc:
-        return HttpResponse(f"Error al generar PDF: {str(exc)}", status=500)
+        return HttpResponse(_("Error al generar PDF: %(error)s") % {"error": str(exc)}, status=500)

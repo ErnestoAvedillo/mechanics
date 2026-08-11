@@ -1,0 +1,84 @@
+{% load static i18n %}
+
+<div class="spring-form-container">
+    <div class="diagram-wrapper">
+        <img src="{% static 'muelles/images/Muelle compresión cónico.jpg' %}" alt="{% trans 'Diagrama de muelle cónico' %}" class="spring-diagram">
+
+        <div class="input-overlay Deo-field" style="top: 15%; left: 46%;">
+            <span class="label" data-tooltip="{% trans 'Diámetro superior en mm' %}">{% trans "Diámetro medio superior" %}<</span>
+            <input type="number"
+                    step="0.001"
+                    name="diametro_medio_superior"
+                    id="diametro_medio_superior"
+                    value="{{ request.POST.diametro_medio_superior }}"
+                    required>
+        </div>
+
+        <div class="input-overlay Deu-field" style="top: 80%; left: 48%;">
+            <span class="label" data-tooltip="{% trans 'Diametro medio inferior (Deu) en mm' %}">{% trans "Diámetro medio inferior" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="diametro_medio_inferior"
+                    id="diametro_medio_inferior"
+                    value="{{ request.POST.diametro_medio_inferior }}"
+                    required>
+        </div>
+
+        <div class="input-overlay nt-field" style="top:15%; left: 15%;">
+            <span class="label" data-tooltip="{% trans 'Paso en la parte superior del muelle' %}">{% trans "Paso superior" %}</span>
+            <input type="number"
+                    step="0.01"
+                    name="pitch_superior"
+                    id="pitch_superior"
+                    value="{{ request.POST.pitch_superior }}"
+                    required>
+        </div>
+
+        <div class="input-overlay nt-field" style="top: 60%; left: 8%;">
+            <span class="label" data-tooltip="{% trans 'Paso en la parteinferiro del muelle' %}">{% trans "Paso inferior" %}</span>
+            <input type="number"
+                    step="0.01"
+                    name="pitch_inferior"
+                    id="pitch_inferior"
+                    value="{{ request.POST.pitch_inferior }}"
+                    required>
+        </div>
+
+        <div class="input-overlay L0-field" style="top: 46%; left: 95%;">
+            <span class="label" data-tooltip="{% trans 'Longitud libre en mm' %}">{% trans "Longitud libre" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="longitud_libre"
+                    id="longitud_libre"
+                    value="{{ request.POST.longitud_libre }}"
+                    required>
+        </div>
+
+        <div class="input-overlay A1-field" style="top: 55%; left: 86%;">
+            <span class="label" data-tooltip="{% trans '1 posición carga' %}">{% trans "1 posición carga" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="longitud_inicial"
+                    id="longitud_inicial"
+                    value="{{ request.POST.longitud_inicial }}">
+        </div>
+
+        <div class="input-overlay A2-field" style="top: 65%; left: 76%;">
+            <span class="label" data-tooltip="{% trans 'Segunda posición de carga' %}">{% trans "2 posición carga" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="longitud_final"
+                    id="longitud_final"
+                    value="{{ request.POST.longitud_final }}">
+        </div>
+    </div>
+
+    <h3>{% trans "Calcular" %}</h3>
+    <p>{% trans "Complete los datos del muelle cónico para obtener sus especificaciones tecnicas completas." %}</p>
+    <div class="form-actions">
+        <button type="submit" class="calculate-btn">{% trans "Calcular Especificaciones" %}</button>
+        <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_conico_pitch_variable_animacion' %}" formmethod="post" formtarget="_blank">{% trans "Crear Animación" %}</button>
+        <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_conico_pitch_variable_pdf' %}" formmethod="post" formtarget="_blank">{% trans "Crear Reporte PDF" %}</button>
+    </div>
+    <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
+</div>

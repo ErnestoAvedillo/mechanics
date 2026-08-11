@@ -1,0 +1,164 @@
+{% load static i18n %}
+
+<div class="spring-form-container">
+    <div class="diagram-wrapper">
+        <img src="{% static 'muelles/images/plano_muelle_2k.jpg' %}" alt="{% trans 'Diagrama de muelle 2K' %}" class="spring-diagram">
+
+        <div class="input-overlay Dm-field" style="top: 4%; left: 21%;">
+            <span class="label" data-tooltip="{% trans 'Diámetro medio (constante) en mm' %}">{% trans "Diámetro medio" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="diametro_medio"
+                    id="diametro_medio"
+                    value="{{ request.POST.diametro_medio }}"
+                    required>
+        </div>
+
+        <div class="input-overlay tramo1-field" style="top:23%; left: 50%;">
+            <span class="label" data-tooltip="{% trans 'Tramo 1: paso y longitud' %}">{% trans "Tramo 1" %}</span>
+            <input type="number"
+                    step="0.01"
+                    name="length_1"
+                    id="length_1"
+                    class="tramo-longitud-input"
+                    placeholder="{% trans 'longitud' %}"
+                    value="{{ request.POST.length_1 }}"
+                    required>
+            <input type="number"
+                    step="0.001"
+                    name="pitch_1"
+                    id="pitch_1"
+                    class="tramo-pitch-input"
+                    placeholder="{% trans 'paso (mm)' %}"
+                    value="{{ request.POST.pitch_1 }}"
+                    required>
+        </div>
+
+        <div class="input-overlay tramo2-field" style="top: 50%; left: 50%;">
+            <span class="label" data-tooltip="{% trans 'Tramo 2: paso y longitud' %}">{% trans "Tramo 2" %}</span>
+            <input type="number"
+                    step="0.01"
+                    name="length_2"
+                    id="length_2"
+                    class="tramo-longitud-input"
+                    placeholder="{% trans 'longitud' %}"
+                    value="{{ request.POST.length_2 }}"
+                    required>
+            <input type="number"
+                    step="0.001"
+                    name="pitch_2"
+                    id="pitch_2"
+                    class="tramo-pitch-input"
+                    placeholder="{% trans 'paso (mm)' %}"
+                    value="{{ request.POST.pitch_2 }}"
+                    required>
+        </div>
+
+        <div class="input-overlay tramo3-field" style="top: 83%; left: 50%;">
+            <span class="label" data-tooltip="{% trans 'Tramo 3: paso y longitud' %}">{% trans "Tramo 3" %}</span>
+            <input type="number"
+                    step="0.01"
+                    name="length_3"
+                    id="length_3"
+                    class="tramo-longitud-input"
+                    placeholder="{% trans 'longitud' %}"
+                    value="{{ request.POST.length_3 }}"
+                    required>
+            <input type="number"
+                    step="0.001"
+                    name="pitch_3"
+                    id="pitch_3"
+                    class="tramo-pitch-input"
+                    placeholder="{% trans 'paso (mm)' %}"
+                    value="{{ request.POST.pitch_3 }}"
+                    required>
+        </div>
+
+        <div class="input-overlay L0-field" style="top: 50%; left: 93%;">
+            <span class="label" data-tooltip="{% trans 'Longitud libre en mm (calculada: suma de longitudes de cada tramo)' %}">{% trans "Longitud libre" %}</span>
+            <input type="text"
+                    name="longitud_libre"
+                    id="longitud_libre"
+                    class="calculated-field"
+                    value="{{ request.POST.longitud_libre }}"
+                    readonly
+                    tabindex="-1"
+                    aria-readonly="true">
+        </div>
+
+        <div class="input-overlay L0-field" style="top: 10%; left: 75%;">
+            <span class="label" data-tooltip="{% trans 'Número total de espiras (calculada: suma de longitudes / paso en cada tramo)' %}">{% trans "No total espiras" %}</span>
+            <input type="text"
+                    name="numero_espiras"
+                    id="numero_espiras"
+                    class="calculated-field"
+                    value="{{ request.POST.numero_espiras }}"
+                    readonly
+                    tabindex="-1"
+                    aria-readonly="true">
+        </div>
+
+        <div class="input-overlay A1-field" style="top: 65%; left: 80%;">
+            <span class="label" data-tooltip="{% trans '1ª posición carga' %}">{% trans "1 posición carga" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="longitud_inicial"
+                    id="pos_carga_1"
+                    value="{{ request.POST.longitud_inicial }}">
+        </div>
+
+        <div class="input-overlay A2-field" style="top: 75%; left: 68%;">
+            <span class="label" data-tooltip="{% trans '2ª posición de carga' %}">{% trans "2 posición carga" %}</span>
+            <input type="number"
+                    step="0.001"
+                    name="longitud_final"
+                    id="pos_carga_2"
+                    value="{{ request.POST.longitud_final }}">
+        </div>
+    </div>
+
+    <h3>{% trans "Calcular" %}</h3>
+    <p>{% trans "Complete los datos de los tres tramos del muelle 2K para obtener sus especificaciones tecnicas completas." %}</p>
+    <div class="form-actions">
+        <button type="submit" class="calculate-btn" data-loading-text="{% trans 'Calculando...' %}">{% trans "Calcular Especificaciones" %}</button>
+        <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_2k_animacion' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando animación...' %}">{% trans "Crear Animación" %}</button>
+        <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_2k_pdf' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando PDF...' %}">{% trans "Crear Reporte PDF" %}</button>
+    </div>
+    <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lengthIds = ['length_1', 'length_2', 'length_3'];
+            const pitchIds = ['pitch_1', 'pitch_2', 'pitch_3'];
+            const output1 = document.getElementById('longitud_libre');
+            const output2 = document.getElementById('numero_espiras');
+            if (!output1 || !output2) {
+                return;
+            }
+
+            function recalcular() {
+                let total_length = 0;
+                let total_coils = 0;
+                let hasValue = false;
+                for (let i = 0; i < lengthIds.length; i++) {
+                    const length = parseFloat(document.getElementById(lengthIds[i]).value);
+                    const pitch = parseFloat(document.getElementById(pitchIds[i]).value);
+                    if (!isNaN(length)) {
+                        total_length += length;
+                        total_coils += length / pitch;
+                        hasValue = true;
+                    }
+                }
+                output1.value = hasValue ? total_length.toFixed(2) : '';
+                output2.value = hasValue ? total_coils.toFixed(2) : '';
+            }
+
+            lengthIds.concat(pitchIds).forEach(function (id) {
+                const field = document.getElementById(id);
+                if (field) {
+                    field.addEventListener('input', recalcular);
+                }
+            });
+            recalcular();
+        });
+    </script>
+</div>

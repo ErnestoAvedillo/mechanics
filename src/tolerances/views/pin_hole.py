@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
@@ -65,11 +66,11 @@ def pin_hole_calculator(request):
             min_clearance = gap.mean.magnitude - 4 * gap.sigma.magnitude
 
             if max_clearance < 0 and min_clearance < 0:
-                fit_type = "Apriete (Interference fit)"
+                fit_type = _("Apriete (Interference fit)")
             elif max_clearance > 0 and min_clearance > 0:
-                fit_type = "Juego (Clearance fit)"
+                fit_type = _("Juego (Clearance fit)")
             else:
-                fit_type = "Transicion (Transition fit)"
+                fit_type = _("Transicion (Transition fit)")
 
             result = {
                 "pin": {
@@ -98,9 +99,9 @@ def pin_hole_calculator(request):
             histogram = Hystogram(
                 dimension=gap,
                 bins=50,
-                xlabel="Diferencia de diametros (mm)",
-                ylabel="Densidad",
-                title="Histograma de (Agujero - Pin)",
+                xlabel=_("Diferencia de diametros (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma de (Agujero - Pin)"),
             )
             histogram_base64 = histogram.plot_to_base64_png()
         except Exception as exc:

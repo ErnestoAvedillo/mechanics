@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Asistente Chat RAG - Specs{% endblock %}
+{% block title %}{% trans "Asistente Chat RAG" %} - Specs{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
@@ -10,33 +10,34 @@
 {% block content %}
 <div class="container mt-4">
     <div class="chat-container">
-        <!-- Encabezado del Chat -->
+        <!-- Chat header -->
         <div style="background: #2c3e50; color: white; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="margin: 0; font-weight: 600;">🤖 Lola Specs: Asistente Senior</h4>
-            <span style="background: #c6f6d5; color: #22543d; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;">RAG Conectado</span>
-        </div>
-        
-        <!-- Área de mensajes -->
-        <div class="chat-messages" id="chat-window">
-            <div style="background: #e0f2fe; border: 1px solid #bae3fd; color: #0369a1; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
-                <strong>Bienvenido a Lola Specs.</strong> Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta.
-            </div>
-            <!-- Los mensajes inyectados por JS irán aquí -->
+            <h4 style="margin: 0; font-weight: 600;">🤖 {% trans "Lola Specs: Asistente Senior" %}</h4>
+            <span style="background: #c6f6d5; color: #22543d; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;">{% trans "RAG Conectado" %}</span>
         </div>
 
-        <!-- Área de entrada -->
+        <!-- Messages area -->
+        <div class="chat-messages" id="chat-window">
+            <div style="background: #e0f2fe; border: 1px solid #bae3fd; color: #0369a1; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+                <strong>{% trans "Bienvenido a Lola Specs." %}</strong> {% trans "Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta." %}
+            </div>
+            <!-- Messages injected by JS will go here -->
+        </div>
+
+        <!-- Input area -->
         <div class="chat-input-area">
             <form id="chat-form">
                 {% csrf_token %}
                 <div class="chat-input-group">
-                    <input type="text" id="user-input" class="form-control" placeholder="Ej. ¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?" required>
-                    <button class="btn btn-primary" type="submit" id="send-btn" style="white-space: nowrap;">Enviar y Consultar ✨</button>
+                    <input type="text" id="user-input" class="form-control" placeholder="{% trans '¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?' %}" required>
+                    <button class="btn btn-primary" type="submit" id="send-btn" style="white-space: nowrap;">{% trans "Enviar y Consultar" %} ✨</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<script src="{% url 'javascript-catalog' %}"></script>
 <script>
 document.getElementById('chat-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -45,13 +46,13 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
     const query = input.value;
     if (!query) return;
 
-    // Añadir mensaje del usuario (burbuja de usuario)
+    // Add the user message (user bubble)
     window.innerHTML += `<div class="message-user">${query}</div><div style="clear: both;"></div>`;
     input.value = '';
 
-    // Spinner de carga
+    // Loading spinner
     const loaderId = 'loader-' + Date.now();
-    window.innerHTML += `<div id="${loaderId}" class="message-bot" style="color: #718096; font-style: italic;">🤔 Buscando en tus normativas...</div><div style="clear: both;"></div>`;
+    window.innerHTML += `<div id="${loaderId}" class="message-bot" style="color: #718096; font-style: italic;">🤔 ${gettext('Buscando en tus normativas...')}</div><div style="clear: both;"></div>`;
     window.scrollTop = window.scrollHeight;
 
     try {
@@ -68,20 +69,21 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         
         const data = await response.json();
         document.getElementById(loaderId).remove();
-
+        console.log('RAG server response:', data);
         if (data.response) {
-            let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (Relevancia: ${Math.round(s.score*100)}%)</span>`).join('');
+            let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
             window.innerHTML += `
                 <div class="message-bot">
                     <div style="white-space: pre-wrap; line-height: 1.5; margin-bottom: 0.75rem;">${data.response}</div>
                     <div style="border-top: 1px solid #edf2f7; padding-top: 0.5rem;">${sourcesHtml}</div>
                 </div><div style="clear: both;"></div>`;
         } else {
-            window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ Error: ${data.error}</div><div style="clear: both;"></div>`;
+            window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ ${gettext('Error')}: ${data.error}</div><div style="clear: both;"></div>`;
         }
     } catch (err) {
         document.getElementById(loaderId).remove();
-        window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ Error interno de conexión al servidor RAG.</div><div style="clear: both;"></div>`;
+        console.error('Query error:', err);
+        window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ ${gettext('Error interno de conexión al servidor RAG.')}</div><div style="clear: both;"></div>`;
     }
     window.scrollTop = window.scrollHeight;
 });

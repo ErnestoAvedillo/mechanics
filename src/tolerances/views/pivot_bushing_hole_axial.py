@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
@@ -85,9 +86,9 @@ def pivot_bushing_hole_axial_calculator(request):
             histogram = Hystogram(
                 dimension=system_clearance,
                 bins=50,
-                xlabel="Juego del sistema (mm)",
-                ylabel="Densidad",
-                title="Histograma del juego del sistema",
+                xlabel=_("Juego del sistema (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma del juego del sistema"),
             )
             hist_system_clearance_base64 = histogram.plot_to_base64_png()
 

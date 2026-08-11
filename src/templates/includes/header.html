@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
 
 {% include 'includes/sidebar.html' %}
@@ -17,21 +17,27 @@
         <span></span>
       </button>
 
-      <!-- <ul class="nav-menu" id="navMenu">
-        <li><a href="/" class="nav-link">Inicio</a></li>
-        <li><a href="/muelles/" class="nav-link">Muelles</a></li>
-        <li><a href="/tolerances/" class="nav-link">Tolerancias</a></li>
-        <li><a href="/specs/chat/" class="nav-link">Especificaciones</a></li>
-        <li><a href="/contacto/" class="nav-link nav-cta">Contacto</a></li>
-      </ul>-->
       <ul class="nav-menu" id="navMenu">
-          {% if not user.is_authenticated %} 
-            <li><a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a></li>
-            <li><a href="{% url 'signup' %}" class="nav-link">Crear Cuenta</a></li>
+          {% if not user.is_authenticated %}
+            <li><a href="{% url 'menuapp:login' %}" class="nav-link">{% trans "Iniciar Sesión" %}</a></li>
+            <li><a href="{% url 'menuapp:signup' %}" class="nav-link">{% trans "Crear Cuenta" %}</a></li>
           {% else %}
-            <li><p class="text-success">Bienvenido, <strong>{{ user.username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.</p></li>
-            <li><a href="{% url 'logout' %}" class="nav-link">Cerrar Sesión</a></li>
+            <li><p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p></li>
+            <li><a href="{% url 'menuapp:logout' %}" class="nav-link">{% trans "Cerrar Sesión" %}</a></li>
           {% endif %}
+          <li class="lang-switcher-item">
+            <form action="{% url 'set_language' %}" method="post" class="lang-switcher">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.path }}">
+              {% get_current_language as CURRENT_LANGUAGE %}
+              <select name="language" class="lang-select" onchange="this.form.submit()" aria-label="{% trans 'Idioma' %}">
+                {% for lang_code, lang_name in LANGUAGES %}
+                  <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{{ lang_name }}</option>
+                {% endfor %}
+              </select>
+            </form>
+          </li>
+      </ul>
     </div>
   </nav>
 

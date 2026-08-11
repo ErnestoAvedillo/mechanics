@@ -2,7 +2,7 @@ from pydantic import model_validator, field_validator
 from pint import UnitRegistry
 from typing import Optional
 from tolerances.pymodels.dimension import Dimension, GausianDimensionGenerator
-from tolerances.classes.hystogram import Hystogram
+from .hystogram import Hystogram
 unit = UnitRegistry()
 
 

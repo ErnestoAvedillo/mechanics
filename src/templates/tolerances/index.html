@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ titulo }} - El Menú de Ernesto®{% endblock %}
 
@@ -16,48 +16,48 @@
         <div class="menu-options">
             <div class="option-card">
                 <a href="{% url 'tolerances_pin_hole' %}">
-                    <h3>Cálculo de Tolerancias diametral Pin Agujero</h3>
-                    <p>Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado</p>
-                    <img class="preview-img" src="{% static '/tolerances/img/PinHole.png' %}" alt="Ajuste Pin-Hole">
+                    <h3>{% trans "Cálculo de Tolerancias diametral Pin Agujero" %}</h3>
+                    <p>{% trans "Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado" %}</p>
+                    <img class="preview-img" src="{% static '/tolerances/images/PinHole.png' %}" alt="{% trans 'Ajuste Pin-Hole' %}">
                 </a>
             </div>
             <div class="option-card">
                 <a href="{% url 'tolerances_pivot_bushing_hole_radial' %}">
-                    <h3>Tolerancias radiales pivot-bushing-agujero</h3>
-                    <p>Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado u holgado</p>
-                    <img class="preview-img" src="{% static '/tolerances/img/Pivot_pin_system_radial.png' %}" alt="Eje Casquillo Agujero">
+                    <h3>{% trans "Tolerancias radiales pivot-bushing-agujero" %}</h3>
+                    <p>{% trans "Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado u holgado" %}</p>
+                    <img class="preview-img" src="{% static '/tolerances/images/Pivot_pin_system_radial.png' %}" alt="{% trans 'Eje Casquillo Agujero' %}">
                 </a>
             </div>
             <div class="option-card">
                 <a href="{% url 'tolerances_pivot_bushing_hole_axial' %}">
-                    <h3>Tolerancias axiales pivot-bushing-agujero</h3>
-                    <p>Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado</p>
-                    <img class="preview-img" src="{% static '/tolerances/img/Pivot_pin_system_axial.png' %}" alt="Eje Casquillo Agujero">
+                    <h3>{% trans "Tolerancias axiales pivot-bushing-agujero" %}</h3>
+                    <p>{% trans "Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado" %}</p>
+                    <img class="preview-img" src="{% static '/tolerances/images/Pivot_pin_system_axial.png' %}" alt="{% trans 'Eje Casquillo Agujero' %}">
                 </a>
             </div>
             <div class="option-card">
                 <a href="{% url 'tolerances_insert_support' %}">
-                    <h3>Tolerancias axiales pivot-bushing-agujero</h3>
-                    <p>Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado</p>
-                    <img class="preview-img" src="{% static '/tolerances/img/Spacer_Housing.png' %}" alt="Eje Casquillo Agujero">
+                    <h3>{% trans "Tolerancias axiales pivot-bushing-agujero" %}</h3>
+                    <p>{% trans "Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado" %}</p>
+                    <img class="preview-img" src="{% static '/tolerances/images/Spacer_Housing.png' %}" alt="{% trans 'Eje Casquillo Agujero' %}">
                 </a>
             </div>
             <div class="option-card">
-                <a href="#" onclick="alert('Próximamente disponible')">
-                    <h3>Simulación de Monte Carlo en el cálculo de tolerancias</h3>
-                    <p>Explicación de la simulación de Monte Carlo en el cálculo de tolerancias</p>
+                <a href="{% url 'video_tolerancias_absolutas' %}?v=p3TKKJof8W4" target="_blank" rel="noopener noreferrer">
+                    <h3>{% trans "Cálculo de tolerancias absolutas" %}</h3>
+                    <p>{% trans "Operaciones y cálculos entre dimensiones con tolerancias absolutas" %}</p>
                 </a>
             </div>
             <div class="option-card">
-                <a href="#" onclick="alert('Próximamente disponible')">
-                    <h3>Tolerancia Sesgada (Skewed)</h3>
-                    <p>Explicación de tolerancias con distribución sesgada</p>
+                <a href="{% url 'video_tolerancias_absolutas' %}?v=c8cum5WH6Ec" target="_blank" rel="noopener noreferrer">
+                    <h3>{% trans "Simulación de Monte Carlo en el cálculo de tolerancias" %}</h3>
+                    <p>{% trans "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias" %}</p>
                 </a>
             </div>
             <div class="option-card">
-                <a href="#" onclick="alert('Próximamente disponible')">
-                    <h3>Cálculo de tolerancias absolutas</h3>
-                    <p>Operaciones y cálculos entre dimensiones con tolerancias absolutas</p>
+                <a href="#" onclick="alert('{% trans "Próximamente disponible" %}')">
+                    <h3>{% trans "Tolerancia Sesgada (Skewed)" %}</h3>
+                    <p>{% trans "Explicación de tolerancias con distribución sesgada" %}</p>
                 </a>
             </div>
         </div>

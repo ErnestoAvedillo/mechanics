@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Find or create the text node after the span.
         const span = toggleLabel.querySelector('.toggle-switch');
         let textNode = span ? span.nextSibling : null;
-        const newText = shotPeeningToggle.checked ? ' Activado' : ' Desactivado';
+        const newText = shotPeeningToggle.checked ? ' ' + gettext('Activado') : ' ' + gettext('Desactivado');
 
         if (textNode && textNode.nodeType === Node.TEXT_NODE) {
             textNode.textContent = newText;

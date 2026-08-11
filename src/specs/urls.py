@@ -6,6 +6,7 @@ app_name = 'specs'
 urlpatterns = [
     path('index/', views.index, name='index'),
     path('handling/', views.document_list, name='handling'),
+    path('handling/view/<int:doc_id>/', views.document_view, name='document_view'),
     path('handling/delete/<int:doc_id>/', views.document_delete, name='document_delete'),
     path('handling/update/<int:doc_id>/', views.document_update, name='document_update'),
     path('upload/', views.upload_document, name='upload_document'),

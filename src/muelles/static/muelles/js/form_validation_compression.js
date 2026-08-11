@@ -1,9 +1,9 @@
 /**
- * Validación y cálculo automático del formulario de muelles
+ * Validation and automatic calculation for the spring form
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('form_validation_compression.js cargado');
+    console.log('form_validation_compression.js loaded');
     
     const form = document.querySelector('form');
     const materialInput = document.getElementById('material');
@@ -16,25 +16,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const longitud_finalInput = document.getElementById('longitud_final');
     
     if (!form || !materialInput) {
-        console.error('No se encontró el formulario o los inputs necesarios');
+        console.error('Could not find the form or the required inputs');
         return;
     }
     
-    // Variables para debounce
+    // Function to get the CSRF token
+    function getCsrfToken() {
+        // Try to get it from the hidden input
+        let token = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+        if (token) return token;
+        
+        // Get it from the cookie as a fallback
+        const name = 'csrftoken';
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    // Debounce variables
     let timeoutLongitudSolida = null;
     let timeoutPitch = null;
     let timeoutLongitudesTrabajo = null;
-    const DEBOUNCE_DELAY = 500; // esperar 500ms sin escribir antes de calcular
+    const DEBOUNCE_DELAY = 500; // wait 500ms without typing before calculating
     
     /**
-     * Calcula y rellena la longitud sólida
+     * Calculates and fills in the solid length
      */
     async function calcularLongitudSolida() {
         const material = materialInput.value.trim();
         const diametroHilo = diametroHiloInput?.value?.trim();
         const numeroEspiras = numeroEspirasInput?.value?.trim();
         
-        // Solo calcular si están todos los datos
+        // Only calculate if all the data is present
         if (!material || !diametroHilo || !numeroEspiras) {
             if (longitud_solidaInput) {
                 longitud_solidaInput.value = '';
@@ -48,36 +70,36 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('diametro_hilo', parseFloat(diametroHilo));
             formData.append('numero_espiras', parseFloat(numeroEspiras));
             
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
-            if (csrfToken) {
-                formData.append('csrfmiddlewaretoken', csrfToken);
-            }
+            const csrfToken = getCsrfToken();
             
-            console.log('Llamando API con:', { material, diametroHilo, numeroEspiras });
+            console.log('Calling API with:', { material, diametroHilo, numeroEspiras });
             
             const response = await fetch('/muelles/api/calculate-blocking-length/', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken || ''
+                }
             });
             
             if (response.ok) {
                 const data = await response.json();
-                console.log('Longitud sólida obtenida:', data.longitud_bloqueo);
+                console.log('Solid length obtained:', data.longitud_bloqueo);
                 
                 if (longitud_solidaInput && data.longitud_bloqueo) {
                     longitud_solidaInput.value = data.longitud_bloqueo.toFixed(2);
                 }
             } else {
                 const error = await response.json();
-                console.error('Error del servidor:', error.error);
+                console.error('Server error:', error.error);
             }
         } catch (error) {
-            console.error('Error al obtener longitud sólida:', error);
+            console.error('Error getting solid length:', error);
         }
     }
 
-    /** Calcula y rellena el pitch del muelle
-     * Agrega validación para asegurar que el pitch no sea menor o igual al diámetro del hilo, mostrando un modal de error si esto ocurre
+    /** Calculates and fills in the spring pitch
+     * Adds validation to ensure the pitch is not less than or equal to the wire diameter, showing an error modal if this occurs
      */
     async function calculo_pitch() {
         const material = materialInput.value.trim();
@@ -85,15 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const numeroEspiras = numeroEspirasInput?.value?.trim();
         const longitud_libre = longitud_libreInput?.value?.trim();
         
-        // Solo calcular si están todos los datos
+        // Only calculate if all the data is present
         if (!material || !diametroHilo || !numeroEspiras || !longitud_libre) {
             if (pitchInput) {
-                longitud_inicialInput.disabled = true;
-                longitud_inicialInput.style.opacity = '0.5';
-                longitud_inicialInput.style.cursor = 'not-allowed';
-                longitud_finalInput.disabled = true;
-                longitud_finalInput.style.opacity = '0.5';
-                longitud_finalInput.style.cursor = 'not-allowed';
+                // longitud_inicialInput.disabled = true;
+                // longitud_inicialInput.style.opacity = '0.5';
+                // longitud_inicialInput.style.cursor = 'not-allowed';
+                // longitud_finalInput.disabled = true;
+                // longitud_finalInput.style.opacity = '0.5';
+                // longitud_finalInput.style.cursor = 'not-allowed';
                 pitchInput.value = '';
             }
             return;
@@ -105,25 +127,25 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('numero_espiras', parseFloat(numeroEspiras));
             formData.append('longitud_libre', parseFloat(longitud_libre));
             
-            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
-            if (csrfToken) {
-                formData.append('csrfmiddlewaretoken', csrfToken);
-            }
+            const csrfToken = getCsrfToken();
             
-            console.log('Llamando API para pitch con:', { material, diametroHilo, numeroEspiras, longitud_libre });
+            console.log('Calling pitch API with:', { material, diametroHilo, numeroEspiras, longitud_libre });
             
             const response = await fetch('/muelles/api/calculate-pitch/', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken || ''
+                }
             });
             
             if (response.ok) {
                 const data = await response.json();
-                console.log('Pitch obtenido:', data.pitch);
+                console.log('Pitch obtained:', data.pitch);
                 
                 if (pitchInput && data.pitch) {
                     if (data.pitch <= diametroHilo) {
-                        mostrarModal('Pitch no válido', 'El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados.');
+                        mostrarModal(gettext('Pitch no válido'), gettext('El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados.'));
                         pitchInput.value = '';
                         return;
                     }
@@ -137,17 +159,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else {
                 const error = await response.json();
-                console.error('Error del servidor al calcular pitch:', error.error);
+                console.error('Server error calculating pitch:', error.error);
             }
         } catch (error) {
-            console.error('Error al obtener pitch:', error);
+            console.error('Error getting pitch:', error);
         }
         
     }
 
     /**
-     * Validar que las longitudes de trabajo no sean mayores a la longitud libre o menores que la longitud sólida, mostrando un modal de error si esto ocurre
-     * Agrega validación para asegurar que la longitud de trabajo no sea menor o igual a la longitud sólida, mostrando un modal de error si esto ocurre
+     * Validates that the working lengths are not greater than the free length or less than the solid length, showing an error modal if this occurs
+     * Adds validation to ensure the working length is not less than or equal to the solid length, showing an error modal if this occurs
      */
     async function validar_longitudes_trabajo() {
         const longitud_libre = parseFloat(longitud_libreInput?.value?.trim());
@@ -161,64 +183,64 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             if (longitud_inicial) {
                 if (longitud_inicial >= longitud_libre) {
-                    mostrarModal('Longitud inicial no válida', 'La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud inicial no válida'), gettext('La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_inicial').value = '';
                     return;
                 }
                 if (longitud_inicial <= longitud_solida) {
-                    mostrarModal('Longitud inicial no válida', 'La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud inicial no válida'), gettext('La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_inicial').value = '';
                     return;
                 }
                 if (longitud_inicial <= longitud_final) {
-                    mostrarModal('Longitud inicial no válida', 'La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud inicial no válida'), gettext('La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_inicial').value = '';
                     return;
                 }
             }
             if (longitud_final) {
                 if (longitud_final >= longitud_libre) {
-                    mostrarModal('Longitud final no válida', 'La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud final no válida'), gettext('La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_final').value = '';
                     return;
                 }
                 if (longitud_final <= longitud_solida) {
-                    mostrarModal('Longitud final no válida', 'La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud final no válida'), gettext('La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_final').value = '';
                     return;
                 }
                 if (longitud_final >= longitud_inicial) {
-                    mostrarModal('Longitud final no válida', 'La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados.');
+                    mostrarModal(gettext('Longitud final no válida'), gettext('La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados.'));
                     document.getElementById('longitud_final').value = '';
                     return;
                 }
             }
         } catch (error) {
-            console.error('Error al validar longitudes de trabajo:', error);
+            console.error('Error validating working lengths:', error);
         }
 
     }
 
     /**
-     * Evento submit - validar material
+     * Submit event - validate material
      */
     form.addEventListener('submit', function(e) {
-        console.log('Evento submit capturado');
+        console.log('Submit event captured');
         
         const materialSeleccionado = materialInput.value.trim();
         
         if (!materialSeleccionado) {
             e.preventDefault();
-            console.log('Material no seleccionado - mostrando modal');
-            mostrarModal('Material no seleccionado', 'Debes seleccionar un material antes de calcular.');
+            console.log('Material not selected - showing modal');
+            mostrarModal(gettext('Material no seleccionado'), gettext('Debes seleccionar un material antes de calcular.'));
             return false;
         }
         
-        console.log('Material: ' + materialSeleccionado + ' - permitiendo envío');
+        console.log('Material: ' + materialSeleccionado + ' - allowing submit');
     });
     
     /**
-     * Listeners para cambios que disparan el cálculo de longitud sólida
+     * Listeners for changes that trigger the solid length calculation
      */
     const inputsTrigger = [materialInput, diametroHiloInput, numeroEspirasInput];
     
@@ -267,16 +289,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * Muestra un modal emergente con un mensaje
+ * Shows a popup modal with a message
  */
 function mostrarModal(titulo, mensaje) {
-    // Eliminar modal anterior si existe
+    // Remove the previous modal if it exists
     const modalAnterior = document.getElementById('validation-modal');
     if (modalAnterior) {
         modalAnterior.remove();
     }
     
-    // Crear overlay oscuro
+    // Create a dark overlay
     const overlay = document.createElement('div');
     overlay.id = 'validation-modal';
     overlay.style.cssText = `
@@ -292,7 +314,7 @@ function mostrarModal(titulo, mensaje) {
         z-index: 10000;
     `;
     
-    // Crear caja del modal
+    // Create the modal box
     const caja = document.createElement('div');
     caja.style.cssText = `
         background-color: white;
@@ -304,7 +326,7 @@ function mostrarModal(titulo, mensaje) {
         font-family: Arial, sans-serif;
     `;
     
-    // Título
+    // Title
     const tituloEl = document.createElement('h2');
     tituloEl.textContent = titulo;
     tituloEl.style.cssText = `
@@ -313,7 +335,7 @@ function mostrarModal(titulo, mensaje) {
         font-size: 18px;
     `;
     
-    // Mensaje
+    // Message
     const mensajeEl = document.createElement('p');
     mensajeEl.textContent = mensaje;
     mensajeEl.style.cssText = `
@@ -323,9 +345,9 @@ function mostrarModal(titulo, mensaje) {
         line-height: 1.5;
     `;
     
-    // Botón
+    // Button
     const boton = document.createElement('button');
-    boton.textContent = 'Entendido';
+    boton.textContent = gettext('Entendido');
     boton.style.cssText = `
         background-color: #d32f2f;
         color: white;
@@ -349,19 +371,19 @@ function mostrarModal(titulo, mensaje) {
         overlay.remove();
     };
     
-    // Cerrar al hacer click fuera del modal
+    // Close when clicking outside the modal
     overlay.onclick = function(e) {
         if (e.target === overlay) {
             overlay.remove();
         }
     };
     
-    // Armar el modal
+    // Assemble the modal
     caja.appendChild(tituloEl);
     caja.appendChild(mensajeEl);
     caja.appendChild(boton);
     overlay.appendChild(caja);
     document.body.appendChild(overlay);
     
-    console.log('Modal mostrado:', titulo);
+    console.log('Modal shown:', titulo);
 }

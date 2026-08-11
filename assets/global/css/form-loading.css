@@ -1,0 +1,27 @@
+/* Spinner shown on submit buttons while a form is being processed. */
+button.is-loading,
+input[type="submit"].is-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    cursor: wait;
+}
+
+button.is-loading::before,
+input[type="submit"].is-loading::before {
+    content: "";
+    flex: none;
+    width: 1em;
+    height: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: form-loading-spin 0.7s linear infinite;
+}
+
+@keyframes form-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,23 +1,23 @@
 /**
- * MÓDULO: Sincronización de Diámetros
+ * MODULE: Diameter Synchronization
  * 
- * Controla la sincronización automática y el bloqueo de campos de diámetros
- * en la calculadora de muelles.
+ * Controls the automatic synchronization and locking of diameter fields
+ * in the spring calculator.
  * 
- * Relaciones matemáticas:
+ * Mathematical relationships:
  * - D.ext = D.med + D.hilo
  * - D.int = D.med - D.hilo
  * - D.ext = D.int + 2*D.hilo
  */
 
 /**
- * Controla la disponibilidad de campos de geometría y sincroniza cálculos de diámetros.
- * Funcionalidades:
- * - Bloquea los campos de geometría hasta que se seleccione material y diámetro de hilo
- * - Muestra un mensaje cuando se intenta acceder a campos bloqueados
- * - Sincroniza automáticamente los tres diámetros (medio, exterior, interior)
- *   basándose en relaciones matemáticas (d_ext = d_med + d_hilo, etc)
- * - Previene entrada en campos deshabilitados
+ * Controls the availability of geometry fields and synchronizes diameter calculations.
+ * Features:
+ * - Locks the geometry fields until material and wire diameter are selected
+ * - Shows a message when trying to access locked fields
+ * - Automatically synchronizes the three diameters (mean, outer, inner)
+ *   based on mathematical relationships (d_ext = d_med + d_hilo, etc)
+ * - Prevents input in disabled fields
  */
 function setupGeometryFieldControlAndDiameterSync() {
     const materialSelect = document.getElementById('material');
@@ -61,7 +61,7 @@ function setupGeometryFieldControlAndDiameterSync() {
     function showGeometryBlockedMessage() {
         if (!blockedNotice) {
             blockedNotice = document.createElement('div');
-            blockedNotice.textContent = 'Geometría bloqueada: selecciona material y diámetro de hilo';
+            blockedNotice.textContent = gettext('Geometría bloqueada: selecciona material y diámetro de hilo');
             blockedNotice.style.cssText = [
                 'position: fixed',
                 'left: 50%',
@@ -114,29 +114,29 @@ function setupGeometryFieldControlAndDiameterSync() {
     function setupBlockedGeometryHandlers() {
         // Wrap each disabled field with visual layer that captures clicks
         geometryFields.forEach(field => {
-            // Listener directo en pointerdown (más confiable que click para disabled)
+            // Direct listener on pointerdown (more reliable than click for disabled)
             field.addEventListener('pointerdown', function (event) {
-                console.log('🔒 Pointerdown en campo:', field.id, 'Disabled:', field.disabled);
+                console.log('🔒 Pointerdown on field:', field.id, 'Disabled:', field.disabled);
                 if (field.disabled) {
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log('✋ Mostrando mensaje de bloqueado');
+                    console.log('✋ Showing blocked message');
                     showGeometryBlockedMessage();
                 }
             }, true);
 
-            // También mousedown como fallback
+            // Also mousedown as a fallback
             field.addEventListener('mousedown', function (event) {
-                console.log('🔒 Mousedown en campo:', field.id, 'Disabled:', field.disabled);
+                console.log('🔒 Mousedown on field:', field.id, 'Disabled:', field.disabled);
                 if (field.disabled) {
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log('✋ Mostrando mensaje de bloqueado (mousedown)');
+                    console.log('✋ Showing blocked message (mousedown)');
                     showGeometryBlockedMessage();
                 }
             }, true);
 
-            // Keydown para prevenir entrada por teclado
+            // Keydown to prevent keyboard input
             field.addEventListener('keydown', function (event) {
                 if (field.disabled) {
                     event.preventDefault();
@@ -145,11 +145,11 @@ function setupGeometryFieldControlAndDiameterSync() {
             });
         });
 
-        // Listener global como respaldo
+        // Global listener as a backup
         document.addEventListener('pointerdown', function (event) {
             const target = event.target;
             if (target.disabled && geometryFields.includes(target)) {
-                console.log('Global: Campo deshabilitado detectado');
+                console.log('Global: Disabled field detected');
                 event.preventDefault();
                 event.stopPropagation();
                 showGeometryBlockedMessage();
@@ -196,7 +196,7 @@ function setupGeometryFieldControlAndDiameterSync() {
     materialSelect.addEventListener('change', updateGeometryAvailability);
     wireDiameterInput.addEventListener('input', function () {
         updateGeometryAvailability();
-        // Cuando cambia el diámetro de hilo, recalcular basándose en diámetro medio si existe
+        // When the wire diameter changes, recalculate based on the mean diameter if it exists
         if (diametroMedioInput && diametroMedioInput.value) {
             syncDiameterFields(diametroMedioInput);
         } else if (diametroExteriorInput && diametroExteriorInput.value) {

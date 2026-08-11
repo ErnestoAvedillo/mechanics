@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
@@ -99,18 +100,18 @@ def insert_support_calculator(request):
             histogram = Hystogram(
                 dimension=diameter_interference,
                 bins=50,
-                xlabel="Diferencia de diametros (mm)",
-                ylabel="Densidad",
-                title="Histograma de interferencia Tubo Casquillo",
+                xlabel=_("Diferencia de diametros (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma de interferencia Tubo Casquillo"),
             )
             hist_diameter_interference_base64 = histogram.plot_to_base64_png()
 
             histogram = Hystogram(
                 dimension=clearance_height,
                 bins=50,
-                xlabel="Espesor de pared (mm)",
-                ylabel="Densidad",
-                title="Histograma de espesor de pared",
+                xlabel=_("Espesor de pared (mm)"),
+                ylabel=_("Densidad"),
+                title=_("Histograma de espesor de pared"),
             )
             hist_clearance_height_base64 = histogram.plot_to_base64_png()
             

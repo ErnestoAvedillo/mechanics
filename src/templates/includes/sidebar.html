@@ -1,19 +1,19 @@
-{% load static %}
-<!-- Boton hamburgesa menu emergente -->
- <button class="menu-toggle" aria-label="Abrir menú">
+{% load static i18n %}
+<!-- Hamburger button for the popup menu -->
+ <button class="menu-toggle" aria-label="{% trans 'Abrir menú' %}">
    <span></span>
    <span></span>
    <span></span>
  </button>
-<!-- Sidebar emergente -->
+<!-- Popup sidebar -->
 <nav class="sidebar">
-<h2>Menú</h2>
+<h2>{% trans "Menú" %}</h2>
 <ul class="sidebar-menu">
-  <li><a href="/">🏠 Inicio</a></li>
-  <li><a href="/muelles/">🔧 Muelles</a></li>
-  <li><a href="/tolerances/">📐 Tolerancias</a></li>
-  <li><a href="/specs/index/">📄 Especificaciones</a></li>
-  <li><a href="/contacto/">📞 Contacto</a></li>
+  <li><a href="/">🏠 {% trans "Inicio" %}</a></li>
+  <li><a href="/muelles/">🔧 {% trans "Muelles" %}</a></li>
+  <li><a href="/tolerances/">📐 {% trans "Tolerancias" %}</a></li>
+  <li><a href="/specs/index/">📄 {% trans "Especificaciones" %}</a></li>
+  <li><a href="/contacto/">📞 {% trans "Contacto" %}</a></li>
 </ul>
 </nav>
 <div class="sidebar-overlay"></div>

@@ -1,26 +1,23 @@
+# Web y Django
 django>=6.0.1
 gunicorn>=25.3.0
-matplotlib>=3.10.8
-pandas>=3.0.0
-pint>=0.25.2
-pydantic>=2.12.5
-pytest>=9.0.2
-reportlab>=4.4.4
-scikit-learn>=1.8.0
-scipy>=1.15.0
-playwright
-pytest-playwright
+
+# Base de Datos y Cache
 psycopg2-binary
 pymongo
-qdrant-client
-llama-index
-llama-parse
-llama-index-vector-stores-qdrant
-llama-index-llms-gemini
-llama-index-embeddings-gemini
-llama-index-embeddings-huggingface
-llama-index-postprocessor-flag-embedding-reranker
-llama-index-readers-file
-pypdf
-FlagEmbedding==1.4.0
-transformers<4.45.0
+redis>=5.0.1
+qdrant-client>=1.16.0,<1.19.0
+
+# Tareas en segundo plano
+celery>=5.3.0
+django-celery-beat>=2.5.0
+flower>=2.0.1
+
+# Utilidades y Testing
+pint>=0.25.2
+pydantic>=2.12.5
+reportlab>=4.4.4
+playwright
+pytest>=9.0.2
+pytest-playwright
+springcalc>=0.1.13

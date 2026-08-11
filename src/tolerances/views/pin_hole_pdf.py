@@ -2,6 +2,7 @@ import base64
 import io
 
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
@@ -30,12 +31,12 @@ def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):
         pdf.drawImage(image, x, y, width=width, height=height, preserveAspectRatio=True, mask='auto')
     except Exception:
         pdf.setFont("Helvetica", 9)
-        pdf.drawString(x, y + height + 6, f"{label} (no se pudo renderizar)")
+        pdf.drawString(x, y + height + 6, f"{label} ({_('no se pudo renderizar')})")
 
 
 def pin_hole_pdf(request):
     if request.method != "POST":
-        return HttpResponse("Usa el formulario de pin-hole para generar el PDF.", status=405)
+        return HttpResponse(_("Usa el formulario de pin-hole para generar el PDF."), status=405)
 
     values = {
         "pin_nominal": _to_float(request.POST.get("pin_nominal"), 0.0),
@@ -96,18 +97,18 @@ def pin_hole_pdf(request):
     min_clearance = gap.mean.magnitude - 4 * gap.sigma.magnitude
 
     if max_clearance < 0 and min_clearance < 0:
-        fit_type = "Apriete (Interference fit)"
+        fit_type = _("Apriete (Interference fit)")
     elif max_clearance > 0 and min_clearance > 0:
-        fit_type = "Juego (Clearance fit)"
+        fit_type = _("Juego (Clearance fit)")
     else:
-        fit_type = "Transicion (Transition fit)"
+        fit_type = _("Transicion (Transition fit)")
 
     histogram = Hystogram(
         dimension=gap,
         bins=50,
-        xlabel="Diferencia de diametros (mm)",
-        ylabel="Densidad",
-        title="Histograma de (Agujero - Pin)",
+        xlabel=_("Diferencia de diametros (mm)"),
+        ylabel=_("Densidad"),
+        title=_("Histograma de (Agujero - Pin)"),
     )
     histogram_b64 = histogram.plot_to_base64_png()
     histogram_bytes = base64.b64decode(histogram_b64)
@@ -119,14 +120,14 @@ def pin_hole_pdf(request):
     width, height = A4
 
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(40, height - 40, "Reporte de Tolerancia Pin-Hole")
+    pdf.drawString(40, height - 40, _("Reporte de Tolerancia Pin-Hole"))
 
     pdf.setFont("Helvetica", 10)
     pdf.drawString(40, height - 62, f"Cp: {values['cp']:.3f} | Samples: {values['samples']}")
 
     y = height - 95
     pdf.setFont("Helvetica-Bold", 12)
-    pdf.drawString(40, y, "Resultados")
+    pdf.drawString(40, y, _("Resultados"))
     y -= 16
 
     pdf.setFont("Helvetica", 10)
@@ -135,8 +136,8 @@ def pin_hole_pdf(request):
         f"Hole - Max: {max_hole:.3f} mm | Min: {min_hole:.3f} mm | Mean: {hole.mean.magnitude:.3f} mm | Sigma: {hole.sigma.magnitude:.3f} mm",
         f"Inner Bushing - Max: {max_inner_bushing:.3f} mm | Min: {min_inner_bushing:.3f} mm | Mean: {inner_bushing.mean.magnitude:.3f} mm | Sigma: {inner_bushing.sigma.magnitude:.3f} mm",
         f"Outer Bushing - Max: {max_outer_bushing:.3f} mm | Min: {min_outer_bushing:.3f} mm | Mean: {outer_bushing.mean.magnitude:.3f} mm | Sigma: {outer_bushing.sigma.magnitude:.3f} mm",
-        f"Ajuste: {fit_type}",
-        f"Holgura maxima: {max_clearance:.3f} mm | Holgura minima: {min_clearance:.3f} mm",
+        f"{_('Ajuste')}: {fit_type}",
+        f"{_('Holgura maxima')}: {max_clearance:.3f} mm | {_('Holgura minima')}: {min_clearance:.3f} mm",
         f"Gap samples - Mean: {gap.vector_samples.mean():.3f} mm | Sigma: {gap.vector_samples.std():.3f} mm",
     ]
 
@@ -146,7 +147,7 @@ def pin_hole_pdf(request):
 
     y -= 8
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(40, y, "Imagenes adjuntas")
+    pdf.drawString(40, y, _("Imagenes adjuntas"))
 
     image_1 = request.FILES.get("image_1")
     image_2 = request.FILES.get("image_2")
@@ -155,12 +156,12 @@ def pin_hole_pdf(request):
     image_height = 120
     image_y = y - 130
 
-    _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, "Imagen 1")
-    _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, "Imagen 2")
+    _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, _("Imagen 1"))
+    _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, _("Imagen 2"))
 
     hist_title_y = image_y - 20
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(40, hist_title_y, "Histograma (Agujero - Pin)")
+    pdf.drawString(40, hist_title_y, _("Histograma (Agujero - Pin)"))
 
     hist_stream = io.BytesIO(histogram_bytes)
     hist_img = ImageReader(hist_stream)

@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR ahora es /app/src, PROJECT_ROOT es /app
+# BASE_DIR is now /app/src, PROJECT_ROOT is /app
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent  # /app
 BASE_DIR = Path(__file__).resolve().parent.parent  # /app/src
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
     'menuapp',
     'muelles',
     'tolerances',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -73,7 +76,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mechanics.wsgi.application'
 
 
-# Database - Configuración para SQLite (necesaria para sessions)
+# Database - Configuration for SQLite (needed for sessions)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -91,18 +94,24 @@ DATABASES = {
     }
 }
 
-# Configuración de idioma y zona horaria
+# Language and timezone configuration
 LANGUAGE_CODE = 'es-es'
 TIME_ZONE = 'Europe/Madrid'
-USE_I18N = False
+USE_I18N = True
 USE_TZ = True
+
+LANGUAGES = [
+    ('es', 'Español'),
+    ('en', 'English'),
+]
+LOCALE_PATHS = [BASE_DIR / 'locale']
 
 # Login config
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # HTTPS/SSL Configuration
-# En desarrollo (cuando DEBUG=True), NUNCA redirigir a HTTPS
+# In development (when DEBUG=True), NEVER redirect to HTTPS
 if DEBUG:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
@@ -115,7 +124,7 @@ if DEBUG:
         'http://django:8000',
     ]
 else:
-    # En producción
+    # In production
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -131,16 +140,16 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 # CSRF Configuration
-# (Configurado arriba en el bloque if DEBUG)
+# (Configured above in the if DEBUG block)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# Apunta a assets/ donde están los archivos
+# Points to assets/ where the files are
 STATICFILES_DIRS = [PROJECT_ROOT / 'assets']
-# Django colecta aquí en producción
+# Django collects here in production
 STATIC_ROOT = PROJECT_ROOT / 'static_files/'
 
-# Configuración de email (usar variables de entorno en producción)
+# Email configuration (use environment variables in production)
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
@@ -151,10 +160,8 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = 'noreply@ernestoavedillo.com'
-MUELLES_MATERIAL_DIR = BASE_DIR / 'muelles' / 'material'
-MUELLES_MATERIALS_CSV = MUELLES_MATERIAL_DIR / 'materials.csv'
 
-# Configuración de MongoDB y Qdrant
+# MongoDB and Qdrant configuration
 import urllib.parse
 
 MONGO_DB_NAME = os.environ.get('MONGO_INITDB_DATABASE', os.environ.get('MONGO_DB_NAME', 'mechanics'))
@@ -177,3 +184,21 @@ GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
 GOOGLE_MODEL = os.environ.get('GOOGLE_MODEL', 'models/gemini-3.1-flash-lite-preview')
 HF_MODEL = os.environ.get('HF_MODEL', 'BAAI/bge-m3')
 HF_TOKEN = os.environ.get('HF_TOKEN', '')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+# Celery Beat - Periodic tasks
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'retry-pending-documents': {
+        'task': 'specs.tasks.retry_pending_documents',
+        'schedule': crontab(minute='*/10'),  # Cada 1 minutos
+    },
+    'remove-pending-registrations': {
+        'task': 'menuapp.tasks.remove_pending_registration',
+        'schedule': crontab(minute='*/15'),  # Cada 15 minutos
+    }
+}

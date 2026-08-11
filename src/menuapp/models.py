@@ -13,7 +13,7 @@ class EmailVerification(models.Model):
     is_verified = models.BooleanField(default=False)
 
     def is_expired(self):
-        # El código expira en 15 minutos
+        # The code expires in 15 minutes
         return timezone.now() > self.created_at + timedelta(minutes=15)
 
     @staticmethod

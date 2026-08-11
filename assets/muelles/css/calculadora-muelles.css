@@ -432,6 +432,47 @@
     background-color: #0056b3;
 }
 
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-actions .calculate-btn,
+.form-actions .animation-btn,
+.form-actions .pdf-btn {
+    width: auto;
+    flex: 1 1 200px;
+}
+
+.animation-btn {
+    background-color: #6f42c1;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.animation-btn:hover {
+    background-color: #59339c;
+}
+
+.pdf-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pdf-btn:hover {
+    background-color: #b02a37;
+}
+
 .results {
     background: #d4edda;
     border: 1px solid #c3e6cb;

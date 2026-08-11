@@ -1,9 +1,10 @@
-<!-- Resultados -->
+{% load i18n %}
+<!-- Results -->
 <div class="results-container">
     {% if resultado %}
         {% if resultado.error %}
             <div class="error-box">
-                <h4>Error:</h4>
+                <h4>{% trans "Error:" %}</h4>
                 <p class="error-text">{{ resultado.error }}</p>
                 {% if resultado.traceback %}
                 <pre class="traceback">{{ resultado.traceback }}</pre>
@@ -11,82 +12,103 @@
             </div>
         {% else %}
             <div class="muelle-specs-container">
-                <h3 class="muelle-title">Especificaciones Tecnicas del Muelle</h3>
+                <h3 class="muelle-title">{% trans "Especificaciones Tecnicas del Muelle" %}</h3>
 
                 <div class="specs-grid">
                     <div class="spec-card">
-                        <h4 class="spec-title material">Material</h4>
+                        <h4 class="spec-title material">{% trans "Material" %}</h4>
                         <div class="spec-content">
-                            <strong>Tipo:</strong> {% firstof resultado.material_nombre resultado.material 'N/D' %}<br>
-                            <strong>Modulo G:</strong> {% firstof resultado.modulo_corte resultado.shear_modulus 'N/D' %} <br>
-                            <strong>Modulo E:</strong> {% firstof resultado.modulo_young 'N/D' %}<br>
-                            <strong>Diametro hilo:</strong> {% firstof resultado.diametro_hilo 'N/D' %}  <br>
-                            <strong>Shot peening:</strong>
+                            <strong>{% trans "Tipo:" %}</strong> {% firstof resultado.material_nombre resultado.material 'N/D' %}<br>
+                            <strong>{% trans "Modulo G:" %}</strong> {% firstof resultado.modulo_corte resultado.shear_modulus 'N/D' %} <br>
+                            <strong>{% trans "Modulo E:" %}</strong> {% firstof resultado.modulo_young 'N/D' %}<br>
+                            <strong>{% trans "Diametro hilo:" %}</strong> {% firstof resultado.diametro_hilo 'N/D' %}  <br>
+                            <strong>{% trans "Shot peening:" %}</strong>
                                 <span class="result-value">
-                                    {% if resultado.shot_peening %}Si{% else %}No{% endif %}
+                                    {% if resultado.shot_peening %}{% trans "Si" %}{% else %}{% trans "No" %}{% endif %}
                             </span>
                         </div>
                     </div>
 
                     <div class="spec-card">
-                        <h4 class="spec-title dimensions">Dimensiones</h4>
+                        <h4 class="spec-title dimensions">{% trans "Dimensiones" %}</h4>
                         <div class="spec-content">
-                            <strong>Diametro medio:</strong> {% firstof resultado.diametro_medio 'N/D' %} <br>
-                            <strong>Diametro exterior:</strong> {% firstof resultado.diametro_exterior 'N/D' %} <br>
-                            <strong>Diametro interior:</strong> {% firstof resultado.diametro_interior 'N/D' %} <br>
+                            <strong>{% trans "Diametro medio:" %}</strong> {% firstof resultado.diametro_medio 'N/D' %} <br>
+                            {% if resultado.diametro_medio_superior %}
+                            <strong>{% trans "Diametro medio superior:" %}</strong> {{ resultado.diametro_medio_superior }}<br>
+                            {% endif %}
+                            {% if resultado.diametro_medio_inferior %}
+                            <strong>{% trans "Diametro medio inferior:" %}</strong> {{ resultado.diametro_medio_inferior }}<br>
+                            {% endif %}
+                            <strong>{% trans "Diametro exterior:" %}</strong> {% firstof resultado.diametro_exterior 'N/D' %} <br>
+                            <strong>{% trans "Diametro interior:" %}</strong> {% firstof resultado.diametro_interior 'N/D' %} <br>
                             {% if resultado.longitud_libre %}
-                            <strong>Longitud libre:</strong> {{ resultado.longitud_libre }} <br>
+                            <strong>{% trans "Longitud libre:" %}</strong> {{ resultado.longitud_libre }} <br>
                             {% endif %}
                             {% if resultado.longitud_hilo %}
-                            <strong>Longitud hilo:</strong> {{ resultado.longitud_hilo }} <br>
+                            <strong>{% trans "Longitud hilo:" %}</strong> {{ resultado.longitud_hilo }} <br>
                             {% endif %}
                             {% if resultado.longitud_hilo_total %}
-                            <strong>Longitud hilo total:</strong> {{ resultado.longitud_hilo_total }}<br>
+                            <strong>{% trans "Longitud hilo total:" %}</strong> {{ resultado.longitud_hilo_total }}<br>
                             {% endif %}
                             {% if resultado.longitud_hilo_cuerpo %}
-                            <strong>Longitud hilo cuerpo:</strong> {{ resultado.longitud_hilo_cuerpo }}
+                            <strong>{% trans "Longitud hilo cuerpo:" %}</strong> {{ resultado.longitud_hilo_cuerpo }}
                             {% endif %}
                         </div>
                     </div>
 
                     <div class="spec-card">
-                        <h4 class="spec-title espiras">Espiras y Geometria</h4>
+                        <h4 class="spec-title espiras">{% trans "Espiras y Geometria" %}</h4>
                         <div class="spec-content">
-                            <strong>Numero espiras:</strong> {% firstof resultado.numero_espiras 'N/D' %}<br>
-                            <strong>Numero espiras utiles:</strong> {% firstof resultado.numero_espiras_utiles 'N/D' %}<br>
-                            <strong>Pitch:</strong> {% firstof resultado.pitch 'N/D' %} <br>
+                            <strong>{% trans "Numero espiras:" %}</strong> {% firstof resultado.numero_espiras 'N/D' %}<br>
+                            <strong>{% trans "Numero espiras utiles:" %}</strong> {% firstof resultado.numero_espiras_utiles 'N/D' %}<br>
+                            <strong>{% trans "Pitch:" %}</strong> {% firstof resultado.pitch 'N/D' %} <br>
+                            {% if resultado.pitch_1 %}
+                            <strong>{% trans "Tramo 1 - espiras / paso:" %}</strong> {{ resultado.numero_espiras_1 }} / {{ resultado.pitch_1 }}<br>
+                            {% endif %}
+                            {% if resultado.pitch_2 %}
+                            <strong>{% trans "Tramo 2 - espiras / paso:" %}</strong> {{ resultado.numero_espiras_2 }} / {{ resultado.pitch_2 }}<br>
+                            {% endif %}
+                            {% if resultado.pitch_3 %}
+                            <strong>{% trans "Tramo 3 - espiras / paso:" %}</strong> {{ resultado.numero_espiras_3 }} / {{ resultado.pitch_3 }}<br>
+                            {% endif %}
                             {% if resultado.ancho_muelle %}
-                            <strong>Ancho muelle:</strong> {{ resultado.ancho_muelle }}<br>
+                            <strong>{% trans "Ancho muelle:" %}</strong> {{ resultado.ancho_muelle }}<br>
                             {% endif %}
                             {% if resultado.longitud_bloqueo %}
-                            <strong>Longitud bloqueo:</strong> {{ resultado.longitud_bloqueo }} <br>
+                            <strong>{% trans "Longitud bloqueo:" %}</strong> {{ resultado.longitud_bloqueo }} <br>
                             {% endif %}
                             {% if resultado.angulo_libre %}
-                            <strong>Angulo libre:</strong> {{ resultado.angulo_libre }}<br>
+                            <strong>{% trans "Angulo libre:" %}</strong> {{ resultado.angulo_libre }}<br>
                             {% endif %}
                             {% if resultado.angulo_tangencias %}
-                            <strong>Angulo tangencias:</strong> {{ resultado.angulo_tangencias }}
+                            <strong>{% trans "Angulo tangencias:" %}</strong> {{ resultado.angulo_tangencias }}
                             {% endif %}
                         </div>
                     </div>
 
                     <div class="spec-card">
-                        <h4 class="spec-title mechanics">Mecanicas</h4>
+                        <h4 class="spec-title mechanics">{% trans "Mecanicas" %}</h4>
                         <div class="spec-content">
-                            <strong>Constante:</strong> {% firstof resultado.constante_muelle 'N/D' %}<br>
-                            <strong>Indice muelle:</strong> {% firstof resultado.indice_muelle 'N/D' %}<br>
-                            <strong>Factor Wahl:</strong> {% firstof resultado.factor_wahl 'N/D' %}<br>
+                            <strong>{% trans "Constante:" %}</strong> {% firstof resultado.constante_muelle 'N/D' %}<br>
+                            {% if resultado.constante_muelle_1 %}
+                            <strong>{% trans "Constante K1 (inicial):" %}</strong> {{ resultado.constante_muelle_1 }}<br>
+                            {% endif %}
+                            {% if resultado.constante_muelle_2 %}
+                            <strong>{% trans "Constante K2 (tramo abierto):" %}</strong> {{ resultado.constante_muelle_2 }}<br>
+                            {% endif %}
+                            <strong>{% trans "Indice muelle:" %}</strong> {% firstof resultado.indice_muelle 'N/D' %}<br>
+                            <strong>{% trans "Factor Wahl:" %}</strong> {% firstof resultado.factor_wahl 'N/D' %}<br>
                             {% if resultado.factor_wahl_eval %}
-                            <strong>Factor Wahl eval:</strong> {{ resultado.factor_wahl_eval }}<br>
+                            <strong>{% trans "Factor Wahl eval:" %}</strong> {{ resultado.factor_wahl_eval }}<br>
                             {% endif %}
                             {% if resultado.factor_wahl_category %}
-                            <strong>Categoria Wahl:</strong> {{ resultado.factor_wahl_category }}<br>
+                            <strong>{% trans "Categoria Wahl:" %}</strong> {{ resultado.factor_wahl_category }}<br>
                             {% endif %}
                             {% if resultado.tension_inicial %}
-                            <strong>Tension inicial:</strong> {{ resultado.tension_inicial }}<br>
+                            <strong>{% trans "Tension inicial:" %}</strong> {{ resultado.tension_inicial }}<br>
                             {% endif %}
                             {% if resultado.momento_resistente %}
-                            <strong>Momento resistente:</strong> {{ resultado.momento_resistente }}
+                            <strong>{% trans "Momento resistente:" %}</strong> {{ resultado.momento_resistente }}
                             {% endif %}
                         </div>
                     </div>
@@ -94,28 +116,28 @@
 
                 {% if resultado.radious_leg_fija or resultado.long_leg_fija or resultado.radious_leg_movil or resultado.long_leg_movil %}
                 <div class="section-separator">
-                    <h4 class="section-subtitle">Parametros de Torsion</h4>
+                    <h4 class="section-subtitle">{% trans "Parametros de Torsion" %}</h4>
                     <div class="results-grid">
                         <div class="results-group analysis">
-                            <h4 class="results-subtitle analysis-title">Patas y Radios</h4>
+                            <h4 class="results-subtitle analysis-title">{% trans "Patas y Radios" %}</h4>
                             {% if resultado.radious_leg_fija %}
                             <div class="result-item">
-                                <span>Radio pata fija:</span> <span class="result-value">{{ resultado.radious_leg_fija }}</span>
+                                <span>{% trans "Radio pata fija:" %}</span> <span class="result-value">{{ resultado.radious_leg_fija }}</span>
                             </div>
                             {% endif %}
                             {% if resultado.long_leg_fija %}
                             <div class="result-item">
-                                <span>Longitud pata fija:</span> <span class="result-value">{{ resultado.long_leg_fija }}</span>
+                                <span>{% trans "Longitud pata fija:" %}</span> <span class="result-value">{{ resultado.long_leg_fija }}</span>
                             </div>
                             {% endif %}
                             {% if resultado.radious_leg_movil %}
                             <div class="result-item">
-                                <span>Radio pata movil:</span> <span class="result-value">{{ resultado.radious_leg_movil }}</span>
+                                <span>{% trans "Radio pata movil:" %}</span> <span class="result-value">{{ resultado.radious_leg_movil }}</span>
                             </div>
                             {% endif %}
                             {% if resultado.long_leg_movil %}
                             <div class="result-item">
-                                <span>Longitud pata movil:</span> <span class="result-value">{{ resultado.long_leg_movil }}</span>
+                                <span>{% trans "Longitud pata movil:" %}</span> <span class="result-value">{{ resultado.long_leg_movil }}</span>
                             </div>
                             {% endif %}
                         </div>
@@ -123,48 +145,57 @@
                 </div>
                 {% endif %}
 
-                {% if resultado.curva_esfuerzos or resultado.curva_recorrido or resultado.curva_diametros or resultado.diagrama_goodman %}
+                {% if resultado.curva_esfuerzos or resultado.curva_recorrido or resultado.curva_diametros or resultado.curva_progresiva or resultado.diagrama_goodman %}
                 <div class="graph-section">
-                    <h4 class="graph-title">Analisis Grafico de Fatiga</h4>
+                    <h4 class="graph-title">{% trans "Analisis Grafico de Fatiga" %}</h4>
 
                     <div class="charts-grid">
                         {% if resultado.curva_esfuerzos and resultado.curva_esfuerzos.imagen %}
                         <div class="chart-card chart-blue">
-                            <h5 class="chart-title chart-blue-title">Curva de Esfuerzos</h5>
+                            <h5 class="chart-title chart-blue-title">{% trans "Curva de Esfuerzos" %}</h5>
                             <div class="chart-image-wrapper">
-                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_esfuerzos.imagen }}" alt="Curva de esfuerzos">
+                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_esfuerzos.imagen }}" alt="{% trans 'Curva de esfuerzos' %}">
                             </div>
                         </div>
                         {% endif %}
 
                         {% if resultado.curva_recorrido and resultado.curva_recorrido.imagen %}
                         <div class="chart-card chart-blue">
-                            <h5 class="chart-title chart-blue-title">Curva de Recorrido</h5>
+                            <h5 class="chart-title chart-blue-title">{% trans "Curva de Recorrido" %}</h5>
                             <div class="chart-image-wrapper">
-                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_recorrido.imagen }}" alt="Curva de recorrido">
+                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_recorrido.imagen }}" alt="{% trans 'Curva de recorrido' %}">
                             </div>
                         </div>
                         {% endif %}
 
                         {% if resultado.curva_diametros and resultado.curva_diametros.imagen %}
                         <div class="chart-card chart-green">
-                            <h5 class="chart-title chart-green-title">Curva de Diametros</h5>
+                            <h5 class="chart-title chart-green-title">{% trans "Curva de Diametros" %}</h5>
                             <div class="chart-image-wrapper">
-                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_diametros.imagen }}" alt="Curva de diametros">
+                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_diametros.imagen }}" alt="{% trans 'Curva de diametros' %}">
                             </div>
                         </div>
                         {% endif %}
 
-                        {% if resultado.diagrama_goodman and resultado.diagrama_goodman.imagen %}
-                        <div class="chart-card chart-red">
-                            <h5 class="chart-title chart-red-title">Diagrama de Goodman</h5>
+                        {% if resultado.curva_progresiva and resultado.curva_progresiva.imagen %}
+                        <div class="chart-card chart-blue">
+                            <h5 class="chart-title chart-blue-title">{% trans "Curva de Compresión Progresiva (2K)" %}</h5>
                             <div class="chart-image-wrapper">
-                                <img class="chart-img" src="data:image/png;base64,{{ resultado.diagrama_goodman.imagen }}" alt="Diagrama de Goodman">
+                                <img class="chart-img" src="data:image/png;base64,{{ resultado.curva_progresiva.imagen }}" alt="{% trans 'Curva de compresión progresiva' %}">
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if resultado.diagrama_goodman and resultado.diagrama_goodman.image %}
+                        <div class="chart-card chart-red">
+                            <h5 class="chart-title chart-red-title">{% trans "Diagrama de Goodman" %}</h5>
+                            <div class="chart-image-wrapper">
+                                <img class="chart-img" src="data:image/png;base64,{{ resultado.diagrama_goodman.image }}" alt="{% trans 'Diagrama de Goodman' %}">
                             </div>
 
-                            {% if resultado.diagrama_goodman.analisis.safety_factor %}
+                            {% if resultado.diagrama_goodman.analysis.safety_factor %}
                             <div class="info-note info-red">
-                                <strong>Safety factor:</strong> {{ resultado.diagrama_goodman.analisis.safety_factor|floatformat:2 }}
+                                <strong>{% trans "Safety factor:" %}</strong> {{ resultado.diagrama_goodman.analysis.safety_factor|floatformat:2 }}
                             </div>
                             {% endif %}
                         </div>

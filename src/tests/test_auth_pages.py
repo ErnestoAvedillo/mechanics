@@ -26,7 +26,7 @@ class TestAuthFlow:
         response = client.post(url, data)
         # Debería redirigir a la página de verificación
         assert response.status_code == 302
-        assert response.url == reverse('verify_email')
+        assert response.url == reverse('menuapp:verify_email')
         
         user = User.objects.get(username='testuser')
         assert user.is_active is False
@@ -43,7 +43,7 @@ class TestAuthFlow:
         session['verification_user_id'] = user.id
         session.save()
 
-        url = reverse('verify_email')
+        url = reverse('menuapp:verify_email')
         response = client.post(url, {'code': '123456'})
         
         user.refresh_from_db()
@@ -51,7 +51,7 @@ class TestAuthFlow:
         assert response.status_code == 302
 
     def test_login_page_load(self, client):
-        url = reverse('login')
+        url = reverse('menuapp:login')
         response = client.get(url)
         assert response.status_code == 200
         assert b"Login" in response.content or b"Inicia" in response.content

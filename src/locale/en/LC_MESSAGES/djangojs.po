@@ -1,0 +1,102 @@
+# djangojs translations for English.
+msgid ""
+msgstr ""
+"Project-Id-Version: mechanics2\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "Activado"
+msgstr "Enabled"
+
+msgid "Arrastra una imagen aqui o haz clic para seleccionar"
+msgstr "Drag an image here or click to select"
+
+msgid "Buscando en tus normativas..."
+msgstr "Searching your standards..."
+
+msgid "Debes seleccionar un material antes de calcular."
+msgstr "You must select a material before calculating."
+
+msgid "Desactivado"
+msgstr "Disabled"
+
+msgid "El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados."
+msgstr "The calculated pitch is less than or equal to the wire diameter, which is not physically possible. Please review the entered data."
+
+msgid "Entendido"
+msgstr "Understood"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Error interno de conexión al servidor RAG."
+msgstr "Internal connection error to the RAG server."
+
+msgid "Factor límite elástico"
+msgstr "Elastic limit factor"
+
+msgid "Geometría bloqueada: selecciona material y diámetro de hilo"
+msgstr "Geometry locked: select a material and wire diameter"
+
+msgid "La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "The final length cannot be greater than or equal to the free length. Please review the entered data."
+
+msgid "La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados."
+msgstr "The final length cannot be less than or equal to the initial length. Please review the entered data."
+
+msgid "La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "The final length cannot be less than or equal to the solid length. Please review the entered data."
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados."
+msgstr "The initial length cannot be greater than or equal to the final length. Please review the entered data."
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "The initial length cannot be greater than or equal to the free length. Please review the entered data."
+
+msgid "La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "The initial length cannot be less than or equal to the solid length. Please review the entered data."
+
+msgid "Longitud final (mm):"
+msgstr "Final length (mm):"
+
+msgid "Longitud final estirada (mm):"
+msgstr "Final stretched length (mm):"
+
+msgid "Longitud final no válida"
+msgstr "Invalid final length"
+
+msgid "Longitud inicial (mm):"
+msgstr "Initial length (mm):"
+
+msgid "Longitud inicial estirada (mm):"
+msgstr "Initial stretched length (mm):"
+
+msgid "Longitud inicial no válida"
+msgstr "Invalid initial length"
+
+msgid "Material no seleccionado"
+msgstr "Material not selected"
+
+msgid "Módulo de corte"
+msgstr "Shear modulus"
+
+msgid "Pitch no válido"
+msgstr "Invalid pitch"
+
+msgid "Por favor complete todos los campos obligatorios"
+msgstr "Please fill in all required fields"
+
+msgid "Propiedades del Material"
+msgstr "Material Properties"
+
+msgid "Relevancia"
+msgstr "Relevance"
+
+
+# --- added: continued English translation pass ---
+
+msgid "Calculando..."
+msgstr "Calculating..."

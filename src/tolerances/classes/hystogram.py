@@ -26,7 +26,7 @@ class Hystogram:
             edgecolor='black',
         )
 
-        # Color de columnas por signo: negativo rojo, positivo verde.
+        # Column color by sign: negative red, positive green.
         for i, patch in enumerate(patches):
             bin_center = (bin_edges[i] + bin_edges[i + 1]) / 2
             if bin_center < 0:
@@ -36,10 +36,10 @@ class Hystogram:
             else:
                 patch.set_facecolor('#9ea7b3')
         
-        # Línea vertical para la media
+        # Vertical line for the mean
         if self.dimension.mean is not None:
             mean_value = self.dimension.mean.magnitude
-            self.hyst_axes.axvline(mean_value, color='red', linestyle='--', linewidth=2, label=f'Media: {mean_value:.4f}')
+            self.hyst_axes.axvline(mean_value, color='red', linestyle='--', linewidth=2, label=f'Mean: {mean_value:.4f}')
 
         if self.dimension.sigma and self.dimension.CP is not None:
             Upper_Limit = self.dimension.mean.magnitude + self.dimension.sigma.magnitude * 4
@@ -47,17 +47,17 @@ class Hystogram:
             Lower_Limit = self.dimension.mean.magnitude - self.dimension.sigma.magnitude * 4
             self.hyst_axes.axvline(Lower_Limit, color='purple', linestyle='-.', linewidth=2, label=f'LSL: {Lower_Limit:.4f}')
 
-        # Línea vertical para el nominal
+        # Vertical line for the nominal
         nominal_value = self.dimension.nominal.magnitude if self.dimension.nominal is not None else None
         if nominal_value is not None:
             self.hyst_axes.axvline(nominal_value, color='green', linestyle=':', linewidth=2, label=f'Nominal: {nominal_value:.4f}')
 
-        # Línea vertical para la tolerancia superior
+        # Vertical line for the upper tolerance
         tol_sup_value = (self.dimension.nominal + self.dimension.tol_sup).magnitude if self.dimension.tol_sup is not None else None
         if tol_sup_value is not None:
             self.hyst_axes.axvline(tol_sup_value, color='teal', linestyle=':', linewidth=2, label=f'Tol. Sup: {tol_sup_value:.4f}')
         
-        # Línea vertical para la tolerancia inferior
+        # Vertical line for the lower tolerance
         tol_inf_value = (self.dimension.nominal + self.dimension.tol_inf).magnitude if self.dimension.tol_inf is not None else None
         if tol_inf_value is not None:
             self.hyst_axes.axvline(tol_inf_value, color='orange', linestyle=':', linewidth=2, label=f'Tol. Inf: {tol_inf_value:.4f}')
@@ -73,7 +73,7 @@ class Hystogram:
         if self.hyst_plot is not None:
             self.hyst_plot.show()
         else:
-            print("No se ha generado el histograma. Por favor, llama al método plot() antes de show().")
+            print("The histogram has not been generated. Please call the plot() method before show().")
 
     def plot_to_base64_png(self):
         self.plot()

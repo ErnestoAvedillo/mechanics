@@ -2,6 +2,7 @@ import base64
 import io
 
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
@@ -14,7 +15,7 @@ from tolerances.tools.draw_image_if_present import _draw_image_if_present
 
 def insert_support_pdf(request):
     if request.method != "POST":
-        return HttpResponse("Usa el formulario de pivot-bushing-hole para generar el PDF.", status=405)
+        return HttpResponse(_("Usa el formulario de pivot-bushing-hole para generar el PDF."), status=405)
 
     values = {
         "support_height_nominal": _to_float(request.POST.get("support_height_nominal"), values["support_height_nominal"]),
@@ -68,9 +69,9 @@ def insert_support_pdf(request):
         histogram = Hystogram(
             dimension=diameter_interference,
             bins=50,
-            xlabel="Diferencia de diametros (mm)",
-            ylabel="Densidad",
-            title="Histograma de interferencia Tubo Casquillo",
+            xlabel=_("Diferencia de diametros (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma de interferencia Tubo Casquillo"),
         )
         hist_diameter_interference_b64 = histogram.plot_to_base64_png()
         hist_diameter_interference_bytes = base64.b64decode(hist_diameter_interference_b64)
@@ -78,9 +79,9 @@ def insert_support_pdf(request):
         histogram = Hystogram(
             dimension=clearance_height,
             bins=50,
-            xlabel="Espesor de pared (mm)",
-            ylabel="Densidad",
-            title="Histograma de espesor de pared",
+            xlabel=_("Espesor de pared (mm)"),
+            ylabel=_("Densidad"),
+            title=_("Histograma de espesor de pared"),
         )
         hist_clearance_b64 = histogram.plot_to_base64_png()
         hist_clearance_bytes = base64.b64decode(hist_clearance_b64)
@@ -91,16 +92,16 @@ def insert_support_pdf(request):
         pdf = canvas.Canvas(response, pagesize=A4)
         width, height = A4
 
-        # Página 1
+        # Page 1
         pdf.setFont("Helvetica-Bold", 16)
-        pdf.drawString(40, height - 40, "Reporte de Tolerancia Pivot-Bushing-Hole")
+        pdf.drawString(40, height - 40, _("Reporte de Tolerancia Pivot-Bushing-Hole"))
 
         pdf.setFont("Helvetica", 10)
         pdf.drawString(40, height - 62, f"Cp: {values['cp']:.3f} | Samples: {values['samples']}")
 
         y = height - 95
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Datos de Entrada")
+        pdf.drawString(40, y, _("Datos de Entrada"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -117,7 +118,7 @@ def insert_support_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, "Resultados Calculados")
+        pdf.drawString(40, y, _("Resultados Calculados"))
         y -= 16
 
         pdf.setFont("Helvetica", 9)
@@ -140,7 +141,7 @@ def insert_support_pdf(request):
 
         y -= 8
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, y, "Imagenes adjuntas")
+        pdf.drawString(40, y, _("Imagenes adjuntas"))
 
         image_1 = request.FILES.get("image_1")
         image_2 = request.FILES.get("image_2")
@@ -149,17 +150,17 @@ def insert_support_pdf(request):
         image_height = 100
         image_y = y - 120
 
-        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, "Imagen 1")
-        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, "Imagen 2")
+        _draw_image_if_present(pdf, image_1, 40, image_y, image_width, image_height, _("Imagen 1"))
+        _draw_image_if_present(pdf, image_2, 40 + image_width + 40, image_y, image_width, image_height, _("Imagen 2"))
 
-        # Página 2: Histogramas
+        # Page 2: Histograms
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histogramas")
+        pdf.drawString(40, height - 40, _("Histogramas"))
 
-        # Histograma 1
+        # Histogram 1
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, height - 70, "Interferencia Casquillo soporte")
+        pdf.drawString(40, height - 70, _("Interferencia Casquillo soporte"))
         hist_stream = io.BytesIO(hist_diameter_interference_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -172,13 +173,13 @@ def insert_support_pdf(request):
             mask='auto',
         )
 
-        # Página 2: Histograma Sistema
+        # Page 2: System histogram
         pdf.showPage()
         pdf.setFont("Helvetica-Bold", 14)
-        pdf.drawString(40, height - 40, "Histograma Clearance System")
+        pdf.drawString(40, height - 40, _("Histograma Clearance System"))
 
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(40, height - 70, "Juego del Sistema")
+        pdf.drawString(40, height - 70, _("Juego del Sistema"))
         hist_stream = io.BytesIO(hist_clearance_bytes)
         hist_img = ImageReader(hist_stream)
         pdf.drawImage(
@@ -196,4 +197,4 @@ def insert_support_pdf(request):
         return response
 
     except Exception as exc:
-        return HttpResponse(f"Error al generar PDF: {str(exc)}", status=500)
+        return HttpResponse(_("Error al generar PDF: %(error)s") % {"error": str(exc)}, status=500)

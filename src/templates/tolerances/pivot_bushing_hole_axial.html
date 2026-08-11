@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}{{ titulo }} - Estudios de tolerancias {% endblock %}
+{% load static i18n %}
+{% block title %}{{ titulo }} - {% trans "Estudios de tolerancias" %} {% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">
     <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-pin-hole.css' %}">
     <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/form-loading.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,167 +15,167 @@
 
   <main class="wrap">
     <section class="card">
-      <h1>Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos</h1>
-      <p class="sub">Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante.</p>
+      <h1>{% trans "Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos" %}</h1>
+      <p class="sub">{% trans "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante." %}</p>
 
       <form method="post" class="pin-hole-form" enctype="multipart/form-data">
         {% csrf_token %}
 
         <section class="overlay-panel">
-          <figure class="pin-hole-canvas" aria-label="Diagrama pin-hole con campos editables">
-            <img src="{% static 'tolerances/images/Pivot_pin_system_axial.png' %}" alt="Diagrama pin casquillo y agujero">
+          <figure class="pin-hole-canvas" aria-label="{% trans 'Diagrama pin-hole con campos editables' %}">
+            <img src="{% static 'tolerances/images/Pivot_pin_system_axial.png' %}" alt="{% trans 'Diagrama pin casquillo y agujero' %}">
 
             <div class="input-groups">
 
               <fieldset class="input-group" style="position:absolute; top:0%; left:0%;">
-                <legend>Wall distance</legend>
-                <label class="compact-label_nominal">Nominal
+                <legend>{% trans "Wall distance" %}</legend>
+                <label class="compact-label_nominal">{% trans "Nominal" %}
                   <input type="number" step="0.001" name="wall_distance_nominal" value="{{ values.wall_distance_nominal }}" required>
                 </label>
-                <label class="compact-label_tol_sup">Tol. Sup
+                <label class="compact-label_tol_sup">{% trans "Tol. Sup" %}
                   <input type="number" step="0.001" name="wall_distance_tol_sup" value="{{ values.wall_distance_tol_sup }}" required>
                 </label>
-                <label class="compact-label_tol_inf">Tol. Inf
+                <label class="compact-label_tol_inf">{% trans "Tol. Inf" %}
                   <input type="number" step="0.001" name="wall_distance_tol_inf" value="{{ values.wall_distance_tol_inf }}" required>
                 </label>
               </fieldset>
 
               <fieldset class="input-group"style="position:absolute; top:20%; left:15%;">
-                <legend>Bushing flange</legend>
-                <label class="compact-label_nominal">Nominal
+                <legend>{% trans "Bushing flange" %}</legend>
+                <label class="compact-label_nominal">{% trans "Nominal" %}
                   <input type="number" step="0.001" name="bushing_flange_1_nominal" value="{{ values.bushing_flange_1_nominal }}" required>
                 </label>
-                <label class="compact-label_tol_sup">Tol. Sup
+                <label class="compact-label_tol_sup">{% trans "Tol. Sup" %}
                   <input type="number" step="0.001" name="bushing_flange_1_tol_sup" value="{{ values.bushing_flange_1_tol_sup }}" required>
                 </label>
-                <label class="compact-label_tol_inf">Tol. Inf
+                <label class="compact-label_tol_inf">{% trans "Tol. Inf" %}
                   <input type="number" step="0.001" name="bushing_flange_1_tol_inf" value="{{ values.bushing_flange_1_tol_inf }}" required>
                 </label>
               </fieldset>
 
               <fieldset class="input-group"style="position:absolute; top:0%; left:70%;">
-                <legend>Bushing flange</legend>
-                <label class="compact-label_nominal">Nominal
+                <legend>{% trans "Bushing flange" %}</legend>
+                <label class="compact-label_nominal">{% trans "Nominal" %}
                   <input type="number" step="0.001" name="bushing_flange_2_nominal" value="{{ values.bushing_flange_2_nominal }}" required>
                 </label>
-                <label class="compact-label_tol_sup">Tol. Sup
+                <label class="compact-label_tol_sup">{% trans "Tol. Sup" %}
                   <input type="number" step="0.001" name="bushing_flange_2_tol_sup" value="{{ values.bushing_flange_2_tol_sup }}" required>
                 </label>
-                <label class="compact-label_tol_inf">Tol. Inf
+                <label class="compact-label_tol_inf">{% trans "Tol. Inf" %}
                   <input type="number" step="0.001" name="bushing_flange_2_tol_inf" value="{{ values.bushing_flange_2_tol_inf }}" required>
                 </label>
               </fieldset>
 
               <fieldset class="input-group"style="position:absolute; top:70%; left:43%;">
-                <legend>Tube Length</legend>
-                <label class="compact-label_nominal">Nominal
+                <legend>{% trans "Tube Length" %}</legend>
+                <label class="compact-label_nominal">{% trans "Nominal" %}
                   <input type="number" step="0.001" name="tube_length_nominal" value="{{ values.tube_length_nominal }}" required>
                 </label>
-                <label class="compact-label_tol_sup">Tol. Sup
+                <label class="compact-label_tol_sup">{% trans "Tol. Sup" %}
                   <input type="number" step="0.001" name="tube_length_tol_sup" value="{{ values.tube_length_tol_sup }}" required>
                 </label>
-                <label class="compact-label_tol_inf">Tol. Inf
+                <label class="compact-label_tol_inf">{% trans "Tol. Inf" %}
                   <input type="number" step="0.001" name="tube_length_tol_inf" value="{{ values.tube_length_tol_inf }}" required>
                 </label>
               </fieldset>
 
-              <div class="compact-label" style="position:absolute; top:50%; left:75%;">Interference <br> bushing-tube</div>
-              <div class="compact-label" style="position:absolute; top:80%; left:90%;">Gap bushing-pin</div>
+              <div class="compact-label" style="position:absolute; top:50%; left:75%;">{% blocktrans %}Interference <br> bushing-tube{% endblocktrans %}</div>
+              <div class="compact-label" style="position:absolute; top:80%; left:90%;">{% trans "Gap bushing-pin" %}</div>
             </div>
           </figure>
         </section>
 
         <section class="extra-inputs">
-          <h2>Distribucion</h2>
+          <h2>{% trans "Distribucion" %}</h2>
           <label>Cp
             <input type="number" step="0.01" min="1" name="cp" value="{{ values.cp }}" required>
           </label>
-          <label>Numero de muestras
+          <label>{% trans "Numero de muestras" %}
             <input type="number" min="100" step="100" name="samples" value="{{ values.samples }}" required>
           </label>
 
           <div class="dropzone-wrap">
             <div class="dropzone" data-target="file-zone-1">
               <input id="file-zone-1" class="dropzone-input" type="file" name="image_1" accept="image/*">
-              <p class="dropzone-title">Imagen 1</p>
-              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
-              <img class="dropzone-preview" alt="Vista previa imagen 1" hidden>
+              <p class="dropzone-title">{% trans "Imagen 1" %}</p>
+              <p class="dropzone-hint">{% trans "Arrastra una imagen aqui o haz clic para seleccionar" %}</p>
+              <img class="dropzone-preview" alt="{% trans 'Vista previa imagen 1' %}" hidden>
             </div>
 
             <div class="dropzone" data-target="file-zone-2">
               <input id="file-zone-2" class="dropzone-input" type="file" name="image_2" accept="image/*">
-              <p class="dropzone-title">Imagen 2</p>
-              <p class="dropzone-hint">Arrastra una imagen aqui o haz clic para seleccionar</p>
-              <img class="dropzone-preview" alt="Vista previa imagen 2" hidden>
+              <p class="dropzone-title">{% trans "Imagen 2" %}</p>
+              <p class="dropzone-hint">{% trans "Arrastra una imagen aqui o haz clic para seleccionar" %}</p>
+              <img class="dropzone-preview" alt="{% trans 'Vista previa imagen 2' %}" hidden>
             </div>
           </div>
         </section>
 
         <div class="actions">
-          <button type="submit">Calcular</button>
-          <a class="link" href="/tolerances/">Volver al indice</a>
-          <button type="submit" formaction="{% url 'tolerances_pivot_bushing_hole_axial_pdf' %}" formmethod="post">Descargar PDF</button>
+          <button type="submit">{% trans "Calcular" %}</button>
+          <a class="link" href="/tolerances/">{% trans "Volver al indice" %}</a>
+          <button type="submit" formaction="{% url 'tolerances_pivot_bushing_hole_axial_pdf' %}" formmethod="post" formtarget="_blank">{% trans "Descargar PDF" %}</button>
         </div>
       </form>
 
       {% if error %}
-      <div class="error">Error: {{ error }}</div>
+      <div class="error">{% trans "Error:" %} {{ error }}</div>
       {% endif %}
 
       {% if result %}
       <section class="results">
-        <h2>Resultados</h2>
-        <h2>Incoming Data</h2>
+        <h2>{% trans "Resultados" %}</h2>
+        <h2>{% trans "Incoming Data" %}</h2>
         <div class="result-grid">
           <article>
-            <h3>Longitud del Tubo</h3>
-            <p>Max: {{ result.tube_length.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.tube_length.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.tube_length.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.tube_length.sigma|floatformat:3 }} mm</p>
+            <h3>{% trans "Longitud del Tubo" %}</h3>
+            <p>{% trans "Max:" %} {{ result.tube_length.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.tube_length.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.tube_length.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.tube_length.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Distancia entre paredes</h3>
-            <p>Max: {{ result.wall_distance.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.wall_distance.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.wall_distance.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.wall_distance.sigma|floatformat:3 }} mm</p>
+            <h3>{% trans "Distancia entre paredes" %}</h3>
+            <p>{% trans "Max:" %} {{ result.wall_distance.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.wall_distance.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.wall_distance.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.wall_distance.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Ancho casquillo 1</h3>
-            <p>Max: {{ result.bushing_flange_1.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.bushing_flange_1.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.bushing_flange_1.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.bushing_flange_1.sigma|floatformat:3 }} mm</p>
+            <h3>{% trans "Ancho casquillo 1" %}</h3>
+            <p>{% trans "Max:" %} {{ result.bushing_flange_1.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.bushing_flange_1.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.bushing_flange_1.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.bushing_flange_1.sigma|floatformat:3 }} mm</p>
           </article>
           <article>
-            <h3>Ancho casquillo 2</h3>
-            <p>Max: {{ result.bushing_flange_2.max|floatformat:3 }} mm</p>
-            <p>Min: {{ result.bushing_flange_2.min|floatformat:3 }} mm</p>
-            <p>Media: {{ result.bushing_flange_2.mean|floatformat:3 }} mm</p>
-            <p>Sigma: {{ result.bushing_flange_2.sigma|floatformat:3 }} mm</p>
+            <h3>{% trans "Ancho casquillo 2" %}</h3>
+            <p>{% trans "Max:" %} {{ result.bushing_flange_2.max|floatformat:3 }} mm</p>
+            <p>{% trans "Min:" %} {{ result.bushing_flange_2.min|floatformat:3 }} mm</p>
+            <p>{% trans "Media:" %} {{ result.bushing_flange_2.mean|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma:" %} {{ result.bushing_flange_2.sigma|floatformat:3 }} mm</p>
           </article>
         </div>
-        <h2>Analysis clearance system</h2>
+        <h2>{% trans "Analysis clearance system" %}</h2>
         <div class="result-grid">
           <article>
-            <h3>Clearance system</h3>
-            <p>Tipo: <strong>{{ result.system_clearance.fit_type }}</strong></p>
-            <p>Espesor nominal: {{ result.system_clearance.nominal|floatformat:3 }} mm</p>
-            <p>Tol. Sup: {{ result.system_clearance.tol_sup|floatformat:3 }} mm</p>
-            <p>Tol. Inf: {{ result.system_clearance.tol_inf|floatformat:3 }} mm</p>
-            <p>Media (samples): {{ result.system_clearance.mean_samples|floatformat:3 }} mm</p>
-            <p>Sigma (samples): {{ result.system_clearance.sigma_samples|floatformat:3 }} mm</p>
+            <h3>{% trans "Clearance system" %}</h3>
+            <p>{% trans "Tipo:" %} <strong>{{ result.system_clearance.fit_type }}</strong></p>
+            <p>{% trans "Espesor nominal:" %} {{ result.system_clearance.nominal|floatformat:3 }} mm</p>
+            <p>{% trans "Tol. Sup:" %} {{ result.system_clearance.tol_sup|floatformat:3 }} mm</p>
+            <p>{% trans "Tol. Inf:" %} {{ result.system_clearance.tol_inf|floatformat:3 }} mm</p>
+            <p>{% trans "Media (samples):" %} {{ result.system_clearance.mean_samples|floatformat:3 }} mm</p>
+            <p>{% trans "Sigma (samples):" %} {{ result.system_clearance.sigma_samples|floatformat:3 }} mm</p>
           </article>
 
         </div>
         {% if result.system_clearance.histogram %}
         <section class="histogram-block">
-          <h3>Histograma del Clearance System</h3>
+          <h3>{% trans "Histograma del Clearance System" %}</h3>
           <img
           class="histogram-image"
           src="data:image/png;base64,{{ result.system_clearance.histogram }}"
-          alt="Histograma del espesor de pared"
+          alt="{% trans 'Histograma del espesor de pared' %}"
           >
         </section>
         {% endif %}
@@ -183,5 +184,7 @@
   </main>
 {% endblock %}
 {% block extra_js %}
+  <script src="{% url 'javascript-catalog' %}"></script>
   <script src="{% static 'tolerances/js/pin-hole-dropzones.js' %}"></script>
+  <script src="{% static 'global/js/form-loading.js' %}"></script>
 {% endblock %}

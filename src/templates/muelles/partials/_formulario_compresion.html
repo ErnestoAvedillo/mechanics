@@ -1,8 +1,8 @@
-{% load static %}
+{% load static i18n %}
 
 <div class="spring-form-container">
     <div class="diagram-wrapper">
-        <img src="{% static 'muelles/images/sketch_muelle_compresion.jpg' %}" alt="Diagrama de muelle" class="spring-diagram">
+        <img src="{% static 'muelles/images/sketch_muelle_compresion.jpg' %}" alt="{% trans 'Diagrama de muelle' %}" class="spring-diagram">
 
         <div class="input-overlay De-field" style="top: 49%; left: 30%;">
             <input type="number"
@@ -11,7 +11,7 @@
                     id="diametro_exterior"
                     value="{{ request.POST.diametro_exterior }}"
                     required>
-            <span class="label" data-tooltip="Diametro exterior (De) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro exterior (De) en mm' %}"></span>
         </div>
 
         <div class="input-overlay Dm-field" style="top: 56.5%; left: 30%;">
@@ -21,7 +21,7 @@
                     id="diametro_medio"
                     value="{{ request.POST.diametro_medio }}"
                     required>
-            <span class="label" data-tooltip="Diametro medio (Dm) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro medio (Dm) en mm' %}"></span>
         </div>
 
         <div class="input-overlay Di-field" style="top: 66%; left: 30%;">
@@ -31,10 +31,10 @@
                     id="diametro_interior"
                     value="{{ request.POST.diametro_interior }}"
                     required>
-            <span class="label" data-tooltip="Diametro interior (Di) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Diametro interior (Di) en mm' %}"></span>
         </div>
         <div class="input-overlay nt-field" style="top: 15%; left: 60%;">
-            <span class="label" data-tooltip="Numero total de espiras (nt)">Numero de espiras</span>
+            <span class="label" data-tooltip="{% trans 'Numero total de espiras (nt)' %}">{% trans "Numero de espiras" %}</span>
             <input type="number"
                     step="0.001"
                     name="numero_espiras"
@@ -49,7 +49,7 @@
                     id="longitud_libre"
                     value="{{ request.POST.longitud_libre }}"
                     required>
-            <span class="label" data-tooltip="Longitud sin comprimir (L0) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Longitud sin comprimir (L0) en mm' %}"></span>
         </div>
         <div class="input-overlay A1-field" style="top: 53%; left: 87%;">
             <input type="number"
@@ -58,7 +58,7 @@
                     id="longitud_inicial"
                     value="{{ request.POST.longitud_inicial }}"
                     required>
-            <span class="label" data-tooltip="Primera posición de carga"></span>
+            <span class="label" data-tooltip="{% trans 'Primera posición de carga' %}"></span>
         </div>
         <div class="input-overlay A2-field" style="top: 62.5%; left: 80%;">
             <input type="number"
@@ -67,7 +67,7 @@
                     id="longitud_final"
                     value="{{ request.POST.longitud_final }}"
                     required>
-            <span class="label" data-tooltip="Segunda posición de carga"></span>
+            <span class="label" data-tooltip="{% trans 'Segunda posición de carga' %}"></span>
         </div>
         <div class="input-overlay Ls-field" style="top: 82%; left: 66%;">
             <input type="number"
@@ -76,7 +76,7 @@
                     id="longitud_solida"
                     value="{{ request.POST.longitud_solida }}"
                     readonly>
-            <span class="label" data-tooltip="Longitud solida (Ls) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Longitud solida (Ls) en mm' %}"></span>
         </div>
         <div class="input-overlay pitch-field" style="top: 31.5%; left: 45%;">
             <input type="number"
@@ -85,15 +85,19 @@
                     id="pitch"
                     value="{{ request.POST.pitch }}"
                     readonly>
-            <span class="label" data-tooltip="Paso entre espiras (pitch) en mm"></span>
+            <span class="label" data-tooltip="{% trans 'Paso entre espiras (pitch) en mm' %}"></span>
         </div>
     </div>
 
 
 
-    <h3>Calcular</h3>
-    <p>Complete los datos del muelle para obtener sus especificaciones tecnicas completas.</p>
-    <button type="submit" class="calculate-btn">Calcular Especificaciones</button>
+    <h3>{% trans "Calcular" %}</h3>
+    <p>{% trans "Complete los datos del muelle para obtener sus especificaciones tecnicas completas." %}</p>
+    <div class="form-actions">
+        <button type="submit" class="calculate-btn" data-loading-text="{% trans 'Calculando...' %}">{% trans "Calcular Especificaciones" %}</button>
+        <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_compresion_animacion' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando animación...' %}">{% trans "Crear Animación" %}</button>
+        <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_compresion_pdf' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando PDF...' %}">{% trans "Crear Reporte PDF" %}</button>
+    </div>
     <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
     <script src="{% static 'muelles/js/form_validation_compression.js' %}"></script>
 </div>

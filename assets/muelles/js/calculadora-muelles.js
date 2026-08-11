@@ -1,51 +1,51 @@
 /**
- * Calculadora de Muelles - JavaScript
- * Sistema de validación, formateo y detección automática para formularios
- * Autor: Sistema de Calculadora de Muelles
- * Fecha: 2026
- * 
- * DESCRIPCIÓN GENERAL:
- * Este script proporciona un sistema completo de validación, formateo y control de campos
- * para la calculadora de muelles helicoidales. Incluye:
- * 
- * 1. Detección y formateo automático de números
- * 2. Gestión inteligente de materiales y sus propiedades
- * 3. Control dinámico de campos según el tipo de muelle
- * 4. Sincronización automática de cálculos de diámetros
- * 5. Bloqueo inteligente de campos relacionados matemáticamente
- * 6. Validación completa del formulario antes del envío
- * 
- * Las funciones están organizadas de lo más simple (formateo) a lo más complejo (sincronización).
+ * Spring Calculator - JavaScript
+ * Validation, formatting and automatic detection system for forms
+ * Author: Spring Calculator System
+ * Date: 2026
+ *
+ * GENERAL DESCRIPTION:
+ * This script provides a complete validation, formatting and field control
+ * system for the helical spring calculator. It includes:
+ *
+ * 1. Automatic number detection and formatting
+ * 2. Smart handling of materials and their properties
+ * 3. Dynamic field control based on the spring type
+ * 4. Automatic synchronization of diameter calculations
+ * 5. Smart locking of mathematically related fields
+ * 6. Full form validation before submission
+ *
+ * The functions are organized from simplest (formatting) to most complex (synchronization).
  */
 
-// Detección y formateo automático para inputs numéricos
+// Automatic detection and formatting for numeric inputs
 /**
- * Configura la detección y formateo automático de inputs numéricos.
- * - Convierte comas por puntos como separador decimal
- * - Valida que solo contegan números válidos
- * - Cambia el color de borde según la validez del input
- * - Al perder el foco, redondea a 3 decimales
+ * Sets up automatic detection and formatting of numeric inputs.
+ * - Converts commas to dots as the decimal separator
+ * - Validates that they only contain valid numbers
+ * - Changes the border color based on the input's validity
+ * - Rounds to 3 decimals when losing focus
  */
 function setupFormatDetection() {
-    // Detectar todos los inputs numéricos
+    // Detect all numeric inputs
     const numericInputs = document.querySelectorAll('input[type="number"]');
 
     numericInputs.forEach(input => {
-        // Auto-formateo mientras se escribe
+        // Auto-format while typing
         input.addEventListener('input', function (e) {
             let value = e.target.value;
 
-            // Detectar separador decimal (punto o coma)
+            // Detect decimal separator (dot or comma)
             if (value.includes(',')) {
-                // Convertir coma a punto para compatibilidad
+                // Convert comma to dot for compatibility
                 value = value.replace(',', '.');
                 e.target.value = value;
             }
 
-            // Validar formato numérico
+            // Validate numeric format
             const isValidNumber = /^-?\d*\.?\d*$/.test(value);
 
-            // Aplicar estilos según validación
+            // Apply styles based on validation
             if (value && !isValidNumber) {
                 e.target.style.borderColor = '#dc3545';
                 e.target.style.backgroundColor = '#fff5f5';
@@ -55,28 +55,28 @@ function setupFormatDetection() {
             }
         });
 
-        // Formatear al perder el foco
+        // Format when losing focus
         input.addEventListener('blur', function (e) {
             let value = parseFloat(e.target.value);
             if (!isNaN(value)) {
-                // Formatear a 3 decimales si es necesario
+                // Format to 3 decimals if needed
                 if (value % 1 !== 0) {
                     e.target.value = value.toFixed(3).replace(/\.?0+$/, '');
                 }
             }
-            // Resetear estilos
+            // Reset styles
             e.target.style.borderColor = '#ced4da';
             e.target.style.backgroundColor = 'white';
         });
     });
 }
 
-// Detectar formato de material y auto-completar propiedades
+// Detect material selection and auto-fill properties
 /**
- * Detecta cuando se selecciona un material y auto-completa automáticamente sus propiedades:
- * - Llena el campo de módulo de corte si está vacío
- * - Muestra información de propiedades mecánicas del material
- * - Destaca visualmente el campo auto-completado
+ * Detects when a material is selected and automatically fills in its properties:
+ * - Fills in the shear modulus field if it is empty
+ * - Shows the material's mechanical properties information
+ * - Visually highlights the auto-filled field
  */
 function setupMaterialDetection() {
     const materialSelect = document.getElementById('material');
@@ -88,7 +88,7 @@ function setupMaterialDetection() {
             const shearModulus = selected.getAttribute('data-shear-modulus');
             const elasticFactor = selected.getAttribute('data-elastic-factor');
 
-            // Auto-completar módulo de corte si está disponible
+            // Auto-fill shear modulus if available
             if (shearModulus && !moduloInput.value) {
                 moduloInput.value = shearModulus;
                 moduloInput.style.backgroundColor = '#e7f3ff';
@@ -97,22 +97,22 @@ function setupMaterialDetection() {
                 }, 2000);
             }
 
-            // Mostrar información del material
+            // Show material information
             showMaterialInfo(selected, shearModulus, elasticFactor);
         });
     }
 }
 
-// Mostrar información del material seleccionado
+// Show information for the selected material
 /**
- * Muestra un panel informativo con las propiedades técnicas del material seleccionado.
- * Incluye:
- * - Módulo de corte (en N/mm²)
- * - Factor límite elástico
- * - Se oculta si el material no tiene propiedades disponibles
- * @param {HTMLOptionElement} selectedOption - La opción seleccionada del select
- * @param {string} shearModulus - Módulo de corte del material
- * @param {string} elasticFactor - Factor elástico del material
+ * Shows an information panel with the technical properties of the selected material.
+ * Includes:
+ * - Shear modulus (in N/mm²)
+ * - Elastic limit factor
+ * - Hidden if the material has no available properties
+ * @param {HTMLOptionElement} selectedOption - The selected option from the select
+ * @param {string} shearModulus - Material's shear modulus
+ * @param {string} elasticFactor - Material's elastic factor
  */
 function showMaterialInfo(selectedOption, shearModulus, elasticFactor) {
     let materialInfo = document.getElementById('material-info');
@@ -120,11 +120,11 @@ function showMaterialInfo(selectedOption, shearModulus, elasticFactor) {
         materialInfo = document.createElement('div');
         materialInfo.id = 'material-info';
         materialInfo.style.cssText = `
-            display: block; 
-            margin-top: 10px; 
-            padding: 8px; 
-            background: #e7f3ff; 
-            border-left: 4px solid #007bff; 
+            display: block;
+            margin-top: 10px;
+            padding: 8px;
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
             border-radius: 4px;
             font-size: 13px;
         `;
@@ -133,9 +133,9 @@ function showMaterialInfo(selectedOption, shearModulus, elasticFactor) {
 
     if (shearModulus && elasticFactor) {
         materialInfo.innerHTML = `
-            <strong>📊 Propiedades del Material:</strong><br>
-            <span style="color: #0056b3;">• Módulo de corte: <strong>${formatNumber(shearModulus)} N/mm²</strong></span><br>
-            <span style="color: #0056b3;">• Factor límite elástico: <strong>${formatNumber(elasticFactor)}</strong></span>
+            <strong>📊 ${gettext('Propiedades del Material')}:</strong><br>
+            <span style="color: #0056b3;">• ${gettext('Módulo de corte')}: <strong>${formatNumber(shearModulus)} N/mm²</strong></span><br>
+            <span style="color: #0056b3;">• ${gettext('Factor límite elástico')}: <strong>${formatNumber(elasticFactor)}</strong></span>
         `;
         materialInfo.style.display = 'block';
     } else {
@@ -143,20 +143,20 @@ function showMaterialInfo(selectedOption, shearModulus, elasticFactor) {
     }
 }
 
-// Formatear números para mostrar
+// Format numbers for display
 /**
- * Formatea números para presentación visual usando la configuración regional española.
- * - Si es entero: muestra sin decimales (ej: 123)
- * - Si es decimal: muestra hasta 3 decimales (ej: 123,456)
- * - Usa separador de miles (punto) y coma como separador decimal
- * @param {number|string} num - Número a formatear
- * @returns {string} Número formateado para mostrar
+ * Formats numbers for visual display using Spanish regional settings.
+ * - If it's an integer: shows it without decimals (e.g. 123)
+ * - If it's a decimal: shows up to 3 decimals (e.g. 123,456)
+ * - Uses a thousands separator (dot) and comma as the decimal separator
+ * @param {number|string} num - Number to format
+ * @returns {string} Number formatted for display
  */
 function formatNumber(num) {
     const number = parseFloat(num);
     if (isNaN(number)) return num;
 
-    // Detectar si es entero o decimal
+    // Detect whether it's an integer or a decimal
     if (number % 1 === 0) {
         return number.toLocaleString('es-ES');
     } else {
@@ -164,12 +164,12 @@ function formatNumber(num) {
     }
 }
 
-// Validación de formulario antes del envío
+// Form validation before submission
 /**
- * Valida que todos los campos requeridos estén completos antes de enviar el formulario.
- * - Evita el envío si hay campos vacíos
- * - Marca visualmente los campos inválidos con color rojo
- * - Muestra una alerta indicando que complete los campos obligatorios
+ * Validates that all required fields are filled in before submitting the form.
+ * - Prevents submission if there are empty fields
+ * - Visually marks invalid fields in red
+ * - Shows an alert indicating that the required fields must be filled in
  */
 function setupFormValidation() {
     const form = document.querySelector('form');
@@ -191,18 +191,18 @@ function setupFormValidation() {
 
         if (hasErrors) {
             e.preventDefault();
-            alert('⚠️ Por favor complete todos los campos obligatorios');
+            alert('⚠️ ' + gettext('Por favor complete todos los campos obligatorios'));
         }
     });
 }
 
 /**
- * Configura el selector de tipo de muelle (compresion/tracción).
- * - Cambia dinámicamente los campos y etiquetas según el tipo seleccionado
- * - Muestra/oculta campos específicos de tracción (tensión inicial)
- * - Actualiza las etiquetas de "longitud inicial/final" según el tipo
- * - Gestiona las opciones visuales de extremos según el tipo
- * - Selecciona automáticamente un extremo válido por defecto
+ * Sets up the spring type selector (compression/extension).
+ * - Dynamically changes fields and labels based on the selected type
+ * - Shows/hides extension-specific fields (initial tension)
+ * - Updates the "initial/final length" labels based on the type
+ * - Manages the visual end options based on the type
+ * - Automatically selects a valid default end
  */
 function setupSpringTypeSelector() {
     const typeSelect = document.getElementById('tipo_muelle');
@@ -231,11 +231,11 @@ function setupSpringTypeSelector() {
         }
 
         if (initialLabel) {
-            initialLabel.textContent = isTraccion ? 'Longitud inicial estirada (mm):' : 'Longitud inicial (mm):';
+            initialLabel.textContent = isTraccion ? gettext('Longitud inicial estirada (mm):') : gettext('Longitud inicial (mm):');
         }
 
         if (finalLabel) {
-            finalLabel.textContent = isTraccion ? 'Longitud final estirada (mm):' : 'Longitud final (mm):';
+            finalLabel.textContent = isTraccion ? gettext('Longitud final estirada (mm):') : gettext('Longitud final (mm):');
         }
 
         compresionEndOptions.forEach(option => {
@@ -252,8 +252,8 @@ function setupSpringTypeSelector() {
                 'anillo_doble_aleman_entero_centrado',
                 'anillo_doble_aleman_entero_lateral',
                 'anillo_simple_aleman_centrado',
-                'static/img/anillo_simple_aleman_entero_lateral.png',
-                'static/img/anillo_simple_aleman_entero_centrado.png',
+                'static/images/anillo_simple_aleman_entero_lateral.png',
+                'static/images/anillo_simple_aleman_entero_centrado.png',
                 'anillo_especial'
             ];
 
@@ -275,13 +275,13 @@ function setupSpringTypeSelector() {
     updateByType();
 }
 
-// Configurar selector visual de extremos de muelle
+// Set up the visual selector for spring ends
 /**
- * Configura un selector visual para elegir el tipo de extremos del muelle.
- * - Permite seleccionar visualmente entre diferentes opciones de extremos
- * - Guarda el valor seleccionado en un input oculto
- * - Incluye animaciones visuales al seleccionar y pasar el ratón
- * - Solo una opción puede estar seleccionada a la vez
+ * Sets up a visual selector to choose the spring's end type.
+ * - Allows visually selecting between different end options
+ * - Stores the selected value in a hidden input
+ * - Includes visual animations on select and hover
+ * - Only one option can be selected at a time
  */
 function setupSpringEndSelector() {
     const endOptions = document.querySelectorAll('.end-option');
@@ -289,27 +289,27 @@ function setupSpringEndSelector() {
 
     endOptions.forEach(option => {
         option.addEventListener('click', function () {
-            // Remover selección anterior
+            // Remove previous selection
             endOptions.forEach(opt => opt.classList.remove('selected'));
 
-            // Seleccionar nueva opción
+            // Select the new option
             this.classList.add('selected');
 
-            // Actualizar valor en input oculto
+            // Update the value in the hidden input
             const value = this.getAttribute('data-value');
             hiddenInput.value = value;
 
-            // Animación de confirmación
+            // Confirmation animation
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'translateY(-2px)';
             }, 150);
 
-            // Log para depuración
-            console.log('🌀 Tipo de extremo seleccionado:', value);
+            // Log for debugging
+            console.log('🌀 Selected end type:', value);
         });
 
-        // Efecto hover mejorado
+        // Improved hover effect
         option.addEventListener('mouseenter', function () {
             if (!this.classList.contains('selected')) {
                 this.style.transform = 'translateY(-1px)';
@@ -324,12 +324,12 @@ function setupSpringEndSelector() {
     });
 }
 
-// Configurar auto-detección de propiedades del material (compatibilidad)
+// Set up auto-detection of material properties (compatibility)
 /**
- * Detecta las propiedades del material seleccionado y las muestra en pantalla.
- * Es complementario a setupMaterialDetection() para asegurar compatibilidad.
- * - Se activa al cambiar el material seleccionado
- * - Muestra información técnica del material (módulo de corte, factor elástico)
+ * Detects the properties of the selected material and displays them on screen.
+ * Complements setupMaterialDetection() to ensure compatibility.
+ * - Triggered when the selected material changes
+ * - Shows technical material information (shear modulus, elastic factor)
  */
 function setupMaterialPropertyDetection() {
     const materialSelect = document.getElementById('material');
@@ -339,7 +339,7 @@ function setupMaterialPropertyDetection() {
             const shearModulus = selected.getAttribute('data-shear-modulus');
             const elasticFactor = selected.getAttribute('data-elastic-factor');
 
-            // Integración con el sistema de detección de formato
+            // Integration with the format detection system
             showMaterialInfo(selected, shearModulus, elasticFactor);
         });
     }
@@ -347,7 +347,7 @@ function setupMaterialPropertyDetection() {
 
 
 
-// Inicialización del sistema cuando el DOM esté listo
+// Initialize the system once the DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     setupFormatDetection();
     setupMaterialDetection();
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupMaterialPropertyDetection();
     setupGeometryFieldControlAndDiameterSync();
 
-    // Mostrar mensaje de carga en consola
-    console.log('🔧 Sistema de detección de formato HTML activado');
+    // Show loading message in the console
+    console.log('🔧 HTML format detection system activated');
     console.log('🌀 Calculadora de Muelles initialized');
 });
