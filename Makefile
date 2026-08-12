@@ -79,7 +79,6 @@ setup-letsencrypt:
 		--agree-tos \
 		--no-eff-email \
 		--duplicate \
-		--staging \
 		--non-interactive \
 		--force-renewal  || { \
 			echo "❌ Error: Falló la generación de certificados Let's Encrypt para $(DOMAIN)"; \
