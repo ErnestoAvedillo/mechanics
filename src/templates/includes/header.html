@@ -18,13 +18,13 @@
       </button>
 
       <ul class="nav-menu" id="navMenu">
-          {% if not user.is_authenticated %}
+          <!-- {% if not user.is_authenticated %}
             <li><a href="{% url 'menuapp:login' %}" class="nav-link">{% trans "Iniciar Sesión" %}</a></li>
             <li><a href="{% url 'menuapp:signup' %}" class="nav-link">{% trans "Crear Cuenta" %}</a></li>
           {% else %}
             <li><p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p></li>
             <li><a href="{% url 'menuapp:logout' %}" class="nav-link">{% trans "Cerrar Sesión" %}</a></li>
-          {% endif %}
+          {% endif %} -->
           <li class="lang-switcher-item">
             <form action="{% url 'set_language' %}" method="post" class="lang-switcher">
               {% csrf_token %}
