@@ -79,6 +79,7 @@ setup-letsencrypt:
 		--agree-tos \
 		--no-eff-email \
 		--duplicate \
+		--staging \
 		--non-interactive \
 		--force-renewal  || { \
 			echo "❌ Error: Falló la generación de certificados Let's Encrypt para $(DOMAIN)"; \
@@ -86,7 +87,7 @@ setup-letsencrypt:
 		}
 		# usar --staging para pruebas sin límites de tasa en el comando anterior: --staging
 	@echo "3. Verificando generación..."
-	@if [ -f "./certs/live/$(DOMAIN)/fullchain.pem" ]; then \
+	@if sudo test -f "./certs/live/$(DOMAIN)/fullchain.pem"; then \
 		echo "✅ Certificados creados correctamente."; \
 		echo "  3. Reiniciando nginx..."; \
 		$(MAKE) switch-prod; \
@@ -124,7 +125,7 @@ switch-dev:
 
 switch-prod:
 	@echo "🔄 Cambiando a configuración de PRODUCCIÓN (HTTPS)..."
-	@if [ ! -d "./certs/live/ernestoavedillo.com" ]; then \
+	@if ! sudo test -d "./certs/live/ernestoavedillo.com"; then \
 		echo "⚠️  CERTIFICADOS NO ENCONTRADOS"; \
 		echo "  Primero ejecuta: make setup-letsencrypt DOMAIN=ernestoavedillo.com EMAIL=tu@email.com"; \
 		exit 1; \
