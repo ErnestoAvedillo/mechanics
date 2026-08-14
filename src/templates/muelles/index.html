@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{{ titulo }} - El Menú de Ernesto®{% endblock %}
+{% block title %}{% trans "Calculadoras de Muelles Online: Compresión, Tracción, Torsión" %}{% endblock %}
+
+{% block meta_description %}{% trans "Calcula muelles de compresión, tracción, torsión y cónicos gratis online. Resultados al instante con selección de materiales y reporte descargable." %}{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{{ titulo }} - El Menú de Ernesto®{% endblock %}
+{% block title %}{% trans "Calculadoras de Tolerancias y Ajustes Mecánicos Online" %}{% endblock %}
+
+{% block meta_description %}{% trans "Calcula ajustes eje-agujero, pin-agujero y tolerancias ISO gratis online. Herramientas para diseño mecánico e ingeniería industrial." %}{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">

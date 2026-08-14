@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Calculadora de Muelles 2K" %} - El Menú de Ernesto®</title>
+    <title>{% trans "Calculadora de Muelle de Doble Rigidez (2K) Online" %}</title>
+    <meta name="description" content="{% trans "Calcula muelles de doble constante de rigidez (2K): tramos de compresión progresiva, dimensiones y materiales. Gratis y online." %}">
     <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/calculadora-muelles.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/muelle-extensions.css' %}">
@@ -17,6 +18,7 @@
 
         <h1>🌀 {% trans "Calculadora de Muelles No Lineales 2K" %}</h1>
         <p>{% trans "Muelle de compresión con tres tramos de paso distinto (extremos apretados y cuerpo central abierto), de doble constante K1/K2: los tramos de paso apretado se bloquean antes, dejando el tramo central de paso abierto como único responsable de la rigidez durante el resto del recorrido." %}</p>
+        <h2>{% trans "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, la longitud del hilo no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto." %}</H2>
         <form method="post">
             {% csrf_token %}
             <div class="form-grid form-2k-grid">
