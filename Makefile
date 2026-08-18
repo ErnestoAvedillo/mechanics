@@ -11,6 +11,10 @@ EMAIL ?= eavedillo@protonmail.com
 all: build
 
 build:
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
+
+build-nocache:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) build --no-cache
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
 
@@ -149,9 +153,9 @@ show-nginx-config:
 	@echo "  make switch-dev   (volver a HTTP)"
 	@echo "  make switch-prod  (activar HTTPS con certificados)"
 
-rebuild: down setup-selfsigned build
+rebuild: down setup-selfsigned build-nocache
 
-re: clean build
+re: clean build-nocache
 
 status:
 	@echo "Checking the status of the containers..."
@@ -202,7 +206,8 @@ help:
 	@echo "═══════════════════════════════════════════════════════════════"
 	@echo "CONTENEDORES"
 	@echo "═══════════════════════════════════════════════════════════════"
-	@echo "  build              - Build and start the containers"
+	@echo "  build              - Build (using cache) and start the containers"
+	@echo "  build-nocache      - Build from scratch (no cache) and start the containers"
 	@echo "  down               - Stop and remove the containers"
 	@echo "  restart            - Restart the containers"
 	@echo "  rebuild            - Rebuild the containers without cache"
@@ -227,6 +232,8 @@ help:
 	@echo "  status             - Ver estado de contenedores/imágenes/volúmenes"
 	@echo "  in_nginx           - Shell interactivo en contenedor nginx"
 	@echo "  in_django          - Shell interactivo en contenedor django"
+	@echo "  mongo-express y flower están detrás del profile 'debug':"
+	@echo "    docker compose --profile debug up -d mongo-express flower"
 	@echo ""
 	@echo "LIMPIEZA"
 	@echo "═══════════════════════════════════════════════════════════════"
@@ -247,4 +254,4 @@ help:
 	@echo "  3. make switch-prod        (HTTPS con certificados válidos)"
 	@echo ""
 
-.PHONY: all build down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan
+.PHONY: all build build-nocache down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan

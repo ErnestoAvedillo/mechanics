@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% block title %}{{ titulo }} - {% trans "Estudios de tolerancias" %} {% endblock %}
+{% block title %}{% trans "Calculadora de Tolerancia Pin-Agujero Online" %}{% endblock %}
+
+{% block meta_description %}{% trans "Calcula el ajuste y tolerancia entre un pin y su agujero según norma ISO. Resultado inmediato para diseño mecánico." %}{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-pin-hole.css' %}">

@@ -97,86 +97,86 @@ services:
       - .env
     restart: unless-stopped
 
-  redis:
-    image: redis:7-alpine
-    container_name: redis
-    ports:
-      - "6379:6379"
-    restart: unless-stopped
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
+  #   restart: unless-stopped
 
-  celery_worker:
-    image: mechanics-django:latest
+  # celery_worker:
+  #   image: mechanics-django:latest
 
-    #build:working_dir: /app
-    #  context: ./config/celery/
-    #  dockerfile: Dockerfile
-    container_name: celery_worker
-    working_dir: /app
-    #command: tail -f /dev/null
-    command: celery -A src.mechanics worker -l info
-    volumes:
-      - .:/app/
-    env_file:
-      - .env
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "celery", "-A", "src.mechanics", "inspect", "ping"]
-      interval: 10s
-      timeout: 10s
-      retries: 10
-      start_period: 15s
-    depends_on:
-      django:
-        condition: service_healthy
-        #required_build_action: rebuild  # <-- ESTO obliga a terminar el build de django primero
-      redis:
-        condition: service_started
-      postgres:
-        condition: service_started
-      qdrant:
-        condition: service_started
+  #   #build:working_dir: /app
+  #   #  context: ./config/celery/
+  #   #  dockerfile: Dockerfile
+  #   container_name: celery_worker
+  #   working_dir: /app
+  #   #command: tail -f /dev/null
+  #   command: celery -A src.mechanics worker -l info
+  #   volumes:
+  #     - .:/app/
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "celery", "-A", "src.mechanics", "inspect", "ping"]
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 10
+  #     start_period: 15s
+  #   depends_on:
+  #     django:
+  #       condition: service_healthy
+  #       #required_build_action: rebuild  # <-- ESTO obliga a terminar el build de django primero
+  #     redis:
+  #       condition: service_started
+  #     postgres:
+  #       condition: service_started
+  #     qdrant:
+  #       condition: service_started
 
-  celery_beat:
-    image: mechanics-django:latest
-    #build:
-    #  context: ./config/celery/
-    #  dockerfile: Dockerfile
-    container_name: celery_beat
-    working_dir: /app
-    command: celery -A src.mechanics beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-    volumes:
-      - .:/app/
-    env_file:
-      - .env
-    restart: unless-stopped
-    depends_on:
-      django:
-        condition: service_healthy
-      redis:
-        condition: service_started
-      postgres:
-        condition: service_started
+  # celery_beat:
+  #   image: mechanics-django:latest
+  #   #build:
+  #   #  context: ./config/celery/
+  #   #  dockerfile: Dockerfile
+  #   container_name: celery_beat
+  #   working_dir: /app
+  #   command: celery -A src.mechanics beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+  #   volumes:
+  #     - .:/app/
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped
+  #   depends_on:
+  #     django:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_started
+  #     postgres:
+  #       condition: service_started
 
-  flower:
-    image: mechanics-django:latest
-    container_name: flower
-    # Cambiado a 'celery -A src.mechanics flower' en lugar de 'flower' a secas
-    command: celery -A src.mechanics flower --port=5555
-    working_dir: /app
-    ports:
-      - "5555:5555"
-    volumes:
-      - .:/app/
-    env_file:
-      - .env
-    restart: unless-stopped
-    depends_on:
-      django:
-        condition: service_healthy
-      redis:
-        condition: service_started
-      celery_worker:
-        condition: service_healthy
+  # flower:
+  #   image: mechanics-django:latest
+  #   container_name: flower
+  #   # Cambiado a 'celery -A src.mechanics flower' en lugar de 'flower' a secas
+  #   command: celery -A src.mechanics flower --port=5555
+  #   working_dir: /app
+  #   ports:
+  #     - "5555:5555"
+  #   volumes:
+  #     - .:/app/
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped
+  #   depends_on:
+  #     django:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_started
+  #     celery_worker:
+  #       condition: service_healthy
 
 volumes:
   static_volume:

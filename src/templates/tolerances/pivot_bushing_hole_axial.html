@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% block title %}{{ titulo }} - {% trans "Estudios de tolerancias" %} {% endblock %}
+{% block title %}{% trans "Calculadora de Ajuste Axial Pivote-Casquillo" %}{% endblock %}
+
+{% block meta_description %}{% trans "Calcula la tolerancia axial entre pivote, casquillo y agujero. Herramienta online gratuita para diseño de ajustes mecánicos." %}{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">

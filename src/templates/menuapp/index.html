@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans "Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software" %}{% endblock %}
+{% block title %}{% trans "Ernesto Avedillo | Calculadoras de Ingeniería Mecánica Online" %}{% endblock %}
+
+{% block meta_description %}{% trans "Herramientas gratuitas de cálculo mecánico: muelles, tolerancias y ajustes. Creadas por un ingeniero industrial para ingenieros, estudiantes y diseñadores." %}{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
@@ -75,14 +77,14 @@
           de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería.{% endblocktrans %}
         </p>
 
-        <div class="auth-links mt-4">
+        <!-- <div class="auth-links mt-4">
           {% if not user.is_authenticated %}
             <a href="{% url 'menuapp:login' %}" class="btn btn-primary me-2">{% trans "Iniciar Sesión" %}</a>
             <a href="{% url 'menuapp:signup' %}" class="btn btn-outline-primary">{% trans "Crear Cuenta" %}</a>
           {% else %}
             <p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p>
           {% endif %}
-        </div>
+        </div> -->
       </section>
     </article>
   </div>

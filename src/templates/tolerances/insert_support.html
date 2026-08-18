@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% block title %}{{ titulo }} - {% trans "Estudios de tolerancias" %} {% endblock %}
+{% block title %}{% trans "Calculadora de Tolerancia para Soporte de Inserto" %}{% endblock %}
+
+{% block meta_description %}{% trans "Calcula el ajuste y tolerancia de un inserto en su soporte. Herramienta gratuita online para diseño mecánico de precisión." %}{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'tolerances/css/tolerances-index.css' %}">

@@ -3,1302 +3,3151 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-14 08:39+0200\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 
-msgid "A lo largo de mi experiencia en los sectores automotriz e industrial, he liderado y ejecutado proyectos\n"
-"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, además de encabezar iniciativas de mejora en procesos\n"
-"          de fabricación. Este recorrido me permitió identificar un patrón constante: los retos más exigentes encuentran\n"
-"          su mejor respuesta cuando se integran con soluciones de software."
-msgstr "A lo largo de mi experiencia en los sectores automotriz e industrial, he liderado y ejecutado proyectos\n"
-"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, además de encabezar iniciativas de mejora en procesos\n"
-"          de fabricación. Este recorrido me permitió identificar un patrón constante: los retos más exigentes encuentran\n"
-"          su mejor respuesta cuando se integran con soluciones de software."
-
-msgid "Abierto no rectificado"
-msgstr "Abierto no rectificado"
-
-msgid "Abierto rectificado"
-msgstr "Abierto rectificado"
-
-msgid "Abrir menú"
-msgstr "Abrir menú"
-
-msgid "Acciones"
-msgstr "Acciones"
-
-msgid "Activado"
-msgstr "Activado"
-
-msgid "Agujero"
-msgstr "Agujero"
-
-msgid "Ajuste"
-msgstr "Ajuste"
-
-msgid "Ajuste Pin-Hole"
-msgstr "Ajuste Pin-Hole"
-
-msgid "Altura del inserto"
-msgstr "Altura del inserto"
-
-msgid "Altura del soporte"
-msgstr "Altura del soporte"
-
-msgid "Altura inserto"
-msgstr "Altura inserto"
-
-msgid "Altura soporte"
-msgstr "Altura soporte"
-
-msgid "Analisis Grafico de Fatiga"
-msgstr "Analisis Grafico de Fatiga"
-
-msgid "Analysis clearance system"
-msgstr "Analysis clearance system"
-
-msgid "Analysis connection Buching-Tube"
-msgstr "Analysis connection Buching-Tube"
-
-msgid "Analysis sobrealtura"
-msgstr "Analysis sobrealtura"
-
-msgid "Analysis wall thickness Buching"
-msgstr "Analysis wall thickness Buching"
-
-msgid "Ancho casquillo 1"
-msgstr "Ancho casquillo 1"
-
-msgid "Ancho casquillo 2"
-msgstr "Ancho casquillo 2"
-
-msgid "Ancho muelle:"
-msgstr "Ancho muelle:"
-
-msgid "Angulo libre:"
-msgstr "Angulo libre:"
-
-msgid "Angulo tangencias:"
-msgstr "Angulo tangencias:"
-
-msgid "Anillo doble aleman entero centrado"
-msgstr "Anillo doble aleman entero centrado"
-
-msgid "Anillo doble aleman entero lateral"
-msgstr "Anillo doble aleman entero lateral"
-
-msgid "Anillo especial"
-msgstr "Anillo especial"
-
-msgid "Anillo simple aleman centrado"
-msgstr "Anillo simple aleman centrado"
-
-msgid "Anillo simple aleman entero centrado"
-msgstr "Anillo simple aleman entero centrado"
-
-msgid "Anillo simple aleman entero lateral"
-msgstr "Anillo simple aleman entero lateral"
-
-msgid "Apriete (Interference fit)"
-msgstr "Apriete (Interference fit)"
-
-msgid "Archivo / Título"
-msgstr "Archivo / Título"
-
-msgid "Archivo PDF Técnico (Normativa, TL, ISO...)"
-msgstr "Archivo PDF Técnico (Normativa, TL, ISO...)"
-
-msgid "Arrastra una imagen aqui o haz clic para seleccionar"
-msgstr "Arrastra una imagen aqui o haz clic para seleccionar"
-
-msgid "Asistente Chat RAG"
-msgstr "Asistente Chat RAG"
-
-msgid "Auto"
-msgstr "Auto"
-
-msgid "Añadir Documento al RAG"
-msgstr "Añadir Documento al RAG"
-
-msgid "Aún no has subido normativas."
-msgstr "Aún no has subido normativas."
-
-msgid "Bienvenido a Lola Specs."
-msgstr "Bienvenido a Lola Specs."
-
-msgid "Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas desde el menú lateral."
-msgstr "Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas desde el menú lateral."
-
-msgid "Borrar"
-msgstr "Borrar"
-
-msgid "Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el desarrollo de software converjan\n"
-"          para crear soluciones técnicas de alto impacto. Estoy abierto a explorar ideas innovadoras, optimizar algoritmos\n"
-"          y contribuir en retos industriales complejos con un enfoque riguroso y práctico."
-msgstr "Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el desarrollo de software converjan\n"
-"          para crear soluciones técnicas de alto impacto. Estoy abierto a explorar ideas innovadoras, optimizar algoritmos\n"
-"          y contribuir en retos industriales complejos con un enfoque riguroso y práctico."
-
-msgid "Bushing flange"
-msgstr "Bushing flange"
-
-msgid "Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
-msgstr "Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
-
-msgid "Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
-msgstr "Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
-
-msgid "Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado"
-msgstr "Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado"
-
-msgid "Calculado automáticamente según las dimensiones"
-msgstr "Calculado automáticamente según las dimensiones"
-
-msgid "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
-msgstr "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
-
-msgid "Calculadora Avanzada de Muelles Helicoidales de torsión"
-msgstr "Calculadora Avanzada de Muelles Helicoidales de torsión"
-
-msgid "Calculadora Avanzada de Muelles Helicoidales de tracción"
-msgstr "Calculadora Avanzada de Muelles Helicoidales de tracción"
-
-msgid "Calculadora de Muelles"
-msgstr "Calculadora de Muelles"
-
-msgid "Calculadora de Muelles de compresión"
-msgstr "Calculadora de Muelles de compresión"
-
-msgid "Calculadora de Muelles de torsión"
-msgstr "Calculadora de Muelles de torsión"
-
-msgid "Calculadora de Muelles de tracción"
-msgstr "Calculadora de Muelles de tracción"
-
-msgid "Calculadora de Tolerancias"
-msgstr "Calculadora de Tolerancias"
-
-msgid "Calculadora para muelles cónicos"
-msgstr "Calculadora para muelles cónicos"
-
-msgid "Calculadora para muelles no lineales de doble constante"
-msgstr "Calculadora para muelles no lineales de doble constante"
-
-msgid "Calcular"
-msgstr "Calcular"
-
-msgid "Calcular Especificaciones"
-msgstr "Calcular Especificaciones"
-
-msgid "Calculo Pin-Hole"
-msgstr "Calculo Pin-Hole"
-
-msgid "Calculo de Tolerancia Pin-Hole"
-msgstr "Calculo de Tolerancia Pin-Hole"
-
-msgid "Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en un alojamiento de plástico"
-msgstr "Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en un alojamiento de plástico"
-
-msgid "Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos"
-msgstr "Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos"
-
-msgid "Calculo de Tolerancias Radiales en un sistema de pivotaje con casquillos"
-msgstr "Calculo de Tolerancias Radiales en un sistema de pivotaje con casquillos"
-
-msgid "Cambiar Contraseña"
-msgstr "Cambiar Contraseña"
-
-msgid "Cancelar"
-msgstr "Cancelar"
-
-msgid "Carta de presentacion"
-msgstr "Carta de presentacion"
-
-msgid "Casquillo Exterior"
-msgstr "Casquillo Exterior"
-
-msgid "Casquillo Interior"
-msgstr "Casquillo Interior"
-
-msgid "Categoria Wahl:"
-msgstr "Categoria Wahl:"
-
-msgid "Cerrado no rectificado"
-msgstr "Cerrado no rectificado"
-
-msgid "Cerrado rectificado"
-msgstr "Cerrado rectificado"
-
-msgid "Cerrar Sesión"
-msgstr "Cerrar Sesión"
-
-msgid "Clearance system"
-msgstr "Clearance system"
-
-msgid "Complete los datos del muelle para obtener sus especificaciones tecnicas completas."
-msgstr "Complete los datos del muelle para obtener sus especificaciones tecnicas completas."
-
-msgid "Complete los datos del muelle para obtener sus especificaciones técnicas completas."
-msgstr "Complete los datos del muelle para obtener sus especificaciones técnicas completas."
-
-msgid "Complete solo uno de los diámetros"
-msgstr "Complete solo uno de los diámetros"
-
-msgid "Compresión (lineal)"
-msgstr "Compresión (lineal)"
-
-msgid "Confirmar Contraseña"
-msgstr "Confirmar Contraseña"
-
-msgid "Confirmar Nueva Contraseña"
-msgstr "Confirmar Nueva Contraseña"
-
-msgid "Consejo:"
-msgstr "Consejo:"
-
-msgid "Constante del muelle:"
-msgstr "Constante del muelle:"
-
-msgid "Constante:"
-msgstr "Constante:"
-
-msgid "Contacto"
-msgstr "Contacto"
-
+#: menuapp/forms.py:7 templates/registration/login.html:27
 msgid "Contraseña"
 msgstr "Contraseña"
 
-msgid "Contraseña cambiada con éxito."
-msgstr "Contraseña cambiada con éxito."
+#: menuapp/forms.py:8
+msgid "Confirmar Contraseña"
+msgstr "Confirmar Contraseña"
 
-msgid "Contraseña restablecida con éxito. Ahora puedes iniciar sesión."
-msgstr "Contraseña restablecida con éxito. Ahora puedes iniciar sesión."
-
-msgid "Contraseña restablecida y sesión iniciada."
-msgstr "Contraseña restablecida y sesión iniciada."
-
+#: menuapp/forms.py:9
 msgid "Correo electrónico"
 msgstr "Correo electrónico"
 
-msgid "Crear Cuenta"
-msgstr "Crear Cuenta"
-
-msgid "Credenciales incorrectas."
-msgstr "Credenciales incorrectas."
-
-msgid "Curva de Diametros"
-msgstr "Curva de Diametros"
-
-msgid "Curva de Esfuerzos"
-msgstr "Curva de Esfuerzos"
-
-msgid "Curva de Recorrido"
-msgstr "Curva de Recorrido"
-
-msgid "Curva de diametros"
-msgstr "Curva de diametros"
-
-msgid "Curva de esfuerzos"
-msgstr "Curva de esfuerzos"
-
-msgid "Curva de recorrido"
-msgstr "Curva de recorrido"
-
-msgid "Cálculo de Tolerancias diametral Pin Agujero"
-msgstr "Cálculo de Tolerancias diametral Pin Agujero"
-
-msgid "Cálculo de tolerancias absolutas"
-msgstr "Cálculo de tolerancias absolutas"
-
-msgid "Código de Verificación"
-msgstr "Código de Verificación"
-
-msgid "Código incorrecto."
-msgstr "Código incorrecto."
-
-msgid "Código verificado. Introduce tu nueva contraseña."
-msgstr "Código verificado. Introduce tu nueva contraseña."
-
-msgid "De la Ingenieria Industrial al Desarrollo de Software"
-msgstr "De la Ingenieria Industrial al Desarrollo de Software"
-
-msgid "Densidad"
-msgstr "Densidad"
-
-msgid "Desactivado"
-msgstr "Desactivado"
-
-msgid "Descargar PDF"
-msgstr "Descargar PDF"
-
-msgid "Determinación del juego o interferencia en el paquete pin casquillo tubo."
-msgstr "Determinación del juego o interferencia en el paquete pin casquillo tubo."
-
-msgid "Diagrama de Goodman"
-msgstr "Diagrama de Goodman"
-
-msgid "Diagrama de muelle"
-msgstr "Diagrama de muelle"
-
-msgid "Diagrama muelle compresión"
-msgstr "Diagrama muelle compresión"
-
-msgid "Diagrama pin casquillo y agujero"
-msgstr "Diagrama pin casquillo y agujero"
-
-msgid "Diagrama pin y agujero"
-msgstr "Diagrama pin y agujero"
-
-msgid "Diagrama pin-hole con campos editables"
-msgstr "Diagrama pin-hole con campos editables"
-
-msgid "Diametro del Inserto"
-msgstr "Diametro del Inserto"
-
-msgid "Diametro del soporte"
-msgstr "Diametro del soporte"
-
-msgid "Diametro exterior (De) en mm"
-msgstr "Diametro exterior (De) en mm"
-
-msgid "Diametro exterior:"
-msgstr "Diametro exterior:"
-
-msgid "Diametro hilo:"
-msgstr "Diametro hilo:"
-
-msgid "Diametro inserto"
-msgstr "Diametro inserto"
-
-msgid "Diametro interior (Di) en mm"
-msgstr "Diametro interior (Di) en mm"
-
-msgid "Diametro interior:"
-msgstr "Diametro interior:"
-
-msgid "Diametro medio (Dm) en mm"
-msgstr "Diametro medio (Dm) en mm"
-
-msgid "Diametro medio:"
-msgstr "Diametro medio:"
-
-msgid "Diametro soporte"
-msgstr "Diametro soporte"
-
-msgid "Diferencia de diametros (mm)"
-msgstr "Diferencia de diametros (mm)"
-
-msgid "Dimensiones"
-msgstr "Dimensiones"
-
-msgid "Dimensiones del Muelle"
-msgstr "Dimensiones del Muelle"
-
-msgid "Dimensiones:"
-msgstr "Dimensiones:"
-
-msgid "Distancia entre espiras (longitud libre / espiras)"
-msgstr "Distancia entre espiras (longitud libre / espiras)"
-
-msgid "Distancia entre paredes"
-msgstr "Distancia entre paredes"
-
-msgid "Distribucion"
-msgstr "Distribucion"
-
-msgid "Diámetro del hilo (mm):"
-msgstr "Diámetro del hilo (mm):"
-
-msgid "Diámetro del hilo no proporcionado"
-msgstr "Diámetro del hilo no proporcionado"
-
-msgid "Diámetro exterior:"
-msgstr "Diámetro exterior:"
-
-msgid "Diámetro medio"
-msgstr "Diámetro medio"
-
-msgid "Diámetro medio:"
-msgstr "Diámetro medio:"
-
-msgid "Documento %(filename)s eliminado."
-msgstr "Documento %(filename)s eliminado."
-
-msgid "Durante años, he convertido necesidades operativas en herramientas prácticas. Diseñé sistemas de ayudas que redujeron\n"
-"          los tiempos de cotización de horas a minutos y creé plantillas para decisiones críticas de diseño mecánico que optimizaron\n"
-"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de una compañía para reducir la dependencia externa\n"
-"          y minimizar costes operativos."
-msgstr "Durante años, he convertido necesidades operativas en herramientas prácticas. Diseñé sistemas de ayudas que redujeron\n"
-"          los tiempos de cotización de horas a minutos y creé plantillas para decisiones críticas de diseño mecánico que optimizaron\n"
-"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de una compañía para reducir la dependencia externa\n"
-"          y minimizar costes operativos."
-
-msgid "Editar"
-msgstr "Editar"
-
-msgid "Ej. VW, BMW, Ford o General"
-msgstr "Ej. VW, BMW, Ford o General"
-
-msgid "Ej. VW, BMW, ISO..."
-msgstr "Ej. VW, BMW, ISO..."
-
-msgid "Eje Casquillo Agujero"
-msgstr "Eje Casquillo Agujero"
-
-msgid "El PDF se almacenará de forma segura y se auto-indexará para tu asistente de usuario."
-msgstr "El PDF se almacenará de forma segura y se auto-indexará para tu asistente de usuario."
-
-msgid "El código ha expirado."
-msgstr "El código ha expirado."
-
-msgid "Empezar a subir"
-msgstr "Empezar a subir"
-
-msgid "En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,\n"
-"          de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería."
-msgstr "En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,\n"
-"          de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería."
-
-msgid "Entrar"
-msgstr "Entrar"
-
-msgid "Enviar y Consultar"
-msgstr "Enviar y Consultar"
-
-msgid "Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software"
-msgstr "Ernesto Avedillo Carretero - Ingeniero Industrial + Desarrollo de Software"
-
-msgid "Error al calcular longitud de bloqueo: %(error)s"
-msgstr "Error al calcular longitud de bloqueo: %(error)s"
-
-msgid "Error al calcular pitch: %(error)s"
-msgstr "Error al calcular pitch: %(error)s"
-
-msgid "Error al recuperar el documento: %(error)s"
-msgstr "Error al recuperar el documento: %(error)s"
-
-msgid "Error en los cálculos: %(error)s"
-msgstr "Error en los cálculos: %(error)s"
-
-msgid "Error general durante la subida: %(error)s"
-msgstr "Error general durante la subida: %(error)s"
-
-msgid "Error:"
-msgstr "Error:"
-
-msgid "Especificaciones"
-msgstr "Especificaciones"
-
-msgid "Especificaciones Tecnicas del Muelle"
-msgstr "Especificaciones Tecnicas del Muelle"
-
-msgid "Especificaciones Técnicas"
-msgstr "Especificaciones Técnicas"
-
-msgid "Espesor de Pared"
-msgstr "Espesor de Pared"
-
-msgid "Espesor de pared (mm)"
-msgstr "Espesor de pared (mm)"
-
-msgid "Espesor nominal:"
-msgstr "Espesor nominal:"
-
-msgid "Espiras y Geometria"
-msgstr "Espiras y Geometria"
-
-msgid "Espiras útiles:"
-msgstr "Espiras útiles:"
-
-msgid "Espiras:"
-msgstr "Espiras:"
-
-msgid "Estado RAG"
-msgstr "Estado RAG"
-
-msgid "Estudios de tolerancias"
-msgstr "Estudios de tolerancias"
-
-msgid "Estudios de tolerancias pivot pin"
-msgstr "Estudios de tolerancias pivot pin"
-
-msgid "Evolucion Tecnica"
-msgstr "Evolucion Tecnica"
-
-msgid "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
-msgstr "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
-
-msgid "Explicación de tolerancias con distribución sesgada"
-msgstr "Explicación de tolerancias con distribución sesgada"
-
-msgid "Factor Wahl eval:"
-msgstr "Factor Wahl eval:"
-
-msgid "Factor Wahl:"
-msgstr "Factor Wahl:"
-
-msgid "Factor de Wahl:"
-msgstr "Factor de Wahl:"
-
-msgid "Factor de corrección por curvatura"
-msgstr "Factor de corrección por curvatura"
-
-msgid "Faltan campos obligatorios para torsión: %(fields)s"
-msgstr "Faltan campos obligatorios para torsión: %(fields)s"
-
-msgid "Fecha Subida"
-msgstr "Fecha Subida"
-
-msgid "Fotografia de Ernesto Avedillo"
-msgstr "Fotografia de Ernesto Avedillo"
-
-msgid "Fuerza necesaria para comprimir 1 mm"
-msgstr "Fuerza necesaria para comprimir 1 mm"
-
-msgid "Gap bushing-pin"
-msgstr "Gap bushing-pin"
-
-msgid "Gap spacer support"
-msgstr "Gap spacer support"
-
-msgid "Gestiona, consulta y chatea con tus documentos y normativas (RAG)"
-msgstr "Gestiona, consulta y chatea con tus documentos y normativas (RAG)"
-
-msgid "Gestor de Documentos"
-msgstr "Gestor de Documentos"
-
-msgid "Guardar"
-msgstr "Guardar"
-
-msgid "Has cerrado sesión."
-msgstr "Has cerrado sesión."
-
-msgid "Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:"
-msgstr "Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:"
-
-msgid "Herramienta para calcular especificaciones de muelles"
-msgstr "Herramienta para calcular especificaciones de muelles"
-
-msgid "Herramienta para calcular especificaciones de tolerancias"
-msgstr "Herramienta para calcular especificaciones de tolerancias"
-
-msgid "Histograma de (Agujero - Pin)"
-msgstr "Histograma de (Agujero - Pin)"
-
-msgid "Histograma de espesor de pared"
-msgstr "Histograma de espesor de pared"
-
-msgid "Histograma de interferencia Tubo Casquillo"
-msgstr "Histograma de interferencia Tubo Casquillo"
-
-msgid "Histograma de la Interferencia Tubo-Casquillo"
-msgstr "Histograma de la Interferencia Tubo-Casquillo"
-
-msgid "Histograma de la Resta de Diametros (Agujero - Pin)"
-msgstr "Histograma de la Resta de Diametros (Agujero - Pin)"
-
-msgid "Histograma de la diferencia entre diametro del agujero y del pin"
-msgstr "Histograma de la diferencia entre diametro del agujero y del pin"
-
-msgid "Histograma de la diferencia entre diametro del tubo y el casquillo"
-msgstr "Histograma de la diferencia entre diametro del tubo y el casquillo"
-
-msgid "Histograma del Clearance System"
-msgstr "Histograma del Clearance System"
-
-msgid "Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)"
-msgstr "Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)"
-
-msgid "Histograma del espesor de pared"
-msgstr "Histograma del espesor de pared"
-
-msgid "Histograma del gap entre el soporte y el inserto"
-msgstr "Histograma del gap entre el soporte y el inserto"
-
-msgid "Histograma del juego del sistema"
-msgstr "Histograma del juego del sistema"
-
-msgid "Hola %(username)s, tu código de verificación es: %(code)s"
-msgstr "Hola %(username)s, tu código de verificación es: %(code)s"
-
-msgid "Hola %(username)s, tu código para restablecer la contraseña es: %(code)s"
-msgstr "Hola %(username)s, tu código para restablecer la contraseña es: %(code)s"
-
-msgid "Hole Nominal"
-msgstr "Hole Nominal"
-
-msgid "Hole Tol. Inf"
-msgstr "Hole Tol. Inf"
-
-msgid "Hole Tol. Sup"
-msgstr "Hole Tol. Sup"
-
-msgid "Holgura maxima:"
-msgstr "Holgura maxima:"
-
-msgid "Holgura minima:"
-msgstr "Holgura minima:"
-
-msgid "Idioma"
-msgstr "Idioma"
-
-msgid "Imagen 1"
-msgstr "Imagen 1"
-
-msgid "Imagen 2"
-msgstr "Imagen 2"
-
-msgid "Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas."
-msgstr "Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas."
-
-msgid "Incoming Data"
-msgstr "Incoming Data"
-
-msgid "Indexado"
-msgstr "Indexado"
-
-msgid "Indice muelle:"
-msgstr "Indice muelle:"
-
-msgid "Información de Contacto"
-msgstr "Información de Contacto"
-
-msgid "Información sobre los cálculos:"
-msgstr "Información sobre los cálculos:"
-
-msgid "Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos."
-msgstr "Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos."
-
-msgid "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante."
-msgstr "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante."
-
-msgid "Iniciar Sesión"
-msgstr "Iniciar Sesión"
-
-msgid "Inicio"
-msgstr "Inicio"
-
-msgid "Inner Bushing"
-msgstr "Inner Bushing"
-
-msgid "Inner Tube"
-msgstr "Inner Tube"
-
-msgid "Interference <br> bushing-tube"
-msgstr "Interference <br> bushing-tube"
-
-msgid "Interference <br> spacer-support"
-msgstr "Interference <br> spacer-support"
-
-msgid "Interferencia Tubo-Casquillo"
-msgstr "Interferencia Tubo-Casquillo"
-
-msgid "Interferencia maxima:"
-msgstr "Interferencia maxima:"
-
-msgid "Interferencia minima:"
-msgstr "Interferencia minima:"
-
-msgid "Interferencia nominal:"
-msgstr "Interferencia nominal:"
-
-msgid "Ir al Chat RAG"
-msgstr "Ir al Chat RAG"
-
-msgid "Juego (Clearance fit)"
-msgstr "Juego (Clearance fit)"
-
-msgid "Juego del sistema (mm)"
-msgstr "Juego del sistema (mm)"
-
-msgid "Las contraseñas no coinciden."
-msgstr "Las contraseñas no coinciden."
-
-msgid "Lola Specs: Asistente Senior"
-msgstr "Lola Specs: Asistente Senior"
-
-msgid "Longitud bloqueo:"
-msgstr "Longitud bloqueo:"
-
-msgid "Longitud de pata fija (Ls) en mm"
-msgstr "Longitud de pata fija (Ls) en mm"
-
-msgid "Longitud de sujeción"
-msgstr "Longitud de sujeción"
-
-msgid "Longitud del Tubo"
-msgstr "Longitud del Tubo"
-
-msgid "Longitud final (mm):"
-msgstr "Longitud final (mm):"
-
-msgid "Longitud hilo cuerpo:"
-msgstr "Longitud hilo cuerpo:"
-
-msgid "Longitud hilo total:"
-msgstr "Longitud hilo total:"
-
-msgid "Longitud hilo:"
-msgstr "Longitud hilo:"
-
-msgid "Longitud inicial (mm):"
-msgstr "Longitud inicial (mm):"
-
-msgid "Longitud libre (mm):"
-msgstr "Longitud libre (mm):"
-
-msgid "Longitud libre no proporcionada"
-msgstr "Longitud libre no proporcionada"
-
-msgid "Longitud libre:"
-msgstr "Longitud libre:"
-
-msgid "Longitud pata fija:"
-msgstr "Longitud pata fija:"
-
-msgid "Longitud pata movil:"
-msgstr "Longitud pata movil:"
-
-msgid "Longitud sin comprimir (L0) en mm"
-msgstr "Longitud sin comprimir (L0) en mm"
-
-msgid "Longitud solida (Ls) en mm"
-msgstr "Longitud solida (Ls) en mm"
-
-msgid "Material"
-msgstr "Material"
-
-msgid "Material no seleccionado"
-msgstr "Material no seleccionado"
-
-msgid "Material y Configuración"
-msgstr "Material y Configuración"
-
-msgid "Material:"
-msgstr "Material:"
-
-msgid "Materiales cargados desde base de datos técnica"
-msgstr "Materiales cargados desde base de datos técnica"
-
-msgid "Max. Interferencia:"
-msgstr "Max. Interferencia:"
-
-msgid "Max:"
-msgstr "Max:"
-
-msgid "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto."
-msgstr "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto."
-
-msgid "Mecanicas"
-msgstr "Mecanicas"
-
-msgid "Mecánica:"
-msgstr "Mecánica:"
-
-msgid "Media (samples):"
-msgstr "Media (samples):"
-
-msgid "Media:"
-msgstr "Media:"
-
-msgid "Mejora la resistencia a la fatiga"
-msgstr "Mejora la resistencia a la fatiga"
-
-msgid "Menú"
-msgstr "Menú"
-
-msgid "Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
-"          Me permitió elevar soluciones —originalmente concebidas en hojas de cálculo— a implementaciones de ingeniería\n"
-"          de software de alto nivel, utilizando C, C++, Python y arquitecturas modernas para construir sistemas robustos,\n"
-"          escalables y mantenibles."
-msgstr "Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
-"          Me permitió elevar soluciones —originalmente concebidas en hojas de cálculo— a implementaciones de ingeniería\n"
-"          de software de alto nivel, utilizando C, C++, Python y arquitecturas modernas para construir sistemas robustos,\n"
-"          escalables y mantenibles."
-
-msgid "Min. Interferencia:"
-msgstr "Min. Interferencia:"
-
-msgid "Min:"
-msgstr "Min:"
-
-msgid "Mis Documentos"
-msgstr "Mis Documentos"
-
-msgid "Mis Documentos RAG"
-msgstr "Mis Documentos RAG"
-
-msgid "Modulo E:"
-msgstr "Modulo E:"
-
-msgid "Modulo G:"
-msgstr "Modulo G:"
-
-msgid "Momento resistente:"
-msgstr "Momento resistente:"
-
-msgid "Muelle con anillo doble aleman entero centrado"
-msgstr "Muelle con anillo doble aleman entero centrado"
-
-msgid "Muelle con anillo doble aleman entero lateral"
-msgstr "Muelle con anillo doble aleman entero lateral"
-
-msgid "Muelle con anillo especial"
-msgstr "Muelle con anillo especial"
-
-msgid "Muelle con anillo simple aleman centrado"
-msgstr "Muelle con anillo simple aleman centrado"
-
-msgid "Muelle con anillo simple aleman entero centrado"
-msgstr "Muelle con anillo simple aleman entero centrado"
-
-msgid "Muelle con anillo simple aleman entero lateral"
-msgstr "Muelle con anillo simple aleman entero lateral"
-
-msgid "Muelle con extremos abiertos no rectificados"
-msgstr "Muelle con extremos abiertos no rectificados"
-
-msgid "Muelle con extremos abiertos rectificados"
-msgstr "Muelle con extremos abiertos rectificados"
-
-msgid "Muelle con extremos cerrados no rectificados"
-msgstr "Muelle con extremos cerrados no rectificados"
-
-msgid "Muelle con extremos cerrados rectificados"
-msgstr "Muelle con extremos cerrados rectificados"
-
-msgid "Muelle cónico"
-msgstr "Muelle cónico"
-
-msgid "Muelle de compresión"
-msgstr "Muelle de compresión"
-
-msgid "Muelle de torsión"
-msgstr "Muelle de torsión"
-
-msgid "Muelle de tracción"
-msgstr "Muelle de tracción"
-
-msgid "Muelle no lineal"
-msgstr "Muelle no lineal"
-
-msgid "Muelles"
-msgstr "Muelles"
-
-msgid "Muelles cónicos"
-msgstr "Muelles cónicos"
-
-msgid "Muelles no lineales 2K"
-msgstr "Muelles no lineales 2K"
-
-msgid "Método no permitido"
-msgstr "Método no permitido"
-
-msgid "Módulo"
-msgstr "Módulo"
-
-msgid "No"
-msgstr "No"
-
-msgid "No se proporcionó ninguna pregunta"
-msgstr "No se proporcionó ninguna pregunta"
-
+#: menuapp/forms.py:15
 msgid "Nombre de usuario"
 msgstr "Nombre de usuario"
 
-msgid "Nombre del documento actualizado."
-msgstr "Nombre del documento actualizado."
-
-msgid "Nominal"
-msgstr "Nominal"
-
-msgid "Nueva Contraseña"
-msgstr "Nueva Contraseña"
-
-msgid "Numero de ciclos:"
-msgstr "Numero de ciclos:"
-
-msgid "Numero de espiras"
-msgstr "Numero de espiras"
-
-msgid "Numero de muestras"
-msgstr "Numero de muestras"
-
-msgid "Numero espiras utiles:"
-msgstr "Numero espiras utiles:"
-
-msgid "Numero espiras:"
-msgstr "Numero espiras:"
-
-msgid "Numero total de espiras (nt)"
-msgstr "Numero total de espiras (nt)"
-
-msgid "Número de ciclos:"
-msgstr "Número de ciclos:"
-
-msgid "Número de espiras"
-msgstr "Número de espiras"
-
-msgid "Número de espiras (nt)"
-msgstr "Número de espiras (nt)"
-
-msgid "Número de espiras no proporcionado"
-msgstr "Número de espiras no proporcionado"
-
-msgid "Número de espiras:"
-msgstr "Número de espiras:"
-
-msgid "OEM / Empresa"
-msgstr "OEM / Empresa"
-
-msgid "OEM / Empresa Relacionada (Opcional)"
-msgstr "OEM / Empresa Relacionada (Opcional)"
-
-msgid "OEM/Empresa actualizado."
-msgstr "OEM/Empresa actualizado."
-
-msgid "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
-msgstr "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
-
-msgid "Outer Bushing"
-msgstr "Outer Bushing"
-
-msgid "Para mejores resultados, proporcione solo dos de los tres diámetros (exterior, interior, medio). El tercero se calculará automáticamente para mantener la coherencia."
-msgstr "Para mejores resultados, proporcione solo dos de los tres diámetros (exterior, interior, medio). El tercero se calculará automáticamente para mantener la coherencia."
-
-msgid "Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en el atributo\n"
-"            <strong>style</strong> de cada etiqueta <strong>label.field-chip</strong>."
-msgstr "Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en el atributo\n"
-"            <strong>style</strong> de cada etiqueta <strong>label.field-chip</strong>."
-
-msgid "Parametros de Torsion"
-msgstr "Parametros de Torsion"
-
-msgid "Paso (pitch) en mm"
-msgstr "Paso (pitch) en mm"
-
-msgid "Paso entre espiras (pitch) en mm"
-msgstr "Paso entre espiras (pitch) en mm"
-
-msgid "Patas y Radios"
-msgstr "Patas y Radios"
-
-msgid "Pendiente"
-msgstr "Pendiente"
-
-msgid "Pin Nominal"
-msgstr "Pin Nominal"
-
-msgid "Pin Tol. Inf"
-msgstr "Pin Tol. Inf"
-
-msgid "Pin Tol. Sup"
-msgstr "Pin Tol. Sup"
-
-msgid "Pitch"
-msgstr "Pitch"
-
-msgid "Pitch:"
-msgstr "Pitch:"
-
-msgid "Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta."
-msgstr "Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta."
-
-msgid "Primera posición de carga"
-msgstr "Primera posición de carga"
-
-msgid "Primera posición de carga (A1)"
-msgstr "Primera posición de carga (A1)"
-
-msgid "Primera posición de carga (A2)"
-msgstr "Primera posición de carga (A2)"
-
-msgid "Primera posición de carga (L1)"
-msgstr "Primera posición de carga (L1)"
-
-msgid "Propuesta de Valor"
-msgstr "Propuesta de Valor"
-
-msgid "Próximamente disponible"
-msgstr "Próximamente disponible"
-
-msgid "Puedes contactarme a través de los siguientes medios:"
-msgstr "Puedes contactarme a través de los siguientes medios:"
-
-msgid "RAG Conectado"
-msgstr "RAG Conectado"
-
-msgid "Radio de sujeción"
-msgstr "Radio de sujeción"
-
-msgid "Radio de sujeción (Ra) pata móvil en mm"
-msgstr "Radio de sujeción (Ra) pata móvil en mm"
-
-msgid "Radio pata fija:"
-msgstr "Radio pata fija:"
-
-msgid "Radio pata movil:"
-msgstr "Radio pata movil:"
-
-msgid "Realiza consultas técnicas y normativas a tus documentos subidos. Extrae información exacta referenciada."
-msgstr "Realiza consultas técnicas y normativas a tus documentos subidos. Extrae información exacta referenciada."
-
-msgid "Recuperación de contraseña - Mechanics"
-msgstr "Recuperación de contraseña - Mechanics"
-
-msgid "Recuperar"
-msgstr "Recuperar"
-
-msgid "Recuperar Contraseña"
-msgstr "Recuperar Contraseña"
-
-msgid "Registrarse"
-msgstr "Registrarse"
-
-msgid "Relación diámetro medio / diámetro hilo"
-msgstr "Relación diámetro medio / diámetro hilo"
-
-msgid "Resistencia a la tracción del material"
-msgstr "Resistencia a la tracción del material"
-
-msgid "Resolucion de Problemas como Enfoque"
-msgstr "Resolucion de Problemas como Enfoque"
-
-msgid "Resultados"
-msgstr "Resultados"
-
-msgid "SH - Acero duro"
-msgstr "SH - Acero duro"
-
-msgid "SL - Acero de alto carbono"
-msgstr "SL - Acero de alto carbono"
-
-msgid "SM - Acero medio carbono"
-msgstr "SM - Acero medio carbono"
-
-msgid "Safety factor:"
-msgstr "Safety factor:"
-
-msgid "Segunda posición de carga"
-msgstr "Segunda posición de carga"
-
-msgid "Según normas para el diámetro del hilo"
-msgstr "Según normas para el diámetro del hilo"
-
-msgid "Según tipo de extremos seleccionado"
-msgstr "Según tipo de extremos seleccionado"
-
-msgid "Selecciona el tipo para ajustar el modelo de cálculo"
-msgstr "Selecciona el tipo para ajustar el modelo de cálculo"
-
-msgid "Seleccione un material..."
-msgstr "Seleccione un material..."
-
-msgid "Shot peening:"
-msgstr "Shot peening:"
-
-msgid "Si"
-msgstr "Si"
-
-msgid "Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña."
-msgstr "Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña."
-
-msgid "Si el email ingresado corresponde a una cuenta registrada, se ha enviado un correo con instrucciones."
-msgstr "Si el email ingresado corresponde a una cuenta registrada, se ha enviado un correo con instrucciones."
-
-msgid "Si el vídeo no se carga, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" rel=\"noopener noreferrer\">mira el vídeo en YouTube</a>."
-msgstr "Si el vídeo no se carga, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" rel=\"noopener noreferrer\">mira el vídeo en YouTube</a>."
-
-msgid "Sigma (samples):"
-msgstr "Sigma (samples):"
-
-msgid "Sigma:"
-msgstr "Sigma:"
-
-msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
-msgstr "Simulación de Monte Carlo en el cálculo de tolerancias"
-
-msgid "Sobrealtura"
-msgstr "Sobrealtura"
-
-msgid "Solo aplica para muelles de tracción"
-msgstr "Solo aplica para muelles de tracción"
-
-msgid "Sube PDFs, clasifícalos por OEM y verifica su estado de indexación."
-msgstr "Sube PDFs, clasifícalos por OEM y verifica su estado de indexación."
-
-msgid "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG."
-msgstr "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG."
-
-msgid "Subir Normativa"
-msgstr "Subir Normativa"
-
-msgid "Subir Nuevo PDF"
-msgstr "Subir Nuevo PDF"
-
-msgid "Subir y Analizar Documento"
-msgstr "Subir y Analizar Documento"
-
-msgid "Tension inicial:"
-msgstr "Tension inicial:"
-
-msgid "Tensión inicial"
-msgstr "Tensión inicial"
-
-msgid "Tensión inicial (F1) en N"
-msgstr "Tensión inicial (F1) en N"
-
-msgid "Tensión inicial (N):"
-msgstr "Tensión inicial (N):"
-
-msgid "Tipo de extremos:"
-msgstr "Tipo de extremos:"
-
-msgid "Tipo de muelle:"
-msgstr "Tipo de muelle:"
-
-msgid "Tipo muelle"
-msgstr "Tipo muelle"
-
-msgid "Tipo:"
-msgstr "Tipo:"
-
-msgid "Tol. Inf"
-msgstr "Tol. Inf"
-
-msgid "Tol. Inf:"
-msgstr "Tol. Inf:"
-
-msgid "Tol. Sup"
-msgstr "Tol. Sup"
-
-msgid "Tol. Sup:"
-msgstr "Tol. Sup:"
-
-msgid "Tolerancia Sesgada (Skewed)"
-msgstr "Tolerancia Sesgada (Skewed)"
-
-msgid "Tolerancias"
-msgstr "Tolerancias"
-
-msgid "Tolerancias Absolutas"
-msgstr "Tolerancias Absolutas"
-
-msgid "Tolerancias axiales pivot-bushing-agujero"
-msgstr "Tolerancias axiales pivot-bushing-agujero"
-
-msgid "Tolerancias radiales pivot-bushing-agujero"
-msgstr "Tolerancias radiales pivot-bushing-agujero"
-
-msgid "Tolerancias:"
-msgstr "Tolerancias:"
-
-msgid "Tracción"
-msgstr "Tracción"
-
-msgid "Transicion (Transition fit)"
-msgstr "Transicion (Transition fit)"
-
-msgid "Trayectoria Profesional"
-msgstr "Trayectoria Profesional"
-
+#: menuapp/forms.py:24
+msgid "Las contraseñas no coinciden."
+msgstr "Las contraseñas no coinciden."
+
+#: menuapp/views.py:48
 msgid "Tu código de verificación - Mechanics"
 msgstr "Tu código de verificación - Mechanics"
 
-msgid "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo."
-msgstr "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo."
+#: menuapp/views.py:49
+#, python-format
+msgid "Hola %(username)s, tu código de verificación es: %(code)s"
+msgstr "Hola %(username)s, tu código de verificación es: %(code)s"
 
-msgid "Tube Length"
-msgstr "Tube Length"
+#: menuapp/views.py:88
+msgid "Código verificado. Introduce tu nueva contraseña."
+msgstr "Código verificado. Introduce tu nueva contraseña."
 
-msgid "Tubo"
-msgstr "Tubo"
-
-msgid "Tus documentos se están analizando en segundo plano. Podrás consultarlos en un par de minutos."
-msgstr "Tus documentos se están analizando en segundo plano. Podrás consultarlos en un par de minutos."
-
-msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
-msgstr "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
-
-msgid "Usuario"
-msgstr "Usuario"
-
-msgid "Usuario no encontrado."
-msgstr "Usuario no encontrado."
-
-msgid "Valores numéricos no válidos"
-msgstr "Valores numéricos no válidos"
-
-msgid "Ver"
-msgstr "Ver"
-
-msgid "Ver Documentos"
-msgstr "Ver Documentos"
-
-msgid "Verificar Email"
-msgstr "Verificar Email"
-
-msgid "Verificar y Entrar"
-msgstr "Verificar y Entrar"
-
-msgid "Vista previa imagen 1"
-msgstr "Vista previa imagen 1"
-
-msgid "Vista previa imagen 2"
-msgstr "Vista previa imagen 2"
-
-msgid "Volver"
-msgstr "Volver"
-
-msgid "Volver a Muelles"
-msgstr "Volver a Muelles"
-
-msgid "Volver al indice"
-msgstr "Volver al indice"
-
-msgid "Wall distance"
-msgstr "Wall distance"
-
-msgid "diagrama muelle de tracción"
-msgstr "diagrama muelle de tracción"
-
-msgid "¡Bienvenido de nuevo!"
-msgstr "¡Bienvenido de nuevo!"
-
+#: menuapp/views.py:93
 msgid "¡Email verificado con éxito! Bienvenida/o."
 msgstr "¡Email verificado con éxito! Bienvenida/o."
 
-msgid "¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?"
-msgstr "¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?"
+#: menuapp/views.py:96
+msgid "El código ha expirado."
+msgstr "El código ha expirado."
 
-msgid "¿No recibiste el código? Revisa tu carpeta de spam o\n"
-"                    <a href=\"%(signup_url)s\">intenta registrarte de nuevo</a>."
-msgstr "¿No recibiste el código? Revisa tu carpeta de spam o\n"
-"                    <a href=\"%(signup_url)s\">intenta registrarte de nuevo</a>."
+#: menuapp/views.py:98
+msgid "Código incorrecto."
+msgstr "Código incorrecto."
 
-msgid "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Regístrate aquí</a>."
-msgstr "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Regístrate aquí</a>."
+#: menuapp/views.py:126
+msgid "Recuperación de contraseña - Mechanics"
+msgstr "Recuperación de contraseña - Mechanics"
 
-msgid "¿Olvidaste tu contraseña? <a href=\"%(recall_psw_url)s\">Recupérala aquí</a>."
-msgstr "¿Olvidaste tu contraseña? <a href=\"%(recall_psw_url)s\">Recupérala aquí</a>."
+#: menuapp/views.py:127
+#, python-format
+msgid ""
+"Hola %(username)s, tu código para restablecer la contraseña es: %(code)s"
+msgstr ""
+"Hola %(username)s, tu código para restablecer la contraseña es: %(code)s"
 
-msgid "¿Qué presento en esta página web?"
-msgstr "¿Qué presento en esta página web?"
+#: menuapp/views.py:142 menuapp/views.py:147
+msgid ""
+"Si el email ingresado corresponde a una cuenta registrada, se ha enviado un "
+"correo con instrucciones."
+msgstr ""
+"Si el email ingresado corresponde a una cuenta registrada, se ha enviado un "
+"correo con instrucciones."
 
-msgid "¿Seguro que deseas eliminar este documento?"
-msgstr "¿Seguro que deseas eliminar este documento?"
+#: menuapp/views.py:162
+msgid "Usuario no encontrado."
+msgstr "Usuario no encontrado."
 
-msgid "¿Ya tienes cuenta? <a href=\"%(login_url)s\">Inicia sesión</a>"
-msgstr "¿Ya tienes cuenta? <a href=\"%(login_url)s\">Inicia sesión</a>"
+#: menuapp/views.py:174
+msgid "Contraseña cambiada con éxito."
+msgstr "Contraseña cambiada con éxito."
 
-msgid "Ángulo de libre (A0)"
-msgstr "Ángulo de libre (A0)"
+#: menuapp/views.py:183
+msgid "Contraseña restablecida y sesión iniciada."
+msgstr "Contraseña restablecida y sesión iniciada."
 
+#: menuapp/views.py:186
+msgid "Contraseña restablecida con éxito. Ahora puedes iniciar sesión."
+msgstr "Contraseña restablecida con éxito. Ahora puedes iniciar sesión."
+
+#: menuapp/views.py:200
+msgid "Has cerrado sesión."
+msgstr "Has cerrado sesión."
+
+#: menuapp/views.py:212
+msgid "¡Bienvenido de nuevo!"
+msgstr "¡Bienvenido de nuevo!"
+
+#: menuapp/views.py:215
+msgid "Credenciales incorrectas."
+msgstr "Credenciales incorrectas."
+
+#: muelles/views/calculadora_2k.py:206 muelles/views/calculadora_2k.py:221
+#: muelles/views/calculadora_2k.py:236
+#: muelles/views/calculadora_compresion.py:147
+#: muelles/views/calculadora_compresion.py:162
+#: muelles/views/calculadora_compresion.py:177
+#: muelles/views/calculadora_conico.py:153
+#: muelles/views/calculadora_conico.py:168
+#: muelles/views/calculadora_conico.py:183
+#: muelles/views/calculadora_conico_pitch_variable.py:153
+#: muelles/views/calculadora_conico_pitch_variable.py:168
+#: muelles/views/calculadora_conico_pitch_variable.py:185
+#: muelles/views/calculadora_torsion.py:114
+#: muelles/views/calculadora_torsion.py:129
+#: muelles/views/calculadora_torsion.py:144
+#: muelles/views/calculadora_traccion.py:161
+#: muelles/views/calculadora_traccion.py:176
+#: muelles/views/calculadora_traccion.py:191
+#, python-format
+msgid "Error en los cálculos: %(error)s"
+msgstr "Error en los cálculos: %(error)s"
+
+#: muelles/views/calculadora_2k.py:217
+msgid "Usa el formulario de muelle 2K para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_2k.py:223
+msgid "Reporte de Muelle 2K (No Lineal)"
+msgstr ""
+
+#: muelles/views/calculadora_2k.py:231
+msgid "Usa el formulario de muelle 2K para generar la animación."
+msgstr ""
+
+#: muelles/views/calculadora_compresion.py:158
+msgid "Usa el formulario de compresión para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_compresion.py:164
+#, fuzzy
+#| msgid "Muelle de compresión"
+msgid "Reporte de Muelle de Compresión"
+msgstr "Muelle de compresión"
+
+#: muelles/views/calculadora_compresion.py:172
+msgid "Usa el formulario de compresión para generar la animación."
+msgstr ""
+
+#: muelles/views/calculadora_conico.py:164
+msgid "Usa el formulario de cónico para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_conico.py:170
+#, fuzzy
+#| msgid "Muelle cónico"
+msgid "Reporte de Muelle Cónico"
+msgstr "Muelle cónico"
+
+#: muelles/views/calculadora_conico.py:178
+msgid "Usa el formulario de cónico para generar la animación."
+msgstr ""
+
+#: muelles/views/calculadora_conico_pitch_variable.py:164
+msgid "Usa el formulario de cónico de paso variable para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_conico_pitch_variable.py:170
+msgid "Reporte de Muelle Cónico de Paso Variable"
+msgstr ""
+
+#: muelles/views/calculadora_conico_pitch_variable.py:179
+msgid "Usa el formulario de cónico de paso variable para generar la animación."
+msgstr ""
+
+#: muelles/views/calculadora_torsion.py:22
+#: templates/muelles/partials/_formulario_2k.html:8
+msgid "Diámetro medio"
+msgstr "Diámetro medio"
+
+#: muelles/views/calculadora_torsion.py:23
+msgid "Número de espiras"
+msgstr "Número de espiras"
+
+#: muelles/views/calculadora_torsion.py:24
+#: muelles/views/spring_report_pdf.py:38
+msgid "Pitch"
+msgstr "Pitch"
+
+#: muelles/views/calculadora_torsion.py:25
 msgid "Ángulo libre"
 msgstr "Ángulo libre"
 
+#: muelles/views/calculadora_torsion.py:26
+msgid "Longitud de sujeción"
+msgstr "Longitud de sujeción"
+
+#: muelles/views/calculadora_torsion.py:27
+msgid "Radio de sujeción"
+msgstr "Radio de sujeción"
+
+#: muelles/views/calculadora_torsion.py:35
+#, python-format
+msgid "Faltan campos obligatorios para torsión: %(fields)s"
+msgstr "Faltan campos obligatorios para torsión: %(fields)s"
+
+#: muelles/views/calculadora_torsion.py:125
+msgid "Usa el formulario de torsión para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_torsion.py:131
+#, fuzzy
+#| msgid "Calculadora de Muelles de torsión"
+msgid "Reporte de Muelle de Torsión"
+msgstr "Calculadora de Muelles de torsión"
+
+#: muelles/views/calculadora_torsion.py:139
+msgid "Usa el formulario de torsión para generar la animación."
+msgstr ""
+
+#: muelles/views/calculadora_traccion.py:172
+msgid "Usa el formulario de tracción para generar el PDF."
+msgstr ""
+
+#: muelles/views/calculadora_traccion.py:178
+#, fuzzy
+#| msgid "Calculadora de Muelles de tracción"
+msgid "Reporte de Muelle de Tracción"
+msgstr "Calculadora de Muelles de tracción"
+
+#: muelles/views/calculadora_traccion.py:186
+msgid "Usa el formulario de tracción para generar la animación."
+msgstr ""
+
+#: muelles/views/calculate_blocking_length.py:32
+#: muelles/views/calculate_pitch.py:33
+msgid "Material no seleccionado"
+msgstr "Material no seleccionado"
+
+#: muelles/views/calculate_blocking_length.py:37
+#: muelles/views/calculate_pitch.py:38
+msgid "Diámetro del hilo no proporcionado"
+msgstr "Diámetro del hilo no proporcionado"
+
+#: muelles/views/calculate_blocking_length.py:42
+#: muelles/views/calculate_pitch.py:43
+msgid "Número de espiras no proporcionado"
+msgstr "Número de espiras no proporcionado"
+
+#: muelles/views/calculate_blocking_length.py:51
+#: muelles/views/calculate_pitch.py:58
+msgid "Valores numéricos no válidos"
+msgstr "Valores numéricos no válidos"
+
+#: muelles/views/calculate_blocking_length.py:79
+#, python-format
+msgid "Error al calcular longitud de bloqueo: %(error)s"
+msgstr "Error al calcular longitud de bloqueo: %(error)s"
+
+#: muelles/views/calculate_pitch.py:48
+msgid "Longitud libre no proporcionada"
+msgstr "Longitud libre no proporcionada"
+
+#: muelles/views/calculate_pitch.py:82
+#, python-format
+msgid "Error al calcular pitch: %(error)s"
+msgstr "Error al calcular pitch: %(error)s"
+
+#: muelles/views/get_available_materials.py:28
+#: templates/muelles/partials/_calculadora_form.html:34
+#: templates/muelles/partials/_material_form.html:20
+msgid "SL - Acero de alto carbono"
+msgstr "SL - Acero de alto carbono"
+
+#: muelles/views/get_available_materials.py:29
+#: templates/muelles/partials/_calculadora_form.html:35
+#: templates/muelles/partials/_material_form.html:21
+msgid "SM - Acero medio carbono"
+msgstr "SM - Acero medio carbono"
+
+#: muelles/views/get_available_materials.py:30
+#: templates/muelles/partials/_calculadora_form.html:36
+#: templates/muelles/partials/_material_form.html:22
+msgid "SH - Acero duro"
+msgstr "SH - Acero duro"
+
+#: muelles/views/index.py:9
+msgid "Calculadora de Muelles"
+msgstr "Calculadora de Muelles"
+
+#: muelles/views/index.py:10
+msgid "Herramienta para calcular especificaciones de muelles"
+msgstr "Herramienta para calcular especificaciones de muelles"
+
+#: muelles/views/spring_report_pdf.py:22
+#: templates/muelles/partials/_calculadora_results.html:19
+msgid "Material"
+msgstr "Material"
+
+#: muelles/views/spring_report_pdf.py:23
+#, fuzzy
+#| msgid "Modulo G:"
+msgid "Modulo G"
+msgstr "Modulo G:"
+
+#: muelles/views/spring_report_pdf.py:24
+#, fuzzy
+#| msgid "Modulo E:"
+msgid "Modulo E"
+msgstr "Modulo E:"
+
+#: muelles/views/spring_report_pdf.py:25
+#, fuzzy
+#| msgid "Diametro hilo:"
+msgid "Diametro hilo"
+msgstr "Diametro hilo:"
+
+#: muelles/views/spring_report_pdf.py:26
+#, fuzzy
+#| msgid "Shot peening:"
+msgid "Shot peening"
+msgstr "Shot peening:"
+
+#: muelles/views/spring_report_pdf.py:27
+#, fuzzy
+#| msgid "Diametro medio:"
+msgid "Diametro medio"
+msgstr "Diametro medio:"
+
+#: muelles/views/spring_report_pdf.py:28
+#, fuzzy
+#| msgid "Diametro medio:"
+msgid "Diametro medio superior"
+msgstr "Diametro medio:"
+
+#: muelles/views/spring_report_pdf.py:29
+#, fuzzy
+#| msgid "Diametro interior:"
+msgid "Diametro medio inferior"
+msgstr "Diametro interior:"
+
+#: muelles/views/spring_report_pdf.py:30
+#, fuzzy
+#| msgid "Diametro exterior:"
+msgid "Diametro exterior"
+msgstr "Diametro exterior:"
+
+#: muelles/views/spring_report_pdf.py:31
+#, fuzzy
+#| msgid "Diametro interior:"
+msgid "Diametro interior"
+msgstr "Diametro interior:"
+
+#: muelles/views/spring_report_pdf.py:32
+#: templates/muelles/partials/_formulario_2k.html:78
+#: templates/muelles/partials/_formulario_conico.html:38
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:48
+#, fuzzy
+#| msgid "Longitud libre:"
+msgid "Longitud libre"
+msgstr "Longitud libre:"
+
+#: muelles/views/spring_report_pdf.py:33
+#, fuzzy
+#| msgid "Longitud hilo:"
+msgid "Longitud hilo"
+msgstr "Longitud hilo:"
+
+#: muelles/views/spring_report_pdf.py:34
+#, fuzzy
+#| msgid "Longitud hilo total:"
+msgid "Longitud hilo total"
+msgstr "Longitud hilo total:"
+
+#: muelles/views/spring_report_pdf.py:35
+#, fuzzy
+#| msgid "Longitud hilo cuerpo:"
+msgid "Longitud hilo cuerpo"
+msgstr "Longitud hilo cuerpo:"
+
+#: muelles/views/spring_report_pdf.py:36
+#, fuzzy
+#| msgid "Numero espiras:"
+msgid "Numero espiras"
+msgstr "Numero espiras:"
+
+#: muelles/views/spring_report_pdf.py:37
+#, fuzzy
+#| msgid "Numero espiras utiles:"
+msgid "Numero espiras utiles"
+msgstr "Numero espiras utiles:"
+
+#: muelles/views/spring_report_pdf.py:39
+#, fuzzy
+#| msgid "Numero de espiras"
+msgid "Tramo 1 - espiras"
+msgstr "Numero de espiras"
+
+#: muelles/views/spring_report_pdf.py:40
+msgid "Tramo 1 - paso"
+msgstr ""
+
+#: muelles/views/spring_report_pdf.py:41
+#, fuzzy
+#| msgid "Numero de espiras"
+msgid "Tramo 2 - espiras"
+msgstr "Numero de espiras"
+
+#: muelles/views/spring_report_pdf.py:42
+msgid "Tramo 2 - paso"
+msgstr ""
+
+#: muelles/views/spring_report_pdf.py:43
+#, fuzzy
+#| msgid "Numero de espiras"
+msgid "Tramo 3 - espiras"
+msgstr "Numero de espiras"
+
+#: muelles/views/spring_report_pdf.py:44
+msgid "Tramo 3 - paso"
+msgstr ""
+
+#: muelles/views/spring_report_pdf.py:45
+#, fuzzy
+#| msgid "Ancho muelle:"
+msgid "Ancho muelle"
+msgstr "Ancho muelle:"
+
+#: muelles/views/spring_report_pdf.py:46
+#, fuzzy
+#| msgid "Longitud bloqueo:"
+msgid "Longitud bloqueo"
+msgstr "Longitud bloqueo:"
+
+#: muelles/views/spring_report_pdf.py:47
+#, fuzzy
+#| msgid "Angulo libre:"
+msgid "Angulo libre"
+msgstr "Angulo libre:"
+
+#: muelles/views/spring_report_pdf.py:48
+#, fuzzy
+#| msgid "Angulo tangencias:"
+msgid "Angulo tangencias"
+msgstr "Angulo tangencias:"
+
+#: muelles/views/spring_report_pdf.py:49
+#, fuzzy
+#| msgid "Constante:"
+msgid "Constante"
+msgstr "Constante:"
+
+#: muelles/views/spring_report_pdf.py:50
+#, fuzzy
+#| msgid "Constante:"
+msgid "Constante K1"
+msgstr "Constante:"
+
+#: muelles/views/spring_report_pdf.py:51
+#, fuzzy
+#| msgid "Constante:"
+msgid "Constante K2"
+msgstr "Constante:"
+
+#: muelles/views/spring_report_pdf.py:52
+#, fuzzy
+#| msgid "Indice muelle:"
+msgid "Indice muelle"
+msgstr "Indice muelle:"
+
+#: muelles/views/spring_report_pdf.py:53
+#, fuzzy
+#| msgid "Factor Wahl:"
+msgid "Factor Wahl"
+msgstr "Factor Wahl:"
+
+#: muelles/views/spring_report_pdf.py:54
+#, fuzzy
+#| msgid "Factor Wahl eval:"
+msgid "Factor Wahl eval"
+msgstr "Factor Wahl eval:"
+
+#: muelles/views/spring_report_pdf.py:55
+#, fuzzy
+#| msgid "Categoria Wahl:"
+msgid "Categoria Wahl"
+msgstr "Categoria Wahl:"
+
+#: muelles/views/spring_report_pdf.py:56
+#, fuzzy
+#| msgid "Tension inicial:"
+msgid "Tension inicial"
+msgstr "Tension inicial:"
+
+#: muelles/views/spring_report_pdf.py:57
+#, fuzzy
+#| msgid "Momento resistente:"
+msgid "Momento resistente"
+msgstr "Momento resistente:"
+
+#: muelles/views/spring_report_pdf.py:58
+#, fuzzy
+#| msgid "Radio pata fija:"
+msgid "Radio pata fija"
+msgstr "Radio pata fija:"
+
+#: muelles/views/spring_report_pdf.py:59
+#, fuzzy
+#| msgid "Longitud pata fija:"
+msgid "Longitud pata fija"
+msgstr "Longitud pata fija:"
+
+#: muelles/views/spring_report_pdf.py:60
+#, fuzzy
+#| msgid "Radio pata movil:"
+msgid "Radio pata movil"
+msgstr "Radio pata movil:"
+
+#: muelles/views/spring_report_pdf.py:61
+#, fuzzy
+#| msgid "Longitud pata movil:"
+msgid "Longitud pata movil"
+msgstr "Longitud pata movil:"
+
+#: muelles/views/spring_report_pdf.py:62
+#, fuzzy
+#| msgid "Numero de ciclos:"
+msgid "Numero de ciclos"
+msgstr "Numero de ciclos:"
+
+#: muelles/views/spring_report_pdf.py:68
+#: templates/muelles/partials/_calculadora_results.html:155
+msgid "Curva de Esfuerzos"
+msgstr "Curva de Esfuerzos"
+
+#: muelles/views/spring_report_pdf.py:69
+#: templates/muelles/partials/_calculadora_results.html:164
+msgid "Curva de Recorrido"
+msgstr "Curva de Recorrido"
+
+#: muelles/views/spring_report_pdf.py:70
+#: templates/muelles/partials/_calculadora_results.html:173
+msgid "Curva de Diametros"
+msgstr "Curva de Diametros"
+
+#: muelles/views/spring_report_pdf.py:71
+msgid "Curva de Compresion Progresiva (2K)"
+msgstr ""
+
+#: muelles/views/spring_report_pdf.py:72
+#: templates/muelles/partials/_calculadora_results.html:191
+#: templates/muelles/partials/_calculadora_results.html:193
+msgid "Diagrama de Goodman"
+msgstr "Diagrama de Goodman"
+
+#: muelles/views/spring_report_pdf.py:86
+#: templates/muelles/partials/_calculadora_results.html:27
+msgid "Si"
+msgstr "Si"
+
+#: muelles/views/spring_report_pdf.py:86
+#: templates/muelles/partials/_calculadora_results.html:27
+msgid "No"
+msgstr "No"
+
+#: muelles/views/spring_report_pdf.py:102
+#, fuzzy
+#| msgid "Error en los cálculos: %(error)s"
+msgid "Error en los calculos:"
+msgstr "Error en los cálculos: %(error)s"
+
+#: muelles/views/spring_report_pdf.py:114
+#: templates/tolerances/insert_support.html:129
+#: templates/tolerances/pin_hole.html:122
+#: templates/tolerances/pivot_bushing_hole_axial.html:129
+#: templates/tolerances/pivot_bushing_hole_radial.html:129
+#: tolerances/views/pin_hole_pdf.py:130
+msgid "Resultados"
+msgstr "Resultados"
+
+#: specs/forms.py:25
+msgid "Ej. VW, BMW, ISO..."
+msgstr "Ej. VW, BMW, ISO..."
+
+#: specs/views.py:56
+#, python-format
+msgid "Error al recuperar el documento: %(error)s"
+msgstr "Error al recuperar el documento: %(error)s"
+
+#: specs/views.py:66
+#, python-format
+msgid "Documento %(filename)s eliminado."
+msgstr "Documento %(filename)s eliminado."
+
+#: specs/views.py:82
+msgid "Nombre del documento actualizado."
+msgstr "Nombre del documento actualizado."
+
+#: specs/views.py:86
+msgid "OEM/Empresa actualizado."
+msgstr "OEM/Empresa actualizado."
+
+#: specs/views.py:100
+msgid "No se proporcionó ninguna pregunta"
+msgstr "No se proporcionó ninguna pregunta"
+
+#: specs/views.py:136
+msgid "Método no permitido"
+msgstr "Método no permitido"
+
+#: specs/views.py:187
+msgid ""
+"Tus documentos se están analizando en segundo plano. Podrás consultarlos en "
+"un par de minutos."
+msgstr ""
+"Tus documentos se están analizando en segundo plano. Podrás consultarlos en "
+"un par de minutos."
+
+#: specs/views.py:192
+#, python-format
+msgid "Error general durante la subida: %(error)s"
+msgstr "Error general durante la subida: %(error)s"
+
+#: templates/base.html:10
+msgid "Herramientas gratuitas de cálculo mecánico para ingeniería industrial."
+msgstr "Herramientas gratuitas de cálculo mecánico para ingeniería industrial."
+
+#: templates/includes/header.html:22 templates/menuapp/index.html:82
+#: templates/registration/login.html:3 templates/registration/login.html:17
+#: templates/registration/recall_psw.html:3
+msgid "Iniciar Sesión"
+msgstr "Iniciar Sesión"
+
+#: templates/includes/header.html:23 templates/menuapp/index.html:83
+#: templates/registration/signup.html:3 templates/registration/signup.html:17
+msgid "Crear Cuenta"
+msgstr "Crear Cuenta"
+
+#: templates/includes/header.html:25 templates/menuapp/index.html:85
+#, python-format
+msgid ""
+"Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas "
+"desde el menú lateral."
+msgstr ""
+"Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas "
+"desde el menú lateral."
+
+#: templates/includes/header.html:26
+msgid "Cerrar Sesión"
+msgstr "Cerrar Sesión"
+
+#: templates/includes/header.html:33
+msgid "Idioma"
+msgstr "Idioma"
+
+#: templates/includes/sidebar.html:3
+msgid "Abrir menú"
+msgstr "Abrir menú"
+
+#: templates/includes/sidebar.html:10
+msgid "Menú"
+msgstr "Menú"
+
+#: templates/includes/sidebar.html:12
+msgid "Inicio"
+msgstr "Inicio"
+
+#: templates/includes/sidebar.html:13
+msgid "Muelles"
+msgstr "Muelles"
+
+#: templates/includes/sidebar.html:14
+msgid "Tolerancias"
+msgstr "Tolerancias"
+
+#: templates/includes/sidebar.html:15
+msgid "Especificaciones"
+msgstr "Especificaciones"
+
+#: templates/includes/sidebar.html:16 templates/menuapp/contacto.html:4
+#: templates/menuapp/contacto.html:23
+msgid "Contacto"
+msgstr "Contacto"
+
+#: templates/menuapp/contacto.html:21 templates/menuapp/index.html:24
+msgid "Fotografia de Ernesto Avedillo"
+msgstr "Fotografia de Ernesto Avedillo"
+
+#: templates/menuapp/contacto.html:26
+msgid ""
+"Ingeniero Industrial con enfoque en el desarrollo de software y resolución "
+"de problemas complejos."
+msgstr ""
+"Ingeniero Industrial con enfoque en el desarrollo de software y resolución "
+"de problemas complejos."
+
+#: templates/menuapp/contacto.html:32
+msgid "Información de Contacto"
+msgstr "Información de Contacto"
+
+#: templates/menuapp/contacto.html:34
+msgid "Puedes contactarme a través de los siguientes medios:"
+msgstr "Puedes contactarme a través de los siguientes medios:"
+
+#: templates/menuapp/index.html:4
+msgid "Ernesto Avedillo | Calculadoras de Ingeniería Mecánica Online"
+msgstr "Ernesto Avedillo | Calculadoras de Ingeniería Mecánica Online"
+
+#: templates/menuapp/index.html:6
+msgid ""
+"Herramientas gratuitas de cálculo mecánico: muelles, tolerancias y ajustes. "
+"Creadas por un ingeniero industrial para ingenieros, estudiantes y "
+"diseñadores."
+msgstr ""
+"Herramientas gratuitas de cálculo mecánico: muelles, tolerancias y ajustes. "
+"Creadas por un ingeniero industrial para ingenieros, estudiantes y "
+"diseñadores."
+
+#: templates/menuapp/index.html:26
+msgid "Carta de presentacion"
+msgstr "Carta de presentacion"
+
+#: templates/menuapp/index.html:27
+msgid "De la Ingenieria Industrial al Desarrollo de Software"
+msgstr "De la Ingenieria Industrial al Desarrollo de Software"
+
+#: templates/menuapp/index.html:29
+msgid ""
+"Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo "
+"procesos para que su equipo técnico se dedique exclusivamente a crear, "
+"diseñar y ganar proyectos de alto impacto."
+msgstr ""
+"Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo "
+"procesos para que su equipo técnico se dedique exclusivamente a crear, "
+"diseñar y ganar proyectos de alto impacto."
+
+#: templates/menuapp/index.html:35
+msgid "Trayectoria Profesional"
+msgstr "Trayectoria Profesional"
+
+#: templates/menuapp/index.html:37
+msgid ""
+"A lo largo de mi experiencia en los sectores automotriz e industrial, he "
+"liderado y ejecutado proyectos\n"
+"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
+"además de encabezar iniciativas de mejora en procesos\n"
+"          de fabricación. Este recorrido me permitió identificar un patrón "
+"constante: los retos más exigentes encuentran\n"
+"          su mejor respuesta cuando se integran con soluciones de software."
+msgstr ""
+"A lo largo de mi experiencia en los sectores automotriz e industrial, he "
+"liderado y ejecutado proyectos\n"
+"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
+"además de encabezar iniciativas de mejora en procesos\n"
+"          de fabricación. Este recorrido me permitió identificar un patrón "
+"constante: los retos más exigentes encuentran\n"
+"          su mejor respuesta cuando se integran con soluciones de software."
+
+#: templates/menuapp/index.html:45
+msgid "Resolucion de Problemas como Enfoque"
+msgstr "Resolucion de Problemas como Enfoque"
+
+#: templates/menuapp/index.html:47
+msgid ""
+"Durante años, he convertido necesidades operativas en herramientas "
+"prácticas. Diseñé sistemas de ayudas que redujeron\n"
+"          los tiempos de cotización de horas a minutos y creé plantillas "
+"para decisiones críticas de diseño mecánico que optimizaron\n"
+"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de "
+"una compañía para reducir la dependencia externa\n"
+"          y minimizar costes operativos."
+msgstr ""
+"Durante años, he convertido necesidades operativas en herramientas "
+"prácticas. Diseñé sistemas de ayudas que redujeron\n"
+"          los tiempos de cotización de horas a minutos y creé plantillas "
+"para decisiones críticas de diseño mecánico que optimizaron\n"
+"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de "
+"una compañía para reducir la dependencia externa\n"
+"          y minimizar costes operativos."
+
+#: templates/menuapp/index.html:55
+msgid "Evolucion Tecnica"
+msgstr "Evolucion Tecnica"
+
+#: templates/menuapp/index.html:57
+msgid ""
+"Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+"Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
+"          Me permitió elevar soluciones —originalmente concebidas en hojas "
+"de cálculo— a implementaciones de ingeniería\n"
+"          de software de alto nivel, utilizando C, C++, Python y "
+"arquitecturas modernas para construir sistemas robustos,\n"
+"          escalables y mantenibles."
+msgstr ""
+"Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+"Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
+"          Me permitió elevar soluciones —originalmente concebidas en hojas "
+"de cálculo— a implementaciones de ingeniería\n"
+"          de software de alto nivel, utilizando C, C++, Python y "
+"arquitecturas modernas para construir sistemas robustos,\n"
+"          escalables y mantenibles."
+
+#: templates/menuapp/index.html:65
+msgid "Propuesta de Valor"
+msgstr "Propuesta de Valor"
+
+#: templates/menuapp/index.html:67
+msgid ""
+"Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el "
+"desarrollo de software converjan\n"
+"          para crear soluciones técnicas de alto impacto. Estoy abierto a "
+"explorar ideas innovadoras, optimizar algoritmos\n"
+"          y contribuir en retos industriales complejos con un enfoque "
+"riguroso y práctico."
+msgstr ""
+"Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el "
+"desarrollo de software converjan\n"
+"          para crear soluciones técnicas de alto impacto. Estoy abierto a "
+"explorar ideas innovadoras, optimizar algoritmos\n"
+"          y contribuir en retos industriales complejos con un enfoque "
+"riguroso y práctico."
+
+#: templates/menuapp/index.html:74
+msgid "¿Qué presento en esta página web?"
+msgstr "¿Qué presento en esta página web?"
+
+#: templates/menuapp/index.html:76
+msgid ""
+"En esta página web estoy reuniendo mis herramientas con el objetivo de "
+"convertirlas en aplicaciones web,\n"
+"          de modo que puedan ser utilizadas por otros ingenieros, "
+"estudiantes o cualquier persona interesada en la ingeniería."
+msgstr ""
+"En esta página web estoy reuniendo mis herramientas con el objetivo de "
+"convertirlas en aplicaciones web,\n"
+"          de modo que puedan ser utilizadas por otros ingenieros, "
+"estudiantes o cualquier persona interesada en la ingeniería."
+
+#: templates/muelles/calculadora_2k.html:7
+msgid "Calculadora de Muelle de Doble Rigidez (2K) Online"
+msgstr "Calculadora de Muelle de Doble Rigidez (2K) Online"
+
+#: templates/muelles/calculadora_2k.html:8
+msgid ""
+"Calcula muelles de doble constante de rigidez (2K): tramos de compresión "
+"progresiva, dimensiones y materiales. Gratis y online."
+msgstr ""
+"Calcula muelles de doble constante de rigidez (2K): tramos de compresión "
+"progresiva, dimensiones y materiales. Gratis y online."
+
+#: templates/muelles/calculadora_2k.html:17
+#: templates/muelles/calculadora_compresion.html:17
+#: templates/muelles/calculadora_conico.html:17
+#: templates/muelles/calculadora_conico_pitch_variable.html:17
+#: templates/muelles/calculadora_torsion.html:17
+#: templates/muelles/calculadora_traccion.html:17
+msgid "Volver a Muelles"
+msgstr "Volver a Muelles"
+
+#: templates/muelles/calculadora_2k.html:19
+#, fuzzy
+#| msgid "Calculadora de Muelles"
+msgid "Calculadora de Muelles No Lineales 2K"
+msgstr "Calculadora de Muelles"
+
+#: templates/muelles/calculadora_2k.html:20
+msgid ""
+"Muelle de compresión con tres tramos de paso distinto (extremos apretados y "
+"cuerpo central abierto), de doble constante K1/K2: los tramos de paso "
+"apretado se bloquean antes, dejando el tramo central de paso abierto como "
+"único responsable de la rigidez durante el resto del recorrido."
+msgstr ""
+
+#: templates/muelles/calculadora_2k.html:21
+#: templates/muelles/calculadora_conico.html:21
+#: templates/muelles/calculadora_conico_pitch_variable.html:21
+msgid ""
+"NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
+"imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, la "
+"longitud del hilo no tiene en cuenta su espesor ni las espiras no activas. "
+"En caso de crear un prototipo, hay que tener en cuenta este punto."
+msgstr ""
+
+#: templates/muelles/calculadora_compresion.html:7
+msgid "Calculadora de Muelle de Compresión Online Gratis"
+msgstr "Calculadora de Muelle de Compresión Online Gratis"
+
+#: templates/muelles/calculadora_compresion.html:8
+msgid ""
+"Calcula dimensiones, tensiones y fuerza de un muelle de compresión. "
+"Selección de materiales, verificación de tolerancias y reporte en PDF."
+msgstr ""
+"Calcula dimensiones, tensiones y fuerza de un muelle de compresión. "
+"Selección de materiales, verificación de tolerancias y reporte en PDF."
+
+#: templates/muelles/calculadora_compresion.html:19
+msgid "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
+msgstr "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
+
+#: templates/muelles/calculadora_compresion.html:20
+#: templates/muelles/calculadora_torsion.html:20
+#: templates/muelles/calculadora_traccion.html:20
+msgid ""
+"Incluye selección automática de materiales, cálculo de tolerancias, y "
+"análisis completo de propiedades mecánicas según normativas técnicas."
+msgstr ""
+"Incluye selección automática de materiales, cálculo de tolerancias, y "
+"análisis completo de propiedades mecánicas según normativas técnicas."
+
+#: templates/muelles/calculadora_conico.html:7
+msgid "Calculadora de Muelle Cónico Online Gratis"
+msgstr "Calculadora de Muelle Cónico Online Gratis"
+
+#: templates/muelles/calculadora_conico.html:8
+msgid ""
+"Diseña muelles cónicos de compresión: geometría variable, tensiones y "
+"materiales. Cálculo gratuito con reporte en PDF."
+msgstr ""
+"Diseña muelles cónicos de compresión: geometría variable, tensiones y "
+"materiales. Cálculo gratuito con reporte en PDF."
+
+#: templates/muelles/calculadora_conico.html:19
+#: templates/muelles/calculadora_conico_pitch_variable.html:19
+#, fuzzy
+#| msgid "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
+msgid "Calculadora de Muelles Helicoidales de compresión cónicos"
+msgstr "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
+
+#: templates/muelles/calculadora_conico.html:20
+#: templates/muelles/calculadora_conico_pitch_variable.html:20
+msgid ""
+"Muelle de compresión con diámetro medio variable (superior e inferior) y "
+"paso constante. Incluye selección automática de materiales y análisis "
+"completo de propiedades mecánicas."
+msgstr ""
+
+#: templates/muelles/calculadora_conico_pitch_variable.html:7
+msgid "Calculadora de Muelle Cónico de Paso Variable"
+msgstr "Calculadora de Muelle Cónico de Paso Variable"
+
+#: templates/muelles/calculadora_conico_pitch_variable.html:8
+msgid ""
+"Calcula muelles cónicos con paso variable: geometría avanzada, tensiones y "
+"comportamiento no lineal. Herramienta gratuita online."
+msgstr ""
+"Calcula muelles cónicos con paso variable: geometría avanzada, tensiones y "
+"comportamiento no lineal. Herramienta gratuita online."
+
+#: templates/muelles/calculadora_torsion.html:7
+msgid "Calculadora de Muelle de Torsión Online Gratis"
+msgstr "Calculadora de Muelle de Torsión Online Gratis"
+
+#: templates/muelles/calculadora_torsion.html:8
+msgid ""
+"Calcula muelles de torsión: momento, ángulo de giro, dimensiones y "
+"materiales. Herramienta gratuita con reporte descargable en PDF."
+msgstr ""
+"Calcula muelles de torsión: momento, ángulo de giro, dimensiones y "
+"materiales. Herramienta gratuita con reporte descargable en PDF."
+
+#: templates/muelles/calculadora_torsion.html:19
+msgid "Calculadora Avanzada de Muelles Helicoidales de torsión"
+msgstr "Calculadora Avanzada de Muelles Helicoidales de torsión"
+
+#: templates/muelles/calculadora_traccion.html:7
+msgid "Calculadora de Muelle de Tracción Online Gratis"
+msgstr "Calculadora de Muelle de Tracción Online Gratis"
+
+#: templates/muelles/calculadora_traccion.html:8
+msgid ""
+"Diseña y calcula muelles de tracción (extensión) online: dimensiones, "
+"tensión de trabajo, materiales y reporte descargable en PDF."
+msgstr ""
+"Diseña y calcula muelles de tracción (extensión) online: dimensiones, "
+"tensión de trabajo, materiales y reporte descargable en PDF."
+
+#: templates/muelles/calculadora_traccion.html:19
+msgid "Calculadora Avanzada de Muelles Helicoidales de tracción"
+msgstr "Calculadora Avanzada de Muelles Helicoidales de tracción"
+
+#: templates/muelles/index.html:4
+msgid "Calculadoras de Muelles Online: Compresión, Tracción, Torsión"
+msgstr "Calculadoras de Muelles Online: Compresión, Tracción, Torsión"
+
+#: templates/muelles/index.html:6
+msgid ""
+"Calcula muelles de compresión, tracción, torsión y cónicos gratis online. "
+"Resultados al instante con selección de materiales y reporte descargable."
+msgstr ""
+"Calcula muelles de compresión, tracción, torsión y cónicos gratis online. "
+"Resultados al instante con selección de materiales y reporte descargable."
+
+#: templates/muelles/index.html:21
+msgid "Calculadora de Muelles de compresión"
+msgstr "Calculadora de Muelles de compresión"
+
+#: templates/muelles/index.html:22
+msgid "Muelle de compresión"
+msgstr "Muelle de compresión"
+
+#: templates/muelles/index.html:27
+msgid "Calculadora de Muelles de tracción"
+msgstr "Calculadora de Muelles de tracción"
+
+#: templates/muelles/index.html:28
+msgid "Muelle de tracción"
+msgstr "Muelle de tracción"
+
+#: templates/muelles/index.html:33
+msgid "Calculadora de Muelles de torsión"
+msgstr "Calculadora de Muelles de torsión"
+
+#: templates/muelles/index.html:34
+msgid "Muelle de torsión"
+msgstr "Muelle de torsión"
+
+#: templates/muelles/index.html:39
+msgid "Muelles cónicos"
+msgstr "Muelles cónicos"
+
+#: templates/muelles/index.html:40
+msgid "Calculadora para muelles cónicos"
+msgstr "Calculadora para muelles cónicos"
+
+#: templates/muelles/index.html:41 templates/muelles/index.html:48
+msgid "Muelle cónico"
+msgstr "Muelle cónico"
+
+#: templates/muelles/index.html:46
+#, fuzzy
+#| msgid "Muelles cónicos"
+msgid "Muelles cónicos paso variable"
+msgstr "Muelles cónicos"
+
+#: templates/muelles/index.html:47
+#, fuzzy
+#| msgid "Calculadora para muelles cónicos"
+msgid "Calculadora para muelles cónicos con paso variable"
+msgstr "Calculadora para muelles cónicos"
+
+#: templates/muelles/index.html:54
+msgid "Muelles no lineales 2K"
+msgstr "Muelles no lineales 2K"
+
+#: templates/muelles/index.html:55
+msgid "Calculadora para muelles no lineales de doble constante"
+msgstr "Calculadora para muelles no lineales de doble constante"
+
+#: templates/muelles/index.html:56
+msgid "Muelle no lineal"
+msgstr "Muelle no lineal"
+
+#: templates/muelles/partials/_calculadora_form.html:8
+#: templates/muelles/partials/_material_form.html:3
+msgid "Material y Configuración"
+msgstr "Material y Configuración"
+
+#: templates/muelles/partials/_calculadora_form.html:11
+msgid "Tipo de muelle:"
+msgstr "Tipo de muelle:"
+
+#: templates/muelles/partials/_calculadora_form.html:13
+msgid "Compresión (lineal)"
+msgstr "Compresión (lineal)"
+
+#: templates/muelles/partials/_calculadora_form.html:14
+msgid "Tracción"
+msgstr "Tracción"
+
+#: templates/muelles/partials/_calculadora_form.html:16
+msgid "Selecciona el tipo para ajustar el modelo de cálculo"
+msgstr "Selecciona el tipo para ajustar el modelo de cálculo"
+
+#: templates/muelles/partials/_calculadora_form.html:20
+#: templates/muelles/partials/_calculadora_info.html:27
+#: templates/muelles/partials/_material_form.html:6
+msgid "Material:"
+msgstr "Material:"
+
+#: templates/muelles/partials/_calculadora_form.html:22
+#: templates/muelles/partials/_material_form.html:8
+msgid "Seleccione un material..."
+msgstr "Seleccione un material..."
+
+#: templates/muelles/partials/_calculadora_form.html:30
+#: templates/muelles/partials/_material_form.html:16
+msgid "Módulo"
+msgstr "Módulo"
+
+#: templates/muelles/partials/_calculadora_form.html:39
+#: templates/muelles/partials/_material_form.html:25
+msgid "Materiales cargados desde base de datos técnica"
+msgstr "Materiales cargados desde base de datos técnica"
+
+#: templates/muelles/partials/_calculadora_form.html:43
+#: templates/muelles/partials/_material_form.html:29
+msgid "Diámetro del hilo (mm):"
+msgstr "Diámetro del hilo (mm):"
+
+#: templates/muelles/partials/_calculadora_form.html:52
+msgid "Tipo muelle"
+msgstr "Tipo muelle"
+
+#: templates/muelles/partials/_calculadora_form.html:59
+msgid "Diagrama muelle compresión"
+msgstr "Diagrama muelle compresión"
+
+#: templates/muelles/partials/_calculadora_form.html:67
+#: templates/muelles/partials/_sketch_traccion.html:8
+msgid "diagrama muelle de tracción"
+msgstr "diagrama muelle de tracción"
+
+#: templates/muelles/partials/_calculadora_form.html:73
+#: templates/muelles/partials/_geometria_form.html:4
+msgid "Dimensiones del Muelle"
+msgstr "Dimensiones del Muelle"
+
+#: templates/muelles/partials/_calculadora_form.html:74
+#: templates/muelles/partials/_geometria_form.html:5
+msgid "Complete solo uno de los diámetros"
+msgstr "Complete solo uno de los diámetros"
+
+#: templates/muelles/partials/_calculadora_form.html:78
+#: templates/muelles/partials/_geometria_form.html:9
+msgid "Diámetro exterior:"
+msgstr "Diámetro exterior:"
+
+#: templates/muelles/partials/_calculadora_form.html:84
+#: templates/muelles/partials/_geometria_form.html:15
+msgid "Auto"
+msgstr "Auto"
+
+#: templates/muelles/partials/_calculadora_form.html:89
+#: templates/muelles/partials/_geometria_form.html:20
+msgid "Longitud libre (mm):"
+msgstr "Longitud libre (mm):"
+
+#: templates/muelles/partials/_calculadora_form.html:100
+#: templates/muelles/partials/_geometria_form.html:31
+msgid "Número de espiras:"
+msgstr "Número de espiras:"
+
+#: templates/muelles/partials/_calculadora_form.html:111
+#: templates/muelles/partials/_geometria_form.html:42
+msgid "Tensión inicial (N):"
+msgstr "Tensión inicial (N):"
+
+#: templates/muelles/partials/_calculadora_form.html:118
+#: templates/muelles/partials/_geometria_form.html:49
+msgid "Solo aplica para muelles de tracción"
+msgstr "Solo aplica para muelles de tracción"
+
+#: templates/muelles/partials/_calculadora_form.html:122
+#: templates/muelles/partials/_extremos_compresion.html:3
+#: templates/muelles/partials/_extremos_traccion.html:3
+msgid "Tipo de extremos:"
+msgstr "Tipo de extremos:"
+
+#: templates/muelles/partials/_calculadora_form.html:129
+#: templates/muelles/partials/_extremos_compresion.html:10
+msgid "Muelle con extremos abiertos rectificados"
+msgstr "Muelle con extremos abiertos rectificados"
+
+#: templates/muelles/partials/_calculadora_form.html:131
+#: templates/muelles/partials/_extremos_compresion.html:12
+msgid "Abierto rectificado"
+msgstr "Abierto rectificado"
+
+#: templates/muelles/partials/_calculadora_form.html:137
+#: templates/muelles/partials/_extremos_compresion.html:18
+msgid "Muelle con extremos cerrados rectificados"
+msgstr "Muelle con extremos cerrados rectificados"
+
+#: templates/muelles/partials/_calculadora_form.html:139
+#: templates/muelles/partials/_extremos_compresion.html:20
+msgid "Cerrado rectificado"
+msgstr "Cerrado rectificado"
+
+#: templates/muelles/partials/_calculadora_form.html:145
+#: templates/muelles/partials/_extremos_compresion.html:26
+msgid "Muelle con extremos abiertos no rectificados"
+msgstr "Muelle con extremos abiertos no rectificados"
+
+#: templates/muelles/partials/_calculadora_form.html:147
+#: templates/muelles/partials/_extremos_compresion.html:28
+msgid "Abierto no rectificado"
+msgstr "Abierto no rectificado"
+
+#: templates/muelles/partials/_calculadora_form.html:153
+#: templates/muelles/partials/_extremos_compresion.html:34
+msgid "Muelle con extremos cerrados no rectificados"
+msgstr "Muelle con extremos cerrados no rectificados"
+
+#: templates/muelles/partials/_calculadora_form.html:155
+#: templates/muelles/partials/_extremos_compresion.html:36
+msgid "Cerrado no rectificado"
+msgstr "Cerrado no rectificado"
+
+#: templates/muelles/partials/_calculadora_form.html:161
+#: templates/muelles/partials/_extremos_traccion.html:9
+msgid "Muelle con anillo doble aleman entero centrado"
+msgstr "Muelle con anillo doble aleman entero centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:163
+#: templates/muelles/partials/_extremos_traccion.html:11
+msgid "Anillo doble aleman entero centrado"
+msgstr "Anillo doble aleman entero centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:169
+#: templates/muelles/partials/_extremos_traccion.html:19
+msgid "Muelle con anillo doble aleman entero lateral"
+msgstr "Muelle con anillo doble aleman entero lateral"
+
+#: templates/muelles/partials/_calculadora_form.html:171
+#: templates/muelles/partials/_extremos_traccion.html:21
+msgid "Anillo doble aleman entero lateral"
+msgstr "Anillo doble aleman entero lateral"
+
+#: templates/muelles/partials/_calculadora_form.html:177
+#: templates/muelles/partials/_extremos_traccion.html:28
+msgid "Muelle con anillo simple aleman centrado"
+msgstr "Muelle con anillo simple aleman centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:179
+#: templates/muelles/partials/_extremos_traccion.html:30
+msgid "Anillo simple aleman centrado"
+msgstr "Anillo simple aleman centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:185
+#: templates/muelles/partials/_extremos_traccion.html:36
+msgid "Muelle con anillo simple aleman entero lateral"
+msgstr "Muelle con anillo simple aleman entero lateral"
+
+#: templates/muelles/partials/_calculadora_form.html:187
+#: templates/muelles/partials/_extremos_traccion.html:38
+msgid "Anillo simple aleman entero lateral"
+msgstr "Anillo simple aleman entero lateral"
+
+#: templates/muelles/partials/_calculadora_form.html:193
+#: templates/muelles/partials/_extremos_traccion.html:44
+msgid "Muelle con anillo simple aleman entero centrado"
+msgstr "Muelle con anillo simple aleman entero centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:195
+#: templates/muelles/partials/_extremos_traccion.html:46
+msgid "Anillo simple aleman entero centrado"
+msgstr "Anillo simple aleman entero centrado"
+
+#: templates/muelles/partials/_calculadora_form.html:201
+#: templates/muelles/partials/_extremos_traccion.html:52
+msgid "Muelle con anillo especial"
+msgstr "Muelle con anillo especial"
+
+#: templates/muelles/partials/_calculadora_form.html:203
+#: templates/muelles/partials/_extremos_traccion.html:54
+msgid "Anillo especial"
+msgstr "Anillo especial"
+
+#: templates/muelles/partials/_calculadora_form.html:210
+#: templates/muelles/partials/_calculadora_results.html:25
+#: templates/muelles/partials/_material_form.html:39
+msgid "Shot peening:"
+msgstr "Shot peening:"
+
+#: templates/muelles/partials/_calculadora_form.html:216
+msgid "Activado"
+msgstr "Activado"
+
+#: templates/muelles/partials/_calculadora_form.html:218
+#: templates/muelles/partials/_material_form.html:47
+msgid "Mejora la resistencia a la fatiga"
+msgstr "Mejora la resistencia a la fatiga"
+
+#: templates/muelles/partials/_calculadora_form.html:224
+#: templates/muelles/partials/_carga_form.html:4
+msgid "Longitud inicial (mm):"
+msgstr "Longitud inicial (mm):"
+
+#: templates/muelles/partials/_calculadora_form.html:232
+#: templates/muelles/partials/_carga_form.html:12
+msgid "Longitud final (mm):"
+msgstr "Longitud final (mm):"
+
+#: templates/muelles/partials/_calculadora_form.html:242
+#: templates/muelles/partials/_carga_form.html:22
+msgid "Número de ciclos:"
+msgstr "Número de ciclos:"
+
+#: templates/muelles/partials/_calculadora_form.html:251
+#: templates/muelles/partials/_carga_form.html:31
+#: templates/muelles/partials/_formulario_2k.html:120
+#: templates/muelles/partials/_formulario_compresion.html:94
+#: templates/muelles/partials/_formulario_conico.html:66
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:76
+#: templates/muelles/partials/_formulario_torsion.html:109
+#: templates/muelles/partials/_formulario_traccion.html:86
+#: templates/tolerances/insert_support.html:117
+#: templates/tolerances/pin_hole.html:110
+#: templates/tolerances/pivot_bushing_hole_axial.html:117
+#: templates/tolerances/pivot_bushing_hole_radial.html:117
+msgid "Calcular"
+msgstr "Calcular"
+
+#: templates/muelles/partials/_calculadora_form.html:252
+#: templates/muelles/partials/_carga_form.html:32
+msgid ""
+"Complete los datos del muelle para obtener sus especificaciones técnicas "
+"completas."
+msgstr ""
+"Complete los datos del muelle para obtener sus especificaciones técnicas "
+"completas."
+
+#: templates/muelles/partials/_calculadora_form.html:253
+#: templates/muelles/partials/_carga_form.html:33
+#: templates/muelles/partials/_formulario_2k.html:123
+#: templates/muelles/partials/_formulario_compresion.html:97
+#: templates/muelles/partials/_formulario_conico.html:69
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:79
+#: templates/muelles/partials/_formulario_torsion.html:112
+#: templates/muelles/partials/_formulario_traccion.html:89
+msgid "Calcular Especificaciones"
+msgstr "Calcular Especificaciones"
+
+#: templates/muelles/partials/_calculadora_info.html:3
+msgid "Información sobre los cálculos:"
+msgstr "Información sobre los cálculos:"
+
+#: templates/muelles/partials/_calculadora_info.html:6
+msgid "Dimensiones:"
+msgstr "Dimensiones:"
+
+#: templates/muelles/partials/_calculadora_info.html:8
+msgid "Diámetro medio:"
+msgstr "Diámetro medio:"
+
+#: templates/muelles/partials/_calculadora_info.html:8
+msgid "Calculado automáticamente según las dimensiones"
+msgstr "Calculado automáticamente según las dimensiones"
+
+#: templates/muelles/partials/_calculadora_info.html:9
 msgid "Índice del muelle:"
 msgstr "Índice del muelle:"
 
+#: templates/muelles/partials/_calculadora_info.html:9
+msgid "Relación diámetro medio / diámetro hilo"
+msgstr "Relación diámetro medio / diámetro hilo"
+
+#: templates/muelles/partials/_calculadora_info.html:13
+msgid "Espiras:"
+msgstr "Espiras:"
+
+#: templates/muelles/partials/_calculadora_info.html:15
+msgid "Espiras útiles:"
+msgstr "Espiras útiles:"
+
+#: templates/muelles/partials/_calculadora_info.html:15
+msgid "Según tipo de extremos seleccionado"
+msgstr "Según tipo de extremos seleccionado"
+
+#: templates/muelles/partials/_calculadora_info.html:16
+#: templates/muelles/partials/_calculadora_results.html:64
+msgid "Pitch:"
+msgstr "Pitch:"
+
+#: templates/muelles/partials/_calculadora_info.html:16
+msgid "Distancia entre espiras (longitud libre / espiras)"
+msgstr "Distancia entre espiras (longitud libre / espiras)"
+
+#: templates/muelles/partials/_calculadora_info.html:20
+msgid "Mecánica:"
+msgstr "Mecánica:"
+
+#: templates/muelles/partials/_calculadora_info.html:22
+msgid "Constante del muelle:"
+msgstr "Constante del muelle:"
+
+#: templates/muelles/partials/_calculadora_info.html:22
+msgid "Fuerza necesaria para comprimir 1 mm"
+msgstr "Fuerza necesaria para comprimir 1 mm"
+
+#: templates/muelles/partials/_calculadora_info.html:23
+msgid "Factor de Wahl:"
+msgstr "Factor de Wahl:"
+
+#: templates/muelles/partials/_calculadora_info.html:23
+msgid "Factor de corrección por curvatura"
+msgstr "Factor de corrección por curvatura"
+
+#: templates/muelles/partials/_calculadora_info.html:29
+msgid "Resistencia a la tracción del material"
+msgstr "Resistencia a la tracción del material"
+
+#: templates/muelles/partials/_calculadora_info.html:30
+msgid "Tolerancias:"
+msgstr "Tolerancias:"
+
+#: templates/muelles/partials/_calculadora_info.html:30
+msgid "Según normas para el diámetro del hilo"
+msgstr "Según normas para el diámetro del hilo"
+
+#: templates/muelles/partials/_calculadora_results.html:7
+#: templates/tolerances/insert_support.html:124
+#: templates/tolerances/pin_hole.html:117
+#: templates/tolerances/pivot_bushing_hole_axial.html:124
+#: templates/tolerances/pivot_bushing_hole_radial.html:124
+msgid "Error:"
+msgstr "Error:"
+
+#: templates/muelles/partials/_calculadora_results.html:15
+msgid "Especificaciones Tecnicas del Muelle"
+msgstr "Especificaciones Tecnicas del Muelle"
+
+#: templates/muelles/partials/_calculadora_results.html:21
+#: templates/tolerances/insert_support.html:165
+#: templates/tolerances/insert_support.html:178
+#: templates/tolerances/pin_hole.html:140
+#: templates/tolerances/pivot_bushing_hole_axial.html:165
+#: templates/tolerances/pivot_bushing_hole_radial.html:179
+#: templates/tolerances/pivot_bushing_hole_radial.html:215
+#: templates/tolerances/pivot_bushing_hole_radial.html:238
+msgid "Tipo:"
+msgstr "Tipo:"
+
+#: templates/muelles/partials/_calculadora_results.html:22
+msgid "Modulo G:"
+msgstr "Modulo G:"
+
+#: templates/muelles/partials/_calculadora_results.html:23
+msgid "Modulo E:"
+msgstr "Modulo E:"
+
+#: templates/muelles/partials/_calculadora_results.html:24
+msgid "Diametro hilo:"
+msgstr "Diametro hilo:"
+
+#: templates/muelles/partials/_calculadora_results.html:33
+msgid "Dimensiones"
+msgstr "Dimensiones"
+
+#: templates/muelles/partials/_calculadora_results.html:35
+msgid "Diametro medio:"
+msgstr "Diametro medio:"
+
+#: templates/muelles/partials/_calculadora_results.html:37
+#, fuzzy
+#| msgid "Diametro medio:"
+msgid "Diametro medio superior:"
+msgstr "Diametro medio:"
+
+#: templates/muelles/partials/_calculadora_results.html:40
+#, fuzzy
+#| msgid "Diametro interior:"
+msgid "Diametro medio inferior:"
+msgstr "Diametro interior:"
+
+#: templates/muelles/partials/_calculadora_results.html:42
+msgid "Diametro exterior:"
+msgstr "Diametro exterior:"
+
+#: templates/muelles/partials/_calculadora_results.html:43
+msgid "Diametro interior:"
+msgstr "Diametro interior:"
+
+#: templates/muelles/partials/_calculadora_results.html:45
+msgid "Longitud libre:"
+msgstr "Longitud libre:"
+
+#: templates/muelles/partials/_calculadora_results.html:48
+msgid "Longitud hilo:"
+msgstr "Longitud hilo:"
+
+#: templates/muelles/partials/_calculadora_results.html:51
+msgid "Longitud hilo total:"
+msgstr "Longitud hilo total:"
+
+#: templates/muelles/partials/_calculadora_results.html:54
+msgid "Longitud hilo cuerpo:"
+msgstr "Longitud hilo cuerpo:"
+
+#: templates/muelles/partials/_calculadora_results.html:60
+msgid "Espiras y Geometria"
+msgstr "Espiras y Geometria"
+
+#: templates/muelles/partials/_calculadora_results.html:62
+msgid "Numero espiras:"
+msgstr "Numero espiras:"
+
+#: templates/muelles/partials/_calculadora_results.html:63
+msgid "Numero espiras utiles:"
+msgstr "Numero espiras utiles:"
+
+#: templates/muelles/partials/_calculadora_results.html:66
+msgid "Tramo 1 - espiras / paso:"
+msgstr ""
+
+#: templates/muelles/partials/_calculadora_results.html:69
+msgid "Tramo 2 - espiras / paso:"
+msgstr ""
+
+#: templates/muelles/partials/_calculadora_results.html:72
+msgid "Tramo 3 - espiras / paso:"
+msgstr ""
+
+#: templates/muelles/partials/_calculadora_results.html:75
+msgid "Ancho muelle:"
+msgstr "Ancho muelle:"
+
+#: templates/muelles/partials/_calculadora_results.html:78
+msgid "Longitud bloqueo:"
+msgstr "Longitud bloqueo:"
+
+#: templates/muelles/partials/_calculadora_results.html:81
+msgid "Angulo libre:"
+msgstr "Angulo libre:"
+
+#: templates/muelles/partials/_calculadora_results.html:84
+msgid "Angulo tangencias:"
+msgstr "Angulo tangencias:"
+
+#: templates/muelles/partials/_calculadora_results.html:90
+msgid "Mecanicas"
+msgstr "Mecanicas"
+
+#: templates/muelles/partials/_calculadora_results.html:92
+msgid "Constante:"
+msgstr "Constante:"
+
+#: templates/muelles/partials/_calculadora_results.html:94
+#, fuzzy
+#| msgid "Tension inicial:"
+msgid "Constante K1 (inicial):"
+msgstr "Tension inicial:"
+
+#: templates/muelles/partials/_calculadora_results.html:97
+msgid "Constante K2 (tramo abierto):"
+msgstr ""
+
+#: templates/muelles/partials/_calculadora_results.html:99
+msgid "Indice muelle:"
+msgstr "Indice muelle:"
+
+#: templates/muelles/partials/_calculadora_results.html:100
+msgid "Factor Wahl:"
+msgstr "Factor Wahl:"
+
+#: templates/muelles/partials/_calculadora_results.html:102
+msgid "Factor Wahl eval:"
+msgstr "Factor Wahl eval:"
+
+#: templates/muelles/partials/_calculadora_results.html:105
+msgid "Categoria Wahl:"
+msgstr "Categoria Wahl:"
+
+#: templates/muelles/partials/_calculadora_results.html:108
+msgid "Tension inicial:"
+msgstr "Tension inicial:"
+
+#: templates/muelles/partials/_calculadora_results.html:111
+msgid "Momento resistente:"
+msgstr "Momento resistente:"
+
+#: templates/muelles/partials/_calculadora_results.html:119
+msgid "Parametros de Torsion"
+msgstr "Parametros de Torsion"
+
+#: templates/muelles/partials/_calculadora_results.html:122
+msgid "Patas y Radios"
+msgstr "Patas y Radios"
+
+#: templates/muelles/partials/_calculadora_results.html:125
+msgid "Radio pata fija:"
+msgstr "Radio pata fija:"
+
+#: templates/muelles/partials/_calculadora_results.html:130
+msgid "Longitud pata fija:"
+msgstr "Longitud pata fija:"
+
+#: templates/muelles/partials/_calculadora_results.html:135
+msgid "Radio pata movil:"
+msgstr "Radio pata movil:"
+
+#: templates/muelles/partials/_calculadora_results.html:140
+msgid "Longitud pata movil:"
+msgstr "Longitud pata movil:"
+
+#: templates/muelles/partials/_calculadora_results.html:150
+msgid "Analisis Grafico de Fatiga"
+msgstr "Analisis Grafico de Fatiga"
+
+#: templates/muelles/partials/_calculadora_results.html:157
+msgid "Curva de esfuerzos"
+msgstr "Curva de esfuerzos"
+
+#: templates/muelles/partials/_calculadora_results.html:166
+msgid "Curva de recorrido"
+msgstr "Curva de recorrido"
+
+#: templates/muelles/partials/_calculadora_results.html:175
+msgid "Curva de diametros"
+msgstr "Curva de diametros"
+
+#: templates/muelles/partials/_calculadora_results.html:182
+msgid "Curva de Compresión Progresiva (2K)"
+msgstr ""
+
+#: templates/muelles/partials/_calculadora_results.html:184
+#, fuzzy
+#| msgid "Muelle de compresión"
+msgid "Curva de compresión progresiva"
+msgstr "Muelle de compresión"
+
+#: templates/muelles/partials/_calculadora_results.html:198
+msgid "Safety factor:"
+msgstr "Safety factor:"
+
+#: templates/muelles/partials/_formulario_2k.html:5
+#, fuzzy
+#| msgid "Diagrama de muelle"
+msgid "Diagrama de muelle 2K"
+msgstr "Diagrama de muelle"
+
+#: templates/muelles/partials/_formulario_2k.html:8
+#, fuzzy
+#| msgid "Diametro medio (Dm) en mm"
+msgid "Diámetro medio (constante) en mm"
+msgstr "Diametro medio (Dm) en mm"
+
+#: templates/muelles/partials/_formulario_2k.html:18
+msgid "Tramo 1: paso y longitud"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:18
+msgid "Tramo 1"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:24
+#: templates/muelles/partials/_formulario_2k.html:44
+#: templates/muelles/partials/_formulario_2k.html:64
+msgid "longitud"
+msgstr "longitud"
+
+#: templates/muelles/partials/_formulario_2k.html:32
+#: templates/muelles/partials/_formulario_2k.html:52
+#: templates/muelles/partials/_formulario_2k.html:72
+msgid "paso (mm)"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:38
+msgid "Tramo 2: paso y longitud"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:38
+msgid "Tramo 2"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:58
+msgid "Tramo 3: paso y longitud"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:58
+msgid "Tramo 3"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:78
+msgid "Longitud libre en mm (calculada: suma de longitudes de cada tramo)"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:90
+msgid ""
+"Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:90
+msgid "No total espiras"
+msgstr "No total espiras"
+
+#: templates/muelles/partials/_formulario_2k.html:102
+#, fuzzy
+#| msgid "Primera posición de carga"
+msgid "1ª posición carga"
+msgstr "Primera posición de carga"
+
+#: templates/muelles/partials/_formulario_2k.html:102
+#: templates/muelles/partials/_formulario_conico.html:48
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:58
+#, fuzzy
+#| msgid "Primera posición de carga"
+msgid "1 posición carga"
+msgstr "Primera posición de carga"
+
+#: templates/muelles/partials/_formulario_2k.html:111
+#, fuzzy
+#| msgid "Primera posición de carga"
+msgid "2ª posición de carga"
+msgstr "Primera posición de carga"
+
+#: templates/muelles/partials/_formulario_2k.html:111
+#: templates/muelles/partials/_formulario_conico.html:57
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:67
+#, fuzzy
+#| msgid "Primera posición de carga"
+msgid "2 posición carga"
+msgstr "Primera posición de carga"
+
+#: templates/muelles/partials/_formulario_2k.html:121
+#, fuzzy
+#| msgid ""
+#| "Complete los datos del muelle para obtener sus especificaciones tecnicas "
+#| "completas."
+msgid ""
+"Complete los datos de los tres tramos del muelle 2K para obtener sus "
+"especificaciones tecnicas completas."
+msgstr ""
+"Complete los datos del muelle para obtener sus especificaciones tecnicas "
+"completas."
+
+#: templates/muelles/partials/_formulario_2k.html:123
+#: templates/muelles/partials/_formulario_compresion.html:97
+#, fuzzy
+#| msgid "Calcular"
+msgid "Calculando..."
+msgstr "Calcular"
+
+#: templates/muelles/partials/_formulario_2k.html:124
+#: templates/muelles/partials/_formulario_compresion.html:98
+msgid "Generando animación..."
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:124
+#: templates/muelles/partials/_formulario_compresion.html:98
+#: templates/muelles/partials/_formulario_conico.html:70
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:80
+#: templates/muelles/partials/_formulario_torsion.html:113
+#: templates/muelles/partials/_formulario_traccion.html:90
+msgid "Crear Animación"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:125
+#: templates/muelles/partials/_formulario_compresion.html:99
+msgid "Generando PDF..."
+msgstr ""
+
+#: templates/muelles/partials/_formulario_2k.html:125
+#: templates/muelles/partials/_formulario_compresion.html:99
+#: templates/muelles/partials/_formulario_conico.html:71
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:81
+#: templates/muelles/partials/_formulario_torsion.html:114
+#: templates/muelles/partials/_formulario_traccion.html:91
+msgid "Crear Reporte PDF"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_compresion.html:5
+#: templates/muelles/partials/_formulario_torsion.html:5
+#: templates/muelles/partials/_formulario_traccion.html:5
+msgid "Diagrama de muelle"
+msgstr "Diagrama de muelle"
+
+#: templates/muelles/partials/_formulario_compresion.html:14
+#: templates/muelles/partials/_formulario_torsion.html:20
+#: templates/muelles/partials/_formulario_traccion.html:34
+msgid "Diametro exterior (De) en mm"
+msgstr "Diametro exterior (De) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:24
+#: templates/muelles/partials/_formulario_torsion.html:30
+#: templates/muelles/partials/_formulario_traccion.html:14
+msgid "Diametro medio (Dm) en mm"
+msgstr "Diametro medio (Dm) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:34
+#: templates/muelles/partials/_formulario_torsion.html:40
+#: templates/muelles/partials/_formulario_traccion.html:24
+msgid "Diametro interior (Di) en mm"
+msgstr "Diametro interior (Di) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:37
+#: templates/muelles/partials/_formulario_traccion.html:74
+msgid "Numero total de espiras (nt)"
+msgstr "Numero total de espiras (nt)"
+
+#: templates/muelles/partials/_formulario_compresion.html:37
+#: templates/muelles/partials/_formulario_traccion.html:74
+msgid "Numero de espiras"
+msgstr "Numero de espiras"
+
+#: templates/muelles/partials/_formulario_compresion.html:52
+#: templates/muelles/partials/_formulario_traccion.html:44
+msgid "Longitud sin comprimir (L0) en mm"
+msgstr "Longitud sin comprimir (L0) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:61
+msgid "Primera posición de carga"
+msgstr "Primera posición de carga"
+
+#: templates/muelles/partials/_formulario_compresion.html:70
+#: templates/muelles/partials/_formulario_conico.html:57
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:67
+#: templates/muelles/partials/_formulario_traccion.html:62
+msgid "Segunda posición de carga"
+msgstr "Segunda posición de carga"
+
+#: templates/muelles/partials/_formulario_compresion.html:79
+msgid "Longitud solida (Ls) en mm"
+msgstr "Longitud solida (Ls) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:88
+msgid "Paso entre espiras (pitch) en mm"
+msgstr "Paso entre espiras (pitch) en mm"
+
+#: templates/muelles/partials/_formulario_compresion.html:95
+#: templates/muelles/partials/_formulario_torsion.html:110
+#: templates/muelles/partials/_formulario_traccion.html:87
+msgid ""
+"Complete los datos del muelle para obtener sus especificaciones tecnicas "
+"completas."
+msgstr ""
+"Complete los datos del muelle para obtener sus especificaciones tecnicas "
+"completas."
+
+#: templates/muelles/partials/_formulario_conico.html:5
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:5
+#, fuzzy
+#| msgid "Diagrama de muelle"
+msgid "Diagrama de muelle cónico"
+msgstr "Diagrama de muelle"
+
+#: templates/muelles/partials/_formulario_conico.html:8
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:8
+#, fuzzy
+#| msgid "Diametro exterior (De) en mm"
+msgid "Diámetro superior en mm"
+msgstr "Diametro exterior (De) en mm"
+
+#: templates/muelles/partials/_formulario_conico.html:8
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:8
+#, fuzzy
+#| msgid "Diámetro medio"
+msgid "Diámetro medio superior"
+msgstr "Diámetro medio"
+
+#: templates/muelles/partials/_formulario_conico.html:18
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:18
+#, fuzzy
+#| msgid "Diametro exterior (De) en mm"
+msgid "Diametro medio inferior (Deu) en mm"
+msgstr "Diametro exterior (De) en mm"
+
+#: templates/muelles/partials/_formulario_conico.html:18
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:18
+#, fuzzy
+#| msgid "Diámetro medio"
+msgid "Diámetro medio inferior"
+msgstr "Diámetro medio"
+
+#: templates/muelles/partials/_formulario_conico.html:28
+#, fuzzy
+#| msgid "Tipo de muelle:"
+msgid "Paso del muelle"
+msgstr "Tipo de muelle:"
+
+#: templates/muelles/partials/_formulario_conico.html:28
+msgid "Paso"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_conico.html:38
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:48
+#, fuzzy
+#| msgid "Longitud libre (mm):"
+msgid "Longitud libre en mm"
+msgstr "Longitud libre (mm):"
+
+#: templates/muelles/partials/_formulario_conico.html:67
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:77
+#, fuzzy
+#| msgid ""
+#| "Complete los datos del muelle para obtener sus especificaciones tecnicas "
+#| "completas."
+msgid ""
+"Complete los datos del muelle cónico para obtener sus especificaciones "
+"tecnicas completas."
+msgstr ""
+"Complete los datos del muelle para obtener sus especificaciones tecnicas "
+"completas."
+
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:28
+msgid "Paso en la parte superior del muelle"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:28
+msgid "Paso superior"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:38
+msgid "Paso en la parteinferiro del muelle"
+msgstr ""
+
+#: templates/muelles/partials/_formulario_conico_pitch_variable.html:38
+#, fuzzy
+#| msgid "Diametro interior:"
+msgid "Paso inferior"
+msgstr "Diametro interior:"
+
+#: templates/muelles/partials/_formulario_torsion.html:50
+msgid "Longitud de pata fija (Ls) en mm"
+msgstr "Longitud de pata fija (Ls) en mm"
+
+#: templates/muelles/partials/_formulario_torsion.html:59
+msgid "Radio de sujeción (Ra) pata móvil en mm"
+msgstr "Radio de sujeción (Ra) pata móvil en mm"
+
+#: templates/muelles/partials/_formulario_torsion.html:68
+msgid "Primera posición de carga (A1)"
+msgstr "Primera posición de carga (A1)"
+
+#: templates/muelles/partials/_formulario_torsion.html:77
+msgid "Primera posición de carga (A2)"
+msgstr "Primera posición de carga (A2)"
+
+#: templates/muelles/partials/_formulario_torsion.html:86
+msgid "Ángulo de libre (A0)"
+msgstr "Ángulo de libre (A0)"
+
+#: templates/muelles/partials/_formulario_torsion.html:95
+msgid "Número de espiras (nt)"
+msgstr "Número de espiras (nt)"
+
+#: templates/muelles/partials/_formulario_torsion.html:105
+msgid "Paso (pitch) en mm"
+msgstr "Paso (pitch) en mm"
+
+#: templates/muelles/partials/_formulario_traccion.html:53
+msgid "Primera posición de carga (L1)"
+msgstr "Primera posición de carga (L1)"
+
+#: templates/muelles/partials/_formulario_traccion.html:65
+msgid "Tensión inicial (F1) en N"
+msgstr "Tensión inicial (F1) en N"
+
+#: templates/muelles/partials/_formulario_traccion.html:65
+msgid "Tensión inicial"
+msgstr "Tensión inicial"
+
+#: templates/muelles/partials/_material_form.html:45
+msgid "Desactivado"
+msgstr "Desactivado"
+
+#: templates/muelles/partials/_material_form.html:51
+msgid "Numero de ciclos:"
+msgstr "Numero de ciclos:"
+
+#: templates/registration/change_psw.html:3
+#: templates/registration/change_psw.html:17
+#: templates/registration/change_psw.html:43
+msgid "Cambiar Contraseña"
+msgstr "Cambiar Contraseña"
+
+#: templates/registration/change_psw.html:22
+msgid "Nueva Contraseña"
+msgstr "Nueva Contraseña"
+
+#: templates/registration/change_psw.html:26
+msgid "Confirmar Nueva Contraseña"
+msgstr "Confirmar Nueva Contraseña"
+
+#: templates/registration/change_psw.html:48
+#: templates/registration/signup.html:39
+#, python-format
+msgid "¿Ya tienes cuenta? <a href=\"%(login_url)s\">Inicia sesión</a>"
+msgstr "¿Ya tienes cuenta? <a href=\"%(login_url)s\">Inicia sesión</a>"
+
+#: templates/registration/login.html:22
+msgid "Usuario"
+msgstr "Usuario"
+
+#: templates/registration/login.html:33
+msgid "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo."
+msgstr "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo."
+
+#: templates/registration/login.html:37
+msgid "Entrar"
+msgstr "Entrar"
+
+#: templates/registration/login.html:43
+#: templates/registration/recall_psw.html:37
+#, python-format
+msgid "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Regístrate aquí</a>."
+msgstr "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Regístrate aquí</a>."
+
+#: templates/registration/login.html:46
+#, python-format
+msgid ""
+"¿Olvidaste tu contraseña? <a href=\"%(recall_psw_url)s\">Recupérala aquí</a>."
+msgstr ""
+"¿Olvidaste tu contraseña? <a href=\"%(recall_psw_url)s\">Recupérala aquí</a>."
+
+#: templates/registration/recall_psw.html:17
+msgid "Recuperar Contraseña"
+msgstr "Recuperar Contraseña"
+
+#: templates/registration/recall_psw.html:28
+msgid ""
+"Si el email ingresado corresponde a una cuenta registrada, recibirás un "
+"correo con instrucciones para restablecer tu contraseña."
+msgstr ""
+"Si el email ingresado corresponde a una cuenta registrada, recibirás un "
+"correo con instrucciones para restablecer tu contraseña."
+
+#: templates/registration/recall_psw.html:32
+msgid "Recuperar"
+msgstr "Recuperar"
+
+#: templates/registration/signup.html:34
+msgid "Registrarse"
+msgstr "Registrarse"
+
+#: templates/registration/verify_email.html:13
+msgid "Verificar Email"
+msgstr "Verificar Email"
+
+#: templates/registration/verify_email.html:18
+msgid ""
+"Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, "
+"introdúcelo a continuación:"
+msgstr ""
+"Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, "
+"introdúcelo a continuación:"
+
+#: templates/registration/verify_email.html:33
+msgid "Código de Verificación"
+msgstr "Código de Verificación"
+
+#: templates/registration/verify_email.html:41
+msgid "Verificar y Entrar"
+msgstr "Verificar y Entrar"
+
+#: templates/registration/verify_email.html:50
+#, python-format
+msgid ""
+"¿No recibiste el código? Revisa tu carpeta de spam o\n"
+"                    <a href=\"%(signup_url)s\">intenta registrarte de nuevo</"
+"a>."
+msgstr ""
+"¿No recibiste el código? Revisa tu carpeta de spam o\n"
+"                    <a href=\"%(signup_url)s\">intenta registrarte de nuevo</"
+"a>."
+
+#: templates/specs/chat.html:4 templates/specs/index.html:25
+msgid "Asistente Chat RAG"
+msgstr "Asistente Chat RAG"
+
+#: templates/specs/chat.html:15
+msgid "Lola Specs: Asistente Senior"
+msgstr "Lola Specs: Asistente Senior"
+
+#: templates/specs/chat.html:16
+msgid "RAG Conectado"
+msgstr "RAG Conectado"
+
+#: templates/specs/chat.html:22
+msgid "Bienvenido a Lola Specs."
+msgstr "Bienvenido a Lola Specs."
+
+#: templates/specs/chat.html:22
+msgid ""
+"Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas "
+"subido previamente al sistema. Te indicaré siempre la fuente del documento "
+"en mi respuesta."
+msgstr ""
+"Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas "
+"subido previamente al sistema. Te indicaré siempre la fuente del documento "
+"en mi respuesta."
+
+#: templates/specs/chat.html:32
+msgid "¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?"
+msgstr "¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?"
+
+#: templates/specs/chat.html:33
+msgid "Enviar y Consultar"
+msgstr "Enviar y Consultar"
+
+#: templates/specs/document_list.html:4
+msgid "Mis Documentos"
+msgstr "Mis Documentos"
+
+#: templates/specs/document_list.html:61
+msgid "Mis Documentos RAG"
+msgstr "Mis Documentos RAG"
+
+#: templates/specs/document_list.html:62
+msgid "Subir Nuevo PDF"
+msgstr "Subir Nuevo PDF"
+
+#: templates/specs/document_list.html:78
+msgid "Archivo / Título"
+msgstr "Archivo / Título"
+
+#: templates/specs/document_list.html:79
+msgid "OEM / Empresa"
+msgstr "OEM / Empresa"
+
+#: templates/specs/document_list.html:80
+msgid "Fecha Subida"
+msgstr "Fecha Subida"
+
+#: templates/specs/document_list.html:81
+msgid "Estado RAG"
+msgstr "Estado RAG"
+
+#: templates/specs/document_list.html:82
+msgid "Acciones"
+msgstr "Acciones"
+
+#: templates/specs/document_list.html:98
+msgid "Editar"
+msgstr "Editar"
+
+#: templates/specs/document_list.html:99
+msgid "Guardar"
+msgstr "Guardar"
+
+#: templates/specs/document_list.html:100
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: templates/specs/document_list.html:106
+msgid "Indexado"
+msgstr "Indexado"
+
+#: templates/specs/document_list.html:108
+msgid "Pendiente"
+msgstr "Pendiente"
+
+#: templates/specs/document_list.html:113
+msgid "Ver"
+msgstr "Ver"
+
+#: templates/specs/document_list.html:114
+msgid "¿Seguro que deseas eliminar este documento?"
+msgstr "¿Seguro que deseas eliminar este documento?"
+
+#: templates/specs/document_list.html:116
+msgid "Borrar"
+msgstr "Borrar"
+
+#: templates/specs/document_list.html:127
+msgid "Aún no has subido normativas."
+msgstr "Aún no has subido normativas."
+
+#: templates/specs/document_list.html:128
+msgid "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG."
+msgstr "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG."
+
+#: templates/specs/document_list.html:129
+msgid "Empezar a subir"
+msgstr "Empezar a subir"
+
+#: templates/specs/index.html:4 templates/specs/index.html:13
+msgid "Especificaciones Técnicas"
+msgstr "Especificaciones Técnicas"
+
+#: templates/specs/index.html:14
+msgid "Gestiona, consulta y chatea con tus documentos y normativas (RAG)"
+msgstr "Gestiona, consulta y chatea con tus documentos y normativas (RAG)"
+
+#: templates/specs/index.html:19
+msgid "Gestor de Documentos"
+msgstr "Gestor de Documentos"
+
+#: templates/specs/index.html:20
+msgid "Sube PDFs, clasifícalos por OEM y verifica su estado de indexación."
+msgstr "Sube PDFs, clasifícalos por OEM y verifica su estado de indexación."
+
+#: templates/specs/index.html:21
+msgid "Ver Documentos"
+msgstr "Ver Documentos"
+
+#: templates/specs/index.html:26
+msgid ""
+"Realiza consultas técnicas y normativas a tus documentos subidos. Extrae "
+"información exacta referenciada."
+msgstr ""
+"Realiza consultas técnicas y normativas a tus documentos subidos. Extrae "
+"información exacta referenciada."
+
+#: templates/specs/index.html:27
+msgid "Ir al Chat RAG"
+msgstr "Ir al Chat RAG"
+
+#: templates/specs/upload.html:4
+msgid "Subir Normativa"
+msgstr "Subir Normativa"
+
+#: templates/specs/upload.html:13
+msgid "Añadir Documento al RAG"
+msgstr "Añadir Documento al RAG"
+
+#: templates/specs/upload.html:14
+msgid ""
+"El PDF se almacenará de forma segura y se auto-indexará para tu asistente de "
+"usuario."
+msgstr ""
+"El PDF se almacenará de forma segura y se auto-indexará para tu asistente de "
+"usuario."
+
+#: templates/specs/upload.html:20
+msgid "OEM / Empresa Relacionada (Opcional)"
+msgstr "OEM / Empresa Relacionada (Opcional)"
+
+#: templates/specs/upload.html:22
+msgid "Ej. VW, BMW, Ford o General"
+msgstr "Ej. VW, BMW, Ford o General"
+
+#: templates/specs/upload.html:26
+msgid "Archivo PDF Técnico (Normativa, TL, ISO...)"
+msgstr "Archivo PDF Técnico (Normativa, TL, ISO...)"
+
+#: templates/specs/upload.html:32
+msgid "Volver"
+msgstr "Volver"
+
+#: templates/specs/upload.html:33
+msgid "Subir y Analizar Documento"
+msgstr "Subir y Analizar Documento"
+
+#: templates/tolerances/index.html:4
+msgid "Calculadoras de Tolerancias y Ajustes Mecánicos Online"
+msgstr "Calculadoras de Tolerancias y Ajustes Mecánicos Online"
+
+#: templates/tolerances/index.html:6
+msgid ""
+"Calcula ajustes eje-agujero, pin-agujero y tolerancias ISO gratis online. "
+"Herramientas para diseño mecánico e ingeniería industrial."
+msgstr ""
+"Calcula ajustes eje-agujero, pin-agujero y tolerancias ISO gratis online. "
+"Herramientas para diseño mecánico e ingeniería industrial."
+
+#: templates/tolerances/index.html:21
+msgid "Cálculo de Tolerancias diametral Pin Agujero"
+msgstr "Cálculo de Tolerancias diametral Pin Agujero"
+
+#: templates/tolerances/index.html:22
+msgid ""
+"Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado"
+msgstr ""
+"Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado"
+
+#: templates/tolerances/index.html:23
+msgid "Ajuste Pin-Hole"
+msgstr "Ajuste Pin-Hole"
+
+#: templates/tolerances/index.html:28
+msgid "Tolerancias radiales pivot-bushing-agujero"
+msgstr "Tolerancias radiales pivot-bushing-agujero"
+
+#: templates/tolerances/index.html:29
+msgid ""
+"Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado "
+"u holgado"
+msgstr ""
+"Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado "
+"u holgado"
+
+#: templates/tolerances/index.html:30 templates/tolerances/index.html:37
+#: templates/tolerances/index.html:44
+msgid "Eje Casquillo Agujero"
+msgstr "Eje Casquillo Agujero"
+
+#: templates/tolerances/index.html:35 templates/tolerances/index.html:42
+msgid "Tolerancias axiales pivot-bushing-agujero"
+msgstr "Tolerancias axiales pivot-bushing-agujero"
+
+#: templates/tolerances/index.html:36 templates/tolerances/index.html:43
+msgid ""
+"Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste "
+"apretado u holgado"
+msgstr ""
+"Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste "
+"apretado u holgado"
+
+#: templates/tolerances/index.html:49
+msgid "Cálculo de tolerancias absolutas"
+msgstr "Cálculo de tolerancias absolutas"
+
+#: templates/tolerances/index.html:50
+msgid "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
+msgstr "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
+
+#: templates/tolerances/index.html:55
+msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
+msgstr "Simulación de Monte Carlo en el cálculo de tolerancias"
+
+#: templates/tolerances/index.html:56
+msgid ""
+"Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
+msgstr ""
+"Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
+
+#: templates/tolerances/index.html:60
+msgid "Próximamente disponible"
+msgstr "Próximamente disponible"
+
+#: templates/tolerances/index.html:61
+msgid "Tolerancia Sesgada (Skewed)"
+msgstr "Tolerancia Sesgada (Skewed)"
+
+#: templates/tolerances/index.html:62
+msgid "Explicación de tolerancias con distribución sesgada"
+msgstr "Explicación de tolerancias con distribución sesgada"
+
+#: templates/tolerances/insert_support.html:3
+msgid "Calculadora de Tolerancia para Soporte de Inserto"
+msgstr "Calculadora de Tolerancia para Soporte de Inserto"
+
+#: templates/tolerances/insert_support.html:5
+msgid ""
+"Calcula el ajuste y tolerancia de un inserto en su soporte. Herramienta "
+"gratuita online para diseño mecánico de precisión."
+msgstr ""
+"Calcula el ajuste y tolerancia de un inserto en su soporte. Herramienta "
+"gratuita online para diseño mecánico de precisión."
+
+#: templates/tolerances/insert_support.html:20
+msgid ""
+"Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en "
+"un alojamiento de plástico"
+msgstr ""
+"Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en "
+"un alojamiento de plástico"
+
+#: templates/tolerances/insert_support.html:21
+#: templates/tolerances/pin_hole.html:19
+#: templates/tolerances/pivot_bushing_hole_axial.html:21
+#: templates/tolerances/pivot_bushing_hole_radial.html:22
+msgid ""
+"Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura "
+"resultante."
+msgstr ""
+"Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura "
+"resultante."
+
+#: templates/tolerances/insert_support.html:27
+#: templates/tolerances/pin_hole.html:30
+#: templates/tolerances/pivot_bushing_hole_axial.html:27
+#: templates/tolerances/pivot_bushing_hole_radial.html:28
+msgid "Diagrama pin-hole con campos editables"
+msgstr "Diagrama pin-hole con campos editables"
+
+#: templates/tolerances/insert_support.html:28
+#: templates/tolerances/pivot_bushing_hole_axial.html:28
+#: templates/tolerances/pivot_bushing_hole_radial.html:29
+msgid "Diagrama pin casquillo y agujero"
+msgstr "Diagrama pin casquillo y agujero"
+
+#: templates/tolerances/insert_support.html:33
+msgid "Altura soporte"
+msgstr "Altura soporte"
+
+#: templates/tolerances/insert_support.html:34
+#: templates/tolerances/insert_support.html:47
+#: templates/tolerances/insert_support.html:60
+#: templates/tolerances/insert_support.html:73
+#: templates/tolerances/pivot_bushing_hole_axial.html:34
+#: templates/tolerances/pivot_bushing_hole_axial.html:47
+#: templates/tolerances/pivot_bushing_hole_axial.html:60
+#: templates/tolerances/pivot_bushing_hole_axial.html:73
+#: templates/tolerances/pivot_bushing_hole_radial.html:35
+#: templates/tolerances/pivot_bushing_hole_radial.html:48
+#: templates/tolerances/pivot_bushing_hole_radial.html:61
+#: templates/tolerances/pivot_bushing_hole_radial.html:74
+msgid "Nominal"
+msgstr "Nominal"
+
+#: templates/tolerances/insert_support.html:37
+#: templates/tolerances/insert_support.html:50
+#: templates/tolerances/insert_support.html:63
+#: templates/tolerances/insert_support.html:76
+#: templates/tolerances/pivot_bushing_hole_axial.html:37
+#: templates/tolerances/pivot_bushing_hole_axial.html:50
+#: templates/tolerances/pivot_bushing_hole_axial.html:63
+#: templates/tolerances/pivot_bushing_hole_axial.html:76
+#: templates/tolerances/pivot_bushing_hole_radial.html:38
+#: templates/tolerances/pivot_bushing_hole_radial.html:51
+#: templates/tolerances/pivot_bushing_hole_radial.html:64
+#: templates/tolerances/pivot_bushing_hole_radial.html:77
+msgid "Tol. Sup"
+msgstr "Tol. Sup"
+
+#: templates/tolerances/insert_support.html:40
+#: templates/tolerances/insert_support.html:53
+#: templates/tolerances/insert_support.html:66
+#: templates/tolerances/insert_support.html:79
+#: templates/tolerances/pivot_bushing_hole_axial.html:40
+#: templates/tolerances/pivot_bushing_hole_axial.html:53
+#: templates/tolerances/pivot_bushing_hole_axial.html:66
+#: templates/tolerances/pivot_bushing_hole_axial.html:79
+#: templates/tolerances/pivot_bushing_hole_radial.html:41
+#: templates/tolerances/pivot_bushing_hole_radial.html:54
+#: templates/tolerances/pivot_bushing_hole_radial.html:67
+#: templates/tolerances/pivot_bushing_hole_radial.html:80
+msgid "Tol. Inf"
+msgstr "Tol. Inf"
+
+#: templates/tolerances/insert_support.html:46
+msgid "Altura inserto"
+msgstr "Altura inserto"
+
+#: templates/tolerances/insert_support.html:59
+msgid "Diametro soporte"
+msgstr "Diametro soporte"
+
+#: templates/tolerances/insert_support.html:72
+msgid "Diametro inserto"
+msgstr "Diametro inserto"
+
+#: templates/tolerances/insert_support.html:84
+msgid "Interference <br> spacer-support"
+msgstr "Interference <br> spacer-support"
+
+#: templates/tolerances/insert_support.html:85
+msgid "Gap spacer support"
+msgstr "Gap spacer support"
+
+#: templates/tolerances/insert_support.html:91
+#: templates/tolerances/pin_hole.html:84
+#: templates/tolerances/pivot_bushing_hole_axial.html:91
+#: templates/tolerances/pivot_bushing_hole_radial.html:91
+msgid "Distribucion"
+msgstr "Distribucion"
+
+#: templates/tolerances/insert_support.html:95
+#: templates/tolerances/pin_hole.html:88
+#: templates/tolerances/pivot_bushing_hole_axial.html:95
+#: templates/tolerances/pivot_bushing_hole_radial.html:95
+msgid "Numero de muestras"
+msgstr "Numero de muestras"
+
+#: templates/tolerances/insert_support.html:102
+#: templates/tolerances/pin_hole.html:95
+#: templates/tolerances/pivot_bushing_hole_axial.html:102
+#: templates/tolerances/pivot_bushing_hole_radial.html:102
+#: tolerances/views/insert_support_pdf.py:153
+#: tolerances/views/pin_hole_pdf.py:159
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:143
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:170
+msgid "Imagen 1"
+msgstr "Imagen 1"
+
+#: templates/tolerances/insert_support.html:103
+#: templates/tolerances/insert_support.html:110
+#: templates/tolerances/pin_hole.html:96 templates/tolerances/pin_hole.html:103
+#: templates/tolerances/pivot_bushing_hole_axial.html:103
+#: templates/tolerances/pivot_bushing_hole_axial.html:110
+#: templates/tolerances/pivot_bushing_hole_radial.html:103
+#: templates/tolerances/pivot_bushing_hole_radial.html:110
+msgid "Arrastra una imagen aqui o haz clic para seleccionar"
+msgstr "Arrastra una imagen aqui o haz clic para seleccionar"
+
+#: templates/tolerances/insert_support.html:104
+#: templates/tolerances/pin_hole.html:97
+#: templates/tolerances/pivot_bushing_hole_axial.html:104
+#: templates/tolerances/pivot_bushing_hole_radial.html:104
+msgid "Vista previa imagen 1"
+msgstr "Vista previa imagen 1"
+
+#: templates/tolerances/insert_support.html:109
+#: templates/tolerances/pin_hole.html:102
+#: templates/tolerances/pivot_bushing_hole_axial.html:109
+#: templates/tolerances/pivot_bushing_hole_radial.html:109
+#: tolerances/views/insert_support_pdf.py:154
+#: tolerances/views/pin_hole_pdf.py:160
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:144
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:171
+msgid "Imagen 2"
+msgstr "Imagen 2"
+
+#: templates/tolerances/insert_support.html:111
+#: templates/tolerances/pin_hole.html:104
+#: templates/tolerances/pivot_bushing_hole_axial.html:111
+#: templates/tolerances/pivot_bushing_hole_radial.html:111
+msgid "Vista previa imagen 2"
+msgstr "Vista previa imagen 2"
+
+#: templates/tolerances/insert_support.html:118
+#: templates/tolerances/pin_hole.html:111
+#: templates/tolerances/pivot_bushing_hole_axial.html:118
+#: templates/tolerances/pivot_bushing_hole_radial.html:118
+msgid "Volver al indice"
+msgstr "Volver al indice"
+
+#: templates/tolerances/insert_support.html:119
+#: templates/tolerances/pin_hole.html:112
+#: templates/tolerances/pivot_bushing_hole_axial.html:119
+#: templates/tolerances/pivot_bushing_hole_radial.html:119
+msgid "Descargar PDF"
+msgstr "Descargar PDF"
+
+#: templates/tolerances/insert_support.html:130
+#: templates/tolerances/pivot_bushing_hole_axial.html:130
+#: templates/tolerances/pivot_bushing_hole_radial.html:130
+msgid "Incoming Data"
+msgstr "Incoming Data"
+
+#: templates/tolerances/insert_support.html:133
+msgid "Diametro del Inserto"
+msgstr "Diametro del Inserto"
+
+#: templates/tolerances/insert_support.html:134
+#: templates/tolerances/insert_support.html:141
+#: templates/tolerances/insert_support.html:148
+#: templates/tolerances/insert_support.html:155
+#: templates/tolerances/pin_hole.html:126
+#: templates/tolerances/pin_hole.html:133
+#: templates/tolerances/pivot_bushing_hole_axial.html:134
+#: templates/tolerances/pivot_bushing_hole_axial.html:141
+#: templates/tolerances/pivot_bushing_hole_axial.html:148
+#: templates/tolerances/pivot_bushing_hole_axial.html:155
+#: templates/tolerances/pivot_bushing_hole_radial.html:134
+#: templates/tolerances/pivot_bushing_hole_radial.html:141
+#: templates/tolerances/pivot_bushing_hole_radial.html:148
+#: templates/tolerances/pivot_bushing_hole_radial.html:155
+#: templates/tolerances/pivot_bushing_hole_radial.html:165
+#: templates/tolerances/pivot_bushing_hole_radial.html:172
+#: templates/tolerances/pivot_bushing_hole_radial.html:201
+#: templates/tolerances/pivot_bushing_hole_radial.html:208
+msgid "Max:"
+msgstr "Max:"
+
+#: templates/tolerances/insert_support.html:135
+#: templates/tolerances/insert_support.html:142
+#: templates/tolerances/insert_support.html:149
+#: templates/tolerances/insert_support.html:156
+#: templates/tolerances/pin_hole.html:127
+#: templates/tolerances/pin_hole.html:134
+#: templates/tolerances/pivot_bushing_hole_axial.html:135
+#: templates/tolerances/pivot_bushing_hole_axial.html:142
+#: templates/tolerances/pivot_bushing_hole_axial.html:149
+#: templates/tolerances/pivot_bushing_hole_axial.html:156
+#: templates/tolerances/pivot_bushing_hole_radial.html:135
+#: templates/tolerances/pivot_bushing_hole_radial.html:142
+#: templates/tolerances/pivot_bushing_hole_radial.html:149
+#: templates/tolerances/pivot_bushing_hole_radial.html:156
+#: templates/tolerances/pivot_bushing_hole_radial.html:166
+#: templates/tolerances/pivot_bushing_hole_radial.html:173
+#: templates/tolerances/pivot_bushing_hole_radial.html:202
+#: templates/tolerances/pivot_bushing_hole_radial.html:209
+msgid "Min:"
+msgstr "Min:"
+
+#: templates/tolerances/insert_support.html:136
+#: templates/tolerances/insert_support.html:143
+#: templates/tolerances/insert_support.html:150
+#: templates/tolerances/insert_support.html:157
+#: templates/tolerances/pin_hole.html:128
+#: templates/tolerances/pin_hole.html:135
+#: templates/tolerances/pivot_bushing_hole_axial.html:136
+#: templates/tolerances/pivot_bushing_hole_axial.html:143
+#: templates/tolerances/pivot_bushing_hole_axial.html:150
+#: templates/tolerances/pivot_bushing_hole_axial.html:157
+#: templates/tolerances/pivot_bushing_hole_radial.html:136
+#: templates/tolerances/pivot_bushing_hole_radial.html:143
+#: templates/tolerances/pivot_bushing_hole_radial.html:150
+#: templates/tolerances/pivot_bushing_hole_radial.html:157
+#: templates/tolerances/pivot_bushing_hole_radial.html:167
+#: templates/tolerances/pivot_bushing_hole_radial.html:174
+#: templates/tolerances/pivot_bushing_hole_radial.html:203
+#: templates/tolerances/pivot_bushing_hole_radial.html:210
+msgid "Media:"
+msgstr "Media:"
+
+#: templates/tolerances/insert_support.html:137
+#: templates/tolerances/insert_support.html:144
+#: templates/tolerances/insert_support.html:151
+#: templates/tolerances/insert_support.html:158
+#: templates/tolerances/pin_hole.html:129
+#: templates/tolerances/pin_hole.html:136
+#: templates/tolerances/pivot_bushing_hole_axial.html:137
+#: templates/tolerances/pivot_bushing_hole_axial.html:144
+#: templates/tolerances/pivot_bushing_hole_axial.html:151
+#: templates/tolerances/pivot_bushing_hole_axial.html:158
+#: templates/tolerances/pivot_bushing_hole_radial.html:137
+#: templates/tolerances/pivot_bushing_hole_radial.html:144
+#: templates/tolerances/pivot_bushing_hole_radial.html:151
+#: templates/tolerances/pivot_bushing_hole_radial.html:158
+#: templates/tolerances/pivot_bushing_hole_radial.html:168
+#: templates/tolerances/pivot_bushing_hole_radial.html:175
+#: templates/tolerances/pivot_bushing_hole_radial.html:204
+#: templates/tolerances/pivot_bushing_hole_radial.html:211
+msgid "Sigma:"
+msgstr "Sigma:"
+
+#: templates/tolerances/insert_support.html:140
+msgid "Diametro del soporte"
+msgstr "Diametro del soporte"
+
+#: templates/tolerances/insert_support.html:147
+msgid "Altura del inserto"
+msgstr "Altura del inserto"
+
+#: templates/tolerances/insert_support.html:154
+msgid "Altura del soporte"
+msgstr "Altura del soporte"
+
+#: templates/tolerances/insert_support.html:161
+#: templates/tolerances/pivot_bushing_hole_axial.html:161
+#: templates/tolerances/pivot_bushing_hole_radial.html:234
+msgid "Analysis clearance system"
+msgstr "Analysis clearance system"
+
+#: templates/tolerances/insert_support.html:164
+#: templates/tolerances/pivot_bushing_hole_axial.html:164
+#: templates/tolerances/pivot_bushing_hole_radial.html:237
+msgid "Clearance system"
+msgstr "Clearance system"
+
+#: templates/tolerances/insert_support.html:166
+#: templates/tolerances/pivot_bushing_hole_radial.html:180
+msgid "Interferencia nominal:"
+msgstr "Interferencia nominal:"
+
+#: templates/tolerances/insert_support.html:167
+msgid "Max. Interferencia:"
+msgstr "Max. Interferencia:"
+
+#: templates/tolerances/insert_support.html:168
+msgid "Min. Interferencia:"
+msgstr "Min. Interferencia:"
+
+#: templates/tolerances/insert_support.html:169
+#: templates/tolerances/insert_support.html:182
+#: templates/tolerances/pin_hole.html:143
+#: templates/tolerances/pivot_bushing_hole_axial.html:169
+#: templates/tolerances/pivot_bushing_hole_radial.html:183
+#: templates/tolerances/pivot_bushing_hole_radial.html:219
+#: templates/tolerances/pivot_bushing_hole_radial.html:242
+msgid "Media (samples):"
+msgstr "Media (samples):"
+
+#: templates/tolerances/insert_support.html:170
+#: templates/tolerances/insert_support.html:183
+#: templates/tolerances/pin_hole.html:144
+#: templates/tolerances/pivot_bushing_hole_axial.html:170
+#: templates/tolerances/pivot_bushing_hole_radial.html:184
+#: templates/tolerances/pivot_bushing_hole_radial.html:220
+#: templates/tolerances/pivot_bushing_hole_radial.html:243
+msgid "Sigma (samples):"
+msgstr "Sigma (samples):"
+
+#: templates/tolerances/insert_support.html:174
+msgid "Analysis sobrealtura"
+msgstr "Analysis sobrealtura"
+
+#: templates/tolerances/insert_support.html:177
+msgid "Sobrealtura"
+msgstr "Sobrealtura"
+
+#: templates/tolerances/insert_support.html:179
+#: templates/tolerances/pivot_bushing_hole_axial.html:166
+#: templates/tolerances/pivot_bushing_hole_radial.html:216
+#: templates/tolerances/pivot_bushing_hole_radial.html:239
+msgid "Espesor nominal:"
+msgstr "Espesor nominal:"
+
+#: templates/tolerances/insert_support.html:180
+#: templates/tolerances/pivot_bushing_hole_axial.html:167
+#: templates/tolerances/pivot_bushing_hole_radial.html:217
+#: templates/tolerances/pivot_bushing_hole_radial.html:240
+msgid "Tol. Sup:"
+msgstr "Tol. Sup:"
+
+#: templates/tolerances/insert_support.html:181
+#: templates/tolerances/pivot_bushing_hole_axial.html:168
+#: templates/tolerances/pivot_bushing_hole_radial.html:218
+#: templates/tolerances/pivot_bushing_hole_radial.html:241
+msgid "Tol. Inf:"
+msgstr "Tol. Inf:"
+
+#: templates/tolerances/insert_support.html:190
+#: templates/tolerances/pivot_bushing_hole_axial.html:176
+#: templates/tolerances/pivot_bushing_hole_radial.html:249
+msgid "Histograma del Clearance System"
+msgstr "Histograma del Clearance System"
+
+#: templates/tolerances/insert_support.html:194
+msgid "Histograma del gap entre el soporte y el inserto"
+msgstr "Histograma del gap entre el soporte y el inserto"
+
+#: templates/tolerances/pin_hole.html:3
+msgid "Calculadora de Tolerancia Pin-Agujero Online"
+msgstr "Calculadora de Tolerancia Pin-Agujero Online"
+
+#: templates/tolerances/pin_hole.html:5
+msgid ""
+"Calcula el ajuste y tolerancia entre un pin y su agujero según norma ISO. "
+"Resultado inmediato para diseño mecánico."
+msgstr ""
+"Calcula el ajuste y tolerancia entre un pin y su agujero según norma ISO. "
+"Resultado inmediato para diseño mecánico."
+
+#: templates/tolerances/pin_hole.html:15
+msgid "Calculo Pin-Hole"
+msgstr "Calculo Pin-Hole"
+
+#: templates/tolerances/pin_hole.html:18
+msgid "Calculo de Tolerancia Pin-Hole"
+msgstr "Calculo de Tolerancia Pin-Hole"
+
+#: templates/tolerances/pin_hole.html:26
+msgid ""
+"Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en "
+"el atributo\n"
+"            <strong>style</strong> de cada etiqueta <strong>label.field-"
+"chip</strong>."
+msgstr ""
+"Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en "
+"el atributo\n"
+"            <strong>style</strong> de cada etiqueta <strong>label.field-"
+"chip</strong>."
+
+#: templates/tolerances/pin_hole.html:31
+msgid "Diagrama pin y agujero"
+msgstr "Diagrama pin y agujero"
+
+#: templates/tolerances/pin_hole.html:33
+msgid "Pin Nominal"
+msgstr "Pin Nominal"
+
+#: templates/tolerances/pin_hole.html:41
+msgid "Pin Tol. Sup"
+msgstr "Pin Tol. Sup"
+
+#: templates/tolerances/pin_hole.html:49
+msgid "Pin Tol. Inf"
+msgstr "Pin Tol. Inf"
+
+#: templates/tolerances/pin_hole.html:57
+msgid "Hole Nominal"
+msgstr "Hole Nominal"
+
+#: templates/tolerances/pin_hole.html:65
+msgid "Hole Tol. Sup"
+msgstr "Hole Tol. Sup"
+
+#: templates/tolerances/pin_hole.html:73
+msgid "Hole Tol. Inf"
+msgstr "Hole Tol. Inf"
+
+#: templates/tolerances/pin_hole.html:132
+msgid "Agujero"
+msgstr "Agujero"
+
+#: templates/tolerances/pin_hole.html:139 tolerances/views/pin_hole_pdf.py:139
+msgid "Ajuste"
+msgstr "Ajuste"
+
+#: templates/tolerances/pin_hole.html:141
+msgid "Holgura maxima:"
+msgstr "Holgura maxima:"
+
+#: templates/tolerances/pin_hole.html:142
+msgid "Holgura minima:"
+msgstr "Holgura minima:"
+
+#: templates/tolerances/pin_hole.html:150
+msgid "Histograma de la Resta de Diametros (Agujero - Pin)"
+msgstr "Histograma de la Resta de Diametros (Agujero - Pin)"
+
+#: templates/tolerances/pin_hole.html:154
+msgid "Histograma de la diferencia entre diametro del agujero y del pin"
+msgstr "Histograma de la diferencia entre diametro del agujero y del pin"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:3
+msgid "Calculadora de Ajuste Axial Pivote-Casquillo"
+msgstr "Calculadora de Ajuste Axial Pivote-Casquillo"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:5
+msgid ""
+"Calcula la tolerancia axial entre pivote, casquillo y agujero. Herramienta "
+"online gratuita para diseño de ajustes mecánicos."
+msgstr ""
+"Calcula la tolerancia axial entre pivote, casquillo y agujero. Herramienta "
+"online gratuita para diseño de ajustes mecánicos."
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:20
+msgid "Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos"
+msgstr ""
+"Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:33
+msgid "Wall distance"
+msgstr "Wall distance"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:46
+#: templates/tolerances/pivot_bushing_hole_axial.html:59
+msgid "Bushing flange"
+msgstr "Bushing flange"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:72
+msgid "Tube Length"
+msgstr "Tube Length"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:84
+#: templates/tolerances/pivot_bushing_hole_radial.html:84
+msgid "Interference <br> bushing-tube"
+msgstr "Interference <br> bushing-tube"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:85
+#: templates/tolerances/pivot_bushing_hole_radial.html:85
+msgid "Gap bushing-pin"
+msgstr "Gap bushing-pin"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:133
+msgid "Longitud del Tubo"
+msgstr "Longitud del Tubo"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:140
+msgid "Distancia entre paredes"
+msgstr "Distancia entre paredes"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:147
+msgid "Ancho casquillo 1"
+msgstr "Ancho casquillo 1"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:154
+msgid "Ancho casquillo 2"
+msgstr "Ancho casquillo 2"
+
+#: templates/tolerances/pivot_bushing_hole_axial.html:180
+#: templates/tolerances/pivot_bushing_hole_radial.html:230
+#: templates/tolerances/pivot_bushing_hole_radial.html:253
+msgid "Histograma del espesor de pared"
+msgstr "Histograma del espesor de pared"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:3
+msgid "Calculadora de Ajuste Radial Pivote-Casquillo"
+msgstr "Calculadora de Ajuste Radial Pivote-Casquillo"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:4
+msgid ""
+"Determinación del juego o interferencia en el paquete pin casquillo tubo."
+msgstr ""
+"Determinación del juego o interferencia en el paquete pin casquillo tubo."
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:6
+msgid ""
+"Calcula la tolerancia radial entre pivote, casquillo y agujero. Herramienta "
+"online gratuita para diseño de ajustes mecánicos."
+msgstr ""
+"Calcula la tolerancia radial entre pivote, casquillo y agujero. Herramienta "
+"online gratuita para diseño de ajustes mecánicos."
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:21
+msgid ""
+"Calculo de Tolerancias Radiales en un sistema de pivotaje con casquillos"
+msgstr ""
+"Calculo de Tolerancias Radiales en un sistema de pivotaje con casquillos"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:34
+msgid "Inner Tube"
+msgstr "Inner Tube"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:47
+msgid "Outer Bushing"
+msgstr "Outer Bushing"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:60
+msgid "Inner Bushing"
+msgstr "Inner Bushing"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:140
+#: templates/tolerances/pivot_bushing_hole_radial.html:164
+msgid "Tubo"
+msgstr "Tubo"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:147
+#: templates/tolerances/pivot_bushing_hole_radial.html:171
+#: templates/tolerances/pivot_bushing_hole_radial.html:200
+msgid "Casquillo Exterior"
+msgstr "Casquillo Exterior"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:154
+#: templates/tolerances/pivot_bushing_hole_radial.html:207
+msgid "Casquillo Interior"
+msgstr "Casquillo Interior"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:161
+msgid "Analysis connection Buching-Tube"
+msgstr "Analysis connection Buching-Tube"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:178
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:180
+msgid "Interferencia Tubo-Casquillo"
+msgstr "Interferencia Tubo-Casquillo"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:181
+msgid "Interferencia maxima:"
+msgstr "Interferencia maxima:"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:182
+msgid "Interferencia minima:"
+msgstr "Interferencia minima:"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:189
+msgid "Histograma de la Interferencia Tubo-Casquillo"
+msgstr "Histograma de la Interferencia Tubo-Casquillo"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:193
+msgid "Histograma de la diferencia entre diametro del tubo y el casquillo"
+msgstr "Histograma de la diferencia entre diametro del tubo y el casquillo"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:197
+msgid "Analysis wall thickness Buching"
+msgstr "Analysis wall thickness Buching"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:214
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:194
+msgid "Espesor de Pared"
+msgstr "Espesor de Pared"
+
+#: templates/tolerances/pivot_bushing_hole_radial.html:226
+msgid ""
+"Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)"
+msgstr ""
+"Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)"
+
+#: ⁨templates/tolerances/video_tolerancias absolutas.html⁩:3
+msgid "Estudios de tolerancias"
+msgstr "Estudios de tolerancias"
+
+#: ⁨templates/tolerances/video_tolerancias absolutas.html⁩:21
+#, python-format
+msgid ""
+"Si el vídeo no se carga, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">mira el vídeo en YouTube</a>."
+msgstr ""
+"Si el vídeo no se carga, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">mira el vídeo en YouTube</a>."
+
+#: tolerances/tools/draw_image_if_present.py:27
+#: tolerances/views/pin_hole_pdf.py:34
+msgid "no se pudo renderizar"
+msgstr ""
+
+#: tolerances/views/index.py:8
+msgid "Calculadora de Tolerancias"
+msgstr "Calculadora de Tolerancias"
+
+#: tolerances/views/index.py:9
+msgid "Herramienta para calcular especificaciones de tolerancias"
+msgstr "Herramienta para calcular especificaciones de tolerancias"
+
+#: tolerances/views/insert_support.py:103
+#: tolerances/views/insert_support_pdf.py:72 tolerances/views/pin_hole.py:102
+#: tolerances/views/pin_hole_pdf.py:109
+#: tolerances/views/pivot_bushing_hole_radial.py:104
+msgid "Diferencia de diametros (mm)"
+msgstr "Diferencia de diametros (mm)"
+
+#: tolerances/views/insert_support.py:104
+#: tolerances/views/insert_support.py:113
+#: tolerances/views/insert_support_pdf.py:73
+#: tolerances/views/insert_support_pdf.py:83 tolerances/views/pin_hole.py:103
+#: tolerances/views/pin_hole_pdf.py:110
+#: tolerances/views/pivot_bushing_hole_axial.py:90
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:74
+#: tolerances/views/pivot_bushing_hole_radial.py:105
+#: tolerances/views/pivot_bushing_hole_radial.py:114
+#: tolerances/views/pivot_bushing_hole_radial.py:123
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:77
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:87
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:97
+msgid "Densidad"
+msgstr "Densidad"
+
+#: tolerances/views/insert_support.py:105
+#: tolerances/views/insert_support_pdf.py:74
+#: tolerances/views/pivot_bushing_hole_radial.py:106
+msgid "Histograma de interferencia Tubo Casquillo"
+msgstr "Histograma de interferencia Tubo Casquillo"
+
+#: tolerances/views/insert_support.py:112
+#: tolerances/views/insert_support_pdf.py:82
+#: tolerances/views/pivot_bushing_hole_radial.py:113
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:86
+msgid "Espesor de pared (mm)"
+msgstr "Espesor de pared (mm)"
+
+#: tolerances/views/insert_support.py:114
+#: tolerances/views/insert_support_pdf.py:84
+#: tolerances/views/pivot_bushing_hole_radial.py:115
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:88
+msgid "Histograma de espesor de pared"
+msgstr "Histograma de espesor de pared"
+
+#: tolerances/views/insert_support_pdf.py:18
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:19
+msgid "Usa el formulario de pivot-bushing-hole para generar el PDF."
+msgstr ""
+
+#: tolerances/views/insert_support_pdf.py:97
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:111
+#, fuzzy
+#| msgid "Calculo de Tolerancia Pin-Hole"
+msgid "Reporte de Tolerancia Pivot-Bushing-Hole"
+msgstr "Calculo de Tolerancia Pin-Hole"
+
+#: tolerances/views/insert_support_pdf.py:104
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:95
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:118
+msgid "Datos de Entrada"
+msgstr ""
+
+#: tolerances/views/insert_support_pdf.py:121
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:112
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:135
+#, fuzzy
+#| msgid "Resultados"
+msgid "Resultados Calculados"
+msgstr "Resultados"
+
+#: tolerances/views/insert_support_pdf.py:144
+#: tolerances/views/pin_hole_pdf.py:150
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:134
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:161
+msgid "Imagenes adjuntas"
+msgstr ""
+
+#: tolerances/views/insert_support_pdf.py:159
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:149
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:176
+msgid "Histogramas"
+msgstr ""
+
+#: tolerances/views/insert_support_pdf.py:163
+#, fuzzy
+#| msgid "Interferencia Tubo-Casquillo"
+msgid "Interferencia Casquillo soporte"
+msgstr "Interferencia Tubo-Casquillo"
+
+#: tolerances/views/insert_support_pdf.py:179
+#, fuzzy
+#| msgid "Histograma del Clearance System"
+msgid "Histograma Clearance System"
+msgstr "Histograma del Clearance System"
+
+#: tolerances/views/insert_support_pdf.py:182
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:158
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:213
+#, fuzzy
+#| msgid "Juego del sistema (mm)"
+msgid "Juego del Sistema"
+msgstr "Juego del sistema (mm)"
+
+#: tolerances/views/insert_support_pdf.py:200
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:176
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:231
+#, fuzzy, python-format
+#| msgid "Error al recuperar el documento: %(error)s"
+msgid "Error al generar PDF: %(error)s"
+msgstr "Error al recuperar el documento: %(error)s"
+
+#: tolerances/views/pin_hole.py:69 tolerances/views/pin_hole_pdf.py:100
+msgid "Apriete (Interference fit)"
+msgstr "Apriete (Interference fit)"
+
+#: tolerances/views/pin_hole.py:71 tolerances/views/pin_hole_pdf.py:102
+msgid "Juego (Clearance fit)"
+msgstr "Juego (Clearance fit)"
+
+#: tolerances/views/pin_hole.py:73 tolerances/views/pin_hole_pdf.py:104
+msgid "Transicion (Transition fit)"
+msgstr "Transicion (Transition fit)"
+
+#: tolerances/views/pin_hole.py:104 tolerances/views/pin_hole_pdf.py:111
+msgid "Histograma de (Agujero - Pin)"
+msgstr "Histograma de (Agujero - Pin)"
+
+#: tolerances/views/pin_hole_pdf.py:39
+msgid "Usa el formulario de pin-hole para generar el PDF."
+msgstr ""
+
+#: tolerances/views/pin_hole_pdf.py:123
+#, fuzzy
+#| msgid "Calculo de Tolerancia Pin-Hole"
+msgid "Reporte de Tolerancia Pin-Hole"
+msgstr "Calculo de Tolerancia Pin-Hole"
+
+#: tolerances/views/pin_hole_pdf.py:140
+#, fuzzy
+#| msgid "Holgura maxima:"
+msgid "Holgura maxima"
+msgstr "Holgura maxima:"
+
+#: tolerances/views/pin_hole_pdf.py:140
+#, fuzzy
+#| msgid "Holgura minima:"
+msgid "Holgura minima"
+msgstr "Holgura minima:"
+
+#: tolerances/views/pin_hole_pdf.py:164
+#, fuzzy
+#| msgid "Histograma de (Agujero - Pin)"
+msgid "Histograma (Agujero - Pin)"
+msgstr "Histograma de (Agujero - Pin)"
+
+#: tolerances/views/pivot_bushing_hole_axial.py:89
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:73
+#: tolerances/views/pivot_bushing_hole_radial.py:122
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:96
+msgid "Juego del sistema (mm)"
+msgstr "Juego del sistema (mm)"
+
+#: tolerances/views/pivot_bushing_hole_axial.py:91
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:75
+#: tolerances/views/pivot_bushing_hole_radial.py:124
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:98
+msgid "Histograma del juego del sistema"
+msgstr "Histograma del juego del sistema"
+
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:19
+msgid "Usa el formulario de pivot-bushing-hole-axial para generar el PDF."
+msgstr ""
+
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:88
+msgid "Reporte de Tolerancia Pivot-Bushing-Waal Axial"
+msgstr ""
+
+#: tolerances/views/pivot_bushing_hole_axial_pdf.py:155
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:210
+#, fuzzy
+#| msgid "Histograma del juego del sistema"
+msgid "Histograma del Sistema"
+msgstr "Histograma del juego del sistema"
+
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:76
+#, fuzzy
+#| msgid "Interferencia Tubo-Casquillo"
+msgid "Interferencia Tubo-Casquillo (mm)"
+msgstr "Interferencia Tubo-Casquillo"
+
+#: tolerances/views/pivot_bushing_hole_radial_pdf.py:78
+#, fuzzy
+#| msgid "Histograma de la Interferencia Tubo-Casquillo"
+msgid "Histograma de Interferencia Tubo-Casquillo"
+msgstr "Histograma de la Interferencia Tubo-Casquillo"
+
+#: tolerances/views/videos.py:40
+msgid "Tolerancias Absolutas"
+msgstr "Tolerancias Absolutas"
+
+#: tolerances/views/videos.py:49
+msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
+msgstr "URL de vídeo no reconocida. Se muestra el vídeo por defecto."

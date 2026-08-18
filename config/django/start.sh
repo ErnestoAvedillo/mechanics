@@ -9,6 +9,6 @@ then
     python manage.py runserver 0.0.0.0:8000
 else
     echo "Ejecutando Django en modo PRODUCCION (gunicorn)"
-    gunicorn mechanics.wsgi:application --bind 0.0.0.0:8000 --workers=4 --timeout=300
+    gunicorn mechanics.wsgi:application --bind 0.0.0.0:8000 --workers=2 --timeout=300
 fi
 

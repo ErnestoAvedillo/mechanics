@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Calculadora de Muelles Cónicos" %} - El Menú de Ernesto®</title>
+    <title>{% trans "Calculadora de Muelle Cónico de Paso Variable" %}</title>
+    <meta name="description" content="{% trans "Calcula muelles cónicos con paso variable: geometría avanzada, tensiones y comportamiento no lineal. Herramienta gratuita online." %}">
     <link rel="stylesheet" href="{% static 'muelles/css/estiloss.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/calculadora-muelles.css' %}">
     <link rel="stylesheet" href="{% static 'muelles/css/muelle-extensions.css' %}">
@@ -17,6 +18,7 @@
 
         <h1>🌀 {% trans "Calculadora de Muelles Helicoidales de compresión cónicos" %}</h1>
         <p>{% trans "Muelle de compresión con diámetro medio variable (superior e inferior) y paso constante. Incluye selección automática de materiales y análisis completo de propiedades mecánicas." %}</p>
+        <h2>{% trans "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, la longitud del hilo no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto." %}</H2>
         <form method="post">
             {% csrf_token %}
             <div class="form-grid conico-form-grid">
