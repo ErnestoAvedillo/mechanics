@@ -42,6 +42,9 @@
                     <img class="preview-img" src="{% static '/tolerances/images/Spacer_Housing.png' %}" alt="{% trans 'Eje Casquillo Agujero' %}">
                 </a>
             </div>
+        </div>
+        <h1> {% trans "Vídeos explicativos sobre el cálculo de tolerancias" %}</h1>
+        <div class="menu-options">
             <div class="option-card">
                 <a href="{% url 'video_tolerancias_absolutas' %}?v=p3TKKJof8W4" target="_blank" rel="noopener noreferrer">
                     <h3>{% trans "Cálculo de tolerancias absolutas" %}</h3>
@@ -52,12 +55,6 @@
                 <a href="{% url 'video_tolerancias_absolutas' %}?v=c8cum5WH6Ec" target="_blank" rel="noopener noreferrer">
                     <h3>{% trans "Simulación de Monte Carlo en el cálculo de tolerancias" %}</h3>
                     <p>{% trans "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias" %}</p>
-                </a>
-            </div>
-            <div class="option-card">
-                <a href="#" onclick="alert('{% trans "Próximamente disponible" %}')">
-                    <h3>{% trans "Tolerancia Sesgada (Skewed)" %}</h3>
-                    <p>{% trans "Explicación de tolerancias con distribución sesgada" %}</p>
                 </a>
             </div>
         </div>

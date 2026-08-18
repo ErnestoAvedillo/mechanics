@@ -15,16 +15,15 @@
     <section class="card">
       <h1>{% trans "Calculo de Tolerancia Pin-Hole" %}</h1>
       <p class="sub">{% trans "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante." %}</p>
+      <p style="display:flex; align-items:center; gap:0.4em;">
+        {% trans "Tienes alguna duda? Revisa el siguiente vídeo" %}
+        <a href="{% url 'video_tolerancias_absolutas' %}?v=VNAIVJQh3JY" target="_blank" rel="noopener noreferrer">📹</a>
+      </p>
 
-      <form method="post" class="pin-hole-form" enctype="multipart/form-data">
+      <form method="post" class="pin-hole-form" enctype="multipart/form-data" style="margin-top:1.5em;">
         {% csrf_token %}
 
         <section class="overlay-panel">
-          <p class="overlay-help">
-            {% blocktrans %}Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en el atributo
-            <strong>style</strong> de cada etiqueta <strong>label.field-chip</strong>.{% endblocktrans %}
-          </p>
-
           <figure class="pin-hole-canvas" aria-label="{% trans 'Diagrama pin-hole con campos editables' %}">
             <img src="{% static 'tolerances/images/PinHole.png' %}" alt="{% trans 'Diagrama pin y agujero' %}">
 
