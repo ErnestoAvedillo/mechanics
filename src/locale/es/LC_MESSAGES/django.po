@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 06:07+0200\n"
+"POT-Creation-Date: 2026-08-19 08:12+0200\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -873,7 +873,6 @@ msgid ""
 msgstr ""
 
 #: templates/muelles/calculadora_2k.html:21
-#: templates/muelles/calculadora_conico.html:21
 #: templates/muelles/calculadora_conico_pitch_variable.html:21
 msgid ""
 "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
@@ -933,6 +932,15 @@ msgid ""
 "Muelle de compresión con diámetro medio variable (superior e inferior) y "
 "paso constante. Incluye selección automática de materiales y análisis "
 "completo de propiedades mecánicas."
+msgstr ""
+
+#: templates/muelles/calculadora_conico.html:21
+msgid ""
+"NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
+"imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las "
+"longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor "
+"ni las espiras no activas. En caso de crear un prototipo, hay que tener en "
+"cuenta este punto."
 msgstr ""
 
 #: templates/muelles/calculadora_conico_pitch_variable.html:7

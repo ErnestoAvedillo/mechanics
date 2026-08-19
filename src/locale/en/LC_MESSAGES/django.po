@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 06:07+0200\n"
+"POT-Creation-Date: 2026-08-19 08:12+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -794,13 +794,14 @@ msgstr ""
 "stiffness for the rest of the travel."
 
 #: templates/muelles/calculadora_2k.html:21
-#: templates/muelles/calculadora_conico.html:21
 #: templates/muelles/calculadora_conico_pitch_variable.html:21
+#: templates/muelles/calculadora_conico.html:21
 msgid ""
 "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
-"imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, la "
-"longitud del hilo no tiene en cuenta su espesor ni las espiras no activas. "
-"En caso de crear un prototipo, hay que tener en cuenta este punto."
+"imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las "
+"longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor "
+"ni las espiras no activas. En caso de crear un prototipo, hay que tener en "
+"cuenta este punto."
 msgstr ""
 "NOTE!!! This is a numerical calculation that only takes into account an "
 "imaginary line (or virtual wire) running through the center. In this "
@@ -2150,7 +2151,6 @@ msgstr ""
 "tight or loose fit"
 
 #: templates/tolerances/index.html:48
-#| msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
 msgid "Guías en vídeo para el cálculo de tolerancias"
 msgstr "Tolerance calculation video guides"
 

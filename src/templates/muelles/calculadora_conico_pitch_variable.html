@@ -18,7 +18,7 @@
 
         <h1>🌀 {% trans "Calculadora de Muelles Helicoidales de compresión cónicos" %}</h1>
         <p>{% trans "Muelle de compresión con diámetro medio variable (superior e inferior) y paso constante. Incluye selección automática de materiales y análisis completo de propiedades mecánicas." %}</p>
-        <h2>{% trans "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, la longitud del hilo no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto." %}</H2>
+        <h2>{% trans "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto." %}</H2>
         <form method="post">
             {% csrf_token %}
             <div class="form-grid conico-form-grid">
