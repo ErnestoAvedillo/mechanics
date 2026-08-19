@@ -1577,10 +1577,6 @@ msgid "Longitud libre en mm (calculada: suma de longitudes de cada tramo)"
 msgstr "Free length in mm (calculated: sum of lengths of each section)"
 
 #: templates/muelles/partials/_formulario_2k.html:90
-#, fuzzy
-#| msgid ""
-#| "Numero total de espiras (calculada: suma de longitudes / paso en cada "
-#| "tramo)"
 msgid ""
 "Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
 msgstr ""
@@ -2154,7 +2150,6 @@ msgstr ""
 "tight or loose fit"
 
 #: templates/tolerances/index.html:48
-#, fuzzy
 #| msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
 msgid "Guías en vídeo para el cálculo de tolerancias"
 msgstr "Tolerance calculation video guides"

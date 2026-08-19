@@ -2279,10 +2279,8 @@ msgstr ""
 "apretado u holgado"
 
 #: templates/tolerances/index.html:48
-#, fuzzy
-#| msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
 msgid "Guías en vídeo para el cálculo de tolerancias"
-msgstr "Simulación de Monte Carlo en el cálculo de tolerancias"
+msgstr "Guías en vídeo para el cálculo de tolerancias"
 
 #: templates/tolerances/index.html:52
 msgid "Cálculo de tolerancias absolutas"
