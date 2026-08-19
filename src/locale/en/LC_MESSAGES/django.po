@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 08:39+0200\n"
+"POT-Creation-Date: 2026-08-19 06:07+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -490,7 +490,7 @@ msgstr "Error in the calculations:"
 
 #: muelles/views/spring_report_pdf.py:114
 #: templates/tolerances/insert_support.html:129
-#: templates/tolerances/pin_hole.html:122
+#: templates/tolerances/pin_hole.html:121
 #: templates/tolerances/pivot_bushing_hole_axial.html:129
 #: templates/tolerances/pivot_bushing_hole_radial.html:129
 #: tolerances/views/pin_hole_pdf.py:130
@@ -805,8 +805,8 @@ msgstr ""
 "NOTE!!! This is a numerical calculation that only takes into account an "
 "imaginary line (or virtual wire) running through the center. In this "
 "version, the spring length (freelenght, 1st and 2nd position ) does not "
-"account for its thickness or the inactive "
-"coils. If creating a prototype, this should be taken into consideration."
+"account for its thickness or the inactive coils. If creating a prototype, "
+"this should be taken into consideration."
 
 #: templates/muelles/calculadora_compresion.html:7
 msgid "Calculadora de Muelle de Compresión Online Gratis"
@@ -1219,7 +1219,7 @@ msgstr "Number of cycles:"
 #: templates/muelles/partials/_formulario_torsion.html:109
 #: templates/muelles/partials/_formulario_traccion.html:86
 #: templates/tolerances/insert_support.html:117
-#: templates/tolerances/pin_hole.html:110
+#: templates/tolerances/pin_hole.html:109
 #: templates/tolerances/pivot_bushing_hole_axial.html:117
 #: templates/tolerances/pivot_bushing_hole_radial.html:117
 msgid "Calcular"
@@ -1322,7 +1322,7 @@ msgstr "According to standards for the wire diameter"
 
 #: templates/muelles/partials/_calculadora_results.html:7
 #: templates/tolerances/insert_support.html:124
-#: templates/tolerances/pin_hole.html:117
+#: templates/tolerances/pin_hole.html:116
 #: templates/tolerances/pivot_bushing_hole_axial.html:124
 #: templates/tolerances/pivot_bushing_hole_radial.html:124
 msgid "Error:"
@@ -1335,7 +1335,7 @@ msgstr "Spring Technical Specifications"
 #: templates/muelles/partials/_calculadora_results.html:21
 #: templates/tolerances/insert_support.html:165
 #: templates/tolerances/insert_support.html:178
-#: templates/tolerances/pin_hole.html:140
+#: templates/tolerances/pin_hole.html:139
 #: templates/tolerances/pivot_bushing_hole_axial.html:165
 #: templates/tolerances/pivot_bushing_hole_radial.html:179
 #: templates/tolerances/pivot_bushing_hole_radial.html:215
@@ -2153,35 +2153,29 @@ msgstr ""
 "Calculates the axial fit of the pivot-bushing-hole assembly, whether it is a "
 "tight or loose fit"
 
-#: templates/tolerances/index.html:49
+#: templates/tolerances/index.html:48
+#, fuzzy
+#| msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
+msgid "Guías en vídeo para el cálculo de tolerancias"
+msgstr "Tolerance calculation video guides"
+
+#: templates/tolerances/index.html:52
 msgid "Cálculo de tolerancias absolutas"
 msgstr "Absolute tolerance calculation"
 
-#: templates/tolerances/index.html:50
+#: templates/tolerances/index.html:53
 msgid "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
 msgstr ""
 "Operations and calculations between dimensions with absolute tolerances"
 
-#: templates/tolerances/index.html:55
+#: templates/tolerances/index.html:58
 msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
 msgstr "Monte Carlo simulation in tolerance calculation"
 
-#: templates/tolerances/index.html:56
+#: templates/tolerances/index.html:59
 msgid ""
 "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
 msgstr "Explanation of the Monte Carlo simulation in tolerance calculation"
-
-#: templates/tolerances/index.html:60
-msgid "Próximamente disponible"
-msgstr "Coming soon"
-
-#: templates/tolerances/index.html:61
-msgid "Tolerancia Sesgada (Skewed)"
-msgstr "Skewed Tolerance"
-
-#: templates/tolerances/index.html:62
-msgid "Explicación de tolerancias con distribución sesgada"
-msgstr "Explanation of tolerances with skewed distribution"
 
 #: templates/tolerances/insert_support.html:3
 msgid "Calculadora de Tolerancia para Soporte de Inserto"
@@ -2215,7 +2209,7 @@ msgstr ""
 "clearance."
 
 #: templates/tolerances/insert_support.html:27
-#: templates/tolerances/pin_hole.html:30
+#: templates/tolerances/pin_hole.html:29
 #: templates/tolerances/pivot_bushing_hole_axial.html:27
 #: templates/tolerances/pivot_bushing_hole_radial.html:28
 msgid "Diagrama pin-hole con campos editables"
@@ -2297,21 +2291,21 @@ msgid "Gap spacer support"
 msgstr "Gap spacer support"
 
 #: templates/tolerances/insert_support.html:91
-#: templates/tolerances/pin_hole.html:84
+#: templates/tolerances/pin_hole.html:83
 #: templates/tolerances/pivot_bushing_hole_axial.html:91
 #: templates/tolerances/pivot_bushing_hole_radial.html:91
 msgid "Distribucion"
 msgstr "Distribution"
 
 #: templates/tolerances/insert_support.html:95
-#: templates/tolerances/pin_hole.html:88
+#: templates/tolerances/pin_hole.html:87
 #: templates/tolerances/pivot_bushing_hole_axial.html:95
 #: templates/tolerances/pivot_bushing_hole_radial.html:95
 msgid "Numero de muestras"
 msgstr "Number of samples"
 
 #: templates/tolerances/insert_support.html:102
-#: templates/tolerances/pin_hole.html:95
+#: templates/tolerances/pin_hole.html:94
 #: templates/tolerances/pivot_bushing_hole_axial.html:102
 #: templates/tolerances/pivot_bushing_hole_radial.html:102
 #: tolerances/views/insert_support_pdf.py:153
@@ -2323,7 +2317,7 @@ msgstr "Image 1"
 
 #: templates/tolerances/insert_support.html:103
 #: templates/tolerances/insert_support.html:110
-#: templates/tolerances/pin_hole.html:96 templates/tolerances/pin_hole.html:103
+#: templates/tolerances/pin_hole.html:95 templates/tolerances/pin_hole.html:102
 #: templates/tolerances/pivot_bushing_hole_axial.html:103
 #: templates/tolerances/pivot_bushing_hole_axial.html:110
 #: templates/tolerances/pivot_bushing_hole_radial.html:103
@@ -2332,14 +2326,14 @@ msgid "Arrastra una imagen aqui o haz clic para seleccionar"
 msgstr "Drag an image here or click to select"
 
 #: templates/tolerances/insert_support.html:104
-#: templates/tolerances/pin_hole.html:97
+#: templates/tolerances/pin_hole.html:96
 #: templates/tolerances/pivot_bushing_hole_axial.html:104
 #: templates/tolerances/pivot_bushing_hole_radial.html:104
 msgid "Vista previa imagen 1"
 msgstr "Preview image 1"
 
 #: templates/tolerances/insert_support.html:109
-#: templates/tolerances/pin_hole.html:102
+#: templates/tolerances/pin_hole.html:101
 #: templates/tolerances/pivot_bushing_hole_axial.html:109
 #: templates/tolerances/pivot_bushing_hole_radial.html:109
 #: tolerances/views/insert_support_pdf.py:154
@@ -2350,21 +2344,21 @@ msgid "Imagen 2"
 msgstr "Image 2"
 
 #: templates/tolerances/insert_support.html:111
-#: templates/tolerances/pin_hole.html:104
+#: templates/tolerances/pin_hole.html:103
 #: templates/tolerances/pivot_bushing_hole_axial.html:111
 #: templates/tolerances/pivot_bushing_hole_radial.html:111
 msgid "Vista previa imagen 2"
 msgstr "Preview image 2"
 
 #: templates/tolerances/insert_support.html:118
-#: templates/tolerances/pin_hole.html:111
+#: templates/tolerances/pin_hole.html:110
 #: templates/tolerances/pivot_bushing_hole_axial.html:118
 #: templates/tolerances/pivot_bushing_hole_radial.html:118
 msgid "Volver al indice"
 msgstr "Back to index"
 
 #: templates/tolerances/insert_support.html:119
-#: templates/tolerances/pin_hole.html:112
+#: templates/tolerances/pin_hole.html:111
 #: templates/tolerances/pivot_bushing_hole_axial.html:119
 #: templates/tolerances/pivot_bushing_hole_radial.html:119
 msgid "Descargar PDF"
@@ -2384,8 +2378,8 @@ msgstr "Spacer Diameter"
 #: templates/tolerances/insert_support.html:141
 #: templates/tolerances/insert_support.html:148
 #: templates/tolerances/insert_support.html:155
-#: templates/tolerances/pin_hole.html:126
-#: templates/tolerances/pin_hole.html:133
+#: templates/tolerances/pin_hole.html:125
+#: templates/tolerances/pin_hole.html:132
 #: templates/tolerances/pivot_bushing_hole_axial.html:134
 #: templates/tolerances/pivot_bushing_hole_axial.html:141
 #: templates/tolerances/pivot_bushing_hole_axial.html:148
@@ -2405,8 +2399,8 @@ msgstr "Max:"
 #: templates/tolerances/insert_support.html:142
 #: templates/tolerances/insert_support.html:149
 #: templates/tolerances/insert_support.html:156
-#: templates/tolerances/pin_hole.html:127
-#: templates/tolerances/pin_hole.html:134
+#: templates/tolerances/pin_hole.html:126
+#: templates/tolerances/pin_hole.html:133
 #: templates/tolerances/pivot_bushing_hole_axial.html:135
 #: templates/tolerances/pivot_bushing_hole_axial.html:142
 #: templates/tolerances/pivot_bushing_hole_axial.html:149
@@ -2426,8 +2420,8 @@ msgstr "Min:"
 #: templates/tolerances/insert_support.html:143
 #: templates/tolerances/insert_support.html:150
 #: templates/tolerances/insert_support.html:157
-#: templates/tolerances/pin_hole.html:128
-#: templates/tolerances/pin_hole.html:135
+#: templates/tolerances/pin_hole.html:127
+#: templates/tolerances/pin_hole.html:134
 #: templates/tolerances/pivot_bushing_hole_axial.html:136
 #: templates/tolerances/pivot_bushing_hole_axial.html:143
 #: templates/tolerances/pivot_bushing_hole_axial.html:150
@@ -2447,8 +2441,8 @@ msgstr "Mean:"
 #: templates/tolerances/insert_support.html:144
 #: templates/tolerances/insert_support.html:151
 #: templates/tolerances/insert_support.html:158
-#: templates/tolerances/pin_hole.html:129
-#: templates/tolerances/pin_hole.html:136
+#: templates/tolerances/pin_hole.html:128
+#: templates/tolerances/pin_hole.html:135
 #: templates/tolerances/pivot_bushing_hole_axial.html:137
 #: templates/tolerances/pivot_bushing_hole_axial.html:144
 #: templates/tolerances/pivot_bushing_hole_axial.html:151
@@ -2503,7 +2497,7 @@ msgstr "Min. Interference:"
 
 #: templates/tolerances/insert_support.html:169
 #: templates/tolerances/insert_support.html:182
-#: templates/tolerances/pin_hole.html:143
+#: templates/tolerances/pin_hole.html:142
 #: templates/tolerances/pivot_bushing_hole_axial.html:169
 #: templates/tolerances/pivot_bushing_hole_radial.html:183
 #: templates/tolerances/pivot_bushing_hole_radial.html:219
@@ -2513,7 +2507,7 @@ msgstr "Mean (samples):"
 
 #: templates/tolerances/insert_support.html:170
 #: templates/tolerances/insert_support.html:183
-#: templates/tolerances/pin_hole.html:144
+#: templates/tolerances/pin_hole.html:143
 #: templates/tolerances/pivot_bushing_hole_axial.html:170
 #: templates/tolerances/pivot_bushing_hole_radial.html:184
 #: templates/tolerances/pivot_bushing_hole_radial.html:220
@@ -2580,66 +2574,59 @@ msgstr "Pin-Hole Calculation"
 msgid "Calculo de Tolerancia Pin-Hole"
 msgstr "Pin-Hole Tolerance Calculation"
 
-#: templates/tolerances/pin_hole.html:26
-msgid ""
-"Para mover los campos, edita <strong>top</strong> y <strong>left</strong> en "
-"el atributo\n"
-"            <strong>style</strong> de cada etiqueta <strong>label.field-"
-"chip</strong>."
+#: templates/tolerances/pin_hole.html:21
+msgid "Tienes alguna duda? Revisa el siguiente vídeo"
 msgstr ""
-"To move the fields, edit <strong>top</strong> and <strong>left</strong> in "
-"the <strong>style</strong>\n"
-"            attribute of each <strong>label.field-chip</strong> tag."
 
-#: templates/tolerances/pin_hole.html:31
+#: templates/tolerances/pin_hole.html:30
 msgid "Diagrama pin y agujero"
 msgstr "Pin and hole diagram"
 
-#: templates/tolerances/pin_hole.html:33
+#: templates/tolerances/pin_hole.html:32
 msgid "Pin Nominal"
 msgstr "Pin Nominal"
 
-#: templates/tolerances/pin_hole.html:41
+#: templates/tolerances/pin_hole.html:40
 msgid "Pin Tol. Sup"
 msgstr "Pin High Tol."
 
-#: templates/tolerances/pin_hole.html:49
+#: templates/tolerances/pin_hole.html:48
 msgid "Pin Tol. Inf"
 msgstr "Pin Low Tol."
 
-#: templates/tolerances/pin_hole.html:57
+#: templates/tolerances/pin_hole.html:56
 msgid "Hole Nominal"
 msgstr "Hole Nominal"
 
-#: templates/tolerances/pin_hole.html:65
+#: templates/tolerances/pin_hole.html:64
 msgid "Hole Tol. Sup"
 msgstr "Hole High Tol."
 
-#: templates/tolerances/pin_hole.html:73
+#: templates/tolerances/pin_hole.html:72
 msgid "Hole Tol. Inf"
 msgstr "Hole Low Tol."
 
-#: templates/tolerances/pin_hole.html:132
+#: templates/tolerances/pin_hole.html:131
 msgid "Agujero"
 msgstr "Hole"
 
-#: templates/tolerances/pin_hole.html:139 tolerances/views/pin_hole_pdf.py:139
+#: templates/tolerances/pin_hole.html:138 tolerances/views/pin_hole_pdf.py:139
 msgid "Ajuste"
 msgstr "Fit"
 
-#: templates/tolerances/pin_hole.html:141
+#: templates/tolerances/pin_hole.html:140
 msgid "Holgura maxima:"
 msgstr "Maximum clearance:"
 
-#: templates/tolerances/pin_hole.html:142
+#: templates/tolerances/pin_hole.html:141
 msgid "Holgura minima:"
 msgstr "Minimum clearance:"
 
-#: templates/tolerances/pin_hole.html:150
+#: templates/tolerances/pin_hole.html:149
 msgid "Histograma de la Resta de Diametros (Agujero - Pin)"
 msgstr "Histogram of the Diameter Difference (Hole - Pin)"
 
-#: templates/tolerances/pin_hole.html:154
+#: templates/tolerances/pin_hole.html:153
 msgid "Histograma de la diferencia entre diametro del agujero y del pin"
 msgstr ""
 "Histogram of the difference between the hole diameter and the pin diameter"
@@ -3003,3 +2990,22 @@ msgstr "Absolute Tolerances"
 #: tolerances/views/videos.py:49
 msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 msgstr "Video URL not recognized. Showing the default video."
+
+#~ msgid "Próximamente disponible"
+#~ msgstr "Coming soon"
+
+#~ msgid "Tolerancia Sesgada (Skewed)"
+#~ msgstr "Skewed Tolerance"
+
+#~ msgid "Explicación de tolerancias con distribución sesgada"
+#~ msgstr "Explanation of tolerances with skewed distribution"
+
+#~ msgid ""
+#~ "Para mover los campos, edita <strong>top</strong> y <strong>left</strong> "
+#~ "en el atributo\n"
+#~ "            <strong>style</strong> de cada etiqueta <strong>label.field-"
+#~ "chip</strong>."
+#~ msgstr ""
+#~ "To move the fields, edit <strong>top</strong> and <strong>left</strong> "
+#~ "in the <strong>style</strong>\n"
+#~ "            attribute of each <strong>label.field-chip</strong> tag."

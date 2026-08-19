@@ -194,6 +194,17 @@ in_django:
 	@echo "Starting interactive shell in the django container..."
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) exec django -it bash
 
+# Traducciones (i18n)
+makemessages:
+	@echo "Extrayendo cadenas traducibles..."
+	@$(DOCKER) exec django /bin/bash -c "cd /app/src && python manage.py makemessages -l es -l en && python manage.py makemessages -d djangojs -l es -l en"
+	@echo "✓ Revisa y traduce los .po en src/locale/<idioma>/LC_MESSAGES/"
+
+compilemessages:
+	@echo "Compilando traducciones (.po -> .mo)..."
+	@$(DOCKER) exec django /bin/bash -c "cd /app/src && python manage.py compilemessages"
+	@echo "✓ Traducciones compiladas"
+
 test:
 	@echo "🚀 Ejecutando batería de tests (Unitarios e Integración)..."
 	@$(DOCKER) exec django /bin/bash -c "cd /app/src && export PYTHONPATH=/app/src && export DJANGO_SETTINGS_MODULE=mechanics.settings && pytest tests/test_auth_pages.py tests/test_muelles_pages.py"
@@ -226,6 +237,11 @@ help:
 	@echo "  rm-selfsigned      - Eliminar certificados autofirmados"
 	@echo "  rm-letsencrypt     - Eliminar certificados Let's Encrypt"
 	@echo ""
+	@echo "TRADUCCIONES (i18n)"
+	@echo "═══════════════════════════════════════════════════════════════"
+	@echo "  makemessages       - Extraer cadenas traducibles a los .po"
+	@echo "  compilemessages    - Compilar los .po a .mo"
+	@echo ""
 	@echo "LOGS Y DEBUGGING"
 	@echo "═══════════════════════════════════════════════════════════════"
 	@echo "  logs               - Ver logs (opcionalmente: make logs -f)"
@@ -254,4 +270,4 @@ help:
 	@echo "  3. make switch-prod        (HTTPS con certificados válidos)"
 	@echo ""
 
-.PHONY: all build build-nocache down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan
+.PHONY: all build build-nocache down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan makemessages compilemessages

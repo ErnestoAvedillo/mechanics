@@ -1,6 +1,5 @@
 #!/bin/bash
 
-python manage.py compilemessages
 python manage.py collectstatic --noinput
 python manage.py migrate --noinput
 if [ "$DJANGO_DEBUG" = "True" ];

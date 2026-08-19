@@ -3,100 +3,155 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-19 06:07+0200\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 
+#: muelles/static/muelles/js/_material_form.js:19
 msgid "Activado"
 msgstr "Enabled"
 
-msgid "Arrastra una imagen aqui o haz clic para seleccionar"
-msgstr "Drag an image here or click to select"
-
-msgid "Buscando en tus normativas..."
-msgstr "Searching your standards..."
-
-msgid "Debes seleccionar un material antes de calcular."
-msgstr "You must select a material before calculating."
-
+#: muelles/static/muelles/js/_material_form.js:19
 msgid "Desactivado"
 msgstr "Disabled"
 
-msgid "El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados."
-msgstr "The calculated pitch is less than or equal to the wire diameter, which is not physically possible. Please review the entered data."
-
-msgid "Entendido"
-msgstr "Understood"
-
-msgid "Error"
-msgstr "Error"
-
-msgid "Error interno de conexión al servidor RAG."
-msgstr "Internal connection error to the RAG server."
-
-msgid "Factor límite elástico"
-msgstr "Elastic limit factor"
-
-msgid "Geometría bloqueada: selecciona material y diámetro de hilo"
-msgstr "Geometry locked: select a material and wire diameter"
-
-msgid "La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
-msgstr "The final length cannot be greater than or equal to the free length. Please review the entered data."
-
-msgid "La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados."
-msgstr "The final length cannot be less than or equal to the initial length. Please review the entered data."
-
-msgid "La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
-msgstr "The final length cannot be less than or equal to the solid length. Please review the entered data."
-
-msgid "La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados."
-msgstr "The initial length cannot be greater than or equal to the final length. Please review the entered data."
-
-msgid "La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
-msgstr "The initial length cannot be greater than or equal to the free length. Please review the entered data."
-
-msgid "La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
-msgstr "The initial length cannot be less than or equal to the solid length. Please review the entered data."
-
-msgid "Longitud final (mm):"
-msgstr "Final length (mm):"
-
-msgid "Longitud final estirada (mm):"
-msgstr "Final stretched length (mm):"
-
-msgid "Longitud final no válida"
-msgstr "Invalid final length"
-
-msgid "Longitud inicial (mm):"
-msgstr "Initial length (mm):"
-
-msgid "Longitud inicial estirada (mm):"
-msgstr "Initial stretched length (mm):"
-
-msgid "Longitud inicial no válida"
-msgstr "Invalid initial length"
-
-msgid "Material no seleccionado"
-msgstr "Material not selected"
-
-msgid "Módulo de corte"
-msgstr "Shear modulus"
-
-msgid "Pitch no válido"
-msgstr "Invalid pitch"
-
-msgid "Por favor complete todos los campos obligatorios"
-msgstr "Please fill in all required fields"
-
+#: muelles/static/muelles/js/calculadora-muelles.js:136
 msgid "Propiedades del Material"
 msgstr "Material Properties"
 
-msgid "Relevancia"
-msgstr "Relevance"
+#: muelles/static/muelles/js/calculadora-muelles.js:137
+msgid "Módulo de corte"
+msgstr "Shear modulus"
 
+#: muelles/static/muelles/js/calculadora-muelles.js:138
+msgid "Factor límite elástico"
+msgstr "Elastic limit factor"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:194
+msgid "Por favor complete todos los campos obligatorios"
+msgstr "Please fill in all required fields"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:234
+msgid "Longitud inicial estirada (mm):"
+msgstr "Initial stretched length (mm):"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:234
+msgid "Longitud inicial (mm):"
+msgstr "Initial length (mm):"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:238
+msgid "Longitud final estirada (mm):"
+msgstr "Final stretched length (mm):"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:238
+msgid "Longitud final (mm):"
+msgstr "Final length (mm):"
+
+#: muelles/static/muelles/js/diameter-sync.js:64
+msgid "Geometría bloqueada: selecciona material y diámetro de hilo"
+msgstr "Geometry locked: select a material and wire diameter"
+
+#: muelles/static/muelles/js/form_validation_compression.js:148
+msgid "Pitch no válido"
+msgstr "Invalid pitch"
+
+#: muelles/static/muelles/js/form_validation_compression.js:148
+msgid ""
+"El pitch calculado es menor o igual al diámetro del hilo, lo que no es "
+"físicamente posible. Por favor, revisa los datos ingresados."
+msgstr ""
+"The calculated pitch is less than or equal to the wire diameter, which is "
+"not physically possible. Please review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:186
+#: muelles/static/muelles/js/form_validation_compression.js:191
+#: muelles/static/muelles/js/form_validation_compression.js:196
+msgid "Longitud inicial no válida"
+msgstr "Invalid initial length"
+
+#: muelles/static/muelles/js/form_validation_compression.js:186
+msgid ""
+"La longitud inicial no puede ser mayor o igual a la longitud libre. Por "
+"favor, revisa los datos ingresados."
+msgstr ""
+"The initial length cannot be greater than or equal to the free length. "
+"Please review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:191
+msgid ""
+"La longitud inicial no puede ser menor o igual a la longitud sólida. Por "
+"favor, revisa los datos ingresados."
+msgstr ""
+"The initial length cannot be less than or equal to the solid length. Please "
+"review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:196
+msgid ""
+"La longitud inicial no puede ser mayor o igual a la longitud final. Por "
+"favor, revisa los datos ingresados."
+msgstr ""
+"The initial length cannot be greater than or equal to the final length. "
+"Please review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:203
+#: muelles/static/muelles/js/form_validation_compression.js:208
+#: muelles/static/muelles/js/form_validation_compression.js:213
+msgid "Longitud final no válida"
+msgstr "Invalid final length"
+
+#: muelles/static/muelles/js/form_validation_compression.js:203
+msgid ""
+"La longitud final no puede ser mayor o igual a la longitud libre. Por favor, "
+"revisa los datos ingresados."
+msgstr ""
+"The final length cannot be greater than or equal to the free length. Please "
+"review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:208
+msgid ""
+"La longitud final no puede ser menor o igual a la longitud sólida. Por "
+"favor, revisa los datos ingresados."
+msgstr ""
+"The final length cannot be less than or equal to the solid length. Please "
+"review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:213
+msgid ""
+"La longitud final no puede ser menor o igual a la longitud inicial. Por "
+"favor, revisa los datos ingresados."
+msgstr ""
+"The final length cannot be less than or equal to the initial length. Please "
+"review the entered data."
+
+#: muelles/static/muelles/js/form_validation_compression.js:235
+msgid "Material no seleccionado"
+msgstr "Material not selected"
+
+#: muelles/static/muelles/js/form_validation_compression.js:235
+msgid "Debes seleccionar un material antes de calcular."
+msgstr "You must select a material before calculating."
+
+#: muelles/static/muelles/js/form_validation_compression.js:350
+msgid "Entendido"
+msgstr "Understood"
+
+#~ msgid "Arrastra una imagen aqui o haz clic para seleccionar"
+#~ msgstr "Drag an image here or click to select"
+
+#~ msgid "Buscando en tus normativas..."
+#~ msgstr "Searching your standards..."
+
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#~ msgid "Error interno de conexión al servidor RAG."
+#~ msgstr "Internal connection error to the RAG server."
+
+#~ msgid "Relevancia"
+#~ msgstr "Relevance"
 
 # --- added: continued English translation pass ---
-
-msgid "Calculando..."
-msgstr "Calculating..."
+#~ msgid "Calculando..."
+#~ msgstr "Calculating..."
