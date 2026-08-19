@@ -98,6 +98,25 @@ function setupGeometryFieldControlAndDiameterSync() {
         return Number.isFinite(parsed) ? parsed : null;
     }
 
+    // Number inputs only accept "." as the decimal separator, so values
+    // written to their .value must not use formatNumber's es-ES formatting
+    // (comma decimals), or the browser silently blanks the field.
+    function formatForInput(value) {
+        return String(Number(value.toFixed(3)));
+    }
+
+    // <input type="number"> silently rejects "," as you type it (it's not a
+    // valid character for the field), so "2,5" ends up typed as "25" with
+    // no error. Intercept the comma keystroke and insert "." instead.
+    function allowCommaAsDecimal(input) {
+        input.addEventListener('keydown', function (event) {
+            if (event.key === ',' && !input.disabled) {
+                event.preventDefault();
+                document.execCommand('insertText', false, '.');
+            }
+        });
+    }
+
     function isGeometryEnabled() {
         const hasMaterial = Boolean(materialSelect.value);
         const wireDiameter = toNumber(wireDiameterInput.value);
@@ -179,19 +198,24 @@ function setupGeometryFieldControlAndDiameterSync() {
         isSyncing = true;
         try {
             if (changedInput === diametroMedioInput && medio !== null) {
-                diametroExteriorInput.value = formatNumber(medio + wireDiameter);
-                diametroInteriorInput.value = formatNumber(medio - wireDiameter);
+                diametroExteriorInput.value = formatForInput(medio + wireDiameter);
+                diametroInteriorInput.value = formatForInput(medio - wireDiameter);
             } else if (changedInput === diametroExteriorInput && exterior !== null) {
-                diametroMedioInput.value = formatNumber(exterior - wireDiameter);
-                diametroInteriorInput.value = formatNumber(exterior - 2 * wireDiameter);
+                diametroMedioInput.value = formatForInput(exterior - wireDiameter);
+                diametroInteriorInput.value = formatForInput(exterior - 2 * wireDiameter);
             } else if (changedInput === diametroInteriorInput && interior !== null) {
-                diametroMedioInput.value = formatNumber(interior + wireDiameter);
-                diametroExteriorInput.value = formatNumber(interior + 2 * wireDiameter);
+                diametroMedioInput.value = formatForInput(interior + wireDiameter);
+                diametroExteriorInput.value = formatForInput(interior + 2 * wireDiameter);
             }
         } finally {
             isSyncing = false;
         }
     }
+
+    allowCommaAsDecimal(wireDiameterInput);
+    if (diametroMedioInput) allowCommaAsDecimal(diametroMedioInput);
+    if (diametroExteriorInput) allowCommaAsDecimal(diametroExteriorInput);
+    if (diametroInteriorInput) allowCommaAsDecimal(diametroInteriorInput);
 
     materialSelect.addEventListener('change', updateGeometryAvailability);
     wireDiameterInput.addEventListener('input', function () {
