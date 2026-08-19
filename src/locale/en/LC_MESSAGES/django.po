@@ -2576,7 +2576,7 @@ msgstr "Pin-Hole Tolerance Calculation"
 
 #: templates/tolerances/pin_hole.html:21
 msgid "Tienes alguna duda? Revisa el siguiente vídeo"
-msgstr ""
+msgstr "Do you have any doubt? Whatch next video"
 
 #: templates/tolerances/pin_hole.html:30
 msgid "Diagrama pin y agujero"
