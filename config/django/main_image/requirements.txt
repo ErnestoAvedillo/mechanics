@@ -20,4 +20,4 @@ reportlab>=4.4.4
 playwright
 pytest>=9.0.2
 pytest-playwright
-springcalc>=0.1.13
+springcalc>=0.1.23
