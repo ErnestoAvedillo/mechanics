@@ -114,6 +114,40 @@
                     </div>
                 </div>
 
+                {% if resultado.puntos_trabajo %}
+                <div class="working-points-section">
+                    <h4 class="section-subtitle">{% trans "Esfuerzos en los puntos de trabajo" %}</h4>
+                    <div class="working-points-scroll">
+                        <table class="working-points-table">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Punto" %}</th>
+                                    <th>{% trans "Posicion" %}</th>
+                                    <th>{% trans "Recorrido" %}</th>
+                                    <th>{% trans "Carga" %}</th>
+                                    <th>{% trans "Tension" %}</th>
+                                    <th>{% trans "Diametro exterior" %}</th>
+                                    <th>{% trans "Diametro interior" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for punto in resultado.puntos_trabajo %}
+                                <tr>
+                                    <td>{{ punto.indice }}</td>
+                                    <td>{% firstof punto.posicion 'N/D' %}</td>
+                                    <td>{% firstof punto.recorrido 'N/D' %}</td>
+                                    <td>{% firstof punto.carga 'N/D' %}</td>
+                                    <td class="working-points-stress">{% firstof punto.tension 'N/D' %}</td>
+                                    <td>{% firstof punto.diametro_exterior 'N/D' %}</td>
+                                    <td>{% firstof punto.diametro_interior 'N/D' %}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
                 {% if resultado.radious_leg_fija or resultado.long_leg_fija or resultado.radious_leg_movil or resultado.long_leg_movil %}
                 <div class="section-separator">
                     <h4 class="section-subtitle">{% trans "Parametros de Torsion" %}</h4>

@@ -2,9 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.translation import gettext as _
-import traceback
 from muelles.views.get_available_materials import get_available_materials
-from muelles.views.get_data_spring import get_data_spring
+from muelles.views.get_data_spring import (
+    get_data_spring,
+    build_error_result,
+    build_working_points,
+)
 from muelles.views.spring_animation import (
     animation_http_response,
     build_compression_animation_gif,
@@ -24,7 +27,7 @@ def _calcular_muelle_conico(request):
 
     muelle = CompressionSpringGeneral(
         material=material_obj,
-        wire_diameter=float(request.POST.get('diametro_hilo', 0))
+        wire_diameter=datos_entrada_muelle.get('diametro_hilo') or 0.0
     )
 
     diametro_medio_superior = float(datos_entrada_muelle['diametro_medio_superior'])
@@ -134,6 +137,7 @@ def _calcular_muelle_conico(request):
         'diagrama_goodman': goodman_data,
         'numero_ciclos': muelle.number_cycles,
         'shot_peening': muelle.shot_peening,
+        'puntos_trabajo': build_working_points(muelle),
     }
     return muelle, resultado, longitud_inicial, longitud_final
 
@@ -148,9 +152,7 @@ def calculadora_conico(request):
         try:
             _muelle, resultado, _li, _lf = _calcular_muelle_conico(request)
         except Exception as e:
-            print(f"Error calculating conical spring: {e}")
-            tb = traceback.format_exc()
-            resultado = {'error': _('Error en los cálculos: %(error)s') % {'error': str(e)}, 'traceback': tb}
+            resultado = build_error_result(e, 'Error calculating conical spring')
     return render(request, 'muelles/calculadora_conico.html', {
         'resultado': resultado,
         'materiales': materials,

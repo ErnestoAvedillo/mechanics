@@ -692,3 +692,50 @@
     overflow: auto;
     max-height: 320px;
 }
+
+/* Working points stress table - same card look as .spec-card / .chart-card */
+.working-points-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+.working-points-section .section-subtitle {
+    margin-top: 0;
+}
+.working-points-scroll {
+    overflow-x: auto;
+}
+.working-points-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.working-points-table th,
+.working-points-table td {
+    padding: 10px 14px;
+    text-align: right;
+    border-bottom: 1px solid #edf0f2;
+    white-space: nowrap;
+}
+.working-points-table th:first-child,
+.working-points-table td:first-child {
+    text-align: center;
+}
+.working-points-table thead th {
+    background: #f1f3f5;
+    color: #495057;
+    font-weight: 600;
+}
+.working-points-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.working-points-table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+.working-points-stress {
+    font-weight: 700;
+    color: #dc3545;
+}

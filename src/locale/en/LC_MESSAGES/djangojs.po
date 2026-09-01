@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 06:07+0200\n"
+"POT-Creation-Date: 2026-09-01 11:15+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,35 +17,43 @@ msgstr "Enabled"
 msgid "Desactivado"
 msgstr "Disabled"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:136
+#: muelles/static/muelles/js/calculadora-muelles.js:139
 msgid "Propiedades del Material"
 msgstr "Material Properties"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:137
+#: muelles/static/muelles/js/calculadora-muelles.js:140
 msgid "Módulo de corte"
 msgstr "Shear modulus"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:138
+#: muelles/static/muelles/js/calculadora-muelles.js:141
 msgid "Factor límite elástico"
 msgstr "Elastic limit factor"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:194
+#: muelles/static/muelles/js/calculadora-muelles.js:197
 msgid "Por favor complete todos los campos obligatorios"
 msgstr "Please fill in all required fields"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:234
+#: muelles/static/muelles/js/calculadora-muelles.js:270
+msgid "El paso no puede ser inferior al diámetro del hilo"
+msgstr "The pitch cannot be smaller than the wire diameter"
+
+#: muelles/static/muelles/js/calculadora-muelles.js:315
+msgid "El paso no puede ser inferior al diámetro del hilo."
+msgstr "The pitch cannot be smaller than the wire diameter."
+
+#: muelles/static/muelles/js/calculadora-muelles.js:387
 msgid "Longitud inicial estirada (mm):"
 msgstr "Initial stretched length (mm):"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:234
+#: muelles/static/muelles/js/calculadora-muelles.js:387
 msgid "Longitud inicial (mm):"
 msgstr "Initial length (mm):"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:238
+#: muelles/static/muelles/js/calculadora-muelles.js:391
 msgid "Longitud final estirada (mm):"
 msgstr "Final stretched length (mm):"
 
-#: muelles/static/muelles/js/calculadora-muelles.js:238
+#: muelles/static/muelles/js/calculadora-muelles.js:391
 msgid "Longitud final (mm):"
 msgstr "Final length (mm):"
 

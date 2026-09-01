@@ -3,13 +3,7 @@ from django.utils.translation import gettext as _
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
-
-
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
+from tolerances.tools.conversion import _to_float
 
 
 def pin_hole_calculator(request):

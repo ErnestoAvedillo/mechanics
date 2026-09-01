@@ -9,13 +9,7 @@ from reportlab.pdfgen import canvas
 
 from tolerances.classes.hystogram import Hystogram
 from tolerances.pymodels.dimension import GausianDimensionGenerator
-
-
-def _to_float(value, default):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
-        return default
+from tolerances.tools.conversion import _to_float
 
 
 def _draw_image_if_present(pdf, uploaded_file, x, y, width, height, label):

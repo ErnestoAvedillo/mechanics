@@ -2,9 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.translation import gettext as _
-import traceback
 from muelles.views.get_available_materials import get_available_materials
-from muelles.views.get_data_spring import get_data_spring
+from muelles.views.get_data_spring import (
+    get_data_spring,
+    check_pitch_not_below_wire,
+    build_error_result,
+    build_working_points,
+)
 from muelles.views.spring_animation import (
     animation_http_response,
     build_compression_animation_gif,
@@ -25,7 +29,7 @@ def _calcular_muelle_compresion(request):
 
     muelle = CompressionSpring(
         material=material_obj,
-        wire_diameter=float(request.POST.get('diametro_hilo', 0))
+        wire_diameter=datos_entrada_muelle.get('diametro_hilo') or 0.0
     )
 
     diametro_medio = datos_entrada_muelle.get('diametro_medio')
@@ -33,8 +37,17 @@ def _calcular_muelle_compresion(request):
     muelle.set_diameter(
         mean_diameter=diametro_medio
     )
+    # Pitch here is derived as free_length / nr_coils; verify it stays at or
+    # above the wire diameter so the coils do not overlap, and report it with
+    # a clear translated message instead of the library's raw English error.
+    _nr_coils = datos_entrada_muelle['numero_espiras']
+    if _nr_coils:
+        check_pitch_not_below_wire(
+            datos_entrada_muelle['longitud_libre'] / _nr_coils,
+            datos_entrada_muelle.get('diametro_hilo'),
+        )
     muelle.calculate_spring_properties(
-        nr_coils=datos_entrada_muelle['numero_espiras'],
+        nr_coils=_nr_coils,
         pitch=None,
         free_length=datos_entrada_muelle['longitud_libre']
     )
@@ -127,7 +140,8 @@ def _calcular_muelle_compresion(request):
             'curva_diametros': curva_diametros_vs_posicion,
             'diagrama_goodman': goodman_data,
             'numero_ciclos': muelle.number_cycles,
-            'shot_peening': muelle.shot_peening
+            'shot_peening': muelle.shot_peening,
+            'puntos_trabajo': build_working_points(muelle),
         }
     return muelle, resultado, longitud_inicial, longitud_final
 
@@ -142,9 +156,7 @@ def calculadora_compresion(request):
         try:
             _muelle, resultado, _li, _lf = _calcular_muelle_compresion(request)
         except Exception as e:
-            print(f"Error calculating spring: {e}")
-            tb = traceback.format_exc()
-            resultado = {'error': _('Error en los cálculos: %(error)s') % {'error': str(e)}, 'traceback': tb}
+            resultado = build_error_result(e, 'Error calculating compression spring')
     return render(request, 'muelles/calculadora_compresion.html', {
         'resultado': resultado,
         'materiales': materials,

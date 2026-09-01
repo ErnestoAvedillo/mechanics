@@ -9,9 +9,14 @@ from muelles.views.spring_animation import (
 )
 from muelles.views.spring_report_pdf import build_spring_report_pdf_response
 from springcalc import Material, ExtensionSpring
-from muelles.views.get_data_spring import get_data_spring
+from muelles.views.get_data_spring import (
+    get_data_spring,
+    parse_decimal,
+    check_pitch_not_below_wire,
+    build_error_result,
+    build_working_points,
+)
 from muelles.views.get_available_materials import get_available_materials
-import traceback
 
 
 def _calcular_muelle_traccion(request):
@@ -25,7 +30,7 @@ def _calcular_muelle_traccion(request):
 
     muelle = ExtensionSpring(
         material=material_obj,
-        wire_diameter=float(request.POST.get('diametro_hilo', 0))
+        wire_diameter=datos_entrada_muelle.get('diametro_hilo') or 0.0
     )
 
     diametro_medio = datos_entrada_muelle.get('diametro_medio')
@@ -39,12 +44,12 @@ def _calcular_muelle_traccion(request):
         free_length=datos_entrada_muelle['longitud_libre']
     )
 
-    tension_inicial = float(request.POST.get('tension_inicial', 0)) if request.POST.get('tension_inicial') else 0.0
+    tension_inicial = parse_decimal(request.POST.get('tension_inicial'), 0.0, 'tension_inicial')
     muelle.set_initial_stress(tension_inicial)
 
-    longitud_libre = float(request.POST.get('longitud_libre', 0))
-    numero_espiras = float(request.POST.get('numero_espiras', 0))
-    numero_ciclos = float(request.POST.get('numero_ciclos', 1e6))  # Default value of 1 million cycles
+    longitud_libre = parse_decimal(request.POST.get('longitud_libre'), 0.0, 'longitud_libre')
+    numero_espiras = parse_decimal(request.POST.get('numero_espiras'), 0.0, 'numero_espiras')
+    numero_ciclos = parse_decimal(request.POST.get('numero_ciclos'), 1e6, 'numero_ciclos')  # Default: 1 million cycles
 
     # Assign the number of cycles to the spring object (already read from the form)
     muelle.number_cycles = numero_ciclos
@@ -55,6 +60,10 @@ def _calcular_muelle_traccion(request):
         pitch=None,
         free_length=longitud_libre
     )
+    # An extension spring is close-wound: the library sets its pitch equal to
+    # the wire diameter. Guard the invariant so the coils can never be modelled
+    # as overlapping (e.g. if that library behaviour ever changes).
+    check_pitch_not_below_wire(muelle.pitch, muelle.wire_diameter)
     muelle_data = muelle.get_spring_data()
 
     def _to_float_mm(value):
@@ -143,7 +152,8 @@ def _calcular_muelle_traccion(request):
             'curva_diametros': curva_diametros_vs_posicion,
             'diagrama_goodman': goodman_data,
             'numero_ciclos': muelle.number_cycles,
-            'tension_inicial': round(muelle_data.get('initial_stress', 0), 2)
+            'tension_inicial': round(muelle_data.get('initial_stress', 0), 2),
+            'puntos_trabajo': build_working_points(muelle),
         }
     return muelle, resultado, longitud_inicial, longitud_final
 
@@ -156,9 +166,7 @@ def calculadora_traccion(request):
         try:
             _muelle, resultado, _li, _lf = _calcular_muelle_traccion(request)
         except Exception as e:
-            print(f"Error calculating spring: {e}")
-            tb = traceback.format_exc()
-            resultado = {'error': _('Error en los cálculos: %(error)s') % {'error': str(e)}, 'traceback': tb}
+            resultado = build_error_result(e, 'Error calculating extension spring')
     return render(request, 'muelles/calculadora_traccion.html', {
             'resultado': resultado,
             'materiales': materials,

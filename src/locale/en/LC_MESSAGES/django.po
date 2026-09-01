@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 08:12+0200\n"
+"POT-Creation-Date: 2026-09-01 11:15+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,127 +100,122 @@ msgstr "Welcome back!"
 msgid "Credenciales incorrectas."
 msgstr "Incorrect credentials."
 
-#: muelles/views/calculadora_2k.py:206 muelles/views/calculadora_2k.py:221
-#: muelles/views/calculadora_2k.py:236
-#: muelles/views/calculadora_compresion.py:147
-#: muelles/views/calculadora_compresion.py:162
-#: muelles/views/calculadora_compresion.py:177
-#: muelles/views/calculadora_conico.py:153
-#: muelles/views/calculadora_conico.py:168
-#: muelles/views/calculadora_conico.py:183
-#: muelles/views/calculadora_conico_pitch_variable.py:153
-#: muelles/views/calculadora_conico_pitch_variable.py:168
-#: muelles/views/calculadora_conico_pitch_variable.py:185
-#: muelles/views/calculadora_torsion.py:114
-#: muelles/views/calculadora_torsion.py:129
-#: muelles/views/calculadora_torsion.py:144
-#: muelles/views/calculadora_traccion.py:161
-#: muelles/views/calculadora_traccion.py:176
-#: muelles/views/calculadora_traccion.py:191
+#: muelles/views/calculadora_2k.py:229
+msgid "Usa el formulario de muelle 2K para generar el PDF."
+msgstr "Use the 2K spring form to generate the PDF."
+
+#: muelles/views/calculadora_2k.py:233 muelles/views/calculadora_2k.py:248
+#: muelles/views/calculadora_compresion.py:174
+#: muelles/views/calculadora_compresion.py:189
+#: muelles/views/calculadora_conico.py:170
+#: muelles/views/calculadora_conico.py:185
+#: muelles/views/calculadora_conico_pitch_variable.py:170
+#: muelles/views/calculadora_conico_pitch_variable.py:187
+#: muelles/views/calculadora_torsion.py:204
+#: muelles/views/calculadora_torsion.py:219
+#: muelles/views/calculadora_traccion.py:184
+#: muelles/views/calculadora_traccion.py:199
+#: muelles/views/get_data_spring.py:122
 #, python-format
 msgid "Error en los cálculos: %(error)s"
 msgstr "Error in the calculations: %(error)s"
 
-#: muelles/views/calculadora_2k.py:217
-msgid "Usa el formulario de muelle 2K para generar el PDF."
-msgstr "Use the 2K spring form to generate the PDF."
-
-#: muelles/views/calculadora_2k.py:223
+#: muelles/views/calculadora_2k.py:235
 msgid "Reporte de Muelle 2K (No Lineal)"
 msgstr "2K Spring Report (Non-Linear)"
 
-#: muelles/views/calculadora_2k.py:231
+#: muelles/views/calculadora_2k.py:243
 msgid "Usa el formulario de muelle 2K para generar la animación."
 msgstr "Use the 2K spring form to generate the animation."
 
-#: muelles/views/calculadora_compresion.py:158
+#: muelles/views/calculadora_compresion.py:170
 msgid "Usa el formulario de compresión para generar el PDF."
 msgstr "Use the compression form to generate the PDF."
 
-#: muelles/views/calculadora_compresion.py:164
+#: muelles/views/calculadora_compresion.py:176
 msgid "Reporte de Muelle de Compresión"
 msgstr "Compression Spring Report"
 
-#: muelles/views/calculadora_compresion.py:172
+#: muelles/views/calculadora_compresion.py:184
 msgid "Usa el formulario de compresión para generar la animación."
 msgstr "Use the compression form to generate the animation."
 
-#: muelles/views/calculadora_conico.py:164
+#: muelles/views/calculadora_conico.py:166
 msgid "Usa el formulario de cónico para generar el PDF."
 msgstr "Use the conical form to generate the PDF."
 
-#: muelles/views/calculadora_conico.py:170
+#: muelles/views/calculadora_conico.py:172
 msgid "Reporte de Muelle Cónico"
 msgstr "Conical Spring Report"
 
-#: muelles/views/calculadora_conico.py:178
+#: muelles/views/calculadora_conico.py:180
 msgid "Usa el formulario de cónico para generar la animación."
 msgstr "Use the conical form to generate the animation."
 
-#: muelles/views/calculadora_conico_pitch_variable.py:164
+#: muelles/views/calculadora_conico_pitch_variable.py:166
 msgid "Usa el formulario de cónico de paso variable para generar el PDF."
 msgstr "Use the variable-pitch conical form to generate the PDF."
 
-#: muelles/views/calculadora_conico_pitch_variable.py:170
+#: muelles/views/calculadora_conico_pitch_variable.py:172
 msgid "Reporte de Muelle Cónico de Paso Variable"
 msgstr "Variable-Pitch Conical Spring Report"
 
-#: muelles/views/calculadora_conico_pitch_variable.py:179
+#: muelles/views/calculadora_conico_pitch_variable.py:181
 msgid "Usa el formulario de cónico de paso variable para generar la animación."
 msgstr "Use the variable-pitch conical form to generate the animation."
 
-#: muelles/views/calculadora_torsion.py:22
+#: muelles/views/calculadora_torsion.py:27
 #: templates/muelles/partials/_formulario_2k.html:8
 msgid "Diámetro medio"
 msgstr "Mean diameter"
 
-#: muelles/views/calculadora_torsion.py:23
+#: muelles/views/calculadora_torsion.py:28
 msgid "Número de espiras"
 msgstr "Number of coils"
 
-#: muelles/views/calculadora_torsion.py:24
+#: muelles/views/calculadora_torsion.py:29
 #: muelles/views/spring_report_pdf.py:38
 msgid "Pitch"
 msgstr "Pitch"
 
-#: muelles/views/calculadora_torsion.py:25
+#: muelles/views/calculadora_torsion.py:30
 msgid "Ángulo libre"
 msgstr "Free angle"
 
-#: muelles/views/calculadora_torsion.py:26
+#: muelles/views/calculadora_torsion.py:31
 msgid "Longitud de sujeción"
 msgstr "Attachment length"
 
-#: muelles/views/calculadora_torsion.py:27
+#: muelles/views/calculadora_torsion.py:32
 msgid "Radio de sujeción"
 msgstr "Attachment radius"
 
-#: muelles/views/calculadora_torsion.py:35
+#: muelles/views/calculadora_torsion.py:40
 #, python-format
 msgid "Faltan campos obligatorios para torsión: %(fields)s"
 msgstr "Missing required fields for torsion: %(fields)s"
 
-#: muelles/views/calculadora_torsion.py:125
+#: muelles/views/calculadora_torsion.py:200
 msgid "Usa el formulario de torsión para generar el PDF."
 msgstr "Use the torsion form to generate the PDF."
 
-#: muelles/views/calculadora_torsion.py:131
+#: muelles/views/calculadora_torsion.py:206
 msgid "Reporte de Muelle de Torsión"
 msgstr "Torsion Spring Report"
 
-#: muelles/views/calculadora_torsion.py:139
+#: muelles/views/calculadora_torsion.py:214
 msgid "Usa el formulario de torsión para generar la animación."
 msgstr "Use the torsion form to generate the animation."
 
-#: muelles/views/calculadora_traccion.py:172
+#: muelles/views/calculadora_traccion.py:180
 msgid "Usa el formulario de tracción para generar el PDF."
 msgstr "Use the extension form to generate the PDF."
 
-#: muelles/views/calculadora_traccion.py:178
+#: muelles/views/calculadora_traccion.py:186
 msgid "Reporte de Muelle de Tracción"
 msgstr "Extension Spring Report"
 
-#: muelles/views/calculadora_traccion.py:186
+#: muelles/views/calculadora_traccion.py:194
 msgid "Usa el formulario de tracción para generar la animación."
 msgstr "Use the extension form to generate the animation."
 
@@ -276,6 +271,29 @@ msgstr "SM - Medium carbon steel"
 msgid "SH - Acero duro"
 msgstr "SH - Hard steel"
 
+#: muelles/views/get_data_spring.py:42
+msgid "valor"
+msgstr "value"
+
+#: muelles/views/get_data_spring.py:87
+#, python-format
+msgid "El campo «%(campo)s» debe ser un número válido (recibido: «%(valor)s»)."
+msgstr "The '%(campo)s' field must be a valid number (received: '%(valor)s')."
+
+#: muelles/views/get_data_spring.py:106
+#, python-format
+msgid ""
+"El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: "
+"«%(valor)s»)."
+msgstr "The '%(campo)s' field must be a whole number, with no decimals (received: '%(valor)s')."
+
+#: muelles/views/get_data_spring.py:154
+#, python-format
+msgid ""
+"El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de "
+"hilo (%(hilo).4g mm): las espiras se solaparían."
+msgstr "The '%(campo)s' pitch (%(paso).4g mm) cannot be smaller than the wire diameter (%(hilo).4g mm): the coils would overlap."
+
 #: muelles/views/index.py:9
 msgid "Calculadora de Muelles"
 msgstr "Spring Calculator"
@@ -318,10 +336,12 @@ msgid "Diametro medio inferior"
 msgstr "Lower Mean Diameter"
 
 #: muelles/views/spring_report_pdf.py:30
+#: templates/muelles/partials/_calculadora_results.html:129
 msgid "Diametro exterior"
 msgstr "Outer Diameter"
 
 #: muelles/views/spring_report_pdf.py:31
+#: templates/muelles/partials/_calculadora_results.html:130
 msgid "Diametro interior"
 msgstr "Inner Diameter"
 
@@ -450,17 +470,17 @@ msgid "Numero de ciclos"
 msgstr "Number of Cycles"
 
 #: muelles/views/spring_report_pdf.py:68
-#: templates/muelles/partials/_calculadora_results.html:155
+#: templates/muelles/partials/_calculadora_results.html:189
 msgid "Curva de Esfuerzos"
 msgstr "Stress Curve"
 
 #: muelles/views/spring_report_pdf.py:69
-#: templates/muelles/partials/_calculadora_results.html:164
+#: templates/muelles/partials/_calculadora_results.html:198
 msgid "Curva de Recorrido"
 msgstr "Travel Curve"
 
 #: muelles/views/spring_report_pdf.py:70
-#: templates/muelles/partials/_calculadora_results.html:173
+#: templates/muelles/partials/_calculadora_results.html:207
 msgid "Curva de Diametros"
 msgstr "Diameters Curve"
 
@@ -469,8 +489,8 @@ msgid "Curva de Compresion Progresiva (2K)"
 msgstr "Progressive Compression Curve (2K)"
 
 #: muelles/views/spring_report_pdf.py:72
-#: templates/muelles/partials/_calculadora_results.html:191
-#: templates/muelles/partials/_calculadora_results.html:193
+#: templates/muelles/partials/_calculadora_results.html:225
+#: templates/muelles/partials/_calculadora_results.html:227
 msgid "Diagrama de Goodman"
 msgstr "Goodman Diagram"
 
@@ -493,7 +513,7 @@ msgstr "Error in the calculations:"
 #: templates/tolerances/pin_hole.html:121
 #: templates/tolerances/pivot_bushing_hole_axial.html:129
 #: templates/tolerances/pivot_bushing_hole_radial.html:129
-#: tolerances/views/pin_hole_pdf.py:130
+#: tolerances/views/pin_hole_pdf.py:124
 msgid "Resultados"
 msgstr "Results"
 
@@ -794,8 +814,8 @@ msgstr ""
 "stiffness for the rest of the travel."
 
 #: templates/muelles/calculadora_2k.html:21
-#: templates/muelles/calculadora_conico_pitch_variable.html:21
 #: templates/muelles/calculadora_conico.html:21
+#: templates/muelles/calculadora_conico_pitch_variable.html:21
 msgid ""
 "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
 "imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las "
@@ -1217,7 +1237,7 @@ msgstr "Number of cycles:"
 #: templates/muelles/partials/_formulario_compresion.html:94
 #: templates/muelles/partials/_formulario_conico.html:66
 #: templates/muelles/partials/_formulario_conico_pitch_variable.html:76
-#: templates/muelles/partials/_formulario_torsion.html:109
+#: templates/muelles/partials/_formulario_torsion.html:110
 #: templates/muelles/partials/_formulario_traccion.html:86
 #: templates/tolerances/insert_support.html:117
 #: templates/tolerances/pin_hole.html:109
@@ -1239,7 +1259,7 @@ msgstr "Fill in the spring data to get its complete technical specifications."
 #: templates/muelles/partials/_formulario_compresion.html:97
 #: templates/muelles/partials/_formulario_conico.html:69
 #: templates/muelles/partials/_formulario_conico_pitch_variable.html:79
-#: templates/muelles/partials/_formulario_torsion.html:112
+#: templates/muelles/partials/_formulario_torsion.html:113
 #: templates/muelles/partials/_formulario_traccion.html:89
 msgid "Calcular Especificaciones"
 msgstr "Calculate Specifications"
@@ -1477,54 +1497,78 @@ msgid "Momento resistente:"
 msgstr "Resisting moment:"
 
 #: templates/muelles/partials/_calculadora_results.html:119
+msgid "Esfuerzos en los puntos de trabajo"
+msgstr "Stresses at the working points"
+
+#: templates/muelles/partials/_calculadora_results.html:124
+msgid "Punto"
+msgstr "Point"
+
+#: templates/muelles/partials/_calculadora_results.html:125
+msgid "Posicion"
+msgstr "Position"
+
+#: templates/muelles/partials/_calculadora_results.html:126
+msgid "Recorrido"
+msgstr "Travel"
+
+#: templates/muelles/partials/_calculadora_results.html:127
+msgid "Carga"
+msgstr "Load"
+
+#: templates/muelles/partials/_calculadora_results.html:128
+msgid "Tension"
+msgstr "Stress"
+
+#: templates/muelles/partials/_calculadora_results.html:153
 msgid "Parametros de Torsion"
 msgstr "Torsion Parameters"
 
-#: templates/muelles/partials/_calculadora_results.html:122
+#: templates/muelles/partials/_calculadora_results.html:156
 msgid "Patas y Radios"
 msgstr "Legs and Radii"
 
-#: templates/muelles/partials/_calculadora_results.html:125
+#: templates/muelles/partials/_calculadora_results.html:159
 msgid "Radio pata fija:"
 msgstr "Fixed leg radius:"
 
-#: templates/muelles/partials/_calculadora_results.html:130
+#: templates/muelles/partials/_calculadora_results.html:164
 msgid "Longitud pata fija:"
 msgstr "Fixed leg length:"
 
-#: templates/muelles/partials/_calculadora_results.html:135
+#: templates/muelles/partials/_calculadora_results.html:169
 msgid "Radio pata movil:"
 msgstr "Movable leg radius:"
 
-#: templates/muelles/partials/_calculadora_results.html:140
+#: templates/muelles/partials/_calculadora_results.html:174
 msgid "Longitud pata movil:"
 msgstr "Movable leg length:"
 
-#: templates/muelles/partials/_calculadora_results.html:150
+#: templates/muelles/partials/_calculadora_results.html:184
 msgid "Analisis Grafico de Fatiga"
 msgstr "Fatigue Graphical Analysis"
 
-#: templates/muelles/partials/_calculadora_results.html:157
+#: templates/muelles/partials/_calculadora_results.html:191
 msgid "Curva de esfuerzos"
 msgstr "Stress curve"
 
-#: templates/muelles/partials/_calculadora_results.html:166
+#: templates/muelles/partials/_calculadora_results.html:200
 msgid "Curva de recorrido"
 msgstr "Travel curve"
 
-#: templates/muelles/partials/_calculadora_results.html:175
+#: templates/muelles/partials/_calculadora_results.html:209
 msgid "Curva de diametros"
 msgstr "Diameters curve"
 
-#: templates/muelles/partials/_calculadora_results.html:182
+#: templates/muelles/partials/_calculadora_results.html:216
 msgid "Curva de Compresión Progresiva (2K)"
 msgstr "Progressive Compression Curve (2K)"
 
-#: templates/muelles/partials/_calculadora_results.html:184
+#: templates/muelles/partials/_calculadora_results.html:218
 msgid "Curva de compresión progresiva"
 msgstr "Progressive compression curve"
 
-#: templates/muelles/partials/_calculadora_results.html:198
+#: templates/muelles/partials/_calculadora_results.html:232
 msgid "Safety factor:"
 msgstr "Safety factor:"
 
@@ -1630,7 +1674,7 @@ msgstr "Generating animation..."
 #: templates/muelles/partials/_formulario_compresion.html:98
 #: templates/muelles/partials/_formulario_conico.html:70
 #: templates/muelles/partials/_formulario_conico_pitch_variable.html:80
-#: templates/muelles/partials/_formulario_torsion.html:113
+#: templates/muelles/partials/_formulario_torsion.html:114
 #: templates/muelles/partials/_formulario_traccion.html:90
 msgid "Crear Animación"
 msgstr "Create Animation"
@@ -1644,7 +1688,7 @@ msgstr "Generating PDF..."
 #: templates/muelles/partials/_formulario_compresion.html:99
 #: templates/muelles/partials/_formulario_conico.html:71
 #: templates/muelles/partials/_formulario_conico_pitch_variable.html:81
-#: templates/muelles/partials/_formulario_torsion.html:114
+#: templates/muelles/partials/_formulario_torsion.html:115
 #: templates/muelles/partials/_formulario_traccion.html:91
 msgid "Crear Reporte PDF"
 msgstr "Create PDF Report"
@@ -1708,7 +1752,7 @@ msgid "Paso entre espiras (pitch) en mm"
 msgstr "Pitch between coils (pitch) in mm"
 
 #: templates/muelles/partials/_formulario_compresion.html:95
-#: templates/muelles/partials/_formulario_torsion.html:110
+#: templates/muelles/partials/_formulario_torsion.html:111
 #: templates/muelles/partials/_formulario_traccion.html:87
 msgid ""
 "Complete los datos del muelle para obtener sus especificaciones tecnicas "
@@ -1797,11 +1841,11 @@ msgstr "First load position (A2)"
 msgid "Ángulo de libre (A0)"
 msgstr "Free angle (A0)"
 
-#: templates/muelles/partials/_formulario_torsion.html:95
-msgid "Número de espiras (nt)"
-msgstr "Number of coils (nt)"
+#: templates/muelles/partials/_formulario_torsion.html:96
+msgid "Número de espiras (nt) — número entero"
+msgstr "Number of coils (nt) — whole number"
 
-#: templates/muelles/partials/_formulario_torsion.html:105
+#: templates/muelles/partials/_formulario_torsion.html:106
 msgid "Paso (pitch) en mm"
 msgstr "Pitch (pitch) in mm"
 
@@ -2304,7 +2348,7 @@ msgstr "Number of samples"
 #: templates/tolerances/pivot_bushing_hole_axial.html:102
 #: templates/tolerances/pivot_bushing_hole_radial.html:102
 #: tolerances/views/insert_support_pdf.py:153
-#: tolerances/views/pin_hole_pdf.py:159
+#: tolerances/views/pin_hole_pdf.py:153
 #: tolerances/views/pivot_bushing_hole_axial_pdf.py:143
 #: tolerances/views/pivot_bushing_hole_radial_pdf.py:170
 msgid "Imagen 1"
@@ -2332,7 +2376,7 @@ msgstr "Preview image 1"
 #: templates/tolerances/pivot_bushing_hole_axial.html:109
 #: templates/tolerances/pivot_bushing_hole_radial.html:109
 #: tolerances/views/insert_support_pdf.py:154
-#: tolerances/views/pin_hole_pdf.py:160
+#: tolerances/views/pin_hole_pdf.py:154
 #: tolerances/views/pivot_bushing_hole_axial_pdf.py:144
 #: tolerances/views/pivot_bushing_hole_radial_pdf.py:171
 msgid "Imagen 2"
@@ -2605,7 +2649,7 @@ msgstr "Hole Low Tol."
 msgid "Agujero"
 msgstr "Hole"
 
-#: templates/tolerances/pin_hole.html:138 tolerances/views/pin_hole_pdf.py:139
+#: templates/tolerances/pin_hole.html:138 tolerances/views/pin_hole_pdf.py:133
 msgid "Ajuste"
 msgstr "Fit"
 
@@ -2794,7 +2838,7 @@ msgstr ""
 "target=\"_blank\" rel=\"noopener noreferrer\">watch the video on YouTube</a>."
 
 #: tolerances/tools/draw_image_if_present.py:27
-#: tolerances/views/pin_hole_pdf.py:34
+#: tolerances/views/pin_hole_pdf.py:28
 msgid "no se pudo renderizar"
 msgstr "could not be rendered"
 
@@ -2807,8 +2851,8 @@ msgid "Herramienta para calcular especificaciones de tolerancias"
 msgstr "Tool for calculating tolerance specifications"
 
 #: tolerances/views/insert_support.py:103
-#: tolerances/views/insert_support_pdf.py:72 tolerances/views/pin_hole.py:102
-#: tolerances/views/pin_hole_pdf.py:109
+#: tolerances/views/insert_support_pdf.py:72 tolerances/views/pin_hole.py:96
+#: tolerances/views/pin_hole_pdf.py:103
 #: tolerances/views/pivot_bushing_hole_radial.py:104
 msgid "Diferencia de diametros (mm)"
 msgstr "Diameter difference (mm)"
@@ -2816,8 +2860,8 @@ msgstr "Diameter difference (mm)"
 #: tolerances/views/insert_support.py:104
 #: tolerances/views/insert_support.py:113
 #: tolerances/views/insert_support_pdf.py:73
-#: tolerances/views/insert_support_pdf.py:83 tolerances/views/pin_hole.py:103
-#: tolerances/views/pin_hole_pdf.py:110
+#: tolerances/views/insert_support_pdf.py:83 tolerances/views/pin_hole.py:97
+#: tolerances/views/pin_hole_pdf.py:104
 #: tolerances/views/pivot_bushing_hole_axial.py:90
 #: tolerances/views/pivot_bushing_hole_axial_pdf.py:74
 #: tolerances/views/pivot_bushing_hole_radial.py:105
@@ -2873,7 +2917,7 @@ msgid "Resultados Calculados"
 msgstr "Calculated Results"
 
 #: tolerances/views/insert_support_pdf.py:144
-#: tolerances/views/pin_hole_pdf.py:150
+#: tolerances/views/pin_hole_pdf.py:144
 #: tolerances/views/pivot_bushing_hole_axial_pdf.py:134
 #: tolerances/views/pivot_bushing_hole_radial_pdf.py:161
 msgid "Imagenes adjuntas"
@@ -2907,39 +2951,39 @@ msgstr "System Clearance"
 msgid "Error al generar PDF: %(error)s"
 msgstr "Error generating PDF: %(error)s"
 
-#: tolerances/views/pin_hole.py:69 tolerances/views/pin_hole_pdf.py:100
+#: tolerances/views/pin_hole.py:63 tolerances/views/pin_hole_pdf.py:94
 msgid "Apriete (Interference fit)"
 msgstr "Interference (Interference fit)"
 
-#: tolerances/views/pin_hole.py:71 tolerances/views/pin_hole_pdf.py:102
+#: tolerances/views/pin_hole.py:65 tolerances/views/pin_hole_pdf.py:96
 msgid "Juego (Clearance fit)"
 msgstr "Clearance (Clearance fit)"
 
-#: tolerances/views/pin_hole.py:73 tolerances/views/pin_hole_pdf.py:104
+#: tolerances/views/pin_hole.py:67 tolerances/views/pin_hole_pdf.py:98
 msgid "Transicion (Transition fit)"
 msgstr "Transition (Transition fit)"
 
-#: tolerances/views/pin_hole.py:104 tolerances/views/pin_hole_pdf.py:111
+#: tolerances/views/pin_hole.py:98 tolerances/views/pin_hole_pdf.py:105
 msgid "Histograma de (Agujero - Pin)"
 msgstr "Histogram of (Hole - Pin)"
 
-#: tolerances/views/pin_hole_pdf.py:39
+#: tolerances/views/pin_hole_pdf.py:33
 msgid "Usa el formulario de pin-hole para generar el PDF."
 msgstr "Use the pin-hole form to generate the PDF."
 
-#: tolerances/views/pin_hole_pdf.py:123
+#: tolerances/views/pin_hole_pdf.py:117
 msgid "Reporte de Tolerancia Pin-Hole"
 msgstr "Pin-Hole Tolerance Report"
 
-#: tolerances/views/pin_hole_pdf.py:140
+#: tolerances/views/pin_hole_pdf.py:134
 msgid "Holgura maxima"
 msgstr "Maximum clearance"
 
-#: tolerances/views/pin_hole_pdf.py:140
+#: tolerances/views/pin_hole_pdf.py:134
 msgid "Holgura minima"
 msgstr "Minimum clearance"
 
-#: tolerances/views/pin_hole_pdf.py:164
+#: tolerances/views/pin_hole_pdf.py:158
 msgid "Histograma (Agujero - Pin)"
 msgstr "Histogram (Hole - Pin)"
 

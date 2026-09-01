@@ -2,9 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.translation import gettext as _
-import traceback
 from muelles.views.get_available_materials import get_available_materials
-from muelles.views.get_data_spring import get_data_spring
+from muelles.views.get_data_spring import (
+    get_data_spring,
+    parse_int,
+    check_pitch_not_below_wire,
+    build_error_result,
+    build_working_points,
+)
 from muelles.views.spring_animation import animation_http_response, build_twist_animation_gif
 from muelles.views.spring_report_pdf import build_spring_report_pdf_response
 from springcalc import Material, TorsionSpring
@@ -38,10 +43,23 @@ def _calcular_muelle_torsion(request):
         )
 
     material_obj = Material(material_name=datos_entrada_muelle['material'])
-    muelle = TorsionSpring(material=material_obj, wire_diameter=float(request.POST.get('diametro_hilo', 0)))
+    muelle = TorsionSpring(
+        material=material_obj,
+        wire_diameter=datos_entrada_muelle.get('diametro_hilo') or 0.0,
+    )
+    # The calculation library models a torsion spring with a whole number of
+    # coils (TorsionSpring.nr_coils is an int); reject a fractional value here
+    # with a clear message instead of letting pydantic raise a 500.
+    nr_coils = parse_int(request.POST.get('numero_espiras'), 0, 'numero_espiras')
+    # The coil pitch must be at least the wire diameter, otherwise the coils
+    # would overlap. Checked here so the user gets a clear, translated error.
+    check_pitch_not_below_wire(
+        datos_entrada_muelle.get('pitch'),
+        datos_entrada_muelle.get('diametro_hilo'),
+    )
     muelle.set_geometry(
         mean_diameter=datos_entrada_muelle.get('diametro_medio'),
-        nr_coils=datos_entrada_muelle.get('numero_espiras'),
+        nr_coils=nr_coils,
         pitch=datos_entrada_muelle.get('pitch'),
         free_angle=datos_entrada_muelle.get('angulo_libre'),
         fixed_leg_radius=datos_entrada_muelle.get('longitud_sujecion'),
@@ -90,8 +108,67 @@ def _calcular_muelle_torsion(request):
         goodman_data = muelle.create_goodman_diagram()
     except Exception:
         goodman_data = None
-    resultado = muelle.get_spring_properties()
 
+    props = muelle.get_spring_properties()
+
+    def _num(value, ndigits=2):
+        """Plain rounded number from a float or a pint Quantity (N/D-safe)."""
+        if value is None:
+            return None
+        if hasattr(value, 'magnitude'):
+            value = value.magnitude
+        try:
+            return round(float(value), ndigits)
+        except (TypeError, ValueError):
+            return value
+
+    def _fmt(value, unit, ndigits=2):
+        """Rounded value with its unit appended, e.g. '13.7 mm' (N/D-safe)."""
+        number = _num(value, ndigits)
+        if number is None:
+            return None
+        sep = '' if unit == '°' else ' '
+        return f"{number}{sep}{unit}"
+
+    _MM = 'mm'
+    _DEG = '°'          # degree sign
+    _MPA = 'N/mm²'      # N/mm^2
+
+    # The shared results template (_calculadora_results.html) reads Spanish
+    # keys; get_spring_properties() returns English ones, so map them here,
+    # rounding the values and appending their units, otherwise every field
+    # shows "N/D" (or a raw pint Quantity such as "1.2 millimeter").
+    resultado = {
+        'material_nombre': props.get('material'),
+        'modulo_corte': _fmt(getattr(muelle.material, 'shear_modulus', None), _MPA),
+        'modulo_young': _fmt(props.get('young_modulus'), _MPA),
+        'diametro_hilo': _fmt(props.get('wire_diameter'), _MM),
+        'diametro_medio': _fmt(props.get('mean_diameter'), _MM),
+        'diametro_exterior': _fmt(props.get('outer_diameter'), _MM),
+        'diametro_interior': _fmt(props.get('inner_diameter'), _MM),
+        'numero_espiras': props.get('nr_coils'),
+        'numero_espiras_utiles': _num(props.get('nr_active_coils'), 1),
+        'pitch': _fmt(props.get('pitch'), _MM),
+        'ancho_muelle': _fmt(props.get('spring_width'), _MM),
+        'angulo_libre': _fmt(props.get('free_angle'), _DEG),
+        'angulo_tangencias': _fmt(props.get('tangency_angle'), _DEG),
+        'longitud_hilo_total': _fmt(props.get('wire_length_total'), _MM),
+        'longitud_hilo_cuerpo': _fmt(props.get('body_wire_length'), _MM),
+        'constante_muelle': _fmt(props.get('spring_constant'), 'N·mm/rad', 3),
+        'indice_muelle': _num(props.get('spring_index')),
+        'factor_wahl': _num(props.get('wahl_factor'), 3),
+        'factor_wahl_eval': _num(props.get('wahl_factor_eval'), 3),
+        'factor_wahl_category': props.get('wahl_factor_category'),
+        'momento_resistente': _fmt(props.get('resisting_moment'), 'mm^4'),
+        'radious_leg_fija': _fmt(props.get('fixed_leg_radius'), _MM),
+        'long_leg_fija': _fmt(props.get('fixed_leg_length'), _MM),
+        'radious_leg_movil': _fmt(props.get('mobile_leg_radius'), _MM),
+        'long_leg_movil': _fmt(props.get('mobile_leg_length'), _MM),
+        'numero_ciclos': props.get('number_cycles'),
+        'shot_peening': props.get('shot_peening'),
+    }
+
+    resultado['puntos_trabajo'] = build_working_points(muelle)
     resultado['curva_esfuerzos'] = curva_esfuerzo_vs_position
     resultado['curva_recorrido'] = curva_esfuerzo_vs_travel
     resultado['curva_diametros'] = curva_diametros_vs_posicion
@@ -109,9 +186,7 @@ def calculadora_torsion(request):
             for key, value in resultado.items():
                 print(f"{key}: {value}")
         except Exception as e:
-            print(f"Error calculating torsion spring: {e}")
-            tb = traceback.format_exc()
-            resultado = {'error': _('Error en los cálculos: %(error)s') % {'error': str(e)}, 'traceback': tb}
+            resultado = build_error_result(e, 'Error calculating torsion spring')
     return render(request, 'muelles/calculadora_torsion.html', {
         'materiales': materials,
         'resultado': resultado

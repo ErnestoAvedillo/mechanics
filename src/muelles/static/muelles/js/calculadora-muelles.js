@@ -31,6 +31,9 @@ function setupFormatDetection() {
     const numericInputs = document.querySelectorAll('input[type="number"]');
 
     numericInputs.forEach(input => {
+        // Comma -> dot conversion for "," typed into type=number is handled
+        // globally by global/js/decimal-comma.js (loaded from base.html).
+
         // Auto-format while typing
         input.addEventListener('input', function (e) {
             let value = e.target.value;
@@ -196,6 +199,156 @@ function setupFormValidation() {
     });
 }
 
+// Pitch vs wire-diameter validation
+/**
+ * Live check on the pitch field(s): the coil pitch can never be smaller than
+ * the wire diameter, otherwise the coils would physically overlap.
+ *
+ * When the value is too low it:
+ *   - marks the field in red,
+ *   - shows a floating pop-up message next to the field,
+ *   - blocks form submission (via setCustomValidity), so the calculation is
+ *     never sent to the server and no Python error can reach the screen.
+ *
+ * Works on every calculator: pitch, pitch_1/2/3, pitch_superior, pitch_inferior.
+ */
+function setupPitchValidation() {
+    const form = document.querySelector('form');
+    if (!form) {
+        return;
+    }
+
+    const wireInput = document.getElementById('diametro_hilo')
+        || form.querySelector('input[name="diametro_hilo"]');
+    // Only fields the user actually types a pitch into: skip read-only /
+    // calculated fields (e.g. the compression calculator shows the derived
+    // pitch in a read-only box).
+    const pitchInputs = Array.prototype.slice.call(
+        form.querySelectorAll('input[name^="pitch"]')
+    ).filter(function (input) {
+        return !input.readOnly;
+    });
+    if (!wireInput || !pitchInputs.length) {
+        return;
+    }
+
+    let popup = document.querySelector('.pitch-warning-popup');
+    if (!popup) {
+        popup = document.createElement('div');
+        popup.className = 'pitch-warning-popup';
+        popup.setAttribute('role', 'alert');
+        popup.style.cssText = [
+            'position: fixed',
+            'z-index: 10000',
+            'max-width: 260px',
+            'padding: 10px 12px',
+            'border-radius: 8px',
+            'background: #b42318',
+            'color: #fff',
+            'font-size: 13px',
+            'line-height: 1.35',
+            'box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25)',
+            'opacity: 0',
+            'pointer-events: none',
+            'transition: opacity 0.15s ease'
+        ].join(';');
+        document.body.appendChild(popup);
+    }
+
+    let hideTimer = null;
+
+    function parseValue(raw) {
+        if (raw === null || raw === undefined || raw === '') {
+            return null;
+        }
+        const parsed = Number(String(raw).replace(',', '.'));
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function warningText() {
+        const wire = parseValue(wireInput.value);
+        let text = gettext('El paso no puede ser inferior al diámetro del hilo');
+        if (wire !== null && wire > 0) {
+            text += ' (' + formatNumber(wire) + ' mm)';
+        }
+        return '⚠️ ' + text + '.';
+    }
+
+    function showPopup(target) {
+        popup.textContent = warningText();
+        popup.style.opacity = '1';
+        const rect = target.getBoundingClientRect();
+        let left = rect.left;
+        const maxLeft = window.innerWidth - popup.offsetWidth - 8;
+        if (left > maxLeft) {
+            left = Math.max(8, maxLeft);
+        }
+        let top = rect.bottom + 8;
+        if (top + popup.offsetHeight > window.innerHeight - 8) {
+            top = rect.top - popup.offsetHeight - 8;
+        }
+        popup.style.left = left + 'px';
+        popup.style.top = top + 'px';
+        if (hideTimer) {
+            clearTimeout(hideTimer);
+        }
+        hideTimer = setTimeout(function () {
+            popup.style.opacity = '0';
+        }, 4500);
+    }
+
+    function validate(pitchInput, showMessage) {
+        const wire = parseValue(wireInput.value);
+        const pitch = parseValue(pitchInput.value);
+
+        if (wire === null || wire <= 0 || pitch === null || pitch <= 0) {
+            pitchInput.setCustomValidity('');
+            pitchInput.style.borderColor = '';
+            pitchInput.style.backgroundColor = '';
+            return true;
+        }
+
+        // 1 micron tolerance so an exact pitch === wire diameter is accepted.
+        const tooLow = pitch < wire - 0.001;
+        if (tooLow) {
+            pitchInput.setCustomValidity(
+                gettext('El paso no puede ser inferior al diámetro del hilo.')
+            );
+            pitchInput.style.borderColor = '#dc3545';
+            pitchInput.style.backgroundColor = '#fff5f5';
+            if (showMessage) {
+                showPopup(pitchInput);
+            }
+        } else {
+            pitchInput.setCustomValidity('');
+            pitchInput.style.borderColor = '#28a745';
+            pitchInput.style.backgroundColor = '#f8fff8';
+        }
+        return !tooLow;
+    }
+
+    pitchInputs.forEach(function (pitchInput) {
+        pitchInput.addEventListener('input', function () {
+            validate(pitchInput, false);
+        });
+        pitchInput.addEventListener('blur', function () {
+            validate(pitchInput, true);
+        });
+        // Fires when the form is submitted while this field is invalid.
+        pitchInput.addEventListener('invalid', function (event) {
+            event.preventDefault(); // replace the native bubble with our pop-up
+            showPopup(pitchInput);
+        });
+        validate(pitchInput, false);
+    });
+
+    wireInput.addEventListener('input', function () {
+        pitchInputs.forEach(function (pitchInput) {
+            validate(pitchInput, false);
+        });
+    });
+}
+
 /**
  * Sets up the spring type selector (compression/extension).
  * - Dynamically changes fields and labels based on the selected type
@@ -352,6 +505,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupFormatDetection();
     setupMaterialDetection();
     setupFormValidation();
+    setupPitchValidation();
     setupSpringTypeSelector();
     setupSpringEndSelector();
     setupMaterialPropertyDetection();

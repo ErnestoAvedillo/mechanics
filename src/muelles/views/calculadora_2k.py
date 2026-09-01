@@ -2,10 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.translation import gettext as _
-import traceback
 import numpy as np
 from muelles.views.get_available_materials import get_available_materials
-from muelles.views.get_data_spring import get_data_spring
+from muelles.views.get_data_spring import (
+    get_data_spring,
+    check_pitch_not_below_wire,
+    build_error_result,
+    build_working_points,
+)
 from muelles.views.spring_animation import (
     animation_http_response,
     build_compression_animation_gif,
@@ -55,8 +59,17 @@ def _calcular_muelle_2k(request):
 
     muelle = CompressionSpringGeneral(
         material=material_obj,
-        wire_diameter=float(request.POST.get('diametro_hilo', 0))
+        wire_diameter=datos_entrada_muelle.get('diametro_hilo') or 0.0
     )
+
+    # The pitch of every section must be at least the wire diameter, otherwise
+    # the coils overlap. CompressionSpringGeneral does not check this, so do it
+    # here before building the geometry.
+    _wire_diameter = datos_entrada_muelle.get('diametro_hilo')
+    for _pitch_field in ('pitch_1', 'pitch_2', 'pitch_3'):
+        check_pitch_not_below_wire(
+            datos_entrada_muelle.get(_pitch_field), _wire_diameter, field=_pitch_field
+        )
 
     diametro_medio_qty = float(datos_entrada_muelle['diametro_medio']) * ureg.mm
     length_1_qty = float(datos_entrada_muelle['length_1']) * ureg.mm
@@ -187,6 +200,7 @@ def _calcular_muelle_2k(request):
         'diagrama_goodman': goodman_data,
         'numero_ciclos': muelle.number_cycles,
         'shot_peening': muelle.shot_peening,
+        'puntos_trabajo': build_working_points(muelle),
     }
     return muelle, resultado, _to_float_mm(longitud_inicial), _to_float_mm(longitud_final)
 
@@ -201,9 +215,7 @@ def calculadora_2k(request):
         try:
             _muelle, resultado, _li, _lf = _calcular_muelle_2k(request)
         except Exception as e:
-            print(f"Error calculating 2K spring: {e}")
-            tb = traceback.format_exc()
-            resultado = {'error': _('Error en los cálculos: %(error)s') % {'error': str(e)}, 'traceback': tb}
+            resultado = build_error_result(e, 'Error calculating 2K spring')
     return render(request, 'muelles/calculadora_2k.html', {
         'resultado': resultado,
         'materiales': materials,

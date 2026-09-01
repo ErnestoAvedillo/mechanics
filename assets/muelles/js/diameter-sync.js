@@ -105,18 +105,6 @@ function setupGeometryFieldControlAndDiameterSync() {
         return String(Number(value.toFixed(3)));
     }
 
-    // <input type="number"> silently rejects "," as you type it (it's not a
-    // valid character for the field), so "2,5" ends up typed as "25" with
-    // no error. Intercept the comma keystroke and insert "." instead.
-    function allowCommaAsDecimal(input) {
-        input.addEventListener('keydown', function (event) {
-            if (event.key === ',' && !input.disabled) {
-                event.preventDefault();
-                document.execCommand('insertText', false, '.');
-            }
-        });
-    }
-
     function isGeometryEnabled() {
         const hasMaterial = Boolean(materialSelect.value);
         const wireDiameter = toNumber(wireDiameterInput.value);
@@ -211,11 +199,6 @@ function setupGeometryFieldControlAndDiameterSync() {
             isSyncing = false;
         }
     }
-
-    allowCommaAsDecimal(wireDiameterInput);
-    if (diametroMedioInput) allowCommaAsDecimal(diametroMedioInput);
-    if (diametroExteriorInput) allowCommaAsDecimal(diametroExteriorInput);
-    if (diametroInteriorInput) allowCommaAsDecimal(diametroInteriorInput);
 
     materialSelect.addEventListener('change', updateGeometryAvailability);
     wireDiameterInput.addEventListener('input', function () {

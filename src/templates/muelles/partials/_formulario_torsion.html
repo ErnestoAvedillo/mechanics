@@ -87,12 +87,13 @@
         </div>
         <div class="input-overlay nt-field" style="top: 38%; left: 83%;">
             <input type="number"
-                    step="0.1"
+                    step="1"
+                    min="1"
                     name="numero_espiras"
                     id="numero_espiras"
                     value="{{ request.POST.numero_espiras }}"
                     required>
-            <span class="label" data-tooltip="{% trans 'Número de espiras (nt)' %}"></span>
+            <span class="label" data-tooltip="{% trans 'Número de espiras (nt) — número entero' %}"></span>
 
         </div>
         <div class="input-overlay pitch-field" style="top: 37%; left: 93%;">
