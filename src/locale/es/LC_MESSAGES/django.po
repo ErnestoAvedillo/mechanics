@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:15+0200\n"
+"POT-Creation-Date: 2026-09-01 22:46+0200\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,7 +163,8 @@ msgstr "Reporte de Muelle Cónico de Paso Variable"
 
 #: muelles/views/calculadora_conico_pitch_variable.py:181
 msgid "Usa el formulario de cónico de paso variable para generar la animación."
-msgstr "Usa el formulario de cónico de paso variable para generar la animación."
+msgstr ""
+"Usa el formulario de cónico de paso variable para generar la animación."
 
 #: muelles/views/calculadora_torsion.py:27
 #: templates/muelles/partials/_formulario_2k.html:8
@@ -279,21 +280,26 @@ msgstr "valor"
 #: muelles/views/get_data_spring.py:87
 #, python-format
 msgid "El campo «%(campo)s» debe ser un número válido (recibido: «%(valor)s»)."
-msgstr "El campo «%(campo)s» debe ser un número válido (recibido: «%(valor)s»)."
+msgstr ""
+"El campo «%(campo)s» debe ser un número válido (recibido: «%(valor)s»)."
 
 #: muelles/views/get_data_spring.py:106
 #, python-format
 msgid ""
 "El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: "
 "«%(valor)s»)."
-msgstr "El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: «%(valor)s»)."
+msgstr ""
+"El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: "
+"«%(valor)s»)."
 
 #: muelles/views/get_data_spring.py:154
 #, python-format
 msgid ""
 "El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de "
 "hilo (%(hilo).4g mm): las espiras se solaparían."
-msgstr "El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de hilo (%(hilo).4g mm): las espiras se solaparían."
+msgstr ""
+"El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de "
+"hilo (%(hilo).4g mm): las espiras se solaparían."
 
 #: muelles/views/index.py:9
 msgid "Calculadora de Muelles"
@@ -564,18 +570,18 @@ msgstr "Error general durante la subida: %(error)s"
 msgid "Herramientas gratuitas de cálculo mecánico para ingeniería industrial."
 msgstr "Herramientas gratuitas de cálculo mecánico para ingeniería industrial."
 
-#: templates/includes/header.html:22 templates/menuapp/index.html:82
-#: templates/registration/login.html:3 templates/registration/login.html:17
+#: templates/includes/header.html:22 templates/registration/login.html:3
+#: templates/registration/login.html:17
 #: templates/registration/recall_psw.html:3
 msgid "Iniciar Sesión"
 msgstr "Iniciar Sesión"
 
-#: templates/includes/header.html:23 templates/menuapp/index.html:83
-#: templates/registration/signup.html:3 templates/registration/signup.html:17
+#: templates/includes/header.html:23 templates/registration/signup.html:3
+#: templates/registration/signup.html:17
 msgid "Crear Cuenta"
 msgstr "Crear Cuenta"
 
-#: templates/includes/header.html:25 templates/menuapp/index.html:85
+#: templates/includes/header.html:25
 #, python-format
 msgid ""
 "Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas "
@@ -604,7 +610,7 @@ msgstr "Menú"
 msgid "Inicio"
 msgstr "Inicio"
 
-#: templates/includes/sidebar.html:13
+#: templates/includes/sidebar.html:13 templates/menuapp/index.html:82
 msgid "Muelles"
 msgstr "Muelles"
 
@@ -617,11 +623,11 @@ msgid "Especificaciones"
 msgstr "Especificaciones"
 
 #: templates/includes/sidebar.html:16 templates/menuapp/contacto.html:4
-#: templates/menuapp/contacto.html:23
+#: templates/menuapp/contacto.html:23 templates/menuapp/index.html:109
 msgid "Contacto"
 msgstr "Contacto"
 
-#: templates/menuapp/contacto.html:21 templates/menuapp/index.html:24
+#: templates/menuapp/contacto.html:21 templates/menuapp/index.html:38
 msgid "Fotografia de Ernesto Avedillo"
 msgstr "Fotografia de Ernesto Avedillo"
 
@@ -655,15 +661,15 @@ msgstr ""
 "Creadas por un ingeniero industrial para ingenieros, estudiantes y "
 "diseñadores."
 
-#: templates/menuapp/index.html:26
-msgid "Carta de presentacion"
-msgstr "Carta de presentacion"
+#: templates/menuapp/index.html:25
+msgid "Ingeniería Industrial × Software"
+msgstr "Ingeniería Industrial × Software"
 
-#: templates/menuapp/index.html:27
+#: templates/menuapp/index.html:26
 msgid "De la Ingenieria Industrial al Desarrollo de Software"
 msgstr "De la Ingenieria Industrial al Desarrollo de Software"
 
-#: templates/menuapp/index.html:29
+#: templates/menuapp/index.html:28
 msgid ""
 "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo "
 "procesos para que su equipo técnico se dedique exclusivamente a crear, "
@@ -673,97 +679,49 @@ msgstr ""
 "procesos para que su equipo técnico se dedique exclusivamente a crear, "
 "diseñar y ganar proyectos de alto impacto."
 
-#: templates/menuapp/index.html:35
-msgid "Trayectoria Profesional"
-msgstr "Trayectoria Profesional"
+#: templates/menuapp/index.html:31
+msgid "Explorar las herramientas"
+msgstr "Explorar las herramientas"
 
-#: templates/menuapp/index.html:37
-msgid ""
-"A lo largo de mi experiencia en los sectores automotriz e industrial, he "
-"liderado y ejecutado proyectos\n"
-"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
-"además de encabezar iniciativas de mejora en procesos\n"
-"          de fabricación. Este recorrido me permitió identificar un patrón "
-"constante: los retos más exigentes encuentran\n"
-"          su mejor respuesta cuando se integran con soluciones de software."
-msgstr ""
-"A lo largo de mi experiencia en los sectores automotriz e industrial, he "
-"liderado y ejecutado proyectos\n"
-"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
-"además de encabezar iniciativas de mejora en procesos\n"
-"          de fabricación. Este recorrido me permitió identificar un patrón "
-"constante: los retos más exigentes encuentran\n"
-"          su mejor respuesta cuando se integran con soluciones de software."
+#: templates/menuapp/index.html:32
+msgid "Hablemos"
+msgstr "Hablemos"
 
-#: templates/menuapp/index.html:45
-msgid "Resolucion de Problemas como Enfoque"
-msgstr "Resolucion de Problemas como Enfoque"
+#: templates/menuapp/index.html:46
+msgid "Ingeniero Industrial"
+msgstr "Ingeniero Industrial"
 
-#: templates/menuapp/index.html:47
-msgid ""
-"Durante años, he convertido necesidades operativas en herramientas "
-"prácticas. Diseñé sistemas de ayudas que redujeron\n"
-"          los tiempos de cotización de horas a minutos y creé plantillas "
-"para decisiones críticas de diseño mecánico que optimizaron\n"
-"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de "
-"una compañía para reducir la dependencia externa\n"
-"          y minimizar costes operativos."
-msgstr ""
-"Durante años, he convertido necesidades operativas en herramientas "
-"prácticas. Diseñé sistemas de ayudas que redujeron\n"
-"          los tiempos de cotización de horas a minutos y creé plantillas "
-"para decisiones críticas de diseño mecánico que optimizaron\n"
-"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de "
-"una compañía para reducir la dependencia externa\n"
-"          y minimizar costes operativos."
-
-#: templates/menuapp/index.html:55
-msgid "Evolucion Tecnica"
-msgstr "Evolucion Tecnica"
+#: templates/menuapp/index.html:54
+msgid "Carta de presentacion"
+msgstr "Carta de presentacion"
 
 #: templates/menuapp/index.html:57
+#, python-format
 msgid ""
-"Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
-"Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
-"          Me permitió elevar soluciones —originalmente concebidas en hojas "
-"de cálculo— a implementaciones de ingeniería\n"
-"          de software de alto nivel, utilizando C, C++, Python y "
-"arquitecturas modernas para construir sistemas robustos,\n"
-"          escalables y mantenibles."
+"Over two decades across BMW, VW, and Ford production lines, I kept "
+"witnessing the exact same tragedy: world-class engineers wasting their "
+"talent on mind-numbing, repetitive grunt work.  Engineering was meant for "
+"pure creation—not endless repetition.So I took matters into my own hands and "
+"started building real tools. I slashed complex quotation processes from "
+"grueling hours down to mere minutes, engineered custom design frameworks, "
+"and built an entire enterprise ERP system from scratch. Then, I pushed "
+"further, diving deep into C, C++, and Python at 42 Barcelona to transition "
+"from basic spreadsheets to robust, full-scale software engineering.  Today, "
+"I’m putting all of those tools directly into your hands. Every script, "
+"framework, and calculation engine I’ve forged is hosted right here—100%% "
+"free for any engineer or student ready to stop repeating and start inventing."
 msgstr ""
-"Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
-"Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
-"          Me permitió elevar soluciones —originalmente concebidas en hojas "
-"de cálculo— a implementaciones de ingeniería\n"
-"          de software de alto nivel, utilizando C, C++, Python y "
-"arquitecturas modernas para construir sistemas robustos,\n"
-"          escalables y mantenibles."
+"Durante más de dos décadas, en las líneas de producción de BMW, VW y Ford, presencié una y otra vez la misma tragedia: ingenieros de primer nivel desperdiciando su talento en tareas rutinarias, repetitivas y embrutecedoras. La ingeniería estaba hecha para crear, no para repetir sin fin. Así que tomé cartas en el asunto y empecé a construir herramientas de verdad. Recorté procesos de cotización complejos de horas agotadoras a apenas minutos, desarrollé marcos de diseño a medida y levanté desde cero el ERP completo de una empresa. Después fui más allá: me sumergí en C, C++ y Python en 42 Barcelona para pasar de las hojas de cálculo básicas a una ingeniería de software robusta y a gran escala. Hoy pongo todas esas herramientas directamente en tus manos. Cada script, cada marco y cada motor de cálculo que he forjado está alojado aquí mismo: 100%% gratis para cualquier ingeniero o estudiante dispuesto a dejar de repetir y empezar a inventar."
+
+#: templates/menuapp/index.html:64
+msgid "Herramientas"
+msgstr "Herramientas"
 
 #: templates/menuapp/index.html:65
-msgid "Propuesta de Valor"
-msgstr "Propuesta de Valor"
-
-#: templates/menuapp/index.html:67
-msgid ""
-"Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el "
-"desarrollo de software converjan\n"
-"          para crear soluciones técnicas de alto impacto. Estoy abierto a "
-"explorar ideas innovadoras, optimizar algoritmos\n"
-"          y contribuir en retos industriales complejos con un enfoque "
-"riguroso y práctico."
-msgstr ""
-"Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el "
-"desarrollo de software converjan\n"
-"          para crear soluciones técnicas de alto impacto. Estoy abierto a "
-"explorar ideas innovadoras, optimizar algoritmos\n"
-"          y contribuir en retos industriales complejos con un enfoque "
-"riguroso y práctico."
-
-#: templates/menuapp/index.html:74
 msgid "¿Qué presento en esta página web?"
 msgstr "¿Qué presento en esta página web?"
 
-#: templates/menuapp/index.html:76
+#: templates/menuapp/index.html:67
 msgid ""
 "En esta página web estoy reuniendo mis herramientas con el objetivo de "
 "convertirlas en aplicaciones web,\n"
@@ -774,6 +732,52 @@ msgstr ""
 "convertirlas en aplicaciones web,\n"
 "          de modo que puedan ser utilizadas por otros ingenieros, "
 "estudiantes o cualquier persona interesada en la ingeniería."
+
+#: templates/menuapp/index.html:71
+msgid ""
+"Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el "
+"navegador y generan un informe descargable."
+msgstr ""
+"Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el "
+"navegador y generan un informe descargable."
+
+#: templates/menuapp/index.html:79 templates/muelles/index.html:22
+msgid "Muelle de compresión"
+msgstr "Muelle de compresión"
+
+#: templates/menuapp/index.html:83
+msgid ""
+"Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
+msgstr ""
+"Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
+
+#: templates/menuapp/index.html:84 templates/menuapp/index.html:96
+msgid "Abrir"
+msgstr "Abrir"
+
+#: templates/menuapp/index.html:91
+msgid "Ajuste eje-agujero"
+msgstr "Ajuste eje-agujero"
+
+#: templates/menuapp/index.html:94
+msgid "Tolerancias y ajustes"
+msgstr "Tolerancias y ajustes"
+
+#: templates/menuapp/index.html:95
+msgid ""
+"Analiza ajustes eje-agujero, cadenas de cotas y montajes con método "
+"estadístico."
+msgstr ""
+"Analiza ajustes eje-agujero, cadenas de cotas y montajes con método "
+"estadístico."
+
+#: templates/menuapp/index.html:110
+msgid "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
+msgstr "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
+
+#: templates/menuapp/index.html:111
+msgid "Ir a contacto"
+msgstr "Ir a contacto"
 
 #: templates/muelles/calculadora_2k.html:7
 msgid "Calculadora de Muelle de Doble Rigidez (2K) Online"
@@ -806,7 +810,11 @@ msgid ""
 "cuerpo central abierto), de doble constante K1/K2: los tramos de paso "
 "apretado se bloquean antes, dejando el tramo central de paso abierto como "
 "único responsable de la rigidez durante el resto del recorrido."
-msgstr "Muelle de compresión con tres tramos de paso distinto (extremos apretados y cuerpo central abierto), de doble constante K1/K2: los tramos de paso apretado se bloquean antes, dejando el tramo central de paso abierto como único responsable de la rigidez durante el resto del recorrido."
+msgstr ""
+"Muelle de compresión con tres tramos de paso distinto (extremos apretados y "
+"cuerpo central abierto), de doble constante K1/K2: los tramos de paso "
+"apretado se bloquean antes, dejando el tramo central de paso abierto como "
+"único responsable de la rigidez durante el resto del recorrido."
 
 #: templates/muelles/calculadora_2k.html:21
 #: templates/muelles/calculadora_conico.html:21
@@ -817,7 +825,12 @@ msgid ""
 "longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor "
 "ni las espiras no activas. En caso de crear un prototipo, hay que tener en "
 "cuenta este punto."
-msgstr "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto."
+msgstr ""
+"NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea "
+"imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las "
+"longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor "
+"ni las espiras no activas. En caso de crear un prototipo, hay que tener en "
+"cuenta este punto."
 
 #: templates/muelles/calculadora_compresion.html:7
 msgid "Calculadora de Muelle de Compresión Online Gratis"
@@ -868,7 +881,10 @@ msgid ""
 "Muelle de compresión con diámetro medio variable (superior e inferior) y "
 "paso constante. Incluye selección automática de materiales y análisis "
 "completo de propiedades mecánicas."
-msgstr "Muelle de compresión con diámetro medio variable (superior e inferior) y paso constante. Incluye selección automática de materiales y análisis completo de propiedades mecánicas."
+msgstr ""
+"Muelle de compresión con diámetro medio variable (superior e inferior) y "
+"paso constante. Incluye selección automática de materiales y análisis "
+"completo de propiedades mecánicas."
 
 #: templates/muelles/calculadora_conico_pitch_variable.html:7
 msgid "Calculadora de Muelle Cónico de Paso Variable"
@@ -929,10 +945,6 @@ msgstr ""
 #: templates/muelles/index.html:21
 msgid "Calculadora de Muelles de compresión"
 msgstr "Calculadora de Muelles de compresión"
-
-#: templates/muelles/index.html:22
-msgid "Muelle de compresión"
-msgstr "Muelle de compresión"
 
 #: templates/muelles/index.html:27
 msgid "Calculadora de Muelles de tracción"
@@ -1612,7 +1624,8 @@ msgstr "Longitud libre en mm (calculada: suma de longitudes de cada tramo)"
 #: templates/muelles/partials/_formulario_2k.html:90
 msgid ""
 "Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
-msgstr "Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
+msgstr ""
+"Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
 
 #: templates/muelles/partials/_formulario_2k.html:90
 msgid "No total espiras"
@@ -1642,7 +1655,9 @@ msgstr "2 posición carga"
 msgid ""
 "Complete los datos de los tres tramos del muelle 2K para obtener sus "
 "especificaciones tecnicas completas."
-msgstr "Complete los datos de los tres tramos del muelle 2K para obtener sus especificaciones tecnicas completas."
+msgstr ""
+"Complete los datos de los tres tramos del muelle 2K para obtener sus "
+"especificaciones tecnicas completas."
 
 #: templates/muelles/partials/_formulario_2k.html:123
 #: templates/muelles/partials/_formulario_compresion.html:97
@@ -1788,7 +1803,9 @@ msgstr "Longitud libre en mm"
 msgid ""
 "Complete los datos del muelle cónico para obtener sus especificaciones "
 "tecnicas completas."
-msgstr "Complete los datos del muelle cónico para obtener sus especificaciones tecnicas completas."
+msgstr ""
+"Complete los datos del muelle cónico para obtener sus especificaciones "
+"tecnicas completas."
 
 #: templates/muelles/partials/_formulario_conico_pitch_variable.html:28
 msgid "Paso en la parte superior del muelle"
@@ -3015,6 +3032,152 @@ msgstr "Tolerancias Absolutas"
 #: tolerances/views/videos.py:49
 msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 msgstr "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
+
+
+#: templates/menuapp/index.html
+msgid "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
+msgstr "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
+
+#: templates/menuapp/index.html
+msgid "La ingeniería nació para crear, no para repetir."
+msgstr "La ingeniería nació para crear, no para repetir."
+
+#: templates/menuapp/index.html
+msgid "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
+msgstr "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
+
+#: templates/menuapp/index.html
+#, python-format
+msgid "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
+msgstr "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
+
+#~ msgid "Trayectoria Profesional"
+#~ msgstr "Trayectoria Profesional"
+
+#~ msgid ""
+#~ "A lo largo de mi experiencia en los sectores automotriz e industrial, he "
+#~ "liderado y ejecutado proyectos\n"
+#~ "          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
+#~ "además de encabezar iniciativas de mejora en procesos\n"
+#~ "          de fabricación. Este recorrido me permitió identificar un "
+#~ "patrón constante: los retos más exigentes encuentran\n"
+#~ "          su mejor respuesta cuando se integran con soluciones de "
+#~ "software."
+#~ msgstr ""
+#~ "A lo largo de mi experiencia en los sectores automotriz e industrial, he "
+#~ "liderado y ejecutado proyectos\n"
+#~ "          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
+#~ "además de encabezar iniciativas de mejora en procesos\n"
+#~ "          de fabricación. Este recorrido me permitió identificar un "
+#~ "patrón constante: los retos más exigentes encuentran\n"
+#~ "          su mejor respuesta cuando se integran con soluciones de "
+#~ "software."
+
+#~ msgid "Resolucion de Problemas como Enfoque"
+#~ msgstr "Resolucion de Problemas como Enfoque"
+
+#~ msgid ""
+#~ "Durante años, he convertido necesidades operativas en herramientas "
+#~ "prácticas. Diseñé sistemas de ayudas que redujeron\n"
+#~ "          los tiempos de cotización de horas a minutos y creé plantillas "
+#~ "para decisiones críticas de diseño mecánico que optimizaron\n"
+#~ "          la eficiencia del equipo. Asimismo, desarrollé el software ERP "
+#~ "de una compañía para reducir la dependencia externa\n"
+#~ "          y minimizar costes operativos."
+#~ msgstr ""
+#~ "Durante años, he convertido necesidades operativas en herramientas "
+#~ "prácticas. Diseñé sistemas de ayudas que redujeron\n"
+#~ "          los tiempos de cotización de horas a minutos y creé plantillas "
+#~ "para decisiones críticas de diseño mecánico que optimizaron\n"
+#~ "          la eficiencia del equipo. Asimismo, desarrollé el software ERP "
+#~ "de una compañía para reducir la dependencia externa\n"
+#~ "          y minimizar costes operativos."
+
+#~ msgid "Evolucion Tecnica"
+#~ msgstr "Evolucion Tecnica"
+
+#~ msgid ""
+#~ "Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+#~ "Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
+#~ "          Me permitió elevar soluciones —originalmente concebidas en "
+#~ "hojas de cálculo— a implementaciones de ingeniería\n"
+#~ "          de software de alto nivel, utilizando C, C++, Python y "
+#~ "arquitecturas modernas para construir sistemas robustos,\n"
+#~ "          escalables y mantenibles."
+#~ msgstr ""
+#~ "Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+#~ "Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
+#~ "          Me permitió elevar soluciones —originalmente concebidas en "
+#~ "hojas de cálculo— a implementaciones de ingeniería\n"
+#~ "          de software de alto nivel, utilizando C, C++, Python y "
+#~ "arquitecturas modernas para construir sistemas robustos,\n"
+#~ "          escalables y mantenibles."
+
+#~ msgid "Propuesta de Valor"
+#~ msgstr "Propuesta de Valor"
+
+#~ msgid ""
+#~ "Busco colaborar en proyectos donde la ingeniería, el análisis de datos y "
+#~ "el desarrollo de software converjan\n"
+#~ "          para crear soluciones técnicas de alto impacto. Estoy abierto a "
+#~ "explorar ideas innovadoras, optimizar algoritmos\n"
+#~ "          y contribuir en retos industriales complejos con un enfoque "
+#~ "riguroso y práctico."
+#~ msgstr ""
+#~ "Busco colaborar en proyectos donde la ingeniería, el análisis de datos y "
+#~ "el desarrollo de software converjan\n"
+#~ "          para crear soluciones técnicas de alto impacto. Estoy abierto a "
+#~ "explorar ideas innovadoras, optimizar algoritmos\n"
+#~ "          y contribuir en retos industriales complejos con un enfoque "
+#~ "riguroso y práctico."
+
+#~ msgid "Encantado de saludarte"
+#~ msgstr "Encantado de saludarte"
+
+#~ msgid "Proyectos para BMW, VW y FORD"
+#~ msgstr "Proyectos para BMW, VW y FORD"
+
+#~ msgid "Cotizaciones de horas a minutos"
+#~ msgstr "Cotizaciones de horas a minutos"
+
+#~ msgid "Formado en 42 Barcelona"
+#~ msgstr "Formado en 42 Barcelona"
+
+#~ msgid "Calculadoras listas para usar"
+#~ msgstr "Calculadoras listas para usar"
+
+#~ msgid ""
+#~ "Soy ingeniero industrial. En las plantas de BMW, VW y FORD vi siempre el "
+#~ "mismo problema: gente brillante atrapada en tareas repetitivas."
+#~ msgstr ""
+#~ "Soy ingeniero industrial. En las plantas de BMW, VW y FORD vi siempre el "
+#~ "mismo problema: gente brillante atrapada en tareas repetitivas."
+
+#~ msgid ""
+#~ "Así que me puse a construir herramientas. Bajé las cotizaciones de horas "
+#~ "a minutos, hice plantillas de diseño y levanté el ERP de una empresa "
+#~ "entera."
+#~ msgstr ""
+#~ "Así que me puse a construir herramientas. Bajé las cotizaciones de horas "
+#~ "a minutos, hice plantillas de diseño y levanté el ERP de una empresa "
+#~ "entera."
+
+#~ msgid ""
+#~ "Formarme en 42 Barcelona lo cambió todo: pasé de la hoja de cálculo al "
+#~ "software de verdad, con C, C++ y Python."
+#~ msgstr ""
+#~ "Formarme en 42 Barcelona lo cambió todo: pasé de la hoja de cálculo al "
+#~ "software de verdad, con C, C++ y Python."
+
+#~ msgid ""
+#~ "Hoy reúno aquí esas herramientas para que cualquier ingeniero o "
+#~ "estudiante las use gratis."
+#~ msgstr ""
+#~ "Hoy reúno aquí esas herramientas para que cualquier ingeniero o "
+#~ "estudiante las use gratis."
+
+#~ msgid "Porque la ingeniería está para crear, no para repetir."
+#~ msgstr "Porque la ingeniería está para crear, no para repetir."
 
 #~ msgid "Próximamente disponible"
 #~ msgstr "Próximamente disponible"

@@ -6,87 +6,136 @@
 {% block meta_description %}{% trans "Herramientas gratuitas de cálculo mecánico: muelles, tolerancias y ajustes. Creadas por un ingeniero industrial para ingenieros, estudiantes y diseñadores." %}{% endblock %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'menuapp/css/home.css' %}">
   <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
 {% endblock %}
 
 {% block content %}
-  <!-- Page background -->
-  <div class="page-background" style="background-image: url('{% static 'global/images/header-background.jpeg' %}');"></div>
-
-
-  <!-- Overlay to close the menu -->
   <div class="sidebar-overlay"></div>
 
-  <div class="letter-page">
-    <article class="letter-card">
-      <header class="letter-header">
-        <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="{% trans 'Fotografia de Ernesto Avedillo' %}" class="profile-photo">
-        <div class="letter-intro">
-          <p class="eyebrow">{% trans "Carta de presentacion" %}</p>
-          <h1>{% trans "De la Ingenieria Industrial al Desarrollo de Software" %}</h1>
-          <p class="lead">
+  <div class="hp">
+    <div class="hp-blueprint" aria-hidden="true"></div>
+
+    <!-- ============ HERO ============ -->
+    <header class="hp-hero hp-shell">
+      <div class="hp-hero-grid">
+        <div class="hp-hero-main reveal">
+          <p class="hp-kicker">// {% trans "Ingeniería Industrial × Software" %}</p>
+          <h1 class="hp-title">{% trans "De la Ingenieria Industrial al Desarrollo de Software" %}</h1>
+          <p class="hp-lead">
             {% trans "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto." %}
           </p>
+          <div class="hp-cta-row">
+            <a class="hp-btn hp-btn--solid" href="#tools">{% trans "Explorar las herramientas" %}</a>
+            <a class="hp-btn hp-btn--wire" href="{% url 'menuapp:contacto' %}">{% trans "Hablemos" %}</a>
+          </div>
         </div>
-      </header>
 
-      <section class="letter-section">
-        <h2>{% trans "Trayectoria Profesional" %}</h2>
-        <p>
-          {% blocktrans %}A lo largo de mi experiencia en los sectores automotriz e industrial, he liderado y ejecutado proyectos
-          técnicos para fabricantes de primer nivel como BMW, VW y FORD, además de encabezar iniciativas de mejora en procesos
-          de fabricación. Este recorrido me permitió identificar un patrón constante: los retos más exigentes encuentran
-          su mejor respuesta cuando se integran con soluciones de software.{% endblocktrans %}
-        </p>
-      </section>
+        <figure class="hp-portrait reveal">
+          <div class="hp-portrait-frame">
+            <img src="{% static 'menuapp/images/Ernesto_Avedillo.png' %}" alt="{% trans 'Fotografia de Ernesto Avedillo' %}">
+            <span class="hp-tick hp-tick--tl"></span>
+            <span class="hp-tick hp-tick--tr"></span>
+            <span class="hp-tick hp-tick--bl"></span>
+            <span class="hp-tick hp-tick--br"></span>
+          </div>
+          <figcaption>
+            <span class="hp-portrait-name">Ernesto Avedillo</span>
+            <span class="hp-portrait-role">{% trans "Ingeniero Industrial" %}</span>
+          </figcaption>
+        </figure>
+      </div>
+    </header>
 
-      <section class="letter-section">
-        <h2>{% trans "Resolucion de Problemas como Enfoque" %}</h2>
-        <p>
-          {% blocktrans %}Durante años, he convertido necesidades operativas en herramientas prácticas. Diseñé sistemas de ayudas que redujeron
-          los tiempos de cotización de horas a minutos y creé plantillas para decisiones críticas de diseño mecánico que optimizaron
-          la eficiencia del equipo. Asimismo, desarrollé el software ERP de una compañía para reducir la dependencia externa
-          y minimizar costes operativos.{% endblocktrans %}
-        </p>
-      </section>
+    <!-- ============ DOSSIER ============ -->
+    <section class="hp-dossier hp-shell">
+      <p class="hp-section-tag">// {% trans "Carta de presentacion" %}</p>
 
-      <section class="letter-section">
-        <h2>{% trans "Evolucion Tecnica" %}</h2>
-        <p>
-          {% blocktrans %}Mi formación en <a href="https://42barcelona.com" target="_blank">42 Barcelona</a> marcó un punto de inflexión en mi perfil profesional.
-          Me permitió elevar soluciones —originalmente concebidas en hojas de cálculo— a implementaciones de ingeniería
-          de software de alto nivel, utilizando C, C++, Python y arquitecturas modernas para construir sistemas robustos,
-          escalables y mantenibles.{% endblocktrans %}
-        </p>
-      </section>
+      <div class="hp-summary reveal">
+        <p>{% trans "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas." %}</p>
+        <p class="hp-summary-punch">{% trans "La ingeniería nació para crear, no para repetir." %}</p>
+        <p>{% trans "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto." %}</p>
+        <p>{% trans "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar." %}</p>
+      </div>
+    </section>
 
-      <section class="letter-section letter-section-contact">
-        <h2>{% trans "Propuesta de Valor" %}</h2>
-        <p>
-          {% blocktrans %}Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el desarrollo de software converjan
-          para crear soluciones técnicas de alto impacto. Estoy abierto a explorar ideas innovadoras, optimizar algoritmos
-          y contribuir en retos industriales complejos con un enfoque riguroso y práctico.{% endblocktrans %}
-        </p>
-      </section>
-
-      <section class="letter-section letter-section-contact">
+    <!-- ============ TOOLS ============ -->
+    <section id="tools" class="hp-tools hp-shell">
+      <div class="hp-tools-head reveal">
+        <p class="hp-section-tag">// {% trans "Herramientas" %}</p>
         <h2>{% trans "¿Qué presento en esta página web?" %}</h2>
         <p>
           {% blocktrans %}En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,
           de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería.{% endblocktrans %}
         </p>
+        <p class="hp-tools-note">
+          {% trans "Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el navegador y generan un informe descargable." %}
+        </p>
+      </div>
 
-        <!-- <div class="auth-links mt-4">
-          {% if not user.is_authenticated %}
-            <a href="{% url 'menuapp:login' %}" class="btn btn-primary me-2">{% trans "Iniciar Sesión" %}</a>
-            <a href="{% url 'menuapp:signup' %}" class="btn btn-outline-primary">{% trans "Crear Cuenta" %}</a>
-          {% else %}
-            <p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p>
-          {% endif %}
-        </div> -->
-      </section>
-    </article>
+      <div class="hp-tool-grid">
+        <a class="hp-tool reveal" href="{% url 'muelles_index' %}">
+          <span class="hp-tool-idx">01</span>
+          <div class="hp-tool-media">
+            <!-- <img src="{% static 'muelles/images/muelle_compresion.jpg' %}" alt="{% trans 'Muelle de compresión' %}"> -->
+            <img src="https://gifdb.com/images/high/computer-generated-king-kong-riding-pogo-stick-khyn9lmo3xfjnbay.webp" alt="{% trans 'Muelle de compresión' %}">
+          </div>
+          <div class="hp-tool-info">
+            <h3>{% trans "Muelles" %}</h3>
+            <p>{% trans "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales." %}</p>
+            <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+          </div>
+        </a>
+
+        <a class="hp-tool reveal" href="{% url 'tolerances_index' %}">
+          <span class="hp-tool-idx">02</span>
+          <div class="hp-tool-media">
+            <img src="{% static 'menuapp/images/Tolerances.jpeg' %}" alt="{% trans 'Ajuste eje-agujero' %}">
+          </div>
+          <div class="hp-tool-info">
+            <h3>{% trans "Tolerancias y ajustes" %}</h3>
+            <p>{% trans "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método estadístico." %}</p>
+            <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="hp-contact hp-shell reveal">
+      <div class="hp-contact-inner">
+        <span class="hp-tick hp-tick--tl"></span>
+        <span class="hp-tick hp-tick--tr"></span>
+        <span class="hp-tick hp-tick--bl"></span>
+        <span class="hp-tick hp-tick--br"></span>
+        <p class="hp-section-tag">// {% trans "Contacto" %}</p>
+        <h2>{% trans "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos." %}</h2>
+        <a class="hp-btn hp-btn--solid" href="{% url 'menuapp:contacto' %}">{% trans "Ir a contacto" %}</a>
+      </div>
+    </section>
   </div>
+{% endblock %}
 
+{% block extra_js %}
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 {% endblock %}

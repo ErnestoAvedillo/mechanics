@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:15+0200\n"
+"POT-Creation-Date: 2026-09-01 22:46+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -285,14 +285,18 @@ msgstr "The '%(campo)s' field must be a valid number (received: '%(valor)s')."
 msgid ""
 "El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: "
 "«%(valor)s»)."
-msgstr "The '%(campo)s' field must be a whole number, with no decimals (received: '%(valor)s')."
+msgstr ""
+"The '%(campo)s' field must be a whole number, with no decimals (received: "
+"'%(valor)s')."
 
 #: muelles/views/get_data_spring.py:154
 #, python-format
 msgid ""
 "El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de "
 "hilo (%(hilo).4g mm): las espiras se solaparían."
-msgstr "The '%(campo)s' pitch (%(paso).4g mm) cannot be smaller than the wire diameter (%(hilo).4g mm): the coils would overlap."
+msgstr ""
+"The '%(campo)s' pitch (%(paso).4g mm) cannot be smaller than the wire "
+"diameter (%(hilo).4g mm): the coils would overlap."
 
 #: muelles/views/index.py:9
 msgid "Calculadora de Muelles"
@@ -565,18 +569,18 @@ msgid "Herramientas gratuitas de cálculo mecánico para ingeniería industrial.
 msgstr ""
 "Free mechanical engineering calculation tools for industrial engineering."
 
-#: templates/includes/header.html:22 templates/menuapp/index.html:82
-#: templates/registration/login.html:3 templates/registration/login.html:17
+#: templates/includes/header.html:22 templates/registration/login.html:3
+#: templates/registration/login.html:17
 #: templates/registration/recall_psw.html:3
 msgid "Iniciar Sesión"
 msgstr "Log In"
 
-#: templates/includes/header.html:23 templates/menuapp/index.html:83
-#: templates/registration/signup.html:3 templates/registration/signup.html:17
+#: templates/includes/header.html:23 templates/registration/signup.html:3
+#: templates/registration/signup.html:17
 msgid "Crear Cuenta"
 msgstr "Create Account"
 
-#: templates/includes/header.html:25 templates/menuapp/index.html:85
+#: templates/includes/header.html:25
 #, python-format
 msgid ""
 "Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas "
@@ -605,7 +609,7 @@ msgstr "Menu"
 msgid "Inicio"
 msgstr "Home"
 
-#: templates/includes/sidebar.html:13
+#: templates/includes/sidebar.html:13 templates/menuapp/index.html:82
 msgid "Muelles"
 msgstr "Springs"
 
@@ -618,11 +622,11 @@ msgid "Especificaciones"
 msgstr "Specifications"
 
 #: templates/includes/sidebar.html:16 templates/menuapp/contacto.html:4
-#: templates/menuapp/contacto.html:23
+#: templates/menuapp/contacto.html:23 templates/menuapp/index.html:109
 msgid "Contacto"
 msgstr "Contact"
 
-#: templates/menuapp/contacto.html:21 templates/menuapp/index.html:24
+#: templates/menuapp/contacto.html:21 templates/menuapp/index.html:38
 msgid "Fotografia de Ernesto Avedillo"
 msgstr "Photograph of Ernesto Avedillo"
 
@@ -655,15 +659,15 @@ msgstr ""
 "Free mechanical calculation tools: springs, tolerances and fits. Built by an "
 "industrial engineer for engineers, students and designers."
 
-#: templates/menuapp/index.html:26
-msgid "Carta de presentacion"
-msgstr "Cover letter"
+#: templates/menuapp/index.html:25
+msgid "Ingeniería Industrial × Software"
+msgstr "Industrial Engineering × Software"
 
-#: templates/menuapp/index.html:27
+#: templates/menuapp/index.html:26
 msgid "De la Ingenieria Industrial al Desarrollo de Software"
 msgstr "From Industrial Engineering to Software Development"
 
-#: templates/menuapp/index.html:29
+#: templates/menuapp/index.html:28
 msgid ""
 "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo "
 "procesos para que su equipo técnico se dedique exclusivamente a crear, "
@@ -673,98 +677,49 @@ msgstr ""
 "processes so your technical team can focus exclusively on creating, "
 "designing and winning high-impact projects."
 
-#: templates/menuapp/index.html:35
-msgid "Trayectoria Profesional"
-msgstr "Professional Background"
+#: templates/menuapp/index.html:31
+msgid "Explorar las herramientas"
+msgstr "Explore the tools"
 
-#: templates/menuapp/index.html:37
-msgid ""
-"A lo largo de mi experiencia en los sectores automotriz e industrial, he "
-"liderado y ejecutado proyectos\n"
-"          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
-"además de encabezar iniciativas de mejora en procesos\n"
-"          de fabricación. Este recorrido me permitió identificar un patrón "
-"constante: los retos más exigentes encuentran\n"
-"          su mejor respuesta cuando se integran con soluciones de software."
-msgstr ""
-"Throughout my experience in the automotive and industrial sectors, I have "
-"led and executed technical\n"
-"          projects for top-tier manufacturers such as BMW, VW and FORD, as "
-"well as spearheaded process improvement\n"
-"          initiatives in manufacturing. This journey allowed me to identify "
-"a constant pattern: the most demanding\n"
-"          challenges find their best answer when integrated with software "
-"solutions."
+#: templates/menuapp/index.html:32
+msgid "Hablemos"
+msgstr "Let's talk"
 
-#: templates/menuapp/index.html:45
-msgid "Resolucion de Problemas como Enfoque"
-msgstr "Problem-Solving as an Approach"
+#: templates/menuapp/index.html:46
+msgid "Ingeniero Industrial"
+msgstr "Industrial Engineer"
 
-#: templates/menuapp/index.html:47
-msgid ""
-"Durante años, he convertido necesidades operativas en herramientas "
-"prácticas. Diseñé sistemas de ayudas que redujeron\n"
-"          los tiempos de cotización de horas a minutos y creé plantillas "
-"para decisiones críticas de diseño mecánico que optimizaron\n"
-"          la eficiencia del equipo. Asimismo, desarrollé el software ERP de "
-"una compañía para reducir la dependencia externa\n"
-"          y minimizar costes operativos."
-msgstr ""
-"Over the years, I have turned operational needs into practical tools. I "
-"designed helper systems that reduced\n"
-"          quoting times from hours to minutes and created templates for "
-"critical mechanical design decisions that optimized\n"
-"          the team's efficiency. I also developed a company's ERP software "
-"to reduce external dependency\n"
-"          and minimize operating costs."
-
-#: templates/menuapp/index.html:55
-msgid "Evolucion Tecnica"
-msgstr "Technical Evolution"
+#: templates/menuapp/index.html:54
+msgid "Carta de presentacion"
+msgstr "Cover letter"
 
 #: templates/menuapp/index.html:57
+#, python-format
 msgid ""
-"Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
-"Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
-"          Me permitió elevar soluciones —originalmente concebidas en hojas "
-"de cálculo— a implementaciones de ingeniería\n"
-"          de software de alto nivel, utilizando C, C++, Python y "
-"arquitecturas modernas para construir sistemas robustos,\n"
-"          escalables y mantenibles."
+"Over two decades across BMW, VW, and Ford production lines, I kept "
+"witnessing the exact same tragedy: world-class engineers wasting their "
+"talent on mind-numbing, repetitive grunt work.  Engineering was meant for "
+"pure creation—not endless repetition.So I took matters into my own hands and "
+"started building real tools. I slashed complex quotation processes from "
+"grueling hours down to mere minutes, engineered custom design frameworks, "
+"and built an entire enterprise ERP system from scratch. Then, I pushed "
+"further, diving deep into C, C++, and Python at 42 Barcelona to transition "
+"from basic spreadsheets to robust, full-scale software engineering.  Today, "
+"I’m putting all of those tools directly into your hands. Every script, "
+"framework, and calculation engine I’ve forged is hosted right here—100%% "
+"free for any engineer or student ready to stop repeating and start inventing."
 msgstr ""
-"My training at <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
-"Barcelona</a> marked a turning point in my professional profile.\n"
-"          It allowed me to elevate solutions — originally conceived in "
-"spreadsheets — into high-level software\n"
-"          engineering implementations, using C, C++, Python and modern "
-"architectures to build robust,\n"
-"          scalable and maintainable systems."
+"Over two decades across BMW, VW, and Ford production lines, I kept witnessing the exact same tragedy: world-class engineers wasting their talent on mind-numbing, repetitive grunt work.  Engineering was meant for pure creation—not endless repetition.So I took matters into my own hands and started building real tools. I slashed complex quotation processes from grueling hours down to mere minutes, engineered custom design frameworks, and built an entire enterprise ERP system from scratch. Then, I pushed further, diving deep into C, C++, and Python at 42 Barcelona to transition from basic spreadsheets to robust, full-scale software engineering.  Today, I’m putting all of those tools directly into your hands. Every script, framework, and calculation engine I’ve forged is hosted right here—100%% free for any engineer or student ready to stop repeating and start inventing."
+
+#: templates/menuapp/index.html:64
+msgid "Herramientas"
+msgstr "Tools"
 
 #: templates/menuapp/index.html:65
-msgid "Propuesta de Valor"
-msgstr "Value Proposition"
-
-#: templates/menuapp/index.html:67
-msgid ""
-"Busco colaborar en proyectos donde la ingeniería, el análisis de datos y el "
-"desarrollo de software converjan\n"
-"          para crear soluciones técnicas de alto impacto. Estoy abierto a "
-"explorar ideas innovadoras, optimizar algoritmos\n"
-"          y contribuir en retos industriales complejos con un enfoque "
-"riguroso y práctico."
-msgstr ""
-"I am looking to collaborate on projects where engineering, data analysis and "
-"software development converge\n"
-"          to create high-impact technical solutions. I am open to exploring "
-"innovative ideas, optimizing algorithms\n"
-"          and contributing to complex industrial challenges with a rigorous, "
-"practical approach."
-
-#: templates/menuapp/index.html:74
 msgid "¿Qué presento en esta página web?"
 msgstr "What do I present on this website?"
 
-#: templates/menuapp/index.html:76
+#: templates/menuapp/index.html:67
 msgid ""
 "En esta página web estoy reuniendo mis herramientas con el objetivo de "
 "convertirlas en aplicaciones web,\n"
@@ -775,6 +730,54 @@ msgstr ""
 "web applications,\n"
 "          so that they can be used by other engineers, students or anyone "
 "interested in engineering."
+
+#: templates/menuapp/index.html:71
+msgid ""
+"Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el "
+"navegador y generan un informe descargable."
+msgstr ""
+"Pick a calculator and get started: they are free, run in your browser and "
+"produce a downloadable report."
+
+#: templates/menuapp/index.html:79 templates/muelles/index.html:22
+msgid "Muelle de compresión"
+msgstr "Compression spring"
+
+#: templates/menuapp/index.html:83
+msgid ""
+"Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
+msgstr ""
+"Calculate compression, extension, torsion, conical and non-linear springs."
+
+#: templates/menuapp/index.html:84 templates/menuapp/index.html:96
+msgid "Abrir"
+msgstr "Open"
+
+#: templates/menuapp/index.html:91
+msgid "Ajuste eje-agujero"
+msgstr "Shaft-hole fit"
+
+#: templates/menuapp/index.html:94
+msgid "Tolerancias y ajustes"
+msgstr "Tolerances and fits"
+
+#: templates/menuapp/index.html:95
+msgid ""
+"Analiza ajustes eje-agujero, cadenas de cotas y montajes con método "
+"estadístico."
+msgstr ""
+"Analyze shaft-hole fits, dimension chains and assemblies with a statistical "
+"method."
+
+#: templates/menuapp/index.html:110
+msgid "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
+msgstr ""
+"Got a technical challenge on your desk? Drop me a line and we'll talk it "
+"over."
+
+#: templates/menuapp/index.html:111
+msgid "Ir a contacto"
+msgstr "Go to contact"
 
 #: templates/muelles/calculadora_2k.html:7
 msgid "Calculadora de Muelle de Doble Rigidez (2K) Online"
@@ -942,10 +945,6 @@ msgstr ""
 #: templates/muelles/index.html:21
 msgid "Calculadora de Muelles de compresión"
 msgstr "Compression Spring Calculator"
-
-#: templates/muelles/index.html:22
-msgid "Muelle de compresión"
-msgstr "Compression spring"
 
 #: templates/muelles/index.html:27
 msgid "Calculadora de Muelles de tracción"
@@ -3029,6 +3028,151 @@ msgstr "Absolute Tolerances"
 #: tolerances/views/videos.py:49
 msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 msgstr "Video URL not recognized. Showing the default video."
+
+
+#: templates/menuapp/index.html
+msgid "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
+msgstr "For over two decades working with clients such as BMW, VW and Ford, I have lived the same story again and again: world-class engineers wasting their talent on repetitive, tedious tasks."
+
+#: templates/menuapp/index.html
+msgid "La ingeniería nació para crear, no para repetir."
+msgstr "Engineering was born to create, not to repeat."
+
+#: templates/menuapp/index.html
+msgid "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
+msgstr "So I took the reins and started building real solutions. I cut management processes from grueling hours down to minutes, designed custom frameworks and built a complete enterprise ERP system from scratch. But I went further: I dove headfirst into C, C++ and Python at 42 Barcelona to make the definitive leap from spreadsheets to robust software development."
+
+#: templates/menuapp/index.html
+#, python-format
+msgid "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
+msgstr "In the end I decided to put these tools directly in your hands. Little by little —everything takes work—, I will keep uploading every script, template and calculation engine I have forged. All hosted right here, 100%% free, for any engineer or student ready to stop repeating and start inventing."
+
+#~ msgid "Trayectoria Profesional"
+#~ msgstr "Professional Background"
+
+#~ msgid ""
+#~ "A lo largo de mi experiencia en los sectores automotriz e industrial, he "
+#~ "liderado y ejecutado proyectos\n"
+#~ "          técnicos para fabricantes de primer nivel como BMW, VW y FORD, "
+#~ "además de encabezar iniciativas de mejora en procesos\n"
+#~ "          de fabricación. Este recorrido me permitió identificar un "
+#~ "patrón constante: los retos más exigentes encuentran\n"
+#~ "          su mejor respuesta cuando se integran con soluciones de "
+#~ "software."
+#~ msgstr ""
+#~ "Throughout my experience in the automotive and industrial sectors, I have "
+#~ "led and executed technical\n"
+#~ "          projects for top-tier manufacturers such as BMW, VW and FORD, "
+#~ "as well as spearheaded process improvement\n"
+#~ "          initiatives in manufacturing. This journey allowed me to "
+#~ "identify a constant pattern: the most demanding\n"
+#~ "          challenges find their best answer when integrated with software "
+#~ "solutions."
+
+#~ msgid "Resolucion de Problemas como Enfoque"
+#~ msgstr "Problem-Solving as an Approach"
+
+#~ msgid ""
+#~ "Durante años, he convertido necesidades operativas en herramientas "
+#~ "prácticas. Diseñé sistemas de ayudas que redujeron\n"
+#~ "          los tiempos de cotización de horas a minutos y creé plantillas "
+#~ "para decisiones críticas de diseño mecánico que optimizaron\n"
+#~ "          la eficiencia del equipo. Asimismo, desarrollé el software ERP "
+#~ "de una compañía para reducir la dependencia externa\n"
+#~ "          y minimizar costes operativos."
+#~ msgstr ""
+#~ "Over the years, I have turned operational needs into practical tools. I "
+#~ "designed helper systems that reduced\n"
+#~ "          quoting times from hours to minutes and created templates for "
+#~ "critical mechanical design decisions that optimized\n"
+#~ "          the team's efficiency. I also developed a company's ERP "
+#~ "software to reduce external dependency\n"
+#~ "          and minimize operating costs."
+
+#~ msgid "Evolucion Tecnica"
+#~ msgstr "Technical Evolution"
+
+#~ msgid ""
+#~ "Mi formación en <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+#~ "Barcelona</a> marcó un punto de inflexión en mi perfil profesional.\n"
+#~ "          Me permitió elevar soluciones —originalmente concebidas en "
+#~ "hojas de cálculo— a implementaciones de ingeniería\n"
+#~ "          de software de alto nivel, utilizando C, C++, Python y "
+#~ "arquitecturas modernas para construir sistemas robustos,\n"
+#~ "          escalables y mantenibles."
+#~ msgstr ""
+#~ "My training at <a href=\"https://42barcelona.com\" target=\"_blank\">42 "
+#~ "Barcelona</a> marked a turning point in my professional profile.\n"
+#~ "          It allowed me to elevate solutions — originally conceived in "
+#~ "spreadsheets — into high-level software\n"
+#~ "          engineering implementations, using C, C++, Python and modern "
+#~ "architectures to build robust,\n"
+#~ "          scalable and maintainable systems."
+
+#~ msgid "Propuesta de Valor"
+#~ msgstr "Value Proposition"
+
+#~ msgid ""
+#~ "Busco colaborar en proyectos donde la ingeniería, el análisis de datos y "
+#~ "el desarrollo de software converjan\n"
+#~ "          para crear soluciones técnicas de alto impacto. Estoy abierto a "
+#~ "explorar ideas innovadoras, optimizar algoritmos\n"
+#~ "          y contribuir en retos industriales complejos con un enfoque "
+#~ "riguroso y práctico."
+#~ msgstr ""
+#~ "I am looking to collaborate on projects where engineering, data analysis "
+#~ "and software development converge\n"
+#~ "          to create high-impact technical solutions. I am open to "
+#~ "exploring innovative ideas, optimizing algorithms\n"
+#~ "          and contributing to complex industrial challenges with a "
+#~ "rigorous, practical approach."
+
+#~ msgid "Encantado de saludarte"
+#~ msgstr "Nice to meet you"
+
+#~ msgid "Proyectos para BMW, VW y FORD"
+#~ msgstr "Projects for BMW, VW and FORD"
+
+#~ msgid "Cotizaciones de horas a minutos"
+#~ msgstr "Quotes in minutes, not hours"
+
+#~ msgid "Formado en 42 Barcelona"
+#~ msgstr "Trained at 42 Barcelona"
+
+#~ msgid "Calculadoras listas para usar"
+#~ msgstr "Calculators ready to use"
+
+#~ msgid ""
+#~ "Soy ingeniero industrial. En las plantas de BMW, VW y FORD vi siempre el "
+#~ "mismo problema: gente brillante atrapada en tareas repetitivas."
+#~ msgstr ""
+#~ "I'm an industrial engineer. On the BMW, VW and FORD lines I always saw "
+#~ "the same problem: brilliant people stuck in repetitive tasks."
+
+#~ msgid ""
+#~ "Así que me puse a construir herramientas. Bajé las cotizaciones de horas "
+#~ "a minutos, hice plantillas de diseño y levanté el ERP de una empresa "
+#~ "entera."
+#~ msgstr ""
+#~ "So I started building tools. I cut quoting times from hours to minutes, "
+#~ "made design templates and built a whole company's ERP."
+
+#~ msgid ""
+#~ "Formarme en 42 Barcelona lo cambió todo: pasé de la hoja de cálculo al "
+#~ "software de verdad, con C, C++ y Python."
+#~ msgstr ""
+#~ "Training at 42 Barcelona changed everything: I went from the spreadsheet "
+#~ "to real software, with C, C++ and Python."
+
+#~ msgid ""
+#~ "Hoy reúno aquí esas herramientas para que cualquier ingeniero o "
+#~ "estudiante las use gratis."
+#~ msgstr ""
+#~ "Today I'm gathering those tools here so any engineer or student can use "
+#~ "them for free."
+
+#~ msgid "Porque la ingeniería está para crear, no para repetir."
+#~ msgstr "Because engineering is for creating, not repeating."
 
 #~ msgid "Próximamente disponible"
 #~ msgstr "Coming soon"
