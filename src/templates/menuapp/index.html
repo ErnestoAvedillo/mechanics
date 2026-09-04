@@ -76,30 +76,40 @@
       </div>
 
       <div class="hp-tool-grid">
-        <a class="hp-tool reveal" href="{% url 'muelles_index' %}">
-          <span class="hp-tool-idx">01</span>
-          <div class="hp-tool-media">
-            <!-- <img src="{% static 'muelles/images/muelle_compresion.jpg' %}" alt="{% trans 'Muelle de compresión' %}"> -->
-            <img src="https://gifdb.com/images/high/computer-generated-king-kong-riding-pogo-stick-khyn9lmo3xfjnbay.webp" alt="{% trans 'Muelle de compresión' %}">
-          </div>
+        <div>
+          <a class="hp-tool reveal" href="{% url 'muelles_index' %}">
+            <span class="hp-tool-idx">01</span>
+            <div class="hp-tool-media">
+              <!-- <img src="{% static 'muelles/images/muelle_compresion.jpg' %}" alt="{% trans 'Muelle de compresión' %}"> -->
+              <img src="https://gifdb.com/images/high/computer-generated-king-kong-riding-pogo-stick-khyn9lmo3xfjnbay.webp" alt="{% trans 'Muelle de compresión' %}">
+            </div>
+            <div class="hp-tool-info">
+              <h3>{% trans "Muelles" %}</h3>
+              <p>{% trans "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales." %}</p>
+              <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+            </div>
+          </a>
           <div class="hp-tool-info">
-            <h3>{% trans "Muelles" %}</h3>
-            <p>{% trans "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales." %}</p>
-            <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+            <h2>{% trans "Trabajas con Python? Descárgate mi librería " %}<a href='https://pypi.org/project/springcalc/' target="_blank">{% trans "aquí" %}</a>.</h2>
           </div>
-        </a>
+        </div>
 
-        <a class="hp-tool reveal" href="{% url 'tolerances_index' %}">
-          <span class="hp-tool-idx">02</span>
-          <div class="hp-tool-media">
-            <img src="{% static 'menuapp/images/Tolerances.jpeg' %}" alt="{% trans 'Ajuste eje-agujero' %}">
-          </div>
+        <div>
+          <a class="hp-tool reveal" href="{% url 'tolerances_index' %}">
+            <span class="hp-tool-idx">02</span>
+            <div class="hp-tool-media">
+              <img src="{% static 'menuapp/images/Tolerances.jpeg' %}" alt="{% trans 'Ajuste eje-agujero' %}">
+            </div>
+            <div class="hp-tool-info">
+              <h3>{% trans "Tolerancias y ajustes" %}</h3>
+              <p>{% trans "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método estadístico." %}</p>
+              <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+            </div>
+          </a>
           <div class="hp-tool-info">
-            <h3>{% trans "Tolerancias y ajustes" %}</h3>
-            <p>{% trans "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método estadístico." %}</p>
-            <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+            <h2>{% trans "Trabajas con Python? Descárgate mi librería " %}<a href='https://pypi.org/project/pytolerance/' target="_blank">{% trans "aquí" %}</a>.</h2>
           </div>
-        </a>
+        </div>
       </div>
     </section>
 

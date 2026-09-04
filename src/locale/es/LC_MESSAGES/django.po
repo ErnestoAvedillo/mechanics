@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mechanics2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 22:46+0200\n"
+"POT-Creation-Date: 2026-09-04 16:42+0200\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -610,7 +610,7 @@ msgstr "Menú"
 msgid "Inicio"
 msgstr "Inicio"
 
-#: templates/includes/sidebar.html:13 templates/menuapp/index.html:82
+#: templates/includes/sidebar.html:13 templates/menuapp/index.html:87
 msgid "Muelles"
 msgstr "Muelles"
 
@@ -623,7 +623,7 @@ msgid "Especificaciones"
 msgstr "Especificaciones"
 
 #: templates/includes/sidebar.html:16 templates/menuapp/contacto.html:4
-#: templates/menuapp/contacto.html:23 templates/menuapp/index.html:109
+#: templates/menuapp/contacto.html:23 templates/menuapp/index.html:123
 msgid "Contacto"
 msgstr "Contacto"
 
@@ -696,32 +696,59 @@ msgid "Carta de presentacion"
 msgstr "Carta de presentacion"
 
 #: templates/menuapp/index.html:57
+msgid ""
+"Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he "
+"vivido siempre la misma historia: ingenieros de primer nivel malgastando su "
+"talento en tareas repetitivas y tediosas."
+msgstr ""
+"Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he "
+"vivido siempre la misma historia: ingenieros de primer nivel malgastando su "
+"talento en tareas repetitivas y tediosas."
+
+#: templates/menuapp/index.html:58
+msgid "La ingeniería nació para crear, no para repetir."
+msgstr "La ingeniería nació para crear, no para repetir."
+
+#: templates/menuapp/index.html:59
+msgid ""
+"Así que tomé las riendas y empecé a construir soluciones reales. Reduje "
+"procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos "
+"de trabajo a medida y levanté un sistema ERP empresarial completo desde "
+"cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 "
+"Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo "
+"de software robusto."
+msgstr ""
+"Así que tomé las riendas y empecé a construir soluciones reales. Reduje "
+"procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos "
+"de trabajo a medida y levanté un sistema ERP empresarial completo desde "
+"cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 "
+"Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo "
+"de software robusto."
+
+#: templates/menuapp/index.html:60
 #, python-format
 msgid ""
-"Over two decades across BMW, VW, and Ford production lines, I kept "
-"witnessing the exact same tragedy: world-class engineers wasting their "
-"talent on mind-numbing, repetitive grunt work.  Engineering was meant for "
-"pure creation—not endless repetition.So I took matters into my own hands and "
-"started building real tools. I slashed complex quotation processes from "
-"grueling hours down to mere minutes, engineered custom design frameworks, "
-"and built an entire enterprise ERP system from scratch. Then, I pushed "
-"further, diving deep into C, C++, and Python at 42 Barcelona to transition "
-"from basic spreadsheets to robust, full-scale software engineering.  Today, "
-"I’m putting all of those tools directly into your hands. Every script, "
-"framework, and calculation engine I’ve forged is hosted right here—100%% "
-"free for any engineer or student ready to stop repeating and start inventing."
+"Finalmente decidí poner estas herramientas directamente en tus manos. Poco a "
+"poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y "
+"motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para "
+"cualquier ingeniero o estudiante listo para dejar de repetir y empezar a "
+"inventar."
 msgstr ""
-"Durante más de dos décadas, en las líneas de producción de BMW, VW y Ford, presencié una y otra vez la misma tragedia: ingenieros de primer nivel desperdiciando su talento en tareas rutinarias, repetitivas y embrutecedoras. La ingeniería estaba hecha para crear, no para repetir sin fin. Así que tomé cartas en el asunto y empecé a construir herramientas de verdad. Recorté procesos de cotización complejos de horas agotadoras a apenas minutos, desarrollé marcos de diseño a medida y levanté desde cero el ERP completo de una empresa. Después fui más allá: me sumergí en C, C++ y Python en 42 Barcelona para pasar de las hojas de cálculo básicas a una ingeniería de software robusta y a gran escala. Hoy pongo todas esas herramientas directamente en tus manos. Cada script, cada marco y cada motor de cálculo que he forjado está alojado aquí mismo: 100%% gratis para cualquier ingeniero o estudiante dispuesto a dejar de repetir y empezar a inventar."
+"Finalmente decidí poner estas herramientas directamente en tus manos. Poco a "
+"poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y "
+"motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para "
+"cualquier ingeniero o estudiante listo para dejar de repetir y empezar a "
+"inventar."
 
-#: templates/menuapp/index.html:64
+#: templates/menuapp/index.html:67
 msgid "Herramientas"
 msgstr "Herramientas"
 
-#: templates/menuapp/index.html:65
+#: templates/menuapp/index.html:68
 msgid "¿Qué presento en esta página web?"
 msgstr "¿Qué presento en esta página web?"
 
-#: templates/menuapp/index.html:67
+#: templates/menuapp/index.html:70
 msgid ""
 "En esta página web estoy reuniendo mis herramientas con el objetivo de "
 "convertirlas en aplicaciones web,\n"
@@ -733,7 +760,7 @@ msgstr ""
 "          de modo que puedan ser utilizadas por otros ingenieros, "
 "estudiantes o cualquier persona interesada en la ingeniería."
 
-#: templates/menuapp/index.html:71
+#: templates/menuapp/index.html:74
 msgid ""
 "Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el "
 "navegador y generan un informe descargable."
@@ -741,29 +768,38 @@ msgstr ""
 "Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el "
 "navegador y generan un informe descargable."
 
-#: templates/menuapp/index.html:79 templates/muelles/index.html:22
+#: templates/menuapp/index.html:83 templates/menuapp/index.html:84
+#: templates/muelles/index.html:22
 msgid "Muelle de compresión"
 msgstr "Muelle de compresión"
 
-#: templates/menuapp/index.html:83
+#: templates/menuapp/index.html:88
 msgid ""
 "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
 msgstr ""
 "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
 
-#: templates/menuapp/index.html:84 templates/menuapp/index.html:96
+#: templates/menuapp/index.html:89 templates/menuapp/index.html:106
 msgid "Abrir"
 msgstr "Abrir"
 
-#: templates/menuapp/index.html:91
+#: templates/menuapp/index.html:93 templates/menuapp/index.html:110
+msgid "Trabajas con Python? Descárgate mi librería "
+msgstr ""
+
+#: templates/menuapp/index.html:93 templates/menuapp/index.html:110
+msgid "aquí"
+msgstr ""
+
+#: templates/menuapp/index.html:101
 msgid "Ajuste eje-agujero"
 msgstr "Ajuste eje-agujero"
 
-#: templates/menuapp/index.html:94
+#: templates/menuapp/index.html:104
 msgid "Tolerancias y ajustes"
 msgstr "Tolerancias y ajustes"
 
-#: templates/menuapp/index.html:95
+#: templates/menuapp/index.html:105
 msgid ""
 "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método "
 "estadístico."
@@ -771,11 +807,11 @@ msgstr ""
 "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método "
 "estadístico."
 
-#: templates/menuapp/index.html:110
+#: templates/menuapp/index.html:124
 msgid "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
 msgstr "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
 
-#: templates/menuapp/index.html:111
+#: templates/menuapp/index.html:125
 msgid "Ir a contacto"
 msgstr "Ir a contacto"
 
@@ -3033,23 +3069,36 @@ msgstr "Tolerancias Absolutas"
 msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 msgstr "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 
-
-#: templates/menuapp/index.html
-msgid "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
-msgstr "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
-
-#: templates/menuapp/index.html
-msgid "La ingeniería nació para crear, no para repetir."
-msgstr "La ingeniería nació para crear, no para repetir."
-
-#: templates/menuapp/index.html
-msgid "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
-msgstr "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
-
-#: templates/menuapp/index.html
 #, python-format
-msgid "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
-msgstr "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
+#~ msgid ""
+#~ "Over two decades across BMW, VW, and Ford production lines, I kept "
+#~ "witnessing the exact same tragedy: world-class engineers wasting their "
+#~ "talent on mind-numbing, repetitive grunt work.  Engineering was meant for "
+#~ "pure creation—not endless repetition.So I took matters into my own hands "
+#~ "and started building real tools. I slashed complex quotation processes "
+#~ "from grueling hours down to mere minutes, engineered custom design "
+#~ "frameworks, and built an entire enterprise ERP system from scratch. Then, "
+#~ "I pushed further, diving deep into C, C++, and Python at 42 Barcelona to "
+#~ "transition from basic spreadsheets to robust, full-scale software "
+#~ "engineering.  Today, I’m putting all of those tools directly into your "
+#~ "hands. Every script, framework, and calculation engine I’ve forged is "
+#~ "hosted right here—100%% free for any engineer or student ready to stop "
+#~ "repeating and start inventing."
+#~ msgstr ""
+#~ "Durante más de dos décadas, en las líneas de producción de BMW, VW y "
+#~ "Ford, presencié una y otra vez la misma tragedia: ingenieros de primer "
+#~ "nivel desperdiciando su talento en tareas rutinarias, repetitivas y "
+#~ "embrutecedoras. La ingeniería estaba hecha para crear, no para repetir "
+#~ "sin fin. Así que tomé cartas en el asunto y empecé a construir "
+#~ "herramientas de verdad. Recorté procesos de cotización complejos de horas "
+#~ "agotadoras a apenas minutos, desarrollé marcos de diseño a medida y "
+#~ "levanté desde cero el ERP completo de una empresa. Después fui más allá: "
+#~ "me sumergí en C, C++ y Python en 42 Barcelona para pasar de las hojas de "
+#~ "cálculo básicas a una ingeniería de software robusta y a gran escala. Hoy "
+#~ "pongo todas esas herramientas directamente en tus manos. Cada script, "
+#~ "cada marco y cada motor de cálculo que he forjado está alojado aquí "
+#~ "mismo: 100%% gratis para cualquier ingeniero o estudiante dispuesto a "
+#~ "dejar de repetir y empezar a inventar."
 
 #~ msgid "Trayectoria Profesional"
 #~ msgstr "Trayectoria Profesional"
