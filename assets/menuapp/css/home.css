@@ -204,6 +204,7 @@ main { position: relative; z-index: 1; }
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center 20%;
   filter: grayscale(0.35) contrast(1.05) brightness(0.95);
 }
 
