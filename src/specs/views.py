@@ -165,7 +165,7 @@ def upload_document(request):
                         company=form.cleaned_data.get('company', '')
                     )
                     # Send the document to the task queue
-                    process_document_task.delay(str(doc.id))
+                    process_document_task(str(doc.id))
 
 
                 #     # Index document

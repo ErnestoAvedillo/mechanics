@@ -37,12 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_celery_beat',
     'menuapp',
     'muelles',
     'tolerances',
     'specs',
 ]
+#     'django_celery_beat',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -184,21 +184,21 @@ GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
 GOOGLE_MODEL = os.environ.get('GOOGLE_MODEL', 'models/gemini-3.1-flash-lite-preview')
 HF_MODEL = os.environ.get('HF_MODEL', 'BAAI/bge-m3')
 HF_TOKEN = os.environ.get('HF_TOKEN', '')
-CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
-CELERY_RESULT_BACKEND = CELERY_BROKER_URL
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
+# CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
+# CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
 
-# Celery Beat - Periodic tasks
-from celery.schedules import crontab
+# # Celery Beat - Periodic tasks
+# from celery.schedules import crontab
 
-CELERY_BEAT_SCHEDULE = {
-    'retry-pending-documents': {
-        'task': 'specs.tasks.retry_pending_documents',
-        'schedule': crontab(minute='*/10'),  # Cada 1 minutos
-    },
-    'remove-pending-registrations': {
-        'task': 'menuapp.tasks.remove_pending_registration',
-        'schedule': crontab(minute='*/15'),  # Cada 15 minutos
-    }
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'retry-pending-documents': {
+#         'task': 'specs.tasks.retry_pending_documents',
+#         'schedule': crontab(minute='*/10'),  # Cada 1 minutos
+#     },
+#     'remove-pending-registrations': {
+#         'task': 'menuapp.tasks.remove_pending_registration',
+#         'schedule': crontab(minute='*/15'),  # Cada 15 minutos
+#     }
+# }
