@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'muelles',
     'tolerances',
     'specs',
+    'reqif',
 ]
 #     'django_celery_beat',
 

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Documentos ReqIF" %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'reqif/css/reqif-common.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card-container">
+        <div class="card-title">
+            <h2 style="margin: 0;">{% trans "Documentos encontrados" %}</h2>
+            <a href="{% url 'reqif:upload' %}" class="btn btn-secondary btn-sm">{% trans "Subir otro fichero" %}</a>
+        </div>
+
+        {% if docs %}
+            <div style="overflow-x: auto;">
+                <table class="reqif-table">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Fichero" %}</th>
+                            <th>{% trans "Nº de puntos" %}</th>
+                            <th>{% trans "Acciones" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in docs %}
+                            <tr>
+                                <td>{{ doc.name }}</td>
+                                <td>{{ doc.count }}</td>
+                                <td>
+                                    <a href="{% url 'reqif:edit_document' doc.index %}" class="btn btn-primary btn-sm">✏️ {% trans "Editar" %}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>{% trans "No se han encontrado ficheros .reqif." %}</p>
+        {% endif %}
+
+        <div class="mt-4">
+            <a href="{% url 'reqif:download' %}" class="btn btn-secondary">⬇️ {% trans "Descargar todos los documentos" %}</a>
+            <p style="color: #718096; font-size: 0.85rem; margin-top: 0.5rem;">
+                {% trans "Incluye todos los ficheros de esta lista, con los cambios guardados en cada uno." %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

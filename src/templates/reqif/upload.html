@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Visualizador ReqIF" %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'reqif/css/reqif-common.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 800px;">
+    <div class="card-container">
+        <h2 class="card-title">{% trans "Visualizador de documentos ReqIF" %}</h2>
+        <p style="color: #718096; margin-bottom: 2rem;">
+            {% trans "Sube un fichero .reqifz o .reqif para ver sus requisitos, rellenar el comentario y el estado del proveedor, y descargar el fichero actualizado." %}
+        </p>
+
+        {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group" style="margin-bottom: 2.5rem;">
+                <label for="id_reqifz_file" class="form-label">{% trans "Fichero .reqifz o .reqif" %}</label>
+                <input type="file" name="reqifz_file" class="form-control" id="id_reqifz_file" accept=".reqifz,.reqif,.zip" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">{% trans "Subir" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

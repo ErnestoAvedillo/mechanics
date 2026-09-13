@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ doc_name }} - {% trans "Visualizador ReqIF" %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'reqif/css/reqif-common.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card-container">
+        <div class="card-title">
+            <h2 style="margin: 0;">{{ doc_name }}</h2>
+            <div class="d-flex gap-2">
+                <a href="{% url 'reqif:documents' %}" class="btn btn-secondary btn-sm">{% trans "Volver a documentos" %}</a>
+                <a href="{% url 'reqif:export_excel' index %}" class="btn btn-secondary btn-sm">📊 {% trans "Descargar Excel" %}</a>
+            </div>
+        </div>
+
+        <form method="post" action="{% url 'reqif:import_excel' index %}" enctype="multipart/form-data"
+              class="d-flex gap-2 align-center" style="margin-bottom: 1.5rem;">
+            {% csrf_token %}
+            <input type="file" name="excel_file" class="form-control" accept=".xlsx" required style="max-width: 320px;">
+            <button type="submit" class="btn btn-secondary btn-sm">📥 {% trans "Subir Excel modificado" %}</button>
+        </form>
+
+        {% if saved %}
+            <div class="alert alert-success">{% trans "Cambios guardados en el fichero .reqif." %}</div>
+        {% endif %}
+        {% if excel_updated is not None %}
+            <div class="alert alert-success">
+                {% blocktrans count counter=excel_updated %}Se ha actualizado {{ counter }} requisito desde el Excel.{% plural %}Se han actualizado {{ counter }} requisitos desde el Excel.{% endblocktrans %}
+            </div>
+        {% endif %}
+        {% if excel_error %}
+            <div class="alert alert-error">{{ excel_error }}</div>
+        {% endif %}
+
+        {% if page_obj.paginator.num_pages > 1 %}
+            <p style="color: #718096; font-size: 0.85rem;">
+                {% blocktrans with total=page_obj.paginator.count size=page_size %}Documento con {{ total }} puntos, dividido en páginas de {{ size }} para poder guardar los cambios.{% endblocktrans %}
+            </p>
+        {% endif %}
+        {% include "reqif/_pagination.html" %}
+
+        <form method="post" id="requirements-form">
+            {% csrf_token %}
+            <div style="overflow-x: auto;">
+                <table class="reqif-table">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Requisito" %}</th>
+                            <th style="min-width: 260px;">{% trans "Kommentar Lieferant M" %}</th>
+                            <th style="min-width: 200px;">{% trans "Status Lieferant M" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for req in requirements %}
+                            <tr{% if req.is_chapter %} class="is-chapter"{% endif %}>
+                                <td class="req-text">
+                                    {{ req.text|default:"—" }}
+                                    {% if req.images %}
+                                        <div class="req-images">
+                                            {% for image_path in req.images %}
+                                                <a href="{% url 'reqif:attachment' image_path %}" target="_blank">
+                                                    <img src="{% url 'reqif:attachment' image_path %}" alt="" loading="lazy">
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="req-id">{{ req.id }}</div>
+                                    <input type="hidden" name="requirement_id" value="{{ req.id }}">
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="comment_{{ req.id }}" rows="3">{{ req.comment }}</textarea>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="status_{{ req.id }}">
+                                        <option value=""{% if not req.status %} selected{% endif %}>{% trans "-- sin definir --" %}</option>
+                                        {% for option in status_options %}
+                                            <option value="{{ option }}"{% if option == req.status %} selected{% endif %}>{{ option }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">💾 {% trans "Guardar cambios de esta página" %}</button>
+            </div>
+        </form>
+
+        {% include "reqif/_pagination.html" %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('submit', function (event) {
+    var form = event.target.closest('#requirements-form');
+    if (!form) {
+        return;
+    }
+    event.preventDefault();
+
+    var submitBtn = form.querySelector('button[type=submit]');
+    var originalText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '{% trans "Guardando..." %}';
+    }
+
+    fetch(window.location.href, {
+        method: 'POST',
+        body: new FormData(form),
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('bad response');
+            }
+            return response.text();
+        })
+        .then(function (html) {
+            var newDoc = new DOMParser().parseFromString(html, 'text/html');
+            var newContainer = newDoc.querySelector('.card-container');
+            var currentContainer = document.querySelector('.card-container');
+            if (newContainer && currentContainer) {
+                currentContainer.replaceWith(newContainer);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(function () {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+            alert('{% trans "No se ha podido guardar. Inténtalo de nuevo." %}');
+        });
+});
+</script>
+{% endblock %}

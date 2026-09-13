@@ -1,0 +1,14 @@
+{% load i18n %}
+{% if page_obj.paginator.num_pages > 1 %}
+<div class="d-flex gap-2 align-center" style="justify-content: center; margin: 1rem 0;">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary btn-sm">&larr; {% trans "Anterior" %}</a>
+    {% endif %}
+    <span style="color: #4a5568; font-size: 0.9rem;">
+        {% blocktrans with current=page_obj.number total=page_obj.paginator.num_pages %}Página {{ current }} de {{ total }}{% endblocktrans %}
+    </span>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary btn-sm">{% trans "Siguiente" %} &rarr;</a>
+    {% endif %}
+</div>
+{% endif %}

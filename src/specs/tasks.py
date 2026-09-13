@@ -1,18 +1,18 @@
 # from celery import shared_task
-# from .rag_engine import index_document_to_rag
+from .rag_engine import index_document_to_rag
 # from .models import UserDocument
-# import logging
+import logging
 
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 # @shared_task
-# def process_document_task(document_id):
-#     """
-#     Celery task to process and index the document in LlamaParse and Qdrant.
-#     """
-#     success, msg = index_document_to_rag(document_id)
-#     logging.info(f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}")
-#     return f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}"
+def process_document_task(document_id):
+    """
+    Celery task to process and index the document in LlamaParse and Qdrant.
+    """
+    success, msg = index_document_to_rag(document_id)
+    logging.info(f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}")
+    return f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}"
 
 
 # @shared_task

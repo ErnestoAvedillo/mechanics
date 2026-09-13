@@ -110,6 +110,23 @@
             <h2>{% trans "Trabajas con Python? Descárgate mi librería " %}<a href='https://pypi.org/project/pytolerance/' target="_blank">{% trans "aquí" %}</a>.</h2>
           </div>
         </div>
+
+        <div>
+          <a class="hp-tool reveal" href="{% url 'reqif:upload' %}">
+            <span class="hp-tool-idx">03</span>
+            <div class="hp-tool-media">
+              <img src="{% static 'menuapp/images/reqif.jpeg' %}" alt="{% trans 'Visualizador ReqIF' %}">
+            </div>
+            <div class="hp-tool-info">
+              <h3>{% trans "Visualizador ReqIF" %}</h3>
+              <p>{% trans "Sube un fichero .reqifz o .reqif, rellena el comentario y el estado del proveedor para cada requisito y descarga el documento actualizado." %}</p>
+              <span class="hp-tool-go">{% trans "Abrir" %} &rarr;</span>
+            </div>
+          </a>
+          <div class="hp-tool-info">
+            <h2>{% trans "Trabajas con Python? Descárgate mi librería " %}<a href='https://pypi.org/project/pyreqifz/' target="_blank">{% trans "aquí" %}</a>.</h2>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -15,6 +15,8 @@ wheels/
 # Old files are not needed.
 *.old
 static_files/
+reqif_workdir/
+src/tmp/
 *.pem
 *.env*
 *.crt

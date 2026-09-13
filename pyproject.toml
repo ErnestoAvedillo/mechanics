@@ -21,6 +21,7 @@ dependencies = [
     "playwright>=1.60.0",
     "springcalc>=0.1.2",
     "psycopg2-binary>=2.9.13",
+    "pyreqifz>=0.1.1",
 ]
 
 [dependency-groups]

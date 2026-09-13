@@ -17,6 +17,7 @@ flower>=2.0.1
 pint>=0.25.2
 pydantic>=2.12.5
 reportlab>=4.4.4
+pyreqifz>=0.1.1
 playwright
 pytest>=9.0.2
 pytest-playwright
