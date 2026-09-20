@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Lever Force Curve Calculator" %}{% endblock %}
+
+{% block meta_description %}{% trans "Simulate a lever's output force across its travel range." %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Lever Force Curve Calculator" %}</h1>
+    {% include 'dynamics/partials/_form.html' %}
+    {% include 'dynamics/partials/_results.html' %}
+{% endblock %}

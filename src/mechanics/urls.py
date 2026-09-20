@@ -9,4 +9,5 @@ urlpatterns = [
     path('tolerances/', include('tolerances.urls')),
     path('specs/', include('specs.urls')),
     path('reqif/', include('reqif.urls')),
+    path('dynamics/', include('dynamics.urls')),
 ]

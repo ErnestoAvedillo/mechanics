@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tolerances',
     'specs',
     'reqif',
+    'dynamics',
 ]
 #     'django_celery_beat',
 

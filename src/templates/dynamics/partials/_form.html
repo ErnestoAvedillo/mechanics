@@ -1,0 +1,50 @@
+{% load i18n %}
+<form method="post" class="toggle-spring-form">
+    {% csrf_token %}
+    <fieldset>
+        <legend>{% trans "Geometry" %}</legend>
+        {{ form.p_length.as_field_group }}
+        {{ form.p_angle_deg.as_field_group }}
+        {{ form.w_length.as_field_group }}
+        {{ form.w_angle_deg.as_field_group }}
+        {{ form.weight_force.as_field_group }}
+    </fieldset>
+
+    <fieldset>
+        <legend>{% trans "Toggle spring" %}</legend>
+        {{ form.t_length.as_field_group }}
+        {{ form.t_angle_deg.as_field_group }}
+        {{ form.u_length.as_field_group }}
+        {{ form.u_angle_deg.as_field_group }}
+        {{ form.spring_rate_1.as_field_group }}
+        {{ form.free_length.as_field_group }}
+        {{ form.spring_rate_2.as_field_group }}
+        {{ form.spring_rate_3.as_field_group }}
+        {{ form.block_length_1.as_field_group }}
+        {{ form.block_length_2.as_field_group }}
+    </fieldset>
+
+    <fieldset>
+        <legend>{% trans "Friction & damping" %}</legend>
+        {{ form.friction_force.as_field_group }}
+        {{ form.damping_force.as_field_group }}
+        {{ form.damping_arm.as_field_group }}
+    </fieldset>
+
+    <fieldset>
+        <legend>{% trans "Reaction load" %}</legend>
+        {{ form.reaction_rate.as_field_group }}
+        {{ form.reaction_preload.as_field_group }}
+        {{ form.reaction_arm.as_field_group }}
+    </fieldset>
+
+    <fieldset>
+        <legend>{% trans "Travel" %}</legend>
+        {{ form.total_travel_deg.as_field_group }}
+        {{ form.steps.as_field_group }}
+    </fieldset>
+
+    <div class="form-actions">
+        <button type="submit" class="calculate-btn">{% trans "Calculate" %}</button>
+    </div>
+</form>

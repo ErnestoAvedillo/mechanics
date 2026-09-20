@@ -1,0 +1,17 @@
+{% load i18n %}
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% elif result %}
+    <div class="results">
+        <img class="chart-img" src="data:image/png;base64,{{ result.chart }}" alt="{% trans 'Force vs travel curve' %}">
+        <dl class="summary-metrics">
+            <dt>{% trans "Preload" %}</dt><dd>{{ result.preload_force|floatformat:2 }} N</dd>
+            <dt>{% trans "Max force" %}</dt><dd>{{ result.max_force|floatformat:2 }} N</dd>
+            <dt>{% trans "Drop-off force" %}</dt><dd>{{ result.dropoff_force|floatformat:2 }} N</dd>
+            <dt>{% trans "Return load" %}</dt><dd>{{ result.return_load|floatformat:2 }} N</dd>
+            <dt>{% trans "Hysteresis" %}</dt><dd>{{ result.hysteresis|floatformat:2 }} N</dd>
+            <dt>{% trans "Lever ratio" %}</dt><dd>{{ result.lever_ratio|floatformat:2 }}</dd>
+            <dt>{% trans "Total travel" %}</dt><dd>{{ result.total_travel_mm|floatformat:2 }} mm</dd>
+        </dl>
+    </div>
+{% endif %}
