@@ -42,17 +42,29 @@ def _calcular_muelle_conico_pitch_variable(request):
     pitch_superior_qty = pitch_superior * ureg.mm
     pitch_inferior_qty = pitch_inferior * ureg.mm
 
+    # The wire centerline runs from d/2 above the base to d/2 below the free
+    # end, so it spans the free length minus one wire diameter.
+    centerline_length_qty = free_length_qty - muelle.wire_diameter
+
     def func_diametro(h):
         # Linear interpolation: h=0 at the base (lower diameter),
-        # h=free_length at the free end (upper diameter).
-        return diametro_inferior_qty + (diametro_superior_qty - diametro_inferior_qty) * (h / free_length_qty)
+        # h=centerline_length at the free end (upper diameter).
+        return diametro_inferior_qty + (diametro_superior_qty - diametro_inferior_qty) * (h / centerline_length_qty)
 
     def func_pitch(h):
         # Pitch varies linearly along the whole spring
-        return pitch_inferior_qty + (pitch_superior_qty - pitch_inferior_qty) * (h / free_length_qty)
+        if h < muelle.wire_diameter:
+            return muelle.wire_diameter
+        elif h > centerline_length_qty - muelle.wire_diameter:
+            return muelle.wire_diameter
+        return pitch_inferior_qty + (pitch_superior_qty - pitch_inferior_qty) * (h / (centerline_length_qty - 2 * muelle.wire_diameter))
 
-    muelle.set_geometry(func_D=func_diametro, func_p=func_pitch, free_length=free_length_qty)
+    # springcalc integrates the coils over [0, free_length], so hand it the
+    # centerline span and restore the real free length afterwards: loads,
+    # travels and the reported free length are measured on the outer length.
+    muelle.set_geometry(func_D=func_diametro, func_p=func_pitch, free_length=centerline_length_qty)
     muelle.calculate_spring_properties()
+    muelle.free_length = free_length_qty
 
     def _to_float_mm(value):
         return float(value.magnitude) if hasattr(value, 'magnitude') else float(value)
