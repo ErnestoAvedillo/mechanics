@@ -32,6 +32,7 @@
         {% include 'muelles/partials/_calculadora_results.html' %}
         {% include 'muelles/partials/_calculadora_info.html' %}
     </div>
+    {% include 'muelles/partials/_compartir_modal.html' %}
 
     <!-- External scripts -->
 <script src="{% url 'javascript-catalog' %}"></script>
@@ -39,5 +40,6 @@
 <script src="{% static 'muelles/js/calculadora-muelles.js' %}"></script>
     <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
 <script src="{% static 'global/js/form-loading.js' %}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

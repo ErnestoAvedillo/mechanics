@@ -500,6 +500,304 @@ function setupMaterialPropertyDetection() {
 
 
 
+// Save / load / share the current calculation
+/**
+ * Derives a short slug for the current calculator from the URL, e.g.
+ * "/muelles/calculadora/2k/" -> "2k". Used to name the downloaded JSON file.
+ * @returns {string}
+ */
+function calculatorSlug() {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return parts[parts.length - 1] || 'muelle';
+}
+
+/**
+ * Reads every named field of the form into a plain object, skipping the
+ * CSRF token. Unchecked checkboxes are recorded as false and unselected
+ * radios are skipped, so the object round-trips through applyFormData().
+ * @param {HTMLFormElement} form
+ * @returns {Object}
+ */
+function collectFormData(form) {
+    const data = {};
+    form.querySelectorAll('input[name], select[name], textarea[name]').forEach(function (el) {
+        if (el.name === 'csrfmiddlewaretoken') {
+            return;
+        }
+        if (el.type === 'checkbox') {
+            data[el.name] = el.checked;
+        } else if (el.type === 'radio') {
+            if (el.checked) {
+                data[el.name] = el.value;
+            }
+        } else {
+            data[el.name] = el.value;
+        }
+    });
+    return data;
+}
+
+/**
+ * Writes a plain object (as produced by collectFormData) back into the
+ * form's fields, then fires input/change events so the page's own
+ * listeners (material info, spring type selector, end-type selector...)
+ * pick up the new values.
+ * @param {HTMLFormElement} form
+ * @param {Object} data
+ */
+function applyFormData(form, data) {
+    Object.keys(data).forEach(function (name) {
+        if (name === 'csrfmiddlewaretoken') {
+            return;
+        }
+        const els = form.querySelectorAll('[name="' + name.replace(/"/g, '\\"') + '"]');
+        if (!els.length) {
+            return;
+        }
+        const first = els[0];
+        if (first.type === 'checkbox') {
+            first.checked = !!data[name];
+        } else if (first.type === 'radio') {
+            els.forEach(function (radio) {
+                radio.checked = (radio.value === data[name]);
+            });
+        } else {
+            first.value = data[name];
+        }
+        els.forEach(function (el) {
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
+
+    // The end-type selector's visual state lives on CSS classes, not just
+    // the hidden input the loop above already restored.
+    const endHidden = form.querySelector('input[name="tipo_final"]');
+    if (endHidden) {
+        document.querySelectorAll('.end-option').forEach(function (opt) {
+            opt.classList.toggle('selected', opt.getAttribute('data-value') === endHidden.value);
+        });
+    }
+}
+
+/**
+ * UTF-8-safe base64 encode, so accented field values (material names,
+ * labels typed with é/ñ/...) survive the round trip through a URL.
+ * @param {string} text
+ * @returns {string}
+ */
+function utf8ToBase64(text) {
+    const bytes = new TextEncoder().encode(text);
+    let binary = '';
+    bytes.forEach(function (byte) {
+        binary += String.fromCharCode(byte);
+    });
+    return btoa(binary);
+}
+
+/**
+ * Inverse of utf8ToBase64().
+ * @param {string} b64
+ * @returns {string}
+ */
+function base64ToUtf8(b64) {
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+    }
+    return new TextDecoder().decode(bytes);
+}
+
+/**
+ * Triggers a browser download of `dataObj` as a formatted JSON file.
+ * @param {string} filename
+ * @param {Object} dataObj
+ */
+function downloadJSON(filename, dataObj) {
+    const blob = new Blob([JSON.stringify(dataObj, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+/**
+ * Wires up the "Guardar" / "Cargar" buttons shared by every spring
+ * calculator:
+ * - Guardar downloads the current form values as a JSON file.
+ * - Cargar reads a previously saved JSON file back into the form.
+ * The "Compartir por email" button is handled separately, by
+ * setupCompartirModal(), since it involves a modal and a server call.
+ * On load, if the page URL already carries a `datos` parameter (i.e. the
+ * user followed a shared link), the form is pre-filled from it.
+ */
+function setupSaveLoadShare() {
+    const form = document.querySelector('form');
+    if (!form) {
+        return;
+    }
+
+    const saveBtn = document.getElementById('guardar-btn');
+    const loadBtn = document.getElementById('cargar-btn');
+    const loadInput = document.getElementById('cargar-input');
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+            const data = collectFormData(form);
+            const today = new Date().toISOString().slice(0, 10);
+            downloadJSON('muelle-' + calculatorSlug() + '-' + today + '.json', data);
+        });
+    }
+
+    if (loadBtn && loadInput) {
+        loadBtn.addEventListener('click', function () {
+            loadInput.click();
+        });
+        loadInput.addEventListener('change', function () {
+            const file = loadInput.files[0];
+            if (!file) {
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                try {
+                    applyFormData(form, JSON.parse(evt.target.result));
+                } catch (err) {
+                    alert('⚠️ ' + gettext('El archivo seleccionado no es un JSON válido.'));
+                }
+            };
+            reader.readAsText(file);
+            loadInput.value = '';
+        });
+    }
+
+    const sharedData = new URLSearchParams(window.location.search).get('datos');
+    if (sharedData) {
+        try {
+            applyFormData(form, JSON.parse(base64ToUtf8(sharedData)));
+        } catch (err) {
+            console.warn('No se pudieron cargar los datos compartidos del enlace', err);
+        }
+    }
+}
+
+/**
+ * Wires up the "Compartir por email" button and its modal: asks for a
+ * sender and recipient address, requires a passed Google reCAPTCHA before
+ * enabling the send, then POSTs the form data to the server-side
+ * muelles_compartir_email endpoint, which emails a shared link from the
+ * site's own account (see muelles/views/compartir_email.py). Sending never
+ * happens from the visitor's own mail client.
+ */
+function setupCompartirModal() {
+    const form = document.querySelector('form');
+    const shareBtn = document.getElementById('compartir-btn');
+    const overlay = document.getElementById('compartir-modal-overlay');
+    if (!form || !shareBtn || !overlay) {
+        return;
+    }
+
+    const shareUrl = overlay.getAttribute('data-share-url');
+    const origenInput = document.getElementById('compartir-origen');
+    const destinoInput = document.getElementById('compartir-destino');
+    const statusBox = document.getElementById('compartir-modal-status');
+    const sendBtn = document.getElementById('compartir-enviar-btn');
+    const cancelBtn = document.getElementById('compartir-cancelar-btn');
+
+    function setStatus(message, kind) {
+        statusBox.textContent = message;
+        statusBox.className = 'compartir-modal-status' + (kind ? ' ' + kind : '');
+    }
+
+    function closeModal() {
+        overlay.style.display = 'none';
+        setStatus('', null);
+        if (window.grecaptcha) {
+            window.grecaptcha.reset();
+        }
+    }
+
+    shareBtn.addEventListener('click', function () {
+        setStatus('', null);
+        overlay.style.display = 'flex';
+    });
+
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeModal);
+    }
+
+    overlay.addEventListener('click', function (evt) {
+        if (evt.target === overlay) {
+            closeModal();
+        }
+    });
+
+    if (sendBtn) {
+        sendBtn.addEventListener('click', function () {
+            const origen = origenInput.value.trim();
+            const destino = destinoInput.value.trim();
+            if (!origen || !destino) {
+                setStatus(gettext('Completa ambos emails.'), 'error');
+                return;
+            }
+
+            const recaptchaResponse = window.grecaptcha ? window.grecaptcha.getResponse() : '';
+            if (!recaptchaResponse) {
+                setStatus(gettext('Confirma que no eres un robot.'), 'error');
+                return;
+            }
+
+            const csrfInput = form.querySelector('input[name="csrfmiddlewaretoken"]');
+            const encoded = utf8ToBase64(JSON.stringify(collectFormData(form)));
+            const body = new URLSearchParams();
+            body.set('origen', origen);
+            body.set('destino', destino);
+            body.set('pagina', window.location.pathname);
+            body.set('datos', encoded);
+            body.set('g-recaptcha-response', recaptchaResponse);
+
+            sendBtn.disabled = true;
+            setStatus(gettext('Enviando...'), null);
+
+            fetch(shareUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfInput ? csrfInput.value : '',
+                },
+                body: body.toString(),
+            })
+                .then(function (resp) {
+                    return resp.json().then(function (json) {
+                        return { ok: resp.ok, json: json };
+                    });
+                })
+                .then(function (result) {
+                    if (result.ok && result.json.ok) {
+                        setStatus('✅ ' + gettext('Enviado correctamente.'), 'success');
+                        setTimeout(closeModal, 1500);
+                    } else {
+                        setStatus('⚠️ ' + (result.json.error || gettext('No se pudo enviar el email.')), 'error');
+                        if (window.grecaptcha) {
+                            window.grecaptcha.reset();
+                        }
+                    }
+                })
+                .catch(function () {
+                    setStatus('⚠️ ' + gettext('Error de red al enviar el email.'), 'error');
+                })
+                .finally(function () {
+                    sendBtn.disabled = false;
+                });
+        });
+    }
+}
+
 // Initialize the system once the DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     setupFormatDetection();
@@ -509,7 +807,11 @@ document.addEventListener('DOMContentLoaded', function () {
     setupSpringTypeSelector();
     setupSpringEndSelector();
     setupMaterialPropertyDetection();
-    setupGeometryFieldControlAndDiameterSync();
+    if (typeof setupGeometryFieldControlAndDiameterSync === 'function') {
+        setupGeometryFieldControlAndDiameterSync();
+    }
+    setupSaveLoadShare();
+    setupCompartirModal();
 
     // Show loading message in the console
     console.log('🔧 HTML format detection system activated');

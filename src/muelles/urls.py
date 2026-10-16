@@ -32,6 +32,7 @@ from muelles.views.calculadora_2k import (
 from muelles.views.index import index
 from muelles.views.calculate_blocking_length import calculate_blocking_length
 from muelles.views.calculate_pitch import calculate_pitch
+from muelles.views.compartir_email import compartir_resultado_email
 
 urlpatterns = [
     path('', index, name='muelles_index'),
@@ -94,4 +95,5 @@ urlpatterns = [
     ),
     path('api/calculate-blocking-length/', calculate_blocking_length, name='muelles_calculate_blocking_length'),
     path('api/calculate-pitch/', calculate_pitch, name='muelles_calculate_pitch'),
+    path('compartir-email/', compartir_resultado_email, name='muelles_compartir_email'),
 ]

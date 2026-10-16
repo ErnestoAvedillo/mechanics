@@ -500,6 +500,176 @@ function setupMaterialPropertyDetection() {
 
 
 
+// Save / load / share the current calculation
+/**
+ * Derives a short slug for the current calculator from the URL, e.g.
+ * "/muelles/calculadora/2k/" -> "2k". Used to name the downloaded JSON file.
+ * @returns {string}
+ */
+function calculatorSlug() {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return parts[parts.length - 1] || 'muelle';
+}
+
+/**
+ * Reads every named field of the form into a plain object, skipping the
+ * CSRF token. Unchecked checkboxes are recorded as false and unselected
+ * radios are skipped, so the object round-trips through applyFormData().
+ * @param {HTMLFormElement} form
+ * @returns {Object}
+ */
+function collectFormData(form) {
+    const data = {};
+    form.querySelectorAll('input[name], select[name], textarea[name]').forEach(function (el) {
+        if (el.name === 'csrfmiddlewaretoken') {
+            return;
+        }
+        if (el.type === 'checkbox') {
+            data[el.name] = el.checked;
+        } else if (el.type === 'radio') {
+            if (el.checked) {
+                data[el.name] = el.value;
+            }
+        } else {
+            data[el.name] = el.value;
+        }
+    });
+    return data;
+}
+
+/**
+ * Writes a plain object (as produced by collectFormData) back into the
+ * form's fields, then fires input/change events so the page's own
+ * listeners (material info, spring type selector, end-type selector...)
+ * pick up the new values.
+ * @param {HTMLFormElement} form
+ * @param {Object} data
+ */
+function applyFormData(form, data) {
+    Object.keys(data).forEach(function (name) {
+        if (name === 'csrfmiddlewaretoken') {
+            return;
+        }
+        const els = form.querySelectorAll('[name="' + name.replace(/"/g, '\\"') + '"]');
+        if (!els.length) {
+            return;
+        }
+        const first = els[0];
+        if (first.type === 'checkbox') {
+            first.checked = !!data[name];
+        } else if (first.type === 'radio') {
+            els.forEach(function (radio) {
+                radio.checked = (radio.value === data[name]);
+            });
+        } else {
+            first.value = data[name];
+        }
+        els.forEach(function (el) {
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
+
+    // The end-type selector's visual state lives on CSS classes, not just
+    // the hidden input the loop above already restored.
+    const endHidden = form.querySelector('input[name="tipo_final"]');
+    if (endHidden) {
+        document.querySelectorAll('.end-option').forEach(function (opt) {
+            opt.classList.toggle('selected', opt.getAttribute('data-value') === endHidden.value);
+        });
+    }
+}
+
+/**
+ * Triggers a browser download of `dataObj` as a formatted JSON file.
+ * @param {string} filename
+ * @param {Object} dataObj
+ */
+function downloadJSON(filename, dataObj) {
+    const blob = new Blob([JSON.stringify(dataObj, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+/**
+ * Wires up the "Guardar" / "Cargar" / "Compartir por email" buttons shared
+ * by every spring calculator:
+ * - Guardar downloads the current form values as a JSON file.
+ * - Cargar reads a previously saved JSON file back into the form.
+ * - Compartir por email opens the user's mail client with a link back to
+ *   this same calculator page, carrying the form values base64-encoded in
+ *   the `datos` query parameter.
+ * On load, if the page URL already carries a `datos` parameter (i.e. the
+ * user followed a shared link), the form is pre-filled from it.
+ */
+function setupSaveLoadShare() {
+    const form = document.querySelector('form');
+    if (!form) {
+        return;
+    }
+
+    const saveBtn = document.getElementById('guardar-btn');
+    const loadBtn = document.getElementById('cargar-btn');
+    const loadInput = document.getElementById('cargar-input');
+    const shareBtn = document.getElementById('compartir-btn');
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+            const data = collectFormData(form);
+            const today = new Date().toISOString().slice(0, 10);
+            downloadJSON('muelle-' + calculatorSlug() + '-' + today + '.json', data);
+        });
+    }
+
+    if (loadBtn && loadInput) {
+        loadBtn.addEventListener('click', function () {
+            loadInput.click();
+        });
+        loadInput.addEventListener('change', function () {
+            const file = loadInput.files[0];
+            if (!file) {
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                try {
+                    applyFormData(form, JSON.parse(evt.target.result));
+                } catch (err) {
+                    alert('⚠️ ' + gettext('El archivo seleccionado no es un JSON válido.'));
+                }
+            };
+            reader.readAsText(file);
+            loadInput.value = '';
+        });
+    }
+
+    if (shareBtn) {
+        shareBtn.addEventListener('click', function () {
+            const data = collectFormData(form);
+            const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+            const link = window.location.origin + window.location.pathname + '?datos=' + encoded;
+            const subject = gettext('Cálculo de muelle');
+            const body = gettext('Estos son los datos del cálculo de muelle. Abre el enlace para verlos en la calculadora:') + '\n\n' + link;
+            window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        });
+    }
+
+    const sharedData = new URLSearchParams(window.location.search).get('datos');
+    if (sharedData) {
+        try {
+            applyFormData(form, JSON.parse(decodeURIComponent(escape(atob(sharedData)))));
+        } catch (err) {
+            console.warn('No se pudieron cargar los datos compartidos del enlace', err);
+        }
+    }
+}
+
 // Initialize the system once the DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
     setupFormatDetection();
@@ -509,7 +679,10 @@ document.addEventListener('DOMContentLoaded', function () {
     setupSpringTypeSelector();
     setupSpringEndSelector();
     setupMaterialPropertyDetection();
-    setupGeometryFieldControlAndDiameterSync();
+    if (typeof setupGeometryFieldControlAndDiameterSync === 'function') {
+        setupGeometryFieldControlAndDiameterSync();
+    }
+    setupSaveLoadShare();
 
     // Show loading message in the console
     console.log('🔧 HTML format detection system activated');

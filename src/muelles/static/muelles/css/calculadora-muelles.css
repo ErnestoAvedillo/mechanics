@@ -433,16 +433,24 @@
 }
 
 .form-actions {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+@media (max-width: 700px) {
+    .form-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .form-actions .calculate-btn,
 .form-actions .animation-btn,
-.form-actions .pdf-btn {
-    width: auto;
-    flex: 1 1 200px;
+.form-actions .pdf-btn,
+.form-actions .save-btn,
+.form-actions .load-btn,
+.form-actions .share-btn {
+    width: 100%;
 }
 
 .animation-btn {
@@ -471,6 +479,85 @@
 
 .pdf-btn:hover {
     background-color: #b02a37;
+}
+
+.save-btn,
+.load-btn {
+    background-color: #198754;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-btn:hover,
+.load-btn:hover {
+    background-color: #14603d;
+}
+
+.share-btn {
+    background-color: #fd7e14;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    background-color: #c9640a;
+}
+
+.compartir-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    align-items: center;
+    justify-content: center;
+}
+
+.compartir-modal-box {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.compartir-modal-hint {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 16px;
+}
+
+.compartir-modal-status {
+    min-height: 20px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.compartir-modal-status.success {
+    color: #198754;
+}
+
+.compartir-modal-status.error {
+    color: #dc3545;
+}
+
+.compartir-modal-box .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.compartir-modal-box .modal-actions button {
+    flex: 1;
 }
 
 .results {

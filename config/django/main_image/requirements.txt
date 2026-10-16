@@ -21,4 +21,4 @@ pyreqifz>=0.1.1
 playwright
 pytest>=9.0.2
 pytest-playwright
-springcalc>=0.1.23
+springcalc>=0.1.24

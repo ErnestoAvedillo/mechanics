@@ -433,16 +433,24 @@
 }
 
 .form-actions {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+@media (max-width: 700px) {
+    .form-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .form-actions .calculate-btn,
 .form-actions .animation-btn,
-.form-actions .pdf-btn {
-    width: auto;
-    flex: 1 1 200px;
+.form-actions .pdf-btn,
+.form-actions .save-btn,
+.form-actions .load-btn,
+.form-actions .share-btn {
+    width: 100%;
 }
 
 .animation-btn {
@@ -471,6 +479,36 @@
 
 .pdf-btn:hover {
     background-color: #b02a37;
+}
+
+.save-btn,
+.load-btn {
+    background-color: #198754;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-btn:hover,
+.load-btn:hover {
+    background-color: #14603d;
+}
+
+.share-btn {
+    background-color: #fd7e14;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    background-color: #c9640a;
 }
 
 .results {

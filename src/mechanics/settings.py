@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'muelles.context_processors.recaptcha',
             ],
         },
     },
@@ -150,17 +151,27 @@ STATICFILES_DIRS = [PROJECT_ROOT / 'assets']
 # Django collects here in production
 STATIC_ROOT = PROJECT_ROOT / 'static_files/'
 
-# Email configuration (use environment variables in production)
+# Email configuration (use environment variables in production).
+# The .env in this project names the SMTP credentials SMTP_HOST/SMTP_PORT/
+# NO_REPLY_EMAIL/NO_REPLY_PASSWORD; EMAIL_HOST/EMAIL_HOST_USER/... are
+# accepted too so an EMAIL_-named override still works.
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.example.com')
-    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
-    EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-DEFAULT_FROM_EMAIL = 'noreply@ernestoavedillo.com'
+    EMAIL_HOST = os.environ.get('EMAIL_HOST') or os.environ.get('SMTP_HOST', 'smtp.example.com')
+    EMAIL_PORT = int(os.environ.get('EMAIL_PORT') or os.environ.get('SMTP_PORT', 587))
+    EMAIL_USE_TLS = (os.environ.get('EMAIL_USE_TLS', 'True') == 'True')
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') or os.environ.get('NO_REPLY_EMAIL', '')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') or os.environ.get('NO_REPLY_PASSWORD', '')
+DEFAULT_FROM_EMAIL = os.environ.get('NO_REPLY_EMAIL', 'noreply@ernestoavedillo.com')
+
+# Google reCAPTCHA v2 ("I'm not a robot" checkbox), gating the spring
+# calculators' "share by email" form so it can't be used as a mail relay.
+# Register the site at https://www.google.com/recaptcha/admin and set these
+# in .env - left empty, the form fails closed (share requests are rejected).
+RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '')
+RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '')
 
 # MongoDB and Qdrant configuration
 import urllib.parse

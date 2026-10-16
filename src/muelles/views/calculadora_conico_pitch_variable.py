@@ -16,6 +16,10 @@ from muelles.views.spring_report_pdf import build_spring_report_pdf_response
 from springcalc import Material, CompressionSpringGeneral, ureg
 
 
+def _to_float_mm(value):
+    return float(value.magnitude) if hasattr(value, 'magnitude') else float(value)
+
+
 def _calcular_muelle_conico_pitch_variable(request):
     """Runs the variable-pitch conical calculator computation.
 
@@ -39,8 +43,6 @@ def _calcular_muelle_conico_pitch_variable(request):
     free_length_qty = longitud_libre * ureg.mm
     diametro_superior_qty = diametro_medio_superior * ureg.mm
     diametro_inferior_qty = diametro_medio_inferior * ureg.mm
-    pitch_superior_qty = pitch_superior * ureg.mm
-    pitch_inferior_qty = pitch_inferior * ureg.mm
 
     # The wire centerline runs from d/2 above the base to d/2 below the free
     # end, so it spans the free length minus one wire diameter.
@@ -51,13 +53,56 @@ def _calcular_muelle_conico_pitch_variable(request):
         # h=centerline_length at the free end (upper diameter).
         return diametro_inferior_qty + (diametro_superior_qty - diametro_inferior_qty) * (h / centerline_length_qty)
 
+    # springcalc evaluates the pitch ~100k times (nested quad inside fsolve),
+    # and pint arithmetic dominates the cost, so the profile runs on plain
+    # floats in mm and only wraps the result in a Quantity on the way out.
+    wire_mm = _to_float_mm(muelle.wire_diameter)
+    centerline_mm = _to_float_mm(centerline_length_qty)
+    pitch_inferior_mm = pitch_inferior
+    pitch_delta_mm = pitch_superior - pitch_inferior
+    interior_mm = centerline_mm - 2 * wire_mm
+    mm_units = ureg.mm
+
+    def _interior_pitch_mm(h_mm):
+        # h_mm is measured from the interior zone's own start (h=wire_mm),
+        # not from the spring's base (h=0): otherwise this reaches
+        # pitch_superior_mm one wire diameter *before* top_start_mm and then
+        # keeps extrapolating past it for the rest of the zone. With a wire
+        # diameter that's a sizeable fraction of the free length (or a large
+        # pitch_inferior/pitch_superior spread), that extrapolation pushed
+        # the pitch through zero into negative values -- 2*pi/pitch is then
+        # a genuine pole, which is what made quad report the integral as
+        # "probably divergent" instead of merely warning about subdivisions.
+        return pitch_inferior_mm + pitch_delta_mm * ((h_mm - wire_mm) / interior_mm)
+
+    # The closed end zones (pitch = wire diameter) used to meet the interior
+    # formula with a hard step, e.g. jumping from a 2 mm closed pitch straight
+    # to an ~12 mm working pitch at a single point. springcalc integrates
+    # 1/pitch to solve each coil's position (calculate_theta_max, then a
+    # per-point fsolve+quad in get_h_theta_development), and a real jump in
+    # pitch is a real jump in that integrand -- which is what was driving
+    # scipy's quad/fsolve to stall near it (the "maximum subdivisions
+    # achieved" / "not making good progress" warnings, and the multi-second
+    # slowdown that came with them). Ramping linearly across each closed zone
+    # instead keeps the pitch value continuous; only its slope still kinks at
+    # the two junctions, which quad/fsolve handle far more gracefully than an
+    # outright jump. With the offset above, the interior formula lands
+    # exactly on pitch_inferior_mm/pitch_superior_mm at the zone boundaries,
+    # so the ramp's far endpoints are just the entered pitches themselves.
+    pitch_at_wire_mm = pitch_inferior_mm
+    top_start_mm = centerline_mm - wire_mm
+    pitch_at_top_mm = pitch_superior
+
     def func_pitch(h):
-        # Pitch varies linearly along the whole spring
-        if h < muelle.wire_diameter:
-            return muelle.wire_diameter
-        elif h > centerline_length_qty - muelle.wire_diameter:
-            return muelle.wire_diameter
-        return pitch_inferior_qty + (pitch_superior_qty - pitch_inferior_qty) * (h / (centerline_length_qty - 2 * muelle.wire_diameter))
+        # springcalc always passes h in mm.
+        h_mm = h.magnitude
+        if h_mm < wire_mm:
+            return ureg.Quantity(wire_mm + (pitch_at_wire_mm - wire_mm) * (h_mm / wire_mm), mm_units)
+        if h_mm > top_start_mm:
+            return ureg.Quantity(
+                pitch_at_top_mm + (wire_mm - pitch_at_top_mm) * ((h_mm - top_start_mm) / wire_mm), mm_units
+            )
+        return ureg.Quantity(_interior_pitch_mm(h_mm), mm_units)
 
     # springcalc integrates the coils over [0, free_length], so hand it the
     # centerline span and restore the real free length afterwards: loads,
@@ -65,9 +110,6 @@ def _calcular_muelle_conico_pitch_variable(request):
     muelle.set_geometry(func_D=func_diametro, func_p=func_pitch, free_length=centerline_length_qty)
     muelle.calculate_spring_properties()
     muelle.free_length = free_length_qty
-
-    def _to_float_mm(value):
-        return float(value.magnitude) if hasattr(value, 'magnitude') else float(value)
 
     longitud_libre_mm = _to_float_mm(muelle.free_length)
     longitud_bloqueo = _to_float_mm(muelle.solid_length)

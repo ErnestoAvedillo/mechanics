@@ -97,6 +97,10 @@
         <button type="submit" class="calculate-btn" data-loading-text="{% trans 'Calculando...' %}">{% trans "Calcular Especificaciones" %}</button>
         <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_compresion_animacion' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando animación...' %}">{% trans "Crear Animación" %}</button>
         <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_compresion_pdf' %}" formmethod="post" formtarget="_blank" data-loading-text="{% trans 'Generando PDF...' %}">{% trans "Crear Reporte PDF" %}</button>
+        <button type="button" id="guardar-btn" class="save-btn">💾 {% trans "Guardar" %}</button>
+        <button type="button" id="cargar-btn" class="load-btn">📂 {% trans "Cargar" %}</button>
+        <input type="file" id="cargar-input" accept="application/json" style="display:none">
+        <button type="button" id="compartir-btn" class="share-btn">📧 {% trans "Compartir por email" %}</button>
     </div>
     <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
     <script src="{% static 'muelles/js/form_validation_compression.js' %}"></script>

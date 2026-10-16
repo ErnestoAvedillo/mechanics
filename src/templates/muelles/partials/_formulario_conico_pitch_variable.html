@@ -79,6 +79,10 @@
         <button type="submit" class="calculate-btn">{% trans "Calcular Especificaciones" %}</button>
         <button type="submit" class="animation-btn" formaction="{% url 'muelles_calculadora_conico_pitch_variable_animacion' %}" formmethod="post" formtarget="_blank">{% trans "Crear Animación" %}</button>
         <button type="submit" class="pdf-btn" formaction="{% url 'muelles_calculadora_conico_pitch_variable_pdf' %}" formmethod="post" formtarget="_blank">{% trans "Crear Reporte PDF" %}</button>
+        <button type="button" id="guardar-btn" class="save-btn">💾 {% trans "Guardar" %}</button>
+        <button type="button" id="cargar-btn" class="load-btn">📂 {% trans "Cargar" %}</button>
+        <input type="file" id="cargar-input" accept="application/json" style="display:none">
+        <button type="button" id="compartir-btn" class="share-btn">📧 {% trans "Compartir por email" %}</button>
     </div>
     <script src="{% static 'muelles/js/form_display_tooltips.js' %}"></script>
 </div>
