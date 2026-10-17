@@ -3377,6 +3377,18 @@ msgstr "Select a language"
 msgid "Igual que el idioma de este documento"
 msgstr "Same as this document's language"
 
+#: templates/menuapp/index.html
+msgid "Biblioteca de normas con IA"
+msgstr "AI standards library"
+
+#: templates/menuapp/index.html
+msgid "Sube tus normas de OEM, incluso escaneadas: la IA detecta la edición y el idioma, y responde a tus preguntas citando las fuentes."
+msgstr "Upload your OEM standards, even scanned ones: the AI detects the edition and the language, and answers your questions citing its sources."
+
+#: templates/menuapp/index.html
+msgid "Es de código abierto: mira el código en "
+msgstr "It is open source: see the code on "
+
 #~ msgid ""
 #~ "Over two decades across BMW, VW, and Ford production lines, I kept "
 #~ "witnessing the exact same tragedy: world-class engineers wasting their "

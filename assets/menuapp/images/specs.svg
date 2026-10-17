@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Standards library">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#8caad2" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12203a"/>
+      <stop offset="1" stop-color="#0c1524"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#0a1220"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+
+  <!-- stack of standards: back pages, then the front page -->
+  <g stroke="#2c93a6" stroke-width="2" fill="url(#page)">
+    <rect x="215" y="86" width="270" height="340" rx="8" transform="rotate(-7 350 256)"/>
+    <rect x="235" y="72" width="270" height="340" rx="8" transform="rotate(-2 370 242)"/>
+  </g>
+  <g>
+    <rect x="260" y="60" width="270" height="340" rx="8" fill="url(#page)" stroke="#57e2e6" stroke-width="2.5"/>
+    <!-- title block -->
+    <rect x="286" y="90" width="120" height="14" rx="3" fill="#57e2e6"/>
+    <rect x="286" y="114" width="190" height="8" rx="3" fill="#8ea2bd" fill-opacity="0.7"/>
+    <!-- table -->
+    <g stroke="#8caad2" stroke-opacity="0.45" stroke-width="1.5" fill="none">
+      <rect x="286" y="150" width="218" height="96"/>
+      <path d="M286 182H504M286 214H504M358 150V246M432 150V246"/>
+    </g>
+    <rect x="296" y="162" width="46" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.8"/>
+    <rect x="368" y="162" width="40" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.8"/>
+    <rect x="442" y="162" width="46" height="8" rx="2" fill="#ffb454"/>
+    <rect x="296" y="194" width="40" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.5"/>
+    <rect x="368" y="194" width="34" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.5"/>
+    <rect x="442" y="194" width="38" height="8" rx="2" fill="#ffb454" fill-opacity="0.7"/>
+    <rect x="296" y="226" width="44" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.5"/>
+    <rect x="368" y="226" width="38" height="8" rx="2" fill="#8ea2bd" fill-opacity="0.5"/>
+    <rect x="442" y="226" width="42" height="8" rx="2" fill="#ffb454" fill-opacity="0.7"/>
+    <!-- text lines -->
+    <g fill="#8ea2bd" fill-opacity="0.45">
+      <rect x="286" y="268" width="218" height="7" rx="3"/>
+      <rect x="286" y="286" width="196" height="7" rx="3"/>
+      <rect x="286" y="304" width="210" height="7" rx="3"/>
+      <rect x="286" y="322" width="150" height="7" rx="3"/>
+      <rect x="286" y="352" width="100" height="7" rx="3"/>
+    </g>
+  </g>
+
+  <!-- magnifier over the table: the AI answer with its source -->
+  <g>
+    <circle cx="560" cy="250" r="62" fill="#0a1220" fill-opacity="0.78" stroke="#57e2e6" stroke-width="7"/>
+    <path d="M605 295L664 354" stroke="#57e2e6" stroke-width="14" stroke-linecap="round"/>
+    <path d="M532 250l20 20 36-42" fill="none" stroke="#ffb454" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- edition and language tags -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="600">
+    <rect x="545" y="92" width="190" height="38" rx="19" fill="#0c1524" stroke="#ffb454" stroke-width="1.5"/>
+    <text x="640" y="117" text-anchor="middle" fill="#ffb454">2025-12 · DE</text>
+    <rect x="575" y="140" width="130" height="38" rx="19" fill="#0c1524" stroke="#2c93a6" stroke-width="1.5"/>
+    <text x="640" y="165" text-anchor="middle" fill="#57e2e6">TL 245</text>
+  </g>
+</svg>
