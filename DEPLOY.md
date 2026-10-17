@@ -90,9 +90,16 @@ if port != 465: s.starttls()
 print('login:', s.login(u, p)); s.quit()"
 ```
 
+**Use port 587.** On the production host outbound port 465 is blocked (the connection times out, and the
+traceback shows `OSError: [Errno 101] Network is unreachable` because Python reports the first, IPv6, error).
+Port 587 (STARTTLS) connects. Check with:
+`docker exec django python -c "import socket; socket.create_connection(('smtp.gmail.com', 587), 8).close(); print('587 OK')"`.
+After changing `SMTP_PORT` in `.env_prod`, run `cp .env_prod .env` and `docker compose up -d --force-recreate django`
+(a plain restart does not re-read the environment file).
+
 Known issue: from the development machine Gmail closed the connection during login (no error code) with the
-configured app password, so it is **unconfirmed**. If it fails from the server too, regenerate the Gmail app
-password (the sender is a no-reply Gmail account), and meanwhile give the judges a ready-made account:
+configured app password, so credentials are **unconfirmed**. If login fails from the server over 587, regenerate the
+Gmail app password (the sender is a no-reply Gmail account), and meanwhile give the judges a ready-made account:
 
 ```bash
 docker exec -w /app/src django python manage.py shell -c \
