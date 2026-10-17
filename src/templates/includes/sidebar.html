@@ -12,9 +12,12 @@
   <li><a href="/">🏠 {% trans "Inicio" %}</a></li>
   <li><a href="/muelles/">🔧 {% trans "Muelles" %}</a></li>
   <li><a href="/tolerances/">📐 {% trans "Tolerancias" %}</a></li>
-  <!-- <li><a href="/specs/index/">📄 {% trans "Especificaciones" %}</a></li> -->
+  <li><a href="/specs/index/">📄 {% trans "Especificaciones" %}</a></li>
   <li><a href="/reqif/">📋 {% trans "Visualizador ReqIF" %}</a></li>
   <li><a href="/contacto/">📞 {% trans "Contacto" %}</a></li>
+  {% if user.is_authenticated %}
+  <li><a href="{% url 'menuapp:profile' %}">👤 {% trans "Mi cuenta" %}</a></li>
+  {% endif %}
 </ul>
 </nav>
 <div class="sidebar-overlay"></div>

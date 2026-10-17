@@ -6,13 +6,14 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # @shared_task
-def process_document_task(document_id):
+def process_document_task(user_document_id):
     """
-    Celery task to process and index the document in LlamaParse and Qdrant.
+    Processes and indexes the document of a UserDocument in LlamaParse and Qdrant
+    (runs in a background thread; a Celery task if Celery is restored).
     """
-    success, msg = index_document_to_rag(document_id)
-    logging.info(f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}")
-    return f"Doc_id {document_id}: {'Success' if success else 'Error'} - {msg}"
+    success, msg = index_document_to_rag(user_document_id)
+    logging.info(f"UserDocument {user_document_id}: {'Success' if success else 'Error'} - {msg}")
+    return f"UserDocument {user_document_id}: {'Success' if success else 'Error'} - {msg}"
 
 
 # @shared_task

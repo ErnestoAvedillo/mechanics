@@ -3070,6 +3070,319 @@ msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 msgstr "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
 
 #, python-format
+
+#: menuapp/views.py
+msgid "Confirma tu nuevo correo - Mechanics"
+msgstr "Confirma tu nuevo correo - Mechanics"
+
+#: menuapp/views.py
+msgid "Hola %(username)s, tu código para confirmar el nuevo correo es: %(code)s"
+msgstr "Hola %(username)s, tu código para confirmar el nuevo correo es: %(code)s"
+
+#: menuapp/views.py menuapp/forms.py
+msgid "Este correo electrónico ya está en uso."
+msgstr "Este correo electrónico ya está en uso."
+
+#: menuapp/views.py
+msgid "Correo electrónico actualizado."
+msgstr "Correo electrónico actualizado."
+
+#: menuapp/views.py
+msgid "Datos guardados."
+msgstr "Datos guardados."
+
+#: menuapp/forms.py
+msgid "Nombre"
+msgstr "Nombre"
+
+#: menuapp/forms.py
+msgid "Apellidos"
+msgstr "Apellidos"
+
+#: templates/registration/profile.html
+msgid "Mi cuenta"
+msgstr "Mi cuenta"
+
+#: templates/registration/profile.html
+msgid "Si cambias el correo, te enviaremos un código de verificación a la nueva dirección."
+msgstr "Si cambias el correo, te enviaremos un código de verificación a la nueva dirección."
+
+#: templates/registration/profile.html
+msgid "Guardar cambios"
+msgstr "Guardar cambios"
+
+#: templates/registration/profile.html
+msgid "Cambiar contraseña"
+msgstr "Cambiar contraseña"
+
+#: menuapp/views.py
+msgid "No se pudo enviar el correo de verificación. Inténtalo de nuevo más tarde."
+msgstr "No se pudo enviar el correo de verificación. Inténtalo de nuevo más tarde."
+
+#: specs/views.py
+msgid "El documento «%(filename)s» ya está en tu biblioteca."
+msgstr "El documento «%(filename)s» ya está en tu biblioteca."
+
+#: specs/views.py
+msgid "«%(filename)s» ya estaba analizado: se ha añadido a tu biblioteca sin volver a procesarlo."
+msgstr "«%(filename)s» ya estaba analizado: se ha añadido a tu biblioteca sin volver a procesarlo."
+
+#: specs/forms.py
+msgid "Emisor / OEM"
+msgstr "Emisor / OEM"
+
+#: specs/forms.py
+msgid "Número de norma"
+msgstr "Número de norma"
+
+#: specs/forms.py
+msgid "Título"
+msgstr "Título"
+
+#: specs/forms.py
+msgid "Fecha de edición"
+msgstr "Fecha de edición"
+
+#: specs/forms.py
+msgid "Idioma (código ISO, ej. de, en, es)"
+msgstr "Idioma (código ISO, ej. de, en, es)"
+
+#: specs/forms.py
+msgid "Introduce el número de la norma."
+msgstr "Introduce el número de la norma."
+
+#: specs/views.py
+msgid "Solo quien subió el documento puede modificar sus metadatos."
+msgstr "Solo quien subió el documento puede modificar sus metadatos."
+
+#: specs/views.py
+msgid "Metadatos confirmados."
+msgstr "Metadatos confirmados."
+
+#: templates/specs/document_review.html
+msgid "Metadatos de la norma"
+msgstr "Metadatos de la norma"
+
+#: templates/specs/document_review.html
+msgid "Metadatos confirmados"
+msgstr "Metadatos confirmados"
+
+#: templates/specs/document_review.html
+msgid "No se pudieron extraer los metadatos automáticamente. Rellénalos a mano."
+msgstr "No se pudieron extraer los metadatos automáticamente. Rellénalos a mano."
+
+#: templates/specs/document_review.html
+msgid "Estos datos los ha propuesto la IA a partir de la portada. Revísalos antes de confirmar: se usarán para detectar versiones nuevas de la norma."
+msgstr "Estos datos los ha propuesto la IA a partir de la portada. Revísalos antes de confirmar: se usarán para detectar versiones nuevas de la norma."
+
+#: templates/specs/document_review.html
+msgid "Aviso de copyright impreso"
+msgstr "Aviso de copyright impreso"
+
+#: templates/specs/document_review.html
+msgid "Ediciones que sustituye"
+msgstr "Ediciones que sustituye"
+
+#: templates/specs/document_review.html
+msgid "Confirmar metadatos"
+msgstr "Confirmar metadatos"
+
+#: templates/specs/document_list.html
+msgid "Metadatos por confirmar"
+msgstr "Metadatos por confirmar"
+
+#: templates/specs/document_list.html
+msgid "Ver metadatos"
+msgstr "Ver metadatos"
+
+#: specs/views.py
+msgid "Obsoleta: sustituida por %(by)s"
+msgstr "Obsoleta: sustituida por %(by)s"
+
+#: specs/views.py
+msgid "Traducción: el chat usa el original %(by)s"
+msgstr "Traducción: el chat usa el original %(by)s"
+
+#: specs/views.py
+msgid "Posible duplicado de %(by)s"
+msgstr "Posible duplicado de %(by)s"
+
+#: specs/views.py
+msgid "Solo traducción: el original puede prevalecer"
+msgstr "Solo traducción: el original puede prevalecer"
+
+#: specs/views.py
+msgid "«%(filename)s» es una traducción y el original no está en tu biblioteca: el original puede prevalecer."
+msgstr "«%(filename)s» es una traducción y el original no está en tu biblioteca: el original puede prevalecer."
+
+#: specs/forms.py
+msgid "Idioma de este documento (código ISO, ej. de, en, es)"
+msgstr "Idioma de este documento (código ISO, ej. de, en, es)"
+
+#: specs/forms.py
+msgid "Idioma original que prevalece (si es una traducción)"
+msgstr "Idioma original que prevalece (si es una traducción)"
+
+#: specs/forms.py
+msgid "Usa un código de idioma ISO de 2 o 3 letras, por ejemplo de, en, es."
+msgstr "Usa un código de idioma ISO de 2 o 3 letras, por ejemplo de, en, es."
+
+#: specs/languages.py
+msgid "Alemán"
+msgstr "Alemán"
+
+#: specs/languages.py
+msgid "Inglés"
+msgstr "Inglés"
+
+#: specs/languages.py
+msgid "Español"
+msgstr "Español"
+
+#: specs/languages.py
+msgid "Francés"
+msgstr "Francés"
+
+#: specs/languages.py
+msgid "Italiano"
+msgstr "Italiano"
+
+#: specs/languages.py
+msgid "Portugués"
+msgstr "Portugués"
+
+#: specs/languages.py
+msgid "Chino"
+msgstr "Chino"
+
+#: specs/languages.py
+msgid "Japonés"
+msgstr "Japonés"
+
+#: specs/languages.py
+msgid "Coreano"
+msgstr "Coreano"
+
+#: specs/languages.py
+msgid "Neerlandés"
+msgstr "Neerlandés"
+
+#: specs/languages.py
+msgid "Sueco"
+msgstr "Sueco"
+
+#: specs/languages.py
+msgid "Danés"
+msgstr "Danés"
+
+#: specs/languages.py
+msgid "Noruego"
+msgstr "Noruego"
+
+#: specs/languages.py
+msgid "Finés"
+msgstr "Finés"
+
+#: specs/languages.py
+msgid "Checo"
+msgstr "Checo"
+
+#: specs/languages.py
+msgid "Eslovaco"
+msgstr "Eslovaco"
+
+#: specs/languages.py
+msgid "Polaco"
+msgstr "Polaco"
+
+#: specs/languages.py
+msgid "Húngaro"
+msgstr "Húngaro"
+
+#: specs/languages.py
+msgid "Rumano"
+msgstr "Rumano"
+
+#: specs/languages.py
+msgid "Búlgaro"
+msgstr "Búlgaro"
+
+#: specs/languages.py
+msgid "Croata"
+msgstr "Croata"
+
+#: specs/languages.py
+msgid "Esloveno"
+msgstr "Esloveno"
+
+#: specs/languages.py
+msgid "Serbio"
+msgstr "Serbio"
+
+#: specs/languages.py
+msgid "Griego"
+msgstr "Griego"
+
+#: specs/languages.py
+msgid "Turco"
+msgstr "Turco"
+
+#: specs/languages.py
+msgid "Ruso"
+msgstr "Ruso"
+
+#: specs/languages.py
+msgid "Ucraniano"
+msgstr "Ucraniano"
+
+#: specs/languages.py
+msgid "Árabe"
+msgstr "Árabe"
+
+#: specs/languages.py
+msgid "Hebreo"
+msgstr "Hebreo"
+
+#: specs/languages.py
+msgid "Hindi"
+msgstr "Hindi"
+
+#: specs/languages.py
+msgid "Tailandés"
+msgstr "Tailandés"
+
+#: specs/languages.py
+msgid "Vietnamita"
+msgstr "Vietnamita"
+
+#: specs/languages.py
+msgid "Indonesio"
+msgstr "Indonesio"
+
+#: specs/languages.py
+msgid "Catalán"
+msgstr "Catalán"
+
+#: specs/languages.py
+msgid "Euskera"
+msgstr "Euskera"
+
+#: specs/languages.py
+msgid "Gallego"
+msgstr "Gallego"
+
+#: specs/forms.py
+msgid "Idioma de este documento"
+msgstr "Idioma de este documento"
+
+#: specs/forms.py
+msgid "Selecciona un idioma"
+msgstr "Selecciona un idioma"
+
+#: specs/forms.py
+msgid "Igual que el idioma de este documento"
+msgstr "Igual que el idioma de este documento"
+
 #~ msgid ""
 #~ "Over two decades across BMW, VW, and Ford production lines, I kept "
 #~ "witnessing the exact same tragedy: world-class engineers wasting their "

@@ -59,7 +59,10 @@
     <div class="card-container">
         <div class="card-title d-flex justify-between">
             <h2 style="margin: 0; display: inline-block;">📚 {% trans "Mis Documentos RAG" %}</h2>
-            <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ {% trans "Subir Nuevo PDF" %}</a>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="{% url 'specs:chat_view' %}" class="btn btn-secondary">💬 {% trans "Ir al Chat RAG" %}</a>
+                <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ {% trans "Subir Nuevo PDF" %}</a>
+            </div>
         </div>
 
         {% if messages %}
@@ -102,10 +105,25 @@
                                 </form>
                                 <td style="white-space: nowrap; font-size: 0.9em; color: #718096;">{{ doc.upload_date|date:"d/m/Y H:i" }}</td>
                                 <td style="white-space: nowrap;">
-                                    {% if doc.is_indexed %}
+                                    {% if doc.document.is_indexed %}
                                         <span class="status-badge status-success">● {% trans "Indexado" %}</span>
                                     {% else %}
                                         <span class="status-badge status-warning">○ {% trans "Pendiente" %}</span>
+                                    {% endif %}
+                                    {% if doc.document.spec_number %}
+                                        <div style="font-size: 0.8rem; color: #4a5568; margin-top: 4px;">
+                                            {{ doc.document.spec_issuer }} {{ doc.document.spec_number }}{% if doc.document.edition_date %} · {{ doc.document.edition_date|date:"Y-m" }}{% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if doc.library_label %}
+                                        <div style="font-size: 0.78rem; margin-top: 4px; {% if doc.library_hidden %}color: #718096;{% else %}color: #975a16;{% endif %}">
+                                            {% if doc.library_hidden %}⊘{% else %}⚠{% endif %} {{ doc.library_label }}
+                                        </div>
+                                    {% endif %}
+                                    {% if doc.document.metadata_status == 'pending_review' or doc.document.metadata_status == 'failed' %}
+                                        <a href="{% url 'specs:document_review' doc.id %}" class="status-badge status-warning" style="text-decoration: none; display: inline-block; margin-top: 4px;">⚠ {% trans "Metadatos por confirmar" %}</a>
+                                    {% elif doc.document.metadata_status == 'confirmed' %}
+                                        <a href="{% url 'specs:document_review' doc.id %}" style="font-size: 0.75rem; color: #718096;">{% trans "Ver metadatos" %}</a>
                                     {% endif %}
                                 </td>
                                 <td style="white-space: nowrap;">

@@ -1,7 +1,10 @@
+import hashlib
 import logging
+import threading
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError, transaction
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.conf import settings
@@ -9,12 +12,36 @@ from django.utils.translation import gettext as _
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import gridfs
-from .models import UserDocument
-from .forms import DocumentUploadForm
-from .rag_engine import get_rag_engine, index_document_to_rag
+from .models import Document, UserDocument
+from .forms import DocumentUploadForm, MetadataReviewForm
+from .rag_engine import DOC_KEY, get_rag_engine, delete_document_vectors
 from .tasks import process_document_task
+from .versions import DUPLICATE, SEARCHED, SUPERSEDED, TRANSLATION, TRANSLATION_ONLY, library_state
 
 logger = logging.getLogger(__name__)
+
+
+def _gridfs():
+    """GridFS handle on the project's MongoDB database."""
+    return gridfs.GridFS(MongoClient(settings.MONGO_URL)[settings.MONGO_DB_NAME])
+
+
+def purge_document(document):
+    """
+    Removes a Document that nobody has access to any more: its vectors, its PDF and its row.
+    Each step is logged on failure instead of raised, so deleting a user's access never fails
+    because of cleanup; leftovers are orphans that do not affect anyone.
+    """
+    try:
+        delete_document_vectors(document.pk)
+    except Exception:
+        logger.exception("Could not delete the vectors of document %s", document.pk)
+    try:
+        _gridfs().delete(ObjectId(document.mongo_id))
+    except Exception:
+        logger.exception("Could not delete the PDF of document %s", document.pk)
+    document.delete()
+
 
 def index(request):
     """Redirects to the main specs page."""
@@ -23,8 +50,35 @@ def index(request):
 @login_required
 def document_list(request):
     """List of documents uploaded by the user."""
-    documents = UserDocument.objects.filter(user=request.user).order_by('-upload_date')
+    documents = list(UserDocument.objects.filter(user=request.user).select_related('document').order_by('-upload_date'))
+    states = library_state(request.user.id)
+    by_id = {entry.document_id: entry.document for entry in documents if entry.document_id}
+    for entry in documents:
+        state = states.get(entry.document_id)
+        entry.library_label = _library_label(state, by_id.get(state.by)) if state else ''
+        entry.library_hidden = bool(state) and state.state not in SEARCHED
     return render(request, 'specs/document_list.html', {'documents': documents})
+
+
+def _short_name(document):
+    """'VW TL 245 (2025-12, de)' - how a document is referred to in labels."""
+    detail = ", ".join(part for part in (
+        document.edition_date.strftime('%Y-%m') if document.edition_date else '', document.language) if part)
+    return f"{document.spec_issuer} {document.spec_number}" + (f" ({detail})" if detail else "")
+
+
+def _library_label(state, replacement):
+    """Why a document is, or is not, used by the chat; empty when nothing needs saying."""
+    by = _short_name(replacement) if replacement else ''
+    if state.state == SUPERSEDED:
+        return _('Obsoleta: sustituida por %(by)s') % {'by': by}
+    if state.state == TRANSLATION:
+        return _('Traducción: el chat usa el original %(by)s') % {'by': by}
+    if state.state == DUPLICATE:
+        return _('Posible duplicado de %(by)s') % {'by': by}
+    if state.state == TRANSLATION_ONLY:
+        return _('Solo traducción: el original puede prevalecer')
+    return ''
 
 @login_required
 def document_view(request, doc_id):
@@ -37,8 +91,8 @@ def document_view(request, doc_id):
         db = client[settings.MONGO_DB_NAME]
         fs = gridfs.GridFS(db)
         
-        # Convert mongo_id to ObjectId
-        mongo_id = ObjectId(doc.mongo_id)
+        # Convert mongo_id to ObjectId (legacy rows without a linked Document use their own id)
+        mongo_id = ObjectId(doc.document.mongo_id if doc.document_id else doc.mongo_id)
         
         # Get the file
         grid_out = fs.get(mongo_id)
@@ -57,13 +111,58 @@ def document_view(request, doc_id):
         return redirect('specs:handling')
 
 @login_required
+def document_review(request, doc_id):
+    """
+    Shows the metadata of the standard proposed by the LLM. Only the uploader can correct and
+    confirm it; the other users with access see it read-only.
+    """
+    entry = get_object_or_404(UserDocument.objects.select_related('document'), id=doc_id, user=request.user)
+    document = entry.document
+    if document is None:
+        return redirect('specs:handling')
+    can_edit = document.can_be_edited_by(request.user)
+
+    if request.method == 'POST':
+        if not can_edit:
+            messages.error(request, _('Solo quien subió el documento puede modificar sus metadatos.'))
+            return redirect('specs:document_review', doc_id=entry.id)
+        form = MetadataReviewForm(request.POST, instance=document)
+        if form.is_valid():
+            document = form.save(commit=False)
+            document.metadata_status = Document.METADATA_CONFIRMED
+            document.save()
+            messages.success(request, _('Metadatos confirmados.'))
+            return redirect('specs:handling')
+    else:
+        form = MetadataReviewForm(instance=document)
+
+    if not can_edit:
+        for field in form.fields.values():
+            field.disabled = True
+    return render(request, 'specs/document_review.html', {
+        'entry': entry, 'document': document, 'form': form, 'can_edit': can_edit,
+    })
+
+
+@login_required
 def document_delete(request, doc_id):
-    """Deletes a document."""
+    """Removes the user's access to a document; the file and its vectors go when nobody else has it."""
     doc = get_object_or_404(UserDocument, id=doc_id, user=request.user)
     if request.method == 'POST':
-        # Note: You should also delete from MongoDB and ChromaDB here if applicable
-        doc.delete()
-        messages.success(request, _('Documento %(filename)s eliminado.') % {'filename': doc.filename})
+        filename = doc.filename
+        orphan = None
+        with transaction.atomic():
+            if doc.document_id:
+                # Lock the Document so a concurrent upload of the same file cannot race the cleanup
+                document = Document.objects.select_for_update().get(pk=doc.document_id)
+                doc.delete()
+                if not document.accesses.exists():
+                    orphan = document
+            else:
+                doc.delete()
+        if orphan is not None:
+            purge_document(orphan)
+        messages.success(request, _('Documento %(filename)s eliminado.') % {'filename': filename})
     return redirect('specs:handling')
 
 @login_required
@@ -125,9 +224,19 @@ def chat_query(request):
                     'score': float(node.score or 0)
                 })
             print (f"Response: '{response}' with sources: {sources}")
+
+            # Warn when an answer rests on a translation because the original is not in the library
+            states = library_state(request.user.id)
+            notes = []
+            for filename, document_id in {(n.node.metadata.get('filename', ''), n.node.metadata.get(DOC_KEY))
+                                          for n in response.source_nodes}:
+                if document_id in states and states[document_id].state == TRANSLATION_ONLY:
+                    notes.append(_('«%(filename)s» es una traducción y el original no está en tu biblioteca: '
+                                   'el original puede prevalecer.') % {'filename': filename})
             return JsonResponse({
                 'response': str(response),
-                'sources': sources
+                'sources': sources,
+                'notes': sorted(notes),
             })
         except Exception as e:
             import traceback; traceback.print_exc()
@@ -146,45 +255,62 @@ def upload_document(request):
             pdf_files = request.FILES.getlist('pdf_file')
             
             try:
-                # Save to MongoDB
-                client = MongoClient(settings.MONGO_URL)
-                db = client[settings.MONGO_DB_NAME]
-                fs = gridfs.GridFS(db)
-                
-                success_count = 0
-                error_messages = []
-                
+                fs = _gridfs()
+                analyzing = 0
+
                 for pdf_file in pdf_files:
-                    mongo_id = fs.put(pdf_file.read(), filename=pdf_file.name)
-                    
-                    # Save to Postgres (Django)
-                    doc = UserDocument.objects.create(
-                        user=request.user,
-                        mongo_id=str(mongo_id),
-                        filename=pdf_file.name,
-                        company=form.cleaned_data.get('company', '')
-                    )
-                    # Send the document to the task queue
-                    process_document_task(str(doc.id))
+                    data = pdf_file.read()
+                    file_hash = hashlib.sha256(data).hexdigest()
 
+                    # The same file is stored and indexed only once, whoever uploads it
+                    document = Document.objects.filter(file_hash=file_hash).first()
+                    if document is None:
+                        mongo_id = fs.put(data, filename=pdf_file.name)
+                        try:
+                            with transaction.atomic():
+                                document = Document.objects.create(
+                                    file_hash=file_hash, mongo_id=str(mongo_id), filename=pdf_file.name,
+                                    uploaded_by=request.user)
+                        except IntegrityError:
+                            # Someone uploaded the same new file at the same moment
+                            fs.delete(mongo_id)
+                            document = Document.objects.get(file_hash=file_hash)
 
-                #     # Index document
-                #     success, msg = index_document_to_rag(doc.id)
-                #     if success:
-                #         success_count += 1
-                #     else:
-                #         error_messages.append(f"{pdf_file.name} ({msg})")
-                        
-                # if success_count > 0:
-                #     if len(pdf_files) == 1:
-                #         messages.success(request, f'Document {pdf_files[0].name} uploaded and analyzed successfully.')
-                #     else:
-                #         messages.success(request, f'{success_count} documents uploaded and analyzed successfully.')
-                        
-                # if error_messages:
-                #     messages.error(request, f'Errors during analysis: {", ".join(error_messages)}')
-                    
-                messages.success(request, _('Tus documentos se están analizando en segundo plano. Podrás consultarlos en un par de minutos.'))
+                    company = form.cleaned_data.get('company') or ''
+                    if not company:
+                        # Reuse the label another user already gave to this same file
+                        company = (UserDocument.objects.filter(document=document)
+                                   .exclude(company__isnull=True).exclude(company='')
+                                   .values_list('company', flat=True).first() or '')
+
+                    with transaction.atomic():
+                        # Lock the Document so a concurrent delete of its last access cannot race this
+                        document = Document.objects.select_for_update().get(pk=document.pk)
+                        doc, created = UserDocument.objects.get_or_create(
+                            user=request.user, document=document,
+                            defaults={'filename': pdf_file.name, 'company': company, 'mongo_id': document.mongo_id},
+                        )
+
+                    if not created:
+                        messages.info(request, _('El documento «%(filename)s» ya está en tu biblioteca.')
+                                      % {'filename': pdf_file.name})
+                        continue
+
+                    if document.is_indexed:
+                        messages.info(request, _('«%(filename)s» ya estaba analizado: se ha añadido a tu biblioteca sin volver a procesarlo.')
+                                      % {'filename': pdf_file.name})
+                        continue
+
+                    # Analyze in a background thread so the request returns immediately
+                    analyzing += 1
+                    threading.Thread(
+                        target=process_document_task,
+                        args=(str(doc.id),),
+                        daemon=True,
+                    ).start()
+
+                if analyzing:
+                    messages.success(request, _('Tus documentos se están analizando en segundo plano. Podrás consultarlos en un par de minutos.'))
                 return redirect('specs:handling')
 
             except Exception as e:

@@ -109,6 +109,7 @@ LANGUAGES = [
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
 # Login config
+LOGIN_URL = 'menuapp:login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -161,7 +162,10 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = os.environ.get('EMAIL_HOST') or os.environ.get('SMTP_HOST', 'smtp.example.com')
     EMAIL_PORT = int(os.environ.get('EMAIL_PORT') or os.environ.get('SMTP_PORT', 587))
-    EMAIL_USE_TLS = (os.environ.get('EMAIL_USE_TLS', 'True') == 'True')
+    # Port 465 is implicit SSL (Gmail); 587 is STARTTLS. Django does not allow both at once.
+    EMAIL_USE_SSL = (os.environ.get('EMAIL_USE_SSL', str(EMAIL_PORT == 465)) == 'True')
+    EMAIL_USE_TLS = not EMAIL_USE_SSL and (os.environ.get('EMAIL_USE_TLS', 'True') == 'True')
+    EMAIL_TIMEOUT = 15  # seconds: an unreachable SMTP server must not hang a gunicorn worker
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') or os.environ.get('NO_REPLY_EMAIL', '')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') or os.environ.get('NO_REPLY_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('NO_REPLY_EMAIL', 'noreply@ernestoavedillo.com')
@@ -192,9 +196,10 @@ MONGO_URL = os.environ.get('MONGO_URL', _default_mongo_url)
 QDRANT_URL = os.environ.get('QDRANT_URL', 'http://qdrant:6333')
 QDRANT_API_KEY = os.environ.get('QDRANT_API_KEY', '')
 LLAMA_CLOUD_API_KEY = os.environ.get('LLAMA_CLOUD_API_KEY', '')
-GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '')
-GOOGLE_MODEL = os.environ.get('GOOGLE_MODEL', 'models/gemini-3.1-flash-lite-preview')
-HF_MODEL = os.environ.get('HF_MODEL', 'BAAI/bge-m3')
+NEBIUS_API_KEY = os.environ.get('NEBIUS_API_KEY', '')
+NEBIUS_BASE_URL = os.environ.get('NEBIUS_BASE_URL', 'https://api.tokenfactory.nebius.com/v1/')
+NEBIUS_LLM_MODEL = os.environ.get('NEBIUS_LLM_MODEL', 'nvidia/nemotron-3-super-120b-a12b')
+NEBIUS_EMBED_MODEL = os.environ.get('NEBIUS_EMBED_MODEL', 'Qwen/Qwen3-Embedding-8B')
 HF_TOKEN = os.environ.get('HF_TOKEN', '')
 # CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
 # CELERY_RESULT_BACKEND = CELERY_BROKER_URL

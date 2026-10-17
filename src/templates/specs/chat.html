@@ -72,9 +72,11 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         console.log('RAG server response:', data);
         if (data.response) {
             let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
+            let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
             window.innerHTML += `
                 <div class="message-bot">
                     <div style="white-space: pre-wrap; line-height: 1.5; margin-bottom: 0.75rem;">${data.response}</div>
+                    ${notesHtml}
                     <div style="border-top: 1px solid #edf2f7; padding-top: 0.5rem;">${sourcesHtml}</div>
                 </div><div style="clear: both;"></div>`;
         } else {

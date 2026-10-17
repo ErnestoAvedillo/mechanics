@@ -8,6 +8,9 @@ pymongo
 redis>=5.0.1
 qdrant-client>=1.16.0,<1.19.0
 
+# Servidor MCP (herramientas para agentes de IA)
+mcp>=2.0.0,<3
+
 # Tareas en segundo plano
 celery>=5.3.0
 django-celery-beat>=2.5.0

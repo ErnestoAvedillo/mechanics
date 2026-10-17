@@ -24,5 +24,27 @@ class SignupForm(forms.ModelForm):
             raise forms.ValidationError(_("Las contraseñas no coinciden."))
         return cleaned_data
 
+class ProfileForm(forms.ModelForm):
+    """Personal data editor. The email is validated here but applied only after the user confirms a code."""
+    email = forms.EmailField(label=_('Correo electrónico'), widget=forms.EmailInput(attrs={'autocomplete': 'email'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name']
+        labels = {
+            'username': _('Nombre de usuario'),
+            'first_name': _('Nombre'),
+            'last_name': _('Apellidos'),
+        }
+
+    field_order = ['username', 'first_name', 'last_name', 'email']
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip()
+        if User.objects.filter(email__iexact=email).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError(_("Este correo electrónico ya está en uso."))
+        return email
+
+
 class VerificationForm(forms.Form):
     code = forms.CharField(max_length=6, widget=forms.TextInput(attrs={'class': 'form-control text-center', 'placeholder': '123456', 'maxlength': '6'}))

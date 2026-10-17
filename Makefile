@@ -19,11 +19,26 @@ build-nocache:
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
-	@echo "Limpiando contenedores y redes huérfanas..."
-	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down --volumes --remove-orphans
+	@echo "Limpiando contenedores y redes huérfanas (los datos se conservan)..."
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down --remove-orphans
 	@docker rm -f $$(docker ps -a -q --filter "ancestor=certbot/certbot:latest") 2>/dev/null || true
 	@docker network rm $$(docker network ls -q --filter "type=custom" --filter "name=.*_default") 2>/dev/null || true
 	@echo "✓ Limpieza completada"
+
+# Borra TODOS los datos (usuarios, documentos, PDFs, índice de búsqueda). Pide confirmación.
+wipe:
+	@echo "⚠️  Esto BORRA todos los datos: usuarios, documentos, PDFs e índice de búsqueda."
+	@printf "Escribe 'delete-all-data' para continuar: "; read ans; [ "$$ans" = "delete-all-data" ] || { echo "Cancelado"; exit 1; }
+	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) down --volumes --remove-orphans
+
+# Copia de seguridad de Postgres, MongoDB y Qdrant en backups/<fecha>/
+backup:
+	@./scripts/backup.sh
+
+# Restaura una copia: make restore DIR=backups/<fecha>
+restore:
+	@test -n "$(DIR)" || { echo "Uso: make restore DIR=backups/<fecha>"; exit 1; }
+	@./scripts/restore.sh $(DIR)
 
 
 production: 
@@ -182,7 +197,6 @@ clean: stop
 	@echo "Cleaning up..."
 	@docker rm -f $$(docker ps -a -q) || true
 	@docker rmi -f $$(docker images -q) || true
-	@docker volume rm $$(docker volume ls -q) || true
 	@docker network rm $$(docker network ls -q) || true
 	@docker system prune -f
 
@@ -253,7 +267,10 @@ help:
 	@echo ""
 	@echo "LIMPIEZA"
 	@echo "═══════════════════════════════════════════════════════════════"
-	@echo "  clean              - Eliminar todos los contenedores/imágenes/volúmenes"
+	@echo "  clean              - Eliminar todos los contenedores/imágenes (los volúmenes de datos se conservan)"
+	@echo "  wipe               - BORRAR todos los datos (pide confirmación)"
+	@echo "  backup             - Copia de seguridad de Postgres, MongoDB y Qdrant en backups/"
+	@echo "  restore            - Restaurar: make restore DIR=backups/<fecha>"
 	@echo "  clean-orphan       - Limpiar contenedores y redes huérfanas"
 	@echo "  help               - Mostrar esta ayuda"
 	@echo ""
@@ -270,4 +287,4 @@ help:
 	@echo "  3. make switch-prod        (HTTPS con certificados válidos)"
 	@echo ""
 
-.PHONY: all build build-nocache down restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan makemessages compilemessages
+.PHONY: all build build-nocache down wipe backup restore restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan makemessages compilemessages

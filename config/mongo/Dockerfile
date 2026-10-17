@@ -1,4 +1,4 @@
-FROM mongo:latest
+FROM mongo:9.0
 # Set environment variables for MongoDB
 WORKDIR /data/mongodb
 

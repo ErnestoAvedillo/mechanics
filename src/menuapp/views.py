@@ -3,7 +3,8 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash, authenticate
-from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import SetPasswordForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.utils.translation import gettext as _
@@ -14,7 +15,7 @@ import os
 import re
 import base64
 import hashlib
-from .forms import SignupForm, VerificationForm
+from .forms import SignupForm, VerificationForm, ProfileForm
 from .models import EmailVerification
 import logging
 
@@ -44,16 +45,24 @@ def signup_view(request):
             code = EmailVerification.generate_code()
             EmailVerification.objects.create(user=user, code=code)
 
-            send_mail(
-                _('Tu código de verificación - Mechanics'),
-                _('Hola %(username)s, tu código de verificación es: %(code)s') % {
-                    'username': user.username, 'code': code,
-                },
-                settings.DEFAULT_FROM_EMAIL,
-                [user.email],
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    _('Tu código de verificación - Mechanics'),
+                    _('Hola %(username)s, tu código de verificación es: %(code)s') % {
+                        'username': user.username, 'code': code,
+                    },
+                    settings.DEFAULT_FROM_EMAIL,
+                    [user.email],
+                    fail_silently=False,
+                )
+            except Exception:
+                logging.exception("Could not send the verification email to '%s'", user.email)
+                # Remove the unverifiable account so the username and email can be reused
+                user.delete()
+                form.add_error(None, _("No se pudo enviar el correo de verificación. Inténtalo de nuevo más tarde."))
+                return render(request, 'registration/signup.html', {'form': form})
 
+            request.session.pop('email_change', None)
             request.session['verification_user_id'] = user.id
             return redirect('menuapp:verify_email')
     else:
@@ -79,18 +88,31 @@ def verify_email_view(request):
                         user.save()
                         verification.is_verified = True
                         verification.save()
-                        
+
+                        email_change = request.session.get('email_change')
+                        if (email_change and email_change['user_id'] == user.id
+                                and request.user.is_authenticated and request.user.id == user.id):
+                            # Confirmed code for a new email address: apply it now
+                            del request.session['email_change']
+                            del request.session['verification_user_id']
+                            new_email = email_change['email']
+                            if User.objects.filter(email__iexact=new_email).exclude(pk=user.pk).exists():
+                                messages.error(request, _("Este correo electrónico ya está en uso."))
+                            else:
+                                user.email = new_email
+                                user.save(update_fields=['email'])
+                                messages.success(request, _("Correo electrónico actualizado."))
+                            return redirect('menuapp:profile')
+
                         if request.session.get('is_password_reset'):
                             # This is the recovery flow, we don't log in yet, we pass to change_psw
                             del request.session['is_password_reset']
                             del request.session['verification_user_id']
                             request.session['reset_user_id'] = user.id
-                            messages.success(request, _("Código verificado. Introduce tu nueva contraseña."))
                             return redirect('menuapp:change_psw')
                         else:
                             # This is the normal signup flow
                             login(request, user)
-                            messages.success(request, _("¡Email verificado con éxito! Bienvenida/o."))
                             return redirect('menuapp:home')
                     else:
                         messages.error(request, _("El código ha expirado."))
@@ -136,6 +158,7 @@ def recall_psw_view(request):
                 print(f"Critical error sending email: {e}")
 
             # We set in session that this user is going to reset their password
+            request.session.pop('email_change', None)
             request.session['verification_user_id'] = user.id
             request.session['is_password_reset'] = True
 
@@ -143,8 +166,6 @@ def recall_psw_view(request):
             return redirect('menuapp:verify_email')
         else:
             print(f"No user found with email: '{email}'")
-            # Generic message for security (avoids user enumeration)
-            messages.success(request, _("Si el email ingresado corresponde a una cuenta registrada, se ha enviado un correo con instrucciones."))
             return redirect('menuapp:login')
     
     return render(request, 'registration/recall_psw.html')
@@ -152,52 +173,94 @@ def recall_psw_view(request):
 def change_psw_view(request):
     reset_user_id = request.session.get('reset_user_id')
     if request.user.is_authenticated:
-        target_user = request.user
-        is_reset_flow = False
+        # Logged-in users change their password from the profile page (asks for the current one)
+        return redirect('menuapp:profile')
     elif reset_user_id:
         try:
             target_user = User.objects.get(id=reset_user_id)
-            is_reset_flow = True
         except User.DoesNotExist:
-            messages.error(request, _("Usuario no encontrado."))
-            return redirect('login')
+            return redirect('menuapp:login')
     else:
         logging.warning("Attempt to access change_psw without authentication or recovery session.")
-        return redirect('login')
+        return redirect('menuapp:login')
 
     if request.method == 'POST':
         form = SetPasswordForm(target_user, request.POST)
         if form.is_valid():
             form.save()
-            if not is_reset_flow:
-                update_session_auth_hash(request, target_user)
-                messages.success(request, _("Contraseña cambiada con éxito."))
-                return redirect('menuapp:home')
-
             if 'reset_user_id' in request.session:
                 del request.session['reset_user_id']
 
             auth_user = authenticate(request, username=target_user.username, password=form.cleaned_data['new_password1'])
             if auth_user is not None:
                 login(request, auth_user)
-                messages.success(request, _("Contraseña restablecida y sesión iniciada."))
                 return redirect('menuapp:home')
 
-            messages.success(request, _("Contraseña restablecida con éxito. Ahora puedes iniciar sesión."))
             return redirect('menuapp:login')
     else:
         form = SetPasswordForm(target_user)
 
     return render(request, 'registration/change_psw.html', {'form': form})
 
-# The rest of the original views (contacto, editor, etc) can be added here
-# based on the original content we preserved earlier.
+
+@login_required
+def profile_view(request):
+    """Personal data editor: name, username, email (confirmed with a code) and password."""
+    user = request.user
+    profile_form = ProfileForm(instance=user, initial={'email': user.email})
+    password_form = PasswordChangeForm(user)
+
+    if request.method == 'POST':
+        if request.POST.get('action') == 'password':
+            password_form = PasswordChangeForm(user, request.POST)
+            if password_form.is_valid():
+                password_form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, _("Contraseña cambiada con éxito."))
+                return redirect('menuapp:profile')
+        else:
+            profile_form = ProfileForm(request.POST, instance=user)
+            if profile_form.is_valid():
+                new_email = profile_form.cleaned_data['email']
+                profile_form.save()
+
+                if new_email.lower() != (user.email or '').lower():
+                    # The new address is applied only after the user confirms the code sent to it
+                    EmailVerification.objects.filter(user=user).delete()
+                    code = EmailVerification.generate_code()
+                    EmailVerification.objects.create(user=user, code=code)
+                    try:
+                        send_mail(
+                            _('Confirma tu nuevo correo - Mechanics'),
+                            _('Hola %(username)s, tu código para confirmar el nuevo correo es: %(code)s') % {
+                                'username': user.username, 'code': code,
+                            },
+                            settings.DEFAULT_FROM_EMAIL,
+                            [new_email],
+                            fail_silently=False,
+                        )
+                    except Exception:
+                        logging.exception("Could not send the email-change code to '%s'", new_email)
+                        messages.error(request, _("No se pudo enviar el correo de verificación. Inténtalo de nuevo más tarde."))
+                        return redirect('menuapp:profile')
+                    request.session['email_change'] = {'user_id': user.id, 'email': new_email}
+                    request.session['verification_user_id'] = user.id
+                    request.session.pop('is_password_reset', None)
+                    return redirect('menuapp:verify_email')
+
+                messages.success(request, _("Datos guardados."))
+                return redirect('menuapp:profile')
+
+    return render(request, 'registration/profile.html', {
+        'profile_form': profile_form,
+        'password_form': password_form,
+    })
+
 
 def logout_view(request):
     logging.info(f"User '{request.user.username}' has logged out.")
     from django.contrib.auth import logout
     logout(request)
-    messages.info(request, _("Has cerrado sesión."))
     return redirect('menuapp:home')
 
 def login_view(request):
@@ -209,7 +272,6 @@ def login_view(request):
         if user is not None:
             login(request, user)
             logging.info(f"User '{username}' logged in successfully.")
-            messages.success(request, _("¡Bienvenido de nuevo!"))
             return redirect('menuapp:home')
         else:
             messages.error(request, _("Credenciales incorrectas."))

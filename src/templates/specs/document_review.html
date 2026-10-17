@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Metadatos de la norma" %} - Specs{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 800px;">
+    <div class="card-container">
+        <h2 class="card-title">{% trans "Metadatos de la norma" %}</h2>
+        <p style="color: #718096; margin-bottom: 1rem;">{{ document.filename }}</p>
+
+        {% for message in messages %}
+            <div style="background: #ebf8fa; border-left: 4px solid #3182ce; padding: 1rem; margin-bottom: 1.5rem;">{{ message }}</div>
+        {% endfor %}
+
+        {% if document.metadata_status == 'confirmed' %}
+            <div class="status-badge status-success" style="margin-bottom: 1.5rem;">● {% trans "Metadatos confirmados" %}</div>
+        {% elif document.metadata_status == 'failed' %}
+            <div style="background: #fffaf0; border-left: 4px solid #dd6b20; padding: 1rem; margin-bottom: 1.5rem;">
+                {% trans "No se pudieron extraer los metadatos automáticamente. Rellénalos a mano." %}
+            </div>
+        {% elif document.metadata_status == 'pending_review' %}
+            <div style="background: #fffaf0; border-left: 4px solid #dd6b20; padding: 1rem; margin-bottom: 1.5rem;">
+                {% trans "Estos datos los ha propuesto la IA a partir de la portada. Revísalos antes de confirmar: se usarán para detectar versiones nuevas de la norma." %}
+            </div>
+        {% endif %}
+
+        {% if not can_edit %}
+            <p style="color: #718096;">{% trans "Solo quien subió el documento puede modificar sus metadatos." %}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}<div style="color: #c53030; font-size: 0.85rem;">{{ error }}</div>{% endfor %}
+                </div>
+            {% endfor %}
+
+            {% if document.copyright_notice %}
+                <div class="form-group">
+                    <span class="form-label">{% trans "Aviso de copyright impreso" %}</span>
+                    <div style="color: #4a5568;">{{ document.copyright_notice }}</div>
+                </div>
+            {% endif %}
+
+            {% if document.supersedes %}
+                <details class="form-group">
+                    <summary class="form-label" style="cursor: pointer;">{% trans "Ediciones que sustituye" %} ({{ document.supersedes|length }})</summary>
+                    <ul style="margin: 0.5rem 0 0 1.2rem; color: #4a5568;">
+                        {% for item in document.supersedes %}<li>{{ item }}</li>{% endfor %}
+                    </ul>
+                </details>
+            {% endif %}
+
+            <div class="d-flex justify-between gap-2" style="margin-top: 2rem;">
+                <a href="{% url 'specs:handling' %}" class="btn btn-secondary" style="flex: 1;">{% trans "Volver" %}</a>
+                {% if can_edit %}
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">{% trans "Confirmar metadatos" %}</button>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

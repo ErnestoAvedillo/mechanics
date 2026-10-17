@@ -28,11 +28,9 @@
           <input type="password" name="password" autocomplete="current-password" required id="id_password">
         </div>
 
-        {% if form.errors %}
-          <div class="error-msg">
-            {% trans "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo." %}
-          </div>
-        {% endif %}
+        {% for message in messages %}
+          <div class="error-msg">{{ message }}</div>
+        {% endfor %}
 
         <button type="submit" class="button button-submit">{% trans "Entrar" %}</button>
         <input type="hidden" name="next" value="{{ next }}">

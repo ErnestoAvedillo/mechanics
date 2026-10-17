@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}{% trans "Mi cuenta" %}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% static 'global/images/header-background.jpeg' as bg_url %}
+  <div class="page-background" style="background-image: url('{{ bg_url }}');"></div>
+
+  <main class="wrap">
+    <section class="card form-card">
+      <h1>{% trans "Mi cuenta" %}</h1>
+
+      {% for message in messages %}
+        <div class="{% if message.level_tag == 'error' %}error-msg{% else %}success-msg{% endif %}">{{ message }}</div>
+      {% endfor %}
+
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="profile">
+        {% for field in profile_form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+            {{ field }}
+            {% if field.name == 'email' %}
+              <div class="help-text">{% trans "Si cambias el correo, te enviaremos un código de verificación a la nueva dirección." %}</div>
+            {% endif %}
+            {% if field.errors %}
+              <div class="error-msg">{% for error in field.errors %}{{ error }} {% endfor %}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="button button-submit">{% trans "Guardar cambios" %}</button>
+      </form>
+
+      <h2>{% trans "Cambiar contraseña" %}</h2>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="password">
+        {% for field in password_form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+            {{ field }}
+            {% if field.errors %}
+              <div class="error-msg">{% for error in field.errors %}{{ error }} {% endfor %}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="button button-submit">{% trans "Cambiar Contraseña" %}</button>
+      </form>
+    </section>
+  </main>
+{% endblock %}

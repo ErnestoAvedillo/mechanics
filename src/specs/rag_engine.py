@@ -6,22 +6,27 @@ import gridfs
 from bson import ObjectId
 from django.conf import settings
 
-from llama_index.core import Document, StorageContext, VectorStoreIndex, Settings
-from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
+from llama_index.core import StorageContext, VectorStoreIndex, Settings
+from llama_index.core.vector_stores import MetadataFilters, MetadataFilter, FilterOperator
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 
-# New HuggingFace and FlagEmbedding imports
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
-from llama_index.llms.google_genai import GoogleGenAI
+from llama_index.llms.openai_like import OpenAILike
+from llama_index.embeddings.openai_like import OpenAILikeEmbedding
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance
+from qdrant_client.models import VectorParams, Distance, Filter, FieldCondition, MatchValue
 from llama_parse import LlamaParse
-from .models import UserDocument
+from .metadata import apply_metadata, extract_metadata
+from .models import Document, UserDocument
+from .versions import searched_document_ids
 
-# Renamed the collection to avoid clashing with Gemini's current 3072-dimension vectors
-TARGET_COLLECTION = "engineering_specs_bge" 
+# Nebius Token Factory (OpenAI-compatible API, no local models). New collection: vectors are 4096-dim
+TARGET_COLLECTION = "engineering_specs_nebius"
+EMBED_DIM = 4096   # Qwen3-Embedding-8B
+
+# Payload key holding the Document id. Not "document_id"/"doc_id": LlamaIndex reserves
+# those for its own node ids and would overwrite them.
+DOC_KEY = "specs_document_id"
 
 _QDRANT_CLIENT = None
 
@@ -32,78 +37,100 @@ def get_qdrant_client():
     return _QDRANT_CLIENT
 
 
-# Global variables for in-memory persistence
-_EMBED_MODEL = None
-_RERANKER = None
+def ensure_collection(client):
+    """Creates the collection and its payload indexes if they do not exist yet."""
+    if not client.collection_exists(TARGET_COLLECTION):
+        client.create_collection(
+            collection_name=TARGET_COLLECTION,
+            vectors_config=VectorParams(size=EMBED_DIM, distance=Distance.COSINE)
+        )
+        client.create_payload_index(
+            collection_name=TARGET_COLLECTION,
+            field_name=DOC_KEY,
+            field_schema="integer"
+        )
+
+
+def accessible_document_ids(user_id):
+    """Ids of the documents the user's searches may use: their library resolved by edition and language."""
+    return searched_document_ids(user_id)
+
+
+def delete_document_vectors(document_id):
+    """Removes every vector of a Document from Qdrant (before re-indexing, or when its last access is deleted)."""
+    client = get_qdrant_client()
+    if client.collection_exists(TARGET_COLLECTION):
+        client.delete(
+            collection_name=TARGET_COLLECTION,
+            points_selector=Filter(must=[FieldCondition(key=DOC_KEY, match=MatchValue(value=document_id))]),
+        )
 
 
 def _configure_models():
-    """Configures the LLM (Gemini) and the multilingual Embedding (BGE-M3) in Settings for use across the whole RAG."""
-    # We keep Gemini or any other LLM for text generation
-    if settings.GOOGLE_API_KEY:
-        Settings.llm = GoogleGenAI(api_key=settings.GOOGLE_API_KEY,
-                                   model=settings.GOOGLE_MODEL)
-    else:
-        Settings.llm = GoogleGenAI(model="models/gemini-3.1-flash-lite-preview")
-        
-    # Upgraded to BGE-M3 for cross-lingual retrieval
-    Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-m3")
+    """Configures the LLM (NVIDIA Nemotron) and the multilingual Embedding (Qwen3) on Nebius Token Factory."""
+    Settings.llm = OpenAILike(
+        model=settings.NEBIUS_LLM_MODEL,
+        api_base=settings.NEBIUS_BASE_URL,
+        api_key=settings.NEBIUS_API_KEY,
+        is_chat_model=True,
+        context_window=262144,
+    )
+    Settings.embed_model = OpenAILikeEmbedding(
+        model_name=settings.NEBIUS_EMBED_MODEL,
+        api_base=settings.NEBIUS_BASE_URL,
+        api_key=settings.NEBIUS_API_KEY,
+        embed_batch_size=16,
+    )
 
 
 def get_rag_engine(user_id):
     """
-    Configures and returns the RAG query engine for a specific user,
-    adding a multilingual re-ranking step.
+    Configures and returns the RAG query engine for a specific user.
+    The engine only sees the current documents in the user's library.
     """
     _configure_models()
     client = get_qdrant_client()
+    ensure_collection(client)
 
-    if not client.collection_exists(TARGET_COLLECTION):
-        client.create_collection(
-            collection_name=TARGET_COLLECTION,
-            vectors_config=VectorParams(size=1024, distance=Distance.COSINE)  # BGE-M3 projects to 1024 dims
-        )
-        client.create_payload_index(
-            collection_name=TARGET_COLLECTION,
-            field_name="user_id",
-            field_schema="integer"
-        )
-        
     vector_store = QdrantVectorStore(client=client, collection_name=TARGET_COLLECTION)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
     index = VectorStoreIndex.from_vector_store(vector_store, storage_context=storage_context)
-    
+
+    # Fail closed: with no accessible documents, filter on an id that matches nothing
+    document_ids = accessible_document_ids(user_id) or [-1]
     filters = MetadataFilters(
-        filters=[MetadataFilter(key="user_id", value=user_id)]
-    )
-    
-    # Reranker configured with BGE-Reranker-v2-m3
-    # Gives a detailed scan ("cross-encoder") to align semantics across languages
-    reranker = FlagEmbeddingReranker(
-        top_n=4,
-        model="BAAI/bge-reranker-v2-m3"
-    )
-    
-    # We request similarity_top_k=10 or 15 to bring in more raw candidate context,
-    # letting the reranker pick the final 4 best cross-lingual results.
-    return index.as_query_engine(
-        filters=filters,
-        similarity_top_k=15,
-        node_postprocessors=[reranker]
+        filters=[MetadataFilter(key=DOC_KEY, value=document_ids, operator=FilterOperator.IN)]
     )
 
-def index_document_to_rag(document_id):
+    # No local reranker (it needed PyTorch); return the best matches directly
+    return index.as_query_engine(
+        filters=filters,
+        similarity_top_k=6,
+    )
+
+
+def index_document_to_rag(user_document_id):
     """
-    Reads a document from MongoDB GridFS, processes it and indexes it using BGE-M3.
+    Reads the file of a user's document from MongoDB GridFS, processes it and indexes it
+    using Nebius embeddings. A Document is indexed only once, however many users have it.
+    Returns (success, message).
     """
+    document = None
+    claimed = False
     try:
         _configure_models()
-        doc_ref = UserDocument.objects.get(id=document_id)
-        
+        doc_ref = UserDocument.objects.select_related('document').get(id=user_document_id)
+        document = doc_ref.document
+        if document.is_indexed:
+            return True, "Already indexed / Ya estaba indexado"
+        if not Document.claim_indexing(document.pk):
+            return True, "Indexing already in progress / Indexación ya en curso"
+        claimed = True
+
         client = MongoClient(settings.MONGO_URL)
         db = client[settings.MONGO_DB_NAME]
         fs = gridfs.GridFS(db)
-        pdf_data = fs.get(ObjectId(doc_ref.mongo_id)).read()
+        pdf_data = fs.get(ObjectId(document.mongo_id)).read()
 
         with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tf:
             tf.write(pdf_data)
@@ -129,26 +156,29 @@ def index_document_to_rag(document_id):
         if not documents:
             return False, "Error: Could not extract text from the document."
 
+        # One LLM call gives the OEM and the standard's metadata (a proposal until the uploader confirms it).
+        # A retry must not overwrite metadata that has already been confirmed.
+        metadata = None
+        if document.metadata_status != Document.METADATA_CONFIRMED:
+            metadata = extract_metadata("\n\n".join(d.get_content() for d in documents[:3]))
+            apply_metadata(document, metadata)
+        if not doc_ref.company and metadata and metadata["issuer"]:
+            doc_ref.company = metadata["issuer"]
+            doc_ref.save(update_fields=['company'])
+
         for d in documents:
             d.metadata.update({
-                "user_id": doc_ref.user.id,
+                DOC_KEY: document.pk,
                 "company": doc_ref.company,
-                "filename": doc_ref.filename,
-                "doc_id": doc_ref.id
+                "filename": document.filename,
             })
+            # The id is only for filtering; keep it out of the embedded text and the LLM context
+            d.excluded_embed_metadata_keys = [DOC_KEY]
+            d.excluded_llm_metadata_keys = [DOC_KEY]
 
         q_client = get_qdrant_client()
-
-        if not q_client.collection_exists(TARGET_COLLECTION):
-            q_client.create_collection(
-                collection_name=TARGET_COLLECTION,
-                vectors_config=VectorParams(size=1024, distance=Distance.COSINE)
-            )
-            q_client.create_payload_index(
-                collection_name=TARGET_COLLECTION,
-                field_name="user_id",
-                field_schema="integer"
-            )
+        ensure_collection(q_client)
+        delete_document_vectors(document.pk)  # a retry must not leave duplicate vectors
 
         vector_store = QdrantVectorStore(client=q_client, collection_name=TARGET_COLLECTION)
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
@@ -159,9 +189,12 @@ def index_document_to_rag(document_id):
             show_progress=True
         )
 
-        doc_ref.is_indexed = True
-        doc_ref.save()
+        document.is_indexed = True
+        document.indexing_started_at = None
+        document.save(update_fields=['is_indexed', 'indexing_started_at'])
         return True, f"Successfully indexed ({len(documents)} pages/sections)"
 
     except Exception as e:
+        if claimed:
+            Document.objects.filter(pk=document.pk).update(indexing_started_at=None)  # allow a retry
         return False, f"Error in LlamaParse/Indexing: {str(e)}"

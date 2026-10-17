@@ -11,6 +11,7 @@ urlpatterns = [
     path('verify-email/', views.verify_email_view, name='verify_email'),
     path('recall-psw/', views.recall_psw_view, name='recall_psw'),
     path('change-psw/', views.change_psw_view, name='change_psw'),
+    path('profile/', views.profile_view, name='profile'),
     path('contacto/', views.contacto, name='contacto'),
     path('editor/<str:datos>/<str:filename>/', views.editor, name='editor'),
     path('editor-session/<str:data_id>/<str:filename>/', views.editor_with_session, name='editor_with_session'),

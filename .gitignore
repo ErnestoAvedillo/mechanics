@@ -40,3 +40,8 @@ build
 *.svg~
 *.ico~
 *.mkv
+# Database backups (scripts/backup.sh)
+backups/
+
+# The example file is meant to be committed (it holds placeholders only)
+!.env.example
