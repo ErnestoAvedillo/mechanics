@@ -89,16 +89,21 @@ class Command(BaseCommand):
             except Exception as exc:  # already exists
                 self.say(f"  (índice {DOC_KEY}: {exc})", f"  ({DOC_KEY} index: {exc})")
 
+        needs_indexing = 0
         for file_hash, rows in groups.items():
             existing = Document.objects.filter(file_hash=file_hash).first()
-            indexed_rows = [r for r in rows if r.is_indexed]
             names = ", ".join(f"id={r.id}" for r in rows)
 
-            # Which legacy row's vectors become the document's vectors (if any)
+            # Which legacy row's vectors become the document's vectors. Only vectors that really exist
+            # in the current collection count: the old `is_indexed` flag cannot be trusted, because
+            # older deployments indexed into other collections (other models, other vector sizes).
+            with_vectors = [r for r in rows if points_by_legacy_id.get(r.id)]
             if existing and existing.is_indexed:
                 keeper = None
             else:
-                keeper = indexed_rows[0] if indexed_rows else None
+                keeper = with_vectors[0] if with_vectors else None
+            if not keeper and not (existing and existing.is_indexed):
+                needs_indexing += 1
             primary_row = keeper or rows[0]
             primary_mongo_id = existing.mongo_id if existing else primary_row.mongo_id
 
@@ -106,8 +111,12 @@ class Command(BaseCommand):
                      f"* file {file_hash[:12]}…: {len(rows)} entr{'y' if len(rows) == 1 else 'ies'} [{names}]")
             for r in rows:
                 count = len(points_by_legacy_id.get(r.id, []))
-                action_es = "conserva sus vectores" if r is keeper else "se eliminan sus vectores"
-                action_en = "keeps its vectors" if r is keeper else "its vectors are removed"
+                if r is keeper:
+                    action_es, action_en = "conserva sus vectores", "keeps its vectors"
+                elif count:
+                    action_es, action_en = "se eliminan sus vectores", "its vectors are removed"
+                else:
+                    action_es, action_en = "sin vectores en la colección actual", "no vectors in the current collection"
                 self.say(f"    id={r.id} {r.filename}: {count} vectores, {action_es}",
                          f"    id={r.id} {r.filename}: {count} vectors, {action_en}")
                 if r.mongo_id != primary_mongo_id:
@@ -157,5 +166,10 @@ class Command(BaseCommand):
                     kept.document = document
                     kept.save(update_fields=["document", "company"])
 
+        if needs_indexing:
+            self.say(f"{needs_indexing} documento(s) no tienen vectores en la colección actual: "
+                     f"ejecuta 'manage.py index_pending' para indexarlos.",
+                     f"{needs_indexing} document(s) have no vectors in the current collection: "
+                     f"run 'manage.py index_pending' to index them.")
         self.say("Hecho." if apply else "Simulación terminada: no se ha cambiado nada. Usa --apply para aplicar.",
                  "Done." if apply else "Dry run finished: nothing was changed. Use --apply to apply.")

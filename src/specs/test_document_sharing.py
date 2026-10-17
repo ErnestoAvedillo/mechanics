@@ -5,6 +5,7 @@ isolation between users, and cleanup when the last access is removed.
 Run: docker exec -w /app/src django python manage.py test specs.test_document_sharing
 MongoDB, Qdrant and the indexing thread are mocked; only the database is real (a test database).
 """
+import json
 from datetime import timedelta
 from unittest.mock import MagicMock, patch
 
@@ -16,6 +17,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from specs.models import Document, UserDocument
+from specs.rag_engine import DOC_KEY
 from specs.rag_engine import accessible_document_ids
 
 PDF_A = b"%PDF-1.4 content of the first file"
@@ -246,3 +248,79 @@ class BackfillTests(TestCase):
         self.run_backfill({self.m1: PDF_A})
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(UserDocument.objects.count(), 1)
+
+
+class BackfillVectorsTests(BackfillTests):
+    """The legacy `is_indexed` flag is not trusted: only vectors found in the current collection count."""
+
+    def run_backfill_with_vectors(self, files, vectors_by_legacy_id, apply=True):
+        """Like run_backfill, but the Qdrant collection exists and holds the given legacy vectors."""
+        from io import StringIO
+        from django.core.management import call_command
+        grid = MagicMock()
+        grid.get.side_effect = lambda oid: MagicMock(read=lambda: files[str(oid)])
+        qdrant = MagicMock()
+        qdrant.collection_exists.return_value = True
+        points = []
+        for legacy_id, point_ids in vectors_by_legacy_id.items():
+            for point_id in point_ids:
+                points.append(MagicMock(id=point_id, payload={"_node_content": json.dumps({"metadata": {"doc_id": legacy_id}})}))
+        qdrant.scroll.return_value = (points, None)
+        out = StringIO()
+        with patch("specs.management.commands.backfill_documents.MongoClient"), \
+                patch("specs.management.commands.backfill_documents.gridfs.GridFS", return_value=grid), \
+                patch("specs.management.commands.backfill_documents.get_qdrant_client", return_value=qdrant):
+            call_command("backfill_documents", *(["--apply"] if apply else []), stdout=out)
+        return qdrant, out.getvalue()
+
+    def test_a_legacy_row_flagged_indexed_without_vectors_stays_pending(self):
+        self.legacy(self.alice, self.m1, indexed=True)  # flag says indexed, but no vectors exist
+        _qdrant, report = self.run_backfill_with_vectors({self.m1: PDF_A}, {})
+        self.assertFalse(Document.objects.get().is_indexed)
+        self.assertIn("index_pending", report)
+
+    def test_a_legacy_row_with_vectors_is_indexed_and_its_vectors_are_tagged(self):
+        entry = self.legacy(self.alice, self.m1, indexed=False)  # even if the flag says otherwise
+        qdrant, report = self.run_backfill_with_vectors({self.m1: PDF_A}, {entry.id: ["p1", "p2"]})
+        document = Document.objects.get()
+        self.assertTrue(document.is_indexed)
+        self.assertNotIn("index_pending", report)
+        payload_call = qdrant.set_payload.call_args
+        self.assertEqual(payload_call.kwargs["points"], ["p1", "p2"])
+        self.assertEqual(payload_call.kwargs["payload"], {DOC_KEY: document.pk})
+
+    def test_the_duplicate_without_vectors_does_not_become_the_vectors_owner(self):
+        first = self.legacy(self.alice, self.m1, indexed=True)
+        second = self.legacy(self.bob, self.m2, indexed=True)
+        qdrant, _report = self.run_backfill_with_vectors({self.m1: PDF_A, self.m2: PDF_A}, {second.id: ["p9"]})
+        self.assertTrue(Document.objects.get().is_indexed)
+        self.assertEqual(qdrant.set_payload.call_args.kwargs["points"], ["p9"])
+        qdrant.delete.assert_not_called()
+
+
+class IndexPendingTests(TestCase):
+    def run_command(self, *args):
+        from io import StringIO
+        from django.core.management import call_command
+        out = StringIO()
+        with patch("specs.management.commands.index_pending.index_document_to_rag", return_value=(True, "ok")) as index:
+            call_command("index_pending", *args, stdout=out)
+        return index, out.getvalue()
+
+    def setUp(self):
+        self.user = User.objects.create_user("u", password="x")
+        self.pending = make_document(b"p")
+        self.indexed = make_document(b"i", is_indexed=True)
+        self.orphan = make_document(b"o")
+        self.entry = UserDocument.objects.create(user=self.user, document=self.pending, filename="p.pdf", mongo_id="1")
+        UserDocument.objects.create(user=self.user, document=self.indexed, filename="i.pdf", mongo_id="2")
+
+    def test_only_pending_documents_with_an_owner_are_indexed(self):
+        index, report = self.run_command()
+        index.assert_called_once_with(self.entry.id)
+        self.assertIn("nobody has access", report)
+
+    def test_dry_run_indexes_nothing(self):
+        index, report = self.run_command("--dry-run")
+        index.assert_not_called()
+        self.assertIn("would be indexed", report)
