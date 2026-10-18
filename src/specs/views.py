@@ -8,7 +8,7 @@ from django.db import IntegrityError, transaction
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.conf import settings
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext as _, get_language
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import gridfs
@@ -199,9 +199,10 @@ def chat_query(request):
             return JsonResponse({'error': _('No se proporcionó ninguna pregunta')}, status=400)
 
         try:
-            # Get the RAG engine filtered for this user
-            print(f"Getting RAG engine for user {request.user.id}")
-            query_engine = get_rag_engine(request.user.id)
+            # Get the RAG engine filtered for this user, answering in the site's active language
+            language_name = dict(settings.LANGUAGES).get(get_language(), get_language())
+            print(f"Getting RAG engine for user {request.user.id} (answers in {language_name})")
+            query_engine = get_rag_engine(request.user.id, language_name)
             print(f"Running RAG query for user {request.user.id}: '{query_text}'")
             logger.info(f"TIPO DE query_engine: {type(query_engine)}")
 

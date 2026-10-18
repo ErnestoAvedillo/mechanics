@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+    <script src="{% static 'specs/js/marked.min.js' %}"></script>
+    <script src="{% static 'specs/js/purify.min.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <div class="chat-container">
@@ -73,9 +78,10 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         if (data.response) {
             let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
             let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
+            const responseHtml = DOMPurify.sanitize(marked.parse(data.response));
             window.innerHTML += `
                 <div class="message-bot">
-                    <div style="white-space: pre-wrap; line-height: 1.5; margin-bottom: 0.75rem;">${data.response}</div>
+                    <div class="message-markdown" style="line-height: 1.5; margin-bottom: 0.75rem;">${responseHtml}</div>
                     ${notesHtml}
                     <div style="border-top: 1px solid #edf2f7; padding-top: 0.5rem;">${sourcesHtml}</div>
                 </div><div style="clear: both;"></div>`;

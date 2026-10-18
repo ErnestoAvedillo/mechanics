@@ -200,6 +200,65 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
+.message-markdown p {
+    margin: 0 0 0.75rem 0;
+}
+
+.message-markdown p:last-child {
+    margin-bottom: 0;
+}
+
+.message-markdown ul,
+.message-markdown ol {
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.5rem;
+}
+
+.message-markdown h1,
+.message-markdown h2,
+.message-markdown h3,
+.message-markdown h4 {
+    margin: 0.75rem 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.message-markdown code {
+    background: #edf2f7;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.message-markdown pre {
+    background: #edf2f7;
+    padding: 0.75rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.message-markdown pre code {
+    background: none;
+    padding: 0;
+}
+
+.message-markdown blockquote {
+    border-left: 3px solid #cbd5e0;
+    margin: 0 0 0.75rem 0;
+    padding-left: 0.75rem;
+    color: #4a5568;
+}
+
+.message-markdown table {
+    border-collapse: collapse;
+    margin-bottom: 0.75rem;
+}
+
+.message-markdown th,
+.message-markdown td {
+    border: 1px solid #e2e8f0;
+    padding: 0.4rem 0.6rem;
+}
+
 .source-badge {
     display: inline-block;
     background: #edf2f7;

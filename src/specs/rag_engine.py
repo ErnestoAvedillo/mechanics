@@ -6,7 +6,7 @@ import gridfs
 from bson import ObjectId
 from django.conf import settings
 
-from llama_index.core import StorageContext, VectorStoreIndex, Settings
+from llama_index.core import StorageContext, VectorStoreIndex, Settings, PromptTemplate
 from llama_index.core.vector_stores import MetadataFilters, MetadataFilter, FilterOperator
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 
@@ -83,10 +83,40 @@ def _configure_models():
     )
 
 
-def get_rag_engine(user_id):
+def _qa_template(language_name):
+    """Default QA prompt, pinned to answer in the site's current language rather than the spec's."""
+    return PromptTemplate(
+        "Context information is below.\n"
+        "---------------------\n"
+        "{context_str}\n"
+        "---------------------\n"
+        "Given the context information and not prior knowledge, answer the query.\n"
+        f"Answer always in {language_name}, regardless of the language of the context or of the query.\n"
+        "Query: {query_str}\n"
+        "Answer: "
+    )
+
+
+def _refine_template(language_name):
+    """Default refine prompt, pinned the same way as _qa_template."""
+    return PromptTemplate(
+        "The original query is as follows: {query_str}\n"
+        "We have provided an existing answer: {existing_answer}\n"
+        "We have the opportunity to refine the existing answer (only if needed) with some more context below.\n"
+        "------------\n"
+        "{context_msg}\n"
+        "------------\n"
+        "Given the new context, refine the original answer to better answer the query. If the context isn't useful, return the original answer.\n"
+        f"Answer always in {language_name}, regardless of the language of the context or of the query.\n"
+        "Refined Answer: "
+    )
+
+
+def get_rag_engine(user_id, language_name="español"):
     """
     Configures and returns the RAG query engine for a specific user.
-    The engine only sees the current documents in the user's library.
+    The engine only sees the current documents in the user's library, and answers
+    in `language_name` (the site's active language) even when the specs it cites are in another one.
     """
     _configure_models()
     client = get_qdrant_client()
@@ -106,6 +136,8 @@ def get_rag_engine(user_id):
     return index.as_query_engine(
         filters=filters,
         similarity_top_k=6,
+        text_qa_template=_qa_template(language_name),
+        refine_template=_refine_template(language_name),
     )
 
 
