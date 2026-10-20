@@ -5,11 +5,14 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
 {% endblock %}
 
 {% block extra_js %}
     <script src="{% static 'specs/js/marked.min.js' %}"></script>
     <script src="{% static 'specs/js/purify.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -44,6 +47,46 @@
 
 <script src="{% url 'javascript-catalog' %}"></script>
 <script>
+// The LLM answers with Markdown AND, often, LaTeX formulas ("\(...\)" / "\[...\]"). Markdown's
+// underscore/asterisk rules can mangle LaTeX source, so math segments are swapped out for inert
+// placeholders before marked.parse() runs, then swapped back in (as plain, auto-escaped text)
+// after sanitizing — KaTeX renders them in place once the HTML is in the DOM.
+function renderChatMarkdown(raw) {
+    // Plain alphanumerics survive both Markdown parsing and DOMPurify's HTML sanitization intact
+    // (a NUL-based token does not: the HTML parser DOMPurify runs replaces NUL with U+FFFD).
+    const nonce = Math.random().toString(36).slice(2);
+    const marker = (i) => `zzMATHzz${nonce}zz${i}zz`;
+    const mathSegments = [];
+    const stash = (segment) => {
+        mathSegments.push(segment);
+        return marker(mathSegments.length - 1);
+    };
+    const withPlaceholders = raw
+        .replace(/\\\[[\s\S]*?\\\]/g, stash)
+        .replace(/\\\([\s\S]*?\\\)/g, stash);
+
+    let html = DOMPurify.sanitize(marked.parse(withPlaceholders));
+
+    mathSegments.forEach((segment, i) => {
+        const span = document.createElement('span');
+        span.textContent = segment;
+        html = html.split(marker(i)).join(span.outerHTML);
+    });
+    return html;
+}
+
+function renderMathIn(element) {
+    if (window.renderMathInElement) {
+        renderMathInElement(element, {
+            delimiters: [
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false},
+            ],
+            throwOnError: false,
+        });
+    }
+}
+
 document.getElementById('chat-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const input = document.getElementById('user-input');
@@ -78,13 +121,19 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         if (data.response) {
             let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
             let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
-            const responseHtml = DOMPurify.sanitize(marked.parse(data.response));
+            const responseHtml = renderChatMarkdown(data.response);
+            let springLinkHtml = data.spring_link
+                ? `<div style="margin-bottom: 0.75rem;"><a href="${data.spring_link}" target="_blank" class="btn btn-primary" style="text-decoration: none;">🧮 ${gettext('Abrir en la calculadora de muelles')}</a></div>`
+                : '';
+            const markdownId = 'md-' + loaderId;
             window.innerHTML += `
                 <div class="message-bot">
-                    <div class="message-markdown" style="line-height: 1.5; margin-bottom: 0.75rem;">${responseHtml}</div>
+                    <div class="message-markdown" id="${markdownId}" style="line-height: 1.5; margin-bottom: 0.75rem;">${responseHtml}</div>
+                    ${springLinkHtml}
                     ${notesHtml}
                     <div style="border-top: 1px solid #edf2f7; padding-top: 0.5rem;">${sourcesHtml}</div>
                 </div><div style="clear: both;"></div>`;
+            renderMathIn(document.getElementById(markdownId));
         } else {
             window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ ${gettext('Error')}: ${data.error}</div><div style="clear: both;"></div>`;
         }

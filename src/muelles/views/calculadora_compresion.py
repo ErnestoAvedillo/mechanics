@@ -157,6 +157,9 @@ def calculadora_compresion(request):
             _muelle, resultado, _li, _lf = _calcular_muelle_compresion(request)
         except Exception as e:
             resultado = build_error_result(e, 'Error calculating compression spring')
+    elif request.GET:
+        # A link shared from the specs chat prefills the form; the user still reviews and submits it.
+        request.POST = request.GET
     return render(request, 'muelles/calculadora_compresion.html', {
         'resultado': resultado,
         'materiales': materials,

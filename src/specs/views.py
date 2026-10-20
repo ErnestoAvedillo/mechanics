@@ -1,6 +1,8 @@
 import hashlib
 import logging
+import re
 import threading
+from urllib.parse import urlencode
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -8,17 +10,60 @@ from django.db import IntegrityError, transaction
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.conf import settings
+from django.urls import reverse
 from django.utils.translation import gettext as _, get_language
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import gridfs
 from .models import Document, UserDocument
 from .forms import DocumentUploadForm, MetadataReviewForm
-from .rag_engine import DOC_KEY, get_rag_engine, delete_document_vectors
+from .rag_engine import DOC_KEY, get_rag_engine, delete_document_vectors, extract_spring_design_block
 from .tasks import process_document_task
 from .versions import DUPLICATE, SEARCHED, SUPERSEDED, TRANSLATION, TRANSLATION_ONLY, library_state
 
 logger = logging.getLogger(__name__)
+
+SPRING_DESIGN_FENCE_RE = re.compile(r"```(?:spring-design)?\s*\n?(.*?)```", re.DOTALL | re.IGNORECASE)
+SPRING_DESIGN_NUMERIC_FIELDS = {
+    'diametro_hilo', 'diametro_exterior', 'diametro_medio', 'diametro_interior',
+    'numero_espiras', 'longitud_libre', 'longitud_inicial', 'longitud_final',
+}
+SPRING_DESIGN_CHOICE_FIELDS = {
+    'numero_ciclos': {'1e3', '1e4', '1e5', '1e6', '1e7'},
+    'tipo_final': {'abierto', 'cerrado', 'semi-cerrado', 'rectificado'},
+}
+
+
+def _build_spring_link(block_text):
+    """
+    Turns the raw `key=value` text from rag_engine.extract_spring_design_block (optionally still
+    fenced) into a link that opens the compression calculator with those fields prefilled.
+    Returns None when nothing usable survives validation.
+    """
+    if not block_text:
+        return None
+    fence_match = SPRING_DESIGN_FENCE_RE.search(block_text)
+    body = fence_match.group(1) if fence_match else block_text
+
+    params = {}
+    for line in body.splitlines():
+        if '=' not in line:
+            continue
+        key, _unused, value = line.partition('=')
+        key, value = key.strip(), value.strip()
+        if key in SPRING_DESIGN_NUMERIC_FIELDS:
+            try:
+                params[key] = f"{float(value.replace(',', '.')):g}"
+            except ValueError:
+                continue
+        elif key in SPRING_DESIGN_CHOICE_FIELDS and value in SPRING_DESIGN_CHOICE_FIELDS[key]:
+            params[key] = value
+        elif key == 'material' and re.fullmatch(r'[A-Za-z0-9_-]{1,20}', value):
+            params[key] = value
+
+    if not params:
+        return None
+    return reverse('muelles_calculadora_compresion') + '?' + urlencode(params)
 
 
 def _gridfs():
@@ -234,10 +279,13 @@ def chat_query(request):
                 if document_id in states and states[document_id].state == TRANSLATION_ONLY:
                     notes.append(_('«%(filename)s» es una traducción y el original no está en tu biblioteca: '
                                    'el original puede prevalecer.') % {'filename': filename})
+            response_text = str(response)
+            spring_link = _build_spring_link(extract_spring_design_block(response_text))
             return JsonResponse({
-                'response': str(response),
+                'response': response_text,
                 'sources': sources,
                 'notes': sorted(notes),
+                'spring_link': spring_link,
             })
         except Exception as e:
             import traceback; traceback.print_exc()

@@ -259,6 +259,11 @@
     padding: 0.4rem 0.6rem;
 }
 
+.message-markdown .katex-display {
+    overflow-x: auto;
+    padding: 0.25rem 0;
+}
+
 .source-badge {
     display: inline-block;
     background: #edf2f7;

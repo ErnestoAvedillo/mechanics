@@ -1,4 +1,5 @@
 import os
+import re
 import tempfile
 import io
 from pymongo import MongoClient
@@ -110,6 +111,55 @@ def _refine_template(language_name):
         f"Answer always in {language_name}, regardless of the language of the context or of the query.\n"
         "Refined Answer: "
     )
+
+
+# Asking the main RAG prompt to both write a long technical answer AND remember to append a
+# structured block at the end was not reliable: on longer, more elaborate answers the model
+# dropped the block entirely (it has too much else competing for attention - RAG context, the
+# language rule, the query itself). So this runs as a second, narrowly-scoped call whose only job
+# is extracting the block from the already-written answer - nothing else to get distracted by.
+# The chat view (_build_spring_link in views.py) turns a successful extraction into a link to the
+# compression calculator with those fields prefilled; the keys below are literal tokens it parses.
+_SPRING_DESIGN_EXTRACTION_PROMPT = (
+    "You extract structured data; you do not write explanations or repeat the answer.\n"
+    "Below is an ANSWER that may or may not propose concrete numeric values to design a "
+    "mechanical compression spring.\n"
+    "If it does, output ONLY a fenced code block tagged spring-design with one key=value pair "
+    "per line, using only these literal keys (do not translate them) and only the ones the "
+    "answer actually gives a numeric value for: material (a short code such as SH, SM or SL), "
+    "diametro_hilo, diametro_exterior, diametro_medio, diametro_interior, numero_espiras, "
+    "longitud_libre, longitud_inicial, longitud_final, numero_ciclos (one of 1e3, 1e4, 1e5, 1e6, "
+    "1e7), tipo_final (one of abierto, cerrado, semi-cerrado, rectificado). Convert every "
+    "diameter and length to millimeters.\n"
+    "If the answer does NOT propose a spring design, output exactly NONE and nothing else.\n"
+    "Output nothing besides that code block (or NONE): no commentary, no markdown around it.\n\n"
+    "ANSWER:\n{answer}\n"
+)
+
+# Cheap pre-filter so the extraction call above only runs for answers that plausibly describe a
+# spring, instead of on every chat query.
+_SPRING_HINT_RE = re.compile(
+    r"spring|muelle|resorte|wire diameter|coil|espira|free length|longitud libre",
+    re.IGNORECASE,
+)
+
+
+def extract_spring_design_block(answer_text):
+    """
+    Pulls the spring's parameters out of `answer_text` as raw `key=value` text (possibly still
+    fenced), via a dedicated LLM call - see the module comment above for why this is separate
+    from the main RAG answer. Returns '' when there's nothing to extract, including on any
+    failure: this must never break the chat response.
+    """
+    if not _SPRING_HINT_RE.search(answer_text):
+        return ''
+    try:
+        _configure_models()
+        completion = Settings.llm.complete(_SPRING_DESIGN_EXTRACTION_PROMPT.format(answer=answer_text))
+        text = str(completion).strip()
+        return '' if text.upper() == 'NONE' else text
+    except Exception:
+        return ''
 
 
 def get_rag_engine(user_id, language_name="español"):
