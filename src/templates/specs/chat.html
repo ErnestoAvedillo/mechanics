@@ -140,7 +140,11 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         if (data.response) {
             let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
             let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
-            const responseHtml = DOMPurify.sanitize(marked.parse(data.response));
+            const responseHtml = renderChatMarkdown(data.response);
+            let springLinkHtml = data.spring_link
+                ? `<div style="margin-bottom: 0.75rem;"><a href="${data.spring_link}" target="_blank" class="btn btn-primary" style="text-decoration: none;">🧮 ${gettext('Abrir en la calculadora de muelles')}</a></div>`
+                : '';
+            const markdownId = 'md-' + loaderId;
             window.innerHTML += `
                 <div class="message-bot">
                     <div class="message-markdown" id="${markdownId}" style="line-height: 1.5; margin-bottom: 0.75rem;">${responseHtml}</div>
