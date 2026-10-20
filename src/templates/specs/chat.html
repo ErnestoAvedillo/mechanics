@@ -11,6 +11,7 @@
 {% block extra_js %}
     <script src="{% static 'specs/js/marked.min.js' %}"></script>
     <script src="{% static 'specs/js/purify.min.js' %}"></script>
+    <script src="{% static 'specs/js/chat-markdown.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>
 {% endblock %}
@@ -24,11 +25,27 @@
             <span style="background: #c6f6d5; color: #22543d; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;">{% trans "RAG Conectado" %}</span>
         </div>
 
+        {% if demo_queries_left is not None %}
+        <div style="background: #fffaf0; border-bottom: 1px solid #fbd38d; color: #975a16; padding: 0.6rem 1.5rem; font-size: 0.875rem;">
+            <strong>{% trans "Modo demo" %}</strong> · {% trans "los datos se borran a las 24 horas." %}
+            {% trans "Preguntas restantes" %}: <span id="demo-left">{{ demo_queries_left }}</span>/{{ demo_max_queries }} ·
+            <a href="{% url 'menuapp:signup' %}">{% trans "Crear una cuenta" %}</a>
+        </div>
+        {% endif %}
+
         <!-- Messages area -->
         <div class="chat-messages" id="chat-window">
             <div style="background: #e0f2fe; border: 1px solid #bae3fd; color: #0369a1; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
                 <strong>{% trans "Bienvenido a Lola Specs." %}</strong> {% trans "Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta." %}
             </div>
+            {% if demo_queries_left is not None %}
+            <div style="margin-bottom: 1.5rem;">
+                <div style="color: #718096; font-size: 0.85rem; margin-bottom: 0.5rem;">{% trans "Prueba con una de estas preguntas:" %}</div>
+                <button type="button" class="source-badge demo-example" style="border: 0; cursor: pointer;">{% trans "¿Cuándo debo subir la versión MAJOR según Semantic Versioning?" %}</button>
+                <button type="button" class="source-badge demo-example" style="border: 0; cursor: pointer;">{% trans "¿Qué prefijo se usa en un commit que corrige un error?" %}</button>
+                <button type="button" class="source-badge demo-example" style="border: 0; cursor: pointer;">{% trans "¿Cómo ignoro un archivo en todos los directorios con gitignore?" %}</button>
+            </div>
+            {% endif %}
             <!-- Messages injected by JS will go here -->
         </div>
 
@@ -95,7 +112,7 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
     if (!query) return;
 
     // Add the user message (user bubble)
-    window.innerHTML += `<div class="message-user">${query}</div><div style="clear: both;"></div>`;
+    window.innerHTML += `<div class="message-user">${escapeHtml(query)}</div><div style="clear: both;"></div>`;
     input.value = '';
 
     // Loading spinner
@@ -116,16 +133,14 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         });
         
         const data = await response.json();
+        const left = document.getElementById('demo-left');
+        if (left && response.status !== 400) left.textContent = Math.max(0, parseInt(left.textContent, 10) - 1);
         document.getElementById(loaderId).remove();
         console.log('RAG server response:', data);
         if (data.response) {
             let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
             let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
-            const responseHtml = renderChatMarkdown(data.response);
-            let springLinkHtml = data.spring_link
-                ? `<div style="margin-bottom: 0.75rem;"><a href="${data.spring_link}" target="_blank" class="btn btn-primary" style="text-decoration: none;">🧮 ${gettext('Abrir en la calculadora de muelles')}</a></div>`
-                : '';
-            const markdownId = 'md-' + loaderId;
+            const responseHtml = DOMPurify.sanitize(marked.parse(data.response));
             window.innerHTML += `
                 <div class="message-bot">
                     <div class="message-markdown" id="${markdownId}" style="line-height: 1.5; margin-bottom: 0.75rem;">${responseHtml}</div>
@@ -135,7 +150,7 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
                 </div><div style="clear: both;"></div>`;
             renderMathIn(document.getElementById(markdownId));
         } else {
-            window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ ${gettext('Error')}: ${data.error}</div><div style="clear: both;"></div>`;
+            window.innerHTML += `<div class="message-bot" style="background: #fff5f5; color: #c53030; border-color: #feb2b2;">⚠️ ${gettext('Error')}: ${escapeHtml(data.error)}</div><div style="clear: both;"></div>`;
         }
     } catch (err) {
         document.getElementById(loaderId).remove();

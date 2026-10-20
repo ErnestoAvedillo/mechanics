@@ -61,9 +61,19 @@
             <h2 style="margin: 0; display: inline-block;">📚 {% trans "Mis Documentos RAG" %}</h2>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                 <a href="{% url 'specs:chat_view' %}" class="btn btn-secondary">💬 {% trans "Ir al Chat RAG" %}</a>
-                <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ {% trans "Subir Nuevo PDF" %}</a>
+                {% if is_demo %}
+                    <span class="btn btn-primary" style="opacity: 0.5; cursor: not-allowed;" title="{% trans 'No disponible en la demo' %}" aria-disabled="true">+ {% trans "Subir Nuevo PDF" %}</span>
+                {% else %}
+                    <a href="{% url 'specs:upload_document' %}" class="btn btn-primary">+ {% trans "Subir Nuevo PDF" %}</a>
+                {% endif %}
             </div>
         </div>
+
+        {% if is_demo %}
+            <div style="background: #fffaf0; border-left: 4px solid #ed8936; color: #975a16; padding: 1rem; margin-bottom: 2rem;">
+                <strong>{% trans "Modo demo" %}</strong> · {% trans "Esta es la biblioteca de ejemplo. Pulsa «Ir al Chat RAG» para hacerle preguntas. La subida de documentos está desactivada." %}
+            </div>
+        {% endif %}
 
         {% if messages %}
             {% for message in messages %}
@@ -98,7 +108,7 @@
                                     </td>
                                     <td style="min-width: 150px;">
                                     <!-- <input type="hidden" id="company-hidden-{{ doc.id }}" name="company" value="{{ doc.company|default:'' }}"> -->
-                                        <button type="button" id="edit-btn-{{ doc.id }}" class="btn btn-sm btn-info" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap;" onclick="toggleEdit({{ doc.id }})">✏️ {% trans "Editar" %}</button>
+                                        <button type="button" id="edit-btn-{{ doc.id }}" class="btn btn-sm btn-info"{% if is_demo %} disabled style="opacity: 0.5; cursor: not-allowed;"{% endif %} style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap;" onclick="toggleEdit({{ doc.id }})">✏️ {% trans "Editar" %}</button>
                                         <button type="submit" id="save-btn-{{ doc.id }}" class="btn btn-sm btn-primary" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; display: none;" onclick="syncCompanyValue({{ doc.id }})">💾 {% trans "Guardar" %}</button>
                                         <button type="button" id="cancel-btn-{{ doc.id }}" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; display: none;" onclick="cancelEdit({{ doc.id }})">✕ {% trans "Cancelar" %}</button>
                                     </td>
@@ -131,7 +141,7 @@
                                         <a href="{% url 'specs:document_view' doc.id %}" target="_blank" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; text-decoration: none; display: inline-flex; align-items: center;">👁️ {% trans "Ver" %}</a>
                                         <form action="{% url 'specs:document_delete' doc.id %}" method="post" onsubmit="return confirm('{% trans "¿Seguro que deseas eliminar este documento?" %}');" style="display: inline;">
                                             {% csrf_token %}
-                                            <button type="submit" class="btn btn-sm btn-secondary" style="padding: 4px 8px; font-size: 0.75rem; background: #fee2e2; color: #c53030;">🗑️ {% trans "Borrar" %}</button>
+                                            <button type="submit" class="btn btn-sm btn-secondary"{% if is_demo %} disabled{% endif %} style="padding: 4px 8px; font-size: 0.75rem; background: #fee2e2; color: #c53030;{% if is_demo %} opacity: 0.5; cursor: not-allowed;{% endif %}">🗑️ {% trans "Borrar" %}</button>
                                         </form>
                                     </div>
                                 </td>
