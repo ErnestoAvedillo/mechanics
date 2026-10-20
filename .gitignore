@@ -45,3 +45,4 @@ backups/
 
 # The example file is meant to be committed (it holds placeholders only)
 !.env.example
+pdf/
