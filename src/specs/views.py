@@ -3,15 +3,18 @@ import logging
 import threading
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError, transaction
 from django.http import JsonResponse, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.utils.translation import gettext as _, get_language
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import gridfs
+from . import demo
 from .models import Document, UserDocument
 from .forms import DocumentUploadForm, MetadataReviewForm
 from .rag_engine import DOC_KEY, get_rag_engine, delete_document_vectors
@@ -45,7 +48,24 @@ def purge_document(document):
 
 def index(request):
     """Redirects to the main specs page."""
-    return render(request, 'specs/index.html')
+    return render(request, 'specs/index.html', {'is_demo': demo.is_demo(request.user)})
+
+@require_POST
+def demo_start(request):
+    """Logs the visitor in as a new throwaway demo user, without asking for an account."""
+    if request.user.is_authenticated and not demo.is_demo(request.user):
+        return redirect('specs:handling')
+    if not request.user.is_authenticated:
+        if not demo.allow_start(demo.client_ip(request)):
+            messages.error(request, _('Demasiadas demos desde tu conexión. Inténtalo más tarde o crea una cuenta.'))
+            return redirect('specs:index')
+        if not demo.demo_documents().exists():
+            messages.error(request, _('La demo no está disponible en este momento.'))
+            return redirect('specs:index')
+        user = demo.create_demo_user()
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+    return redirect('specs:handling')
+
 
 @login_required
 def document_list(request):
@@ -57,7 +77,7 @@ def document_list(request):
         state = states.get(entry.document_id)
         entry.library_label = _library_label(state, by_id.get(state.by)) if state else ''
         entry.library_hidden = bool(state) and state.state not in SEARCHED
-    return render(request, 'specs/document_list.html', {'documents': documents})
+    return render(request, 'specs/document_list.html', {'documents': documents, 'is_demo': demo.is_demo(request.user)})
 
 
 def _short_name(document):
@@ -120,7 +140,10 @@ def document_review(request, doc_id):
     document = entry.document
     if document is None:
         return redirect('specs:handling')
-    can_edit = document.can_be_edited_by(request.user)
+    # In the demo the documents are shared: any demo user may confirm the metadata while it is
+    # not confirmed yet, and once confirmed nobody can change it
+    demo_editable = demo.is_demo(request.user) and document.metadata_status != Document.METADATA_CONFIRMED
+    can_edit = document.can_be_edited_by(request.user) or demo_editable
 
     if request.method == 'POST':
         if not can_edit:
@@ -141,12 +164,16 @@ def document_review(request, doc_id):
             field.disabled = True
     return render(request, 'specs/document_review.html', {
         'entry': entry, 'document': document, 'form': form, 'can_edit': can_edit,
+        'demo_editable': demo_editable,
     })
 
 
 @login_required
 def document_delete(request, doc_id):
     """Removes the user's access to a document; the file and its vectors go when nobody else has it."""
+    if demo.is_demo(request.user):
+        messages.info(request, _('Esta acción no está disponible en la demo.'))
+        return redirect('specs:handling')
     doc = get_object_or_404(UserDocument, id=doc_id, user=request.user)
     if request.method == 'POST':
         filename = doc.filename
@@ -168,6 +195,9 @@ def document_delete(request, doc_id):
 @login_required
 def document_update(request, doc_id):
     """Updates the title (filename) or company of a document."""
+    if demo.is_demo(request.user):
+        messages.info(request, _('Esta acción no está disponible en la demo.'))
+        return redirect('specs:handling')
     doc = get_object_or_404(UserDocument, id=doc_id, user=request.user)
     if request.method == 'POST':
         print(f"Received update for doc_id {doc_id} with data: {request.POST}")
@@ -188,7 +218,10 @@ def document_update(request, doc_id):
 @login_required
 def chat_view(request):
     """Renders the main chat page."""
-    return render(request, 'specs/chat.html')
+    return render(request, 'specs/chat.html', {
+        'demo_queries_left': demo.queries_left(request.user),
+        'demo_max_queries': demo.MAX_QUERIES,
+    })
 
 @login_required
 def chat_query(request):
@@ -197,6 +230,9 @@ def chat_query(request):
         query_text = request.POST.get('query')
         if not query_text:
             return JsonResponse({'error': _('No se proporcionó ninguna pregunta')}, status=400)
+        if demo.is_demo(request.user) and not demo.consume_query(request.user):
+            return JsonResponse({'error': _('Has agotado las preguntas de la demo. Crea una cuenta gratuita para seguir usando el asistente.')},
+                                status=429)
 
         try:
             # Get the RAG engine filtered for this user, answering in the site's active language
@@ -250,6 +286,9 @@ def upload_document(request):
     """
     Renders or processes the document upload.
     """
+    if demo.is_demo(request.user):
+        messages.info(request, _('La subida de documentos no está disponible en la demo.'))
+        return redirect('specs:handling')
     if request.method == 'POST':
         form = DocumentUploadForm(request.POST, request.FILES)
         if form.is_valid():

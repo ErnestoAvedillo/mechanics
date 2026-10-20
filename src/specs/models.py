@@ -101,3 +101,16 @@ class UserDocument(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['user', 'document'], name='unique_user_document'),
         ]
+
+
+class DemoSession(models.Model):
+    """
+    Marks a throwaway user created by the public demo ("Try the demo" button).
+    The user only has access to the shared demo documents and is deleted after a day.
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='demo_session')
+    created_at = models.DateTimeField(auto_now_add=True)
+    queries_used = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.user.username} ({self.queries_used} queries)"

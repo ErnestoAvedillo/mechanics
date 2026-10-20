@@ -3572,3 +3572,74 @@ msgstr "Es de código abierto: mira el código en "
 #~ "en el atributo\n"
 #~ "            <strong>style</strong> de cada etiqueta <strong>label.field-"
 #~ "chip</strong>."
+
+msgid "Has agotado las preguntas de la demo. Crea una cuenta gratuita para seguir usando el asistente."
+msgstr "Has agotado las preguntas de la demo. Crea una cuenta gratuita para seguir usando el asistente."
+
+msgid "La subida de documentos no está disponible en la demo."
+msgstr "La subida de documentos no está disponible en la demo."
+
+msgid "Demasiadas demos desde tu conexión. Inténtalo más tarde o crea una cuenta."
+msgstr "Demasiadas demos desde tu conexión. Inténtalo más tarde o crea una cuenta."
+
+msgid "La demo no está disponible en este momento."
+msgstr "La demo no está disponible en este momento."
+
+msgid "Probar la demo sin cuenta"
+msgstr "Probar la demo sin cuenta"
+
+msgid "¿Quieres probarlo sin crear una cuenta?"
+msgstr "¿Quieres probarlo sin crear una cuenta?"
+
+msgid "Consulta unas normas de ejemplo con el asistente. Los datos de la demo se borran a las 24 horas."
+msgstr "Consulta unas normas de ejemplo con el asistente. Los datos de la demo se borran a las 24 horas."
+
+msgid "Probar la demo"
+msgstr "Probar la demo"
+
+msgid "Modo demo"
+msgstr "Modo demo"
+
+msgid "los datos se borran a las 24 horas."
+msgstr "los datos se borran a las 24 horas."
+
+msgid "Preguntas restantes"
+msgstr "Preguntas restantes"
+
+msgid "Crear una cuenta"
+msgstr "Crear una cuenta"
+
+msgid "Prueba con una de estas preguntas:"
+msgstr "Prueba con una de estas preguntas:"
+
+msgid "¿Cuándo debo subir la versión MAJOR según Semantic Versioning?"
+msgstr "¿Cuándo debo subir la versión MAJOR según Semantic Versioning?"
+
+msgid "¿Qué prefijo se usa en un commit que corrige un error?"
+msgstr "¿Qué prefijo se usa en un commit que corrige un error?"
+
+msgid "¿Cómo ignoro un archivo en todos los directorios con gitignore?"
+msgstr "¿Cómo ignoro un archivo en todos los directorios con gitignore?"
+
+msgid "Estás en modo demo"
+msgstr "Estás en modo demo"
+
+msgid "Los datos de la demo se borran a las 24 horas."
+msgstr "Los datos de la demo se borran a las 24 horas."
+
+msgid "Continuar con la demo"
+msgstr "Continuar con la demo"
+
+msgid "Esta acción no está disponible en la demo."
+msgstr "Esta acción no está disponible en la demo."
+
+msgid "No disponible en la demo"
+msgstr "No disponible en la demo"
+
+msgid "Esta es la biblioteca de ejemplo. Pulsa «Ir al Chat RAG» para hacerle preguntas. La subida de documentos está desactivada."
+msgstr "Esta es la biblioteca de ejemplo. Pulsa «Ir al Chat RAG» para hacerle preguntas. La subida de documentos está desactivada."
+
+
+
+msgid "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."
+msgstr "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."

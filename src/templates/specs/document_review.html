@@ -29,6 +29,10 @@
             </div>
         {% endif %}
 
+        {% if demo_editable %}
+            <p style="color: #975a16;">{% trans "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes." %}</p>
+        {% endif %}
+
         {% if not can_edit %}
             <p style="color: #718096;">{% trans "Solo quien subió el documento puede modificar sus metadatos." %}</p>
         {% endif %}
