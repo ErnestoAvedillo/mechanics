@@ -162,7 +162,7 @@ def extract_spring_design_block(answer_text):
         return ''
 
 
-def get_rag_engine(user_id, language_name="español"):
+def get_rag_engine(user_id, language_name="español", top_k=6):
     """
     Configures and returns the RAG query engine for a specific user.
     The engine only sees the current documents in the user's library, and answers
@@ -185,7 +185,7 @@ def get_rag_engine(user_id, language_name="español"):
     # No local reranker (it needed PyTorch); return the best matches directly
     return index.as_query_engine(
         filters=filters,
-        similarity_top_k=6,
+        similarity_top_k=top_k,
         text_qa_template=_qa_template(language_name),
         refine_template=_refine_template(language_name),
     )

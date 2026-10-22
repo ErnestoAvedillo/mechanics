@@ -17,7 +17,9 @@ from django.utils.translation import gettext as _, get_language
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import gridfs
+from llama_index.core.schema import QueryBundle
 from . import demo
+from .attachments import AttachmentError, read_attachment
 from .models import Document, UserDocument
 from .forms import DocumentUploadForm, MetadataReviewForm
 from .rag_engine import DOC_KEY, get_rag_engine, delete_document_vectors, extract_spring_design_block
@@ -67,6 +69,24 @@ def _build_spring_link(block_text):
     if not params:
         return None
     return reverse('muelles_calculadora_compresion') + '?' + urlencode(params)
+
+
+# The attachment is inlined in the question the LLM answers; the retrieval of the library's
+# passages only embeds the question plus the start of the file, so a long file does not drown it
+ATTACHMENT_RETRIEVAL_CHARS = 1500
+ATTACHMENT_TOP_K = 10
+
+
+def _attachment_query(question, filename, text):
+    """The prompt for a question about an attached file, and the shorter text used to search the library."""
+    prompt = (
+        f"{question}\n\n"
+        "The user attached the file below. Review it against the specifications in the context: "
+        "point out requirements that are missing, wrong or inconsistent, and the important ones "
+        "that apply. Cite the specification each remark comes from.\n"
+        f"----- ATTACHED FILE: {filename} -----\n{text}\n----- END OF ATTACHED FILE -----"
+    )
+    return prompt, f"{question}\n{text[:ATTACHMENT_RETRIEVAL_CHARS]}"
 
 
 def _gridfs():
@@ -275,6 +295,14 @@ def chat_query(request):
         query_text = request.POST.get('query')
         if not query_text:
             return JsonResponse({'error': _('No se proporcionó ninguna pregunta')}, status=400)
+        attachment = request.FILES.get('attachment')
+        attachment_text = ''
+        attachment_truncated = False
+        if attachment:
+            try:
+                attachment_text, attachment_truncated = read_attachment(attachment)
+            except AttachmentError as e:
+                return JsonResponse({'error': str(e)}, status=400)
         if demo.is_demo(request.user) and not demo.consume_query(request.user):
             return JsonResponse({'error': _('Has agotado las preguntas de la demo. Crea una cuenta gratuita para seguir usando el asistente.')},
                                 status=429)
@@ -283,15 +311,28 @@ def chat_query(request):
             # Get the RAG engine filtered for this user, answering in the site's active language
             language_name = dict(settings.LANGUAGES).get(get_language(), get_language())
             print(f"Getting RAG engine for user {request.user.id} (answers in {language_name})")
-            query_engine = get_rag_engine(request.user.id, language_name)
+            query_engine = get_rag_engine(request.user.id, language_name,
+                                          top_k=ATTACHMENT_TOP_K if attachment else 6)
             print(f"Running RAG query for user {request.user.id}: '{query_text}'")
             logger.info(f"TIPO DE query_engine: {type(query_engine)}")
 
-            response = query_engine.query(query_text)
+            if attachment:
+                prompt, retrieval_text = _attachment_query(query_text, attachment.name, attachment_text)
+                response = query_engine.query(QueryBundle(query_str=prompt, custom_embedding_strs=[retrieval_text]))
+            else:
+                response = query_engine.query(query_text)
 
             print(f"RAG response obtained: '{response}'")
             # Format sources (optional, for traceability)
             sources = []
+            # Link each source to the user's copy of the PDF, so it does not have to be looked up
+            entries = {}
+            for entry_id, document_id in UserDocument.objects.filter(
+                    user=request.user,
+                    document_id__in=[n.node.metadata.get(DOC_KEY) for n in response.source_nodes
+                                     if isinstance(n.node.metadata.get(DOC_KEY), int)],
+            ).values_list('id', 'document_id'):
+                entries[document_id] = entry_id
             for node in response.source_nodes:
                 print(f"Candidate source: '{node.node.get_content()[:100]}...' with metadata: {node.node.metadata} and score: {node.score}")
                 # sources.append({
@@ -301,9 +342,17 @@ def chat_query(request):
                 # The metadata lives inside node.node.metadata
                 node_metadata = getattr(node.node, 'metadata', {})
                 
+                url = ''
+                entry_id = entries.get(node_metadata.get(DOC_KEY))
+                if entry_id:
+                    url = reverse('specs:document_view', args=[entry_id])
+                    page = str(node_metadata.get('page_label', ''))
+                    if page.isdigit():
+                        url += f'#page={page}'
                 sources.append({
                     'filename': node_metadata.get('filename', 'Unknown'),
-                    'score': float(node.score or 0)
+                    'score': float(node.score or 0),
+                    'url': url,
                 })
             print (f"Response: '{response}' with sources: {sources}")
 
@@ -315,6 +364,8 @@ def chat_query(request):
                 if document_id in states and states[document_id].state == TRANSLATION_ONLY:
                     notes.append(_('«%(filename)s» es una traducción y el original no está en tu biblioteca: '
                                    'el original puede prevalecer.') % {'filename': filename})
+            if attachment_truncated:
+                notes.append(_('El archivo adjunto es muy largo: solo se ha analizado la primera parte.'))
             response_text = str(response)
             spring_link = _build_spring_link(extract_spring_design_block(response_text))
             return JsonResponse({

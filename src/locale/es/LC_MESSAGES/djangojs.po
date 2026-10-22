@@ -148,14 +148,20 @@ msgstr "Entendido"
 #~ msgid "Arrastra una imagen aqui o haz clic para seleccionar"
 #~ msgstr "Arrastra una imagen aqui o haz clic para seleccionar"
 
-#~ msgid "Buscando en tus normativas..."
-#~ msgstr "Buscando en tus normativas..."
+msgid "Buscando en tus normativas..."
+msgstr "Buscando en tus normativas..."
 
-#~ msgid "Error"
-#~ msgstr "Error"
+msgid "Error"
+msgstr "Error"
 
-#~ msgid "Error interno de conexión al servidor RAG."
-#~ msgstr "Error interno de conexión al servidor RAG."
+msgid "Error interno de conexión al servidor RAG."
+msgstr "Error interno de conexión al servidor RAG."
 
-#~ msgid "Relevancia"
-#~ msgstr "Relevancia"
+msgid "Relevancia"
+msgstr "Relevancia"
+
+msgid "El archivo es demasiado grande (máximo 10 MB)."
+msgstr "El archivo es demasiado grande (máximo 10 MB)."
+
+msgid "Abrir el documento"
+msgstr "Abrir el documento"

@@ -148,18 +148,24 @@ msgstr "Understood"
 #~ msgid "Arrastra una imagen aqui o haz clic para seleccionar"
 #~ msgstr "Drag an image here or click to select"
 
-#~ msgid "Buscando en tus normativas..."
-#~ msgstr "Searching your standards..."
+msgid "Buscando en tus normativas..."
+msgstr "Searching your standards..."
 
-#~ msgid "Error"
-#~ msgstr "Error"
+msgid "Error"
+msgstr "Error"
 
-#~ msgid "Error interno de conexión al servidor RAG."
-#~ msgstr "Internal connection error to the RAG server."
+msgid "Error interno de conexión al servidor RAG."
+msgstr "Internal connection error to the RAG server."
 
-#~ msgid "Relevancia"
-#~ msgstr "Relevance"
+msgid "Relevancia"
+msgstr "Relevance"
 
 # --- added: continued English translation pass ---
 #~ msgid "Calculando..."
 #~ msgstr "Calculating..."
+
+msgid "El archivo es demasiado grande (máximo 10 MB)."
+msgstr "The file is too large (maximum 10 MB)."
+
+msgid "Abrir el documento"
+msgstr "Open the document"

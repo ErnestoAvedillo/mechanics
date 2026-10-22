@@ -3634,3 +3634,48 @@ msgstr "This is the sample library. Click \"Go to RAG Chat\" to ask it questions
 
 msgid "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."
 msgstr "Demo mode: the metadata you confirm is saved and every visitor will see it."
+
+msgid "Formato no admitido. Adjunta un PDF, una imagen (PNG, JPG, WEBP) o un archivo de texto."
+msgstr "Unsupported format. Attach a PDF, an image (PNG, JPG, WEBP) or a text file."
+
+msgid "El archivo es demasiado grande (máximo %(mb)s MB)."
+msgstr "The file is too large (maximum %(mb)s MB)."
+
+msgid "No se ha podido extraer texto del archivo adjunto."
+msgstr "Could not extract text from the attached file."
+
+msgid "No se ha podido leer el PDF adjunto."
+msgstr "Could not read the attached PDF."
+
+msgid "El PDF adjunto no contiene texto (¿es un escaneo?). Adjúntalo como imagen."
+msgstr "The attached PDF contains no text (is it a scan?). Attach it as an image."
+
+msgid "No se ha podido analizar la imagen adjunta."
+msgstr "Could not analyze the attached image."
+
+msgid "El archivo adjunto es muy largo: solo se ha analizado la primera parte."
+msgstr "The attached file is very long: only its first part was analyzed."
+
+msgid "Quitar archivo adjunto"
+msgstr "Remove attached file"
+
+msgid "Adjunta un pliego de condiciones, un plano o un texto (PDF, imagen o TXT, máx. 10 MB). Lo revisaré con tus normativas: especificaciones que faltan, requisitos importantes, si están bien definidas y si son las que corresponden."
+msgstr "Attach a requirements document, a drawing or a text file (PDF, image or TXT, max. 10 MB). I will review it against your standards: missing specifications, important requirements, whether they are well defined and whether they are the right ones."
+
+msgid "Adjuntar un archivo para analizar"
+msgstr "Attach a file to analyze"
+
+msgid "Filtrar por nombre, empresa o normativa..."
+msgstr "Filter by name, company or standard..."
+
+msgid "Filtrar documentos"
+msgstr "Filter documents"
+
+msgid "Filtrar por estado"
+msgstr "Filter by status"
+
+msgid "Todos los estados"
+msgstr "All statuses"
+
+msgid "Ningún documento coincide con el filtro."
+msgstr "No document matches the filter."

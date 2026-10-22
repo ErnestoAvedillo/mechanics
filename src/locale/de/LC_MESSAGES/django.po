@@ -1,0 +1,2153 @@
+# django translations for de.
+msgid ""
+msgstr ""
+"Project-Id-Version: mechanics2\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Contraseña"
+msgstr "Passwort"
+
+msgid "Confirmar Contraseña"
+msgstr "Passwort bestätigen"
+
+msgid "Correo electrónico"
+msgstr "E-Mail-Adresse"
+
+msgid "Nombre de usuario"
+msgstr "Benutzername"
+
+msgid "Las contraseñas no coinciden."
+msgstr "Die Passwörter stimmen nicht überein."
+
+msgid "Tu código de verificación - Mechanics"
+msgstr "Ihr Bestätigungscode - Mechanics"
+
+msgid "Hola %(username)s, tu código de verificación es: %(code)s"
+msgstr "Hallo %(username)s, Ihr Bestätigungscode lautet: %(code)s"
+
+msgid "Código verificado. Introduce tu nueva contraseña."
+msgstr "Code bestätigt. Geben Sie Ihr neues Passwort ein."
+
+msgid "¡Email verificado con éxito! Bienvenida/o."
+msgstr "E-Mail erfolgreich bestätigt! Willkommen."
+
+msgid "El código ha expirado."
+msgstr "Der Code ist abgelaufen."
+
+msgid "Código incorrecto."
+msgstr "Falscher Code."
+
+msgid "Recuperación de contraseña - Mechanics"
+msgstr "Passwort zurücksetzen - Mechanics"
+
+msgid "Hola %(username)s, tu código para restablecer la contraseña es: %(code)s"
+msgstr "Hallo %(username)s, Ihr Code zum Zurücksetzen des Passworts lautet: %(code)s"
+
+msgid "Si el email ingresado corresponde a una cuenta registrada, se ha enviado un correo con instrucciones."
+msgstr "Wenn die eingegebene E-Mail-Adresse zu einem registrierten Konto gehört, wurde eine E-Mail mit Anweisungen gesendet."
+
+msgid "Usuario no encontrado."
+msgstr "Benutzer nicht gefunden."
+
+msgid "Contraseña cambiada con éxito."
+msgstr "Passwort erfolgreich geändert."
+
+msgid "Contraseña restablecida y sesión iniciada."
+msgstr "Passwort zurückgesetzt und angemeldet."
+
+msgid "Contraseña restablecida con éxito. Ahora puedes iniciar sesión."
+msgstr "Passwort erfolgreich zurückgesetzt. Sie können sich jetzt anmelden."
+
+msgid "Has cerrado sesión."
+msgstr "Sie wurden abgemeldet."
+
+msgid "¡Bienvenido de nuevo!"
+msgstr "Willkommen zurück!"
+
+msgid "Credenciales incorrectas."
+msgstr "Falsche Zugangsdaten."
+
+msgid "Usa el formulario de muelle 2K para generar el PDF."
+msgstr "Verwenden Sie das 2K-Federformular, um das PDF zu erzeugen."
+
+msgid "Error en los cálculos: %(error)s"
+msgstr "Fehler bei den Berechnungen: %(error)s"
+
+msgid "Reporte de Muelle 2K (No Lineal)"
+msgstr "Bericht Feder 2K (nichtlinear)"
+
+msgid "Usa el formulario de muelle 2K para generar la animación."
+msgstr "Verwenden Sie das 2K-Federformular, um die Animation zu erzeugen."
+
+msgid "Usa el formulario de compresión para generar el PDF."
+msgstr "Verwenden Sie das Druckfeder-Formular, um das PDF zu erzeugen."
+
+msgid "Reporte de Muelle de Compresión"
+msgstr "Bericht Druckfeder"
+
+msgid "Usa el formulario de compresión para generar la animación."
+msgstr "Verwenden Sie das Druckfeder-Formular, um die Animation zu erzeugen."
+
+msgid "Usa el formulario de cónico para generar el PDF."
+msgstr "Verwenden Sie das Formular für konische Federn, um das PDF zu erzeugen."
+
+msgid "Reporte de Muelle Cónico"
+msgstr "Bericht konische Feder"
+
+msgid "Usa el formulario de cónico para generar la animación."
+msgstr "Verwenden Sie das Formular für konische Federn, um die Animation zu erzeugen."
+
+msgid "Usa el formulario de cónico de paso variable para generar el PDF."
+msgstr "Verwenden Sie das Formular für konische Federn mit variabler Steigung, um das PDF zu erzeugen."
+
+msgid "Reporte de Muelle Cónico de Paso Variable"
+msgstr "Bericht konische Feder mit variabler Steigung"
+
+msgid "Usa el formulario de cónico de paso variable para generar la animación."
+msgstr "Verwenden Sie das Formular für konische Federn mit variabler Steigung, um die Animation zu erzeugen."
+
+msgid "Diámetro medio"
+msgstr "Mittlerer Durchmesser"
+
+msgid "Número de espiras"
+msgstr "Windungszahl"
+
+msgid "Pitch"
+msgstr "Steigung"
+
+msgid "Ángulo libre"
+msgstr "Freier Winkel"
+
+msgid "Longitud de sujeción"
+msgstr "Spannlänge"
+
+msgid "Radio de sujeción"
+msgstr "Spannradius"
+
+msgid "Faltan campos obligatorios para torsión: %(fields)s"
+msgstr "Für die Torsion fehlen Pflichtfelder: %(fields)s"
+
+msgid "Usa el formulario de torsión para generar el PDF."
+msgstr "Verwenden Sie das Drehfeder-Formular, um das PDF zu erzeugen."
+
+msgid "Reporte de Muelle de Torsión"
+msgstr "Bericht Drehfeder"
+
+msgid "Usa el formulario de torsión para generar la animación."
+msgstr "Verwenden Sie das Drehfeder-Formular, um die Animation zu erzeugen."
+
+msgid "Usa el formulario de tracción para generar el PDF."
+msgstr "Verwenden Sie das Zugfeder-Formular, um das PDF zu erzeugen."
+
+msgid "Reporte de Muelle de Tracción"
+msgstr "Bericht Zugfeder"
+
+msgid "Usa el formulario de tracción para generar la animación."
+msgstr "Verwenden Sie das Zugfeder-Formular, um die Animation zu erzeugen."
+
+msgid "Material no seleccionado"
+msgstr "Werkstoff nicht ausgewählt"
+
+msgid "Diámetro del hilo no proporcionado"
+msgstr "Drahtdurchmesser nicht angegeben"
+
+msgid "Número de espiras no proporcionado"
+msgstr "Windungszahl nicht angegeben"
+
+msgid "Valores numéricos no válidos"
+msgstr "Ungültige Zahlenwerte"
+
+msgid "Error al calcular longitud de bloqueo: %(error)s"
+msgstr "Fehler bei der Berechnung der Blocklänge: %(error)s"
+
+msgid "Longitud libre no proporcionada"
+msgstr "Freie Länge nicht angegeben"
+
+msgid "Error al calcular pitch: %(error)s"
+msgstr "Fehler bei der Berechnung der Steigung: %(error)s"
+
+msgid "SL - Acero de alto carbono"
+msgstr "SL - Stahl mit hohem Kohlenstoffgehalt"
+
+msgid "SM - Acero medio carbono"
+msgstr "SM - Stahl mit mittlerem Kohlenstoffgehalt"
+
+msgid "SH - Acero duro"
+msgstr "SH - Harter Stahl"
+
+msgid "valor"
+msgstr "Wert"
+
+msgid "El campo «%(campo)s» debe ser un número válido (recibido: «%(valor)s»)."
+msgstr "Das Feld „%(campo)s“ muss eine gültige Zahl sein (erhalten: „%(valor)s“)."
+
+msgid "El campo «%(campo)s» debe ser un número entero, sin decimales (recibido: «%(valor)s»)."
+msgstr "Das Feld „%(campo)s“ muss eine ganze Zahl ohne Dezimalstellen sein (erhalten: „%(valor)s“)."
+
+msgid "El paso «%(campo)s» (%(paso).4g mm) no puede ser menor que el diámetro de hilo (%(hilo).4g mm): las espiras se solaparían."
+msgstr "Die Steigung „%(campo)s“ (%(paso).4g mm) darf nicht kleiner als der Drahtdurchmesser (%(hilo).4g mm) sein: Die Windungen würden sich überlappen."
+
+msgid "Calculadora de Muelles"
+msgstr "Federrechner"
+
+msgid "Herramienta para calcular especificaciones de muelles"
+msgstr "Werkzeug zur Berechnung von Federspezifikationen"
+
+msgid "Material"
+msgstr "Werkstoff"
+
+msgid "Modulo G"
+msgstr "G-Modul"
+
+msgid "Modulo E"
+msgstr "E-Modul"
+
+msgid "Diametro hilo"
+msgstr "Drahtdurchmesser"
+
+msgid "Shot peening"
+msgstr "Kugelstrahlen"
+
+msgid "Diametro medio"
+msgstr "Mittlerer Durchmesser"
+
+msgid "Diametro medio superior"
+msgstr "Oberer mittlerer Durchmesser"
+
+msgid "Diametro medio inferior"
+msgstr "Unterer mittlerer Durchmesser"
+
+msgid "Diametro exterior"
+msgstr "Außendurchmesser"
+
+msgid "Diametro interior"
+msgstr "Innendurchmesser"
+
+msgid "Longitud libre"
+msgstr "Freie Länge"
+
+msgid "Longitud hilo"
+msgstr "Drahtlänge"
+
+msgid "Longitud hilo total"
+msgstr "Gesamte Drahtlänge"
+
+msgid "Longitud hilo cuerpo"
+msgstr "Drahtlänge des Federkörpers"
+
+msgid "Numero espiras"
+msgstr "Windungszahl"
+
+msgid "Numero espiras utiles"
+msgstr "Anzahl der federnden Windungen"
+
+msgid "Tramo 1 - espiras"
+msgstr "Abschnitt 1 - Windungen"
+
+msgid "Tramo 1 - paso"
+msgstr "Abschnitt 1 - Steigung"
+
+msgid "Tramo 2 - espiras"
+msgstr "Abschnitt 2 - Windungen"
+
+msgid "Tramo 2 - paso"
+msgstr "Abschnitt 2 - Steigung"
+
+msgid "Tramo 3 - espiras"
+msgstr "Abschnitt 3 - Windungen"
+
+msgid "Tramo 3 - paso"
+msgstr "Abschnitt 3 - Steigung"
+
+msgid "Ancho muelle"
+msgstr "Federbreite"
+
+msgid "Longitud bloqueo"
+msgstr "Blocklänge"
+
+msgid "Angulo libre"
+msgstr "Freier Winkel"
+
+msgid "Angulo tangencias"
+msgstr "Tangentenwinkel"
+
+msgid "Constante"
+msgstr "Konstante"
+
+msgid "Constante K1"
+msgstr "Konstante K1"
+
+msgid "Constante K2"
+msgstr "Konstante K2"
+
+msgid "Indice muelle"
+msgstr "Wickelverhältnis"
+
+msgid "Factor Wahl"
+msgstr "Wahl-Faktor"
+
+msgid "Factor Wahl eval"
+msgstr "Wahl-Faktor (ausgewertet)"
+
+msgid "Categoria Wahl"
+msgstr "Wahl-Kategorie"
+
+msgid "Tension inicial"
+msgstr "Vorspannung"
+
+msgid "Momento resistente"
+msgstr "Widerstandsmoment"
+
+msgid "Radio pata fija"
+msgstr "Radius des festen Schenkels"
+
+msgid "Longitud pata fija"
+msgstr "Länge des festen Schenkels"
+
+msgid "Radio pata movil"
+msgstr "Radius des beweglichen Schenkels"
+
+msgid "Longitud pata movil"
+msgstr "Länge des beweglichen Schenkels"
+
+msgid "Numero de ciclos"
+msgstr "Lastspielzahl"
+
+msgid "Curva de Esfuerzos"
+msgstr "Spannungskurve"
+
+msgid "Curva de Recorrido"
+msgstr "Wegkurve"
+
+msgid "Curva de Diametros"
+msgstr "Durchmesserkurve"
+
+msgid "Curva de Compresion Progresiva (2K)"
+msgstr "Kurve der progressiven Kompression (2K)"
+
+msgid "Diagrama de Goodman"
+msgstr "Goodman-Diagramm"
+
+msgid "Si"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Error en los calculos:"
+msgstr "Fehler bei den Berechnungen:"
+
+msgid "Resultados"
+msgstr "Ergebnisse"
+
+msgid "Ej. VW, BMW, ISO..."
+msgstr "z. B. VW, BMW, ISO..."
+
+msgid "Error al recuperar el documento: %(error)s"
+msgstr "Fehler beim Abrufen des Dokuments: %(error)s"
+
+msgid "Documento %(filename)s eliminado."
+msgstr "Dokument %(filename)s gelöscht."
+
+msgid "Nombre del documento actualizado."
+msgstr "Dokumentname aktualisiert."
+
+msgid "OEM/Empresa actualizado."
+msgstr "OEM/Firma aktualisiert."
+
+msgid "No se proporcionó ninguna pregunta"
+msgstr "Es wurde keine Frage gestellt"
+
+msgid "Método no permitido"
+msgstr "Methode nicht erlaubt"
+
+msgid "Tus documentos se están analizando en segundo plano. Podrás consultarlos en un par de minutos."
+msgstr "Ihre Dokumente werden im Hintergrund analysiert. Sie können sie in ein paar Minuten abfragen."
+
+msgid "Error general durante la subida: %(error)s"
+msgstr "Allgemeiner Fehler beim Hochladen: %(error)s"
+
+msgid "Herramientas gratuitas de cálculo mecánico para ingeniería industrial."
+msgstr "Kostenlose mechanische Berechnungswerkzeuge für den Wirtschaftsingenieur."
+
+msgid "Iniciar Sesión"
+msgstr "Anmelden"
+
+msgid "Crear Cuenta"
+msgstr "Konto erstellen"
+
+msgid "Bienvenido, <strong>%(username)s</strong>. Puedes acceder a las herramientas desde el menú lateral."
+msgstr "Willkommen, <strong>%(username)s</strong>. Sie können die Werkzeuge über das Seitenmenü aufrufen."
+
+msgid "Cerrar Sesión"
+msgstr "Abmelden"
+
+msgid "Idioma"
+msgstr "Sprache"
+
+msgid "Abrir menú"
+msgstr "Menü öffnen"
+
+msgid "Menú"
+msgstr "Menü"
+
+msgid "Inicio"
+msgstr "Startseite"
+
+msgid "Muelles"
+msgstr "Federn"
+
+msgid "Tolerancias"
+msgstr "Toleranzen"
+
+msgid "Especificaciones"
+msgstr "Spezifikationen"
+
+msgid "Contacto"
+msgstr "Kontakt"
+
+msgid "Fotografia de Ernesto Avedillo"
+msgstr "Foto von Ernesto Avedillo"
+
+msgid "Ingeniero Industrial con enfoque en el desarrollo de software y resolución de problemas complejos."
+msgstr "Wirtschaftsingenieur mit Schwerpunkt auf Softwareentwicklung und der Lösung komplexer Probleme."
+
+msgid "Información de Contacto"
+msgstr "Kontaktinformationen"
+
+msgid "Puedes contactarme a través de los siguientes medios:"
+msgstr "Sie können mich auf folgenden Wegen erreichen:"
+
+msgid "Ernesto Avedillo | Calculadoras de Ingeniería Mecánica Online"
+msgstr "Ernesto Avedillo | Online-Rechner für den Maschinenbau"
+
+msgid "Herramientas gratuitas de cálculo mecánico: muelles, tolerancias y ajustes. Creadas por un ingeniero industrial para ingenieros, estudiantes y diseñadores."
+msgstr "Kostenlose mechanische Berechnungswerkzeuge: Federn, Toleranzen und Passungen. Entwickelt von einem Wirtschaftsingenieur für Ingenieure, Studierende und Konstrukteure."
+
+msgid "Ingeniería Industrial × Software"
+msgstr "Wirtschaftsingenieurwesen × Software"
+
+msgid "De la Ingenieria Industrial al Desarrollo de Software"
+msgstr "Vom Wirtschaftsingenieurwesen zur Softwareentwicklung"
+
+msgid "Maximizo el valor de la ingeniería eliminando lo rutinario. Automatizo procesos para que su equipo técnico se dedique exclusivamente a crear, diseñar y ganar proyectos de alto impacto."
+msgstr "Ich maximiere den Wert des Ingenieurwesens, indem ich Routinearbeit eliminiere. Ich automatisiere Prozesse, damit sich Ihr technisches Team ausschließlich dem Entwickeln, Konstruieren und dem Gewinnen von Projekten mit hoher Wirkung widmen kann."
+
+msgid "Explorar las herramientas"
+msgstr "Werkzeuge entdecken"
+
+msgid "Hablemos"
+msgstr "Sprechen wir darüber"
+
+msgid "Ingeniero Industrial"
+msgstr "Wirtschaftsingenieur"
+
+msgid "Carta de presentacion"
+msgstr "Anschreiben"
+
+msgid "Durante más de dos décadas trabajando con clientes como BMW, VW o Ford, he vivido siempre la misma historia: ingenieros de primer nivel malgastando su talento en tareas repetitivas y tediosas."
+msgstr "Seit mehr als zwei Jahrzehnten arbeite ich mit Kunden wie BMW, VW oder Ford und habe dabei immer dieselbe Geschichte erlebt: erstklassige Ingenieure, die ihr Talent mit repetitiven und mühsamen Aufgaben verschwenden."
+
+msgid "La ingeniería nació para crear, no para repetir."
+msgstr "Ingenieurwesen entstand, um zu schaffen, nicht um zu wiederholen."
+
+msgid "Así que tomé las riendas y empecé a construir soluciones reales. Reduje procesos de gestión de horas agobiantes a cuestión de minutos, diseñé marcos de trabajo a medida y levanté un sistema ERP empresarial completo desde cero. Pero fui más allá: me sumergí de lleno en C, C++ y Python en 42 Barcelona para dar el salto definitivo de las hojas de cálculo al desarrollo de software robusto."
+msgstr "Also nahm ich die Zügel selbst in die Hand und begann, echte Lösungen zu bauen. Ich verkürzte Verwaltungsprozesse von erdrückenden Stunden auf wenige Minuten, entwarf maßgeschneiderte Arbeitsrahmen und baute ein komplettes ERP-System für Unternehmen von Grund auf auf. Doch ich ging weiter: Ich tauchte an der 42 Barcelona tief in C, C++ und Python ein, um den endgültigen Schritt von der Tabellenkalkulation zur robusten Softwareentwicklung zu machen."
+
+msgid "Finalmente decidí poner estas herramientas directamente en tus manos. Poco a poco —que todo cuesta su trabajo—, iré subiendo cada script, plantilla y motor de cálculo que he forjado. Todo alojado aquí mismo, 100%% gratis, para cualquier ingeniero o estudiante listo para dejar de repetir y empezar a inventar."
+msgstr "Schließlich beschloss ich, diese Werkzeuge direkt in Ihre Hände zu legen. Nach und nach – denn alles braucht seine Zeit – lade ich jedes Skript, jede Vorlage und jede Berechnungs-Engine hoch, die ich entwickelt habe. Alles hier gehostet, 100%% kostenlos, für jeden Ingenieur oder Studierenden, der bereit ist, mit dem Wiederholen aufzuhören und mit dem Erfinden zu beginnen."
+
+msgid "Herramientas"
+msgstr "Werkzeuge"
+
+msgid "¿Qué presento en esta página web?"
+msgstr "Was zeige ich auf dieser Website?"
+
+msgid "En esta página web estoy reuniendo mis herramientas con el objetivo de convertirlas en aplicaciones web,\n          de modo que puedan ser utilizadas por otros ingenieros, estudiantes o cualquier persona interesada en la ingeniería."
+msgstr "Auf dieser Website sammle ich meine Werkzeuge mit dem Ziel, sie in Webanwendungen umzuwandeln,\n                    damit sie von anderen Ingenieuren, Studierenden oder allen Interessierten am Ingenieurwesen genutzt werden können."
+
+msgid "Elige una calculadora y empieza a trabajar: son gratuitas, funcionan en el navegador y generan un informe descargable."
+msgstr "Wählen Sie einen Rechner und legen Sie los: Sie sind kostenlos, laufen im Browser und erzeugen einen herunterladbaren Bericht."
+
+msgid "Muelle de compresión"
+msgstr "Druckfeder"
+
+msgid "Calcula muelles de compresión, tracción, torsión, cónicos y no lineales."
+msgstr "Berechnet Druck-, Zug-, Drehfedern sowie konische und nichtlineare Federn."
+
+msgid "Abrir"
+msgstr "Öffnen"
+
+msgid "Trabajas con Python? Descárgate mi librería "
+msgstr "Arbeiten Sie mit Python? Laden Sie meine Bibliothek herunter"
+
+msgid "aquí"
+msgstr "hier"
+
+msgid "Ajuste eje-agujero"
+msgstr "Welle-Bohrung-Passung"
+
+msgid "Tolerancias y ajustes"
+msgstr "Toleranzen und Passungen"
+
+msgid "Analiza ajustes eje-agujero, cadenas de cotas y montajes con método estadístico."
+msgstr "Analysiert Welle-Bohrung-Passungen, Maßketten und Baugruppen mit statistischer Methode."
+
+msgid "¿Tienes un reto técnico entre manos? Escríbeme y lo comentamos."
+msgstr "Haben Sie eine technische Herausforderung? Schreiben Sie mir, dann besprechen wir sie."
+
+msgid "Ir a contacto"
+msgstr "Zum Kontakt"
+
+msgid "Calculadora de Muelle de Doble Rigidez (2K) Online"
+msgstr "Online-Rechner für Federn mit doppelter Steifigkeit (2K)"
+
+msgid "Calcula muelles de doble constante de rigidez (2K): tramos de compresión progresiva, dimensiones y materiales. Gratis y online."
+msgstr "Berechnet Federn mit doppelter Federkonstante (2K): Abschnitte mit progressiver Kompression, Abmessungen und Werkstoffe. Kostenlos und online."
+
+msgid "Volver a Muelles"
+msgstr "Zurück zu den Federn"
+
+msgid "Calculadora de Muelles No Lineales 2K"
+msgstr "Rechner für nichtlineare Federn 2K"
+
+msgid "Muelle de compresión con tres tramos de paso distinto (extremos apretados y cuerpo central abierto), de doble constante K1/K2: los tramos de paso apretado se bloquean antes, dejando el tramo central de paso abierto como único responsable de la rigidez durante el resto del recorrido."
+msgstr "Druckfeder mit drei Abschnitten unterschiedlicher Steigung (enge Enden und offener Mittelteil) mit doppelter Federkonstante K1/K2: Die Abschnitte mit enger Steigung legen sich zuerst auf Block, sodass der mittlere Abschnitt mit offener Steigung für den Rest des Federwegs allein für die Steifigkeit verantwortlich ist."
+
+msgid "NOTA!!! Se trata de un cálculo numérico que considera únicamente una línea imaginaria (o hilo virtual) que atraviesa el centro. En esta versión, las longitudes del muelle (libre, posicion 1 y 2) no tiene en cuenta su espesor ni las espiras no activas. En caso de crear un prototipo, hay que tener en cuenta este punto."
+msgstr "HINWEIS!!! Es handelt sich um eine numerische Berechnung, die nur eine gedachte Linie (oder einen virtuellen Draht) durch die Mitte berücksichtigt. In dieser Version berücksichtigen die Federlängen (frei, Position 1 und 2) weder die Drahtdicke noch die nicht federnden Windungen. Beim Bau eines Prototyps muss dies beachtet werden."
+
+msgid "Calculadora de Muelle de Compresión Online Gratis"
+msgstr "Kostenloser Online-Rechner für Druckfedern"
+
+msgid "Calcula dimensiones, tensiones y fuerza de un muelle de compresión. Selección de materiales, verificación de tolerancias y reporte en PDF."
+msgstr "Berechnet Abmessungen, Spannungen und Kraft einer Druckfeder. Werkstoffauswahl, Toleranzprüfung und PDF-Bericht."
+
+msgid "Calculadora Avanzada de Muelles Helicoidales de compresión rectos"
+msgstr "Erweiterter Rechner für zylindrische Schraubendruckfedern"
+
+msgid "Incluye selección automática de materiales, cálculo de tolerancias, y análisis completo de propiedades mecánicas según normativas técnicas."
+msgstr "Enthält die automatische Werkstoffauswahl, die Toleranzberechnung und eine vollständige Analyse der mechanischen Eigenschaften nach technischen Normen."
+
+msgid "Calculadora de Muelle Cónico Online Gratis"
+msgstr "Kostenloser Online-Rechner für konische Federn"
+
+msgid "Diseña muelles cónicos de compresión: geometría variable, tensiones y materiales. Cálculo gratuito con reporte en PDF."
+msgstr "Konstruieren Sie konische Druckfedern: variable Geometrie, Spannungen und Werkstoffe. Kostenlose Berechnung mit PDF-Bericht."
+
+msgid "Calculadora de Muelles Helicoidales de compresión cónicos"
+msgstr "Rechner für konische Schraubendruckfedern"
+
+msgid "Muelle de compresión con diámetro medio variable (superior e inferior) y paso constante. Incluye selección automática de materiales y análisis completo de propiedades mecánicas."
+msgstr "Druckfeder mit variablem mittlerem Durchmesser (oben und unten) und konstanter Steigung. Enthält die automatische Werkstoffauswahl und eine vollständige Analyse der mechanischen Eigenschaften."
+
+msgid "Calculadora de Muelle Cónico de Paso Variable"
+msgstr "Rechner für konische Federn mit variabler Steigung"
+
+msgid "Calcula muelles cónicos con paso variable: geometría avanzada, tensiones y comportamiento no lineal. Herramienta gratuita online."
+msgstr "Berechnet konische Federn mit variabler Steigung: erweiterte Geometrie, Spannungen und nichtlineares Verhalten. Kostenloses Online-Werkzeug."
+
+msgid "Calculadora de Muelle de Torsión Online Gratis"
+msgstr "Kostenloser Online-Rechner für Drehfedern"
+
+msgid "Calcula muelles de torsión: momento, ángulo de giro, dimensiones y materiales. Herramienta gratuita con reporte descargable en PDF."
+msgstr "Berechnet Drehfedern: Moment, Drehwinkel, Abmessungen und Werkstoffe. Kostenloses Werkzeug mit herunterladbarem PDF-Bericht."
+
+msgid "Calculadora Avanzada de Muelles Helicoidales de torsión"
+msgstr "Erweiterter Rechner für Schraubendrehfedern"
+
+msgid "Calculadora de Muelle de Tracción Online Gratis"
+msgstr "Kostenloser Online-Rechner für Zugfedern"
+
+msgid "Diseña y calcula muelles de tracción (extensión) online: dimensiones, tensión de trabajo, materiales y reporte descargable en PDF."
+msgstr "Konstruieren und berechnen Sie Zugfedern online: Abmessungen, Betriebsspannung, Werkstoffe und herunterladbarer PDF-Bericht."
+
+msgid "Calculadora Avanzada de Muelles Helicoidales de tracción"
+msgstr "Erweiterter Rechner für Schraubenzugfedern"
+
+msgid "Calculadoras de Muelles Online: Compresión, Tracción, Torsión"
+msgstr "Online-Federrechner: Druck, Zug, Torsion"
+
+msgid "Calcula muelles de compresión, tracción, torsión y cónicos gratis online. Resultados al instante con selección de materiales y reporte descargable."
+msgstr "Berechnen Sie kostenlos online Druck-, Zug-, Drehfedern und konische Federn. Sofortige Ergebnisse mit Werkstoffauswahl und herunterladbarem Bericht."
+
+msgid "Calculadora de Muelles de compresión"
+msgstr "Rechner für Druckfedern"
+
+msgid "Calculadora de Muelles de tracción"
+msgstr "Rechner für Zugfedern"
+
+msgid "Muelle de tracción"
+msgstr "Zugfeder"
+
+msgid "Calculadora de Muelles de torsión"
+msgstr "Rechner für Drehfedern"
+
+msgid "Muelle de torsión"
+msgstr "Drehfeder"
+
+msgid "Muelles cónicos"
+msgstr "Konische Federn"
+
+msgid "Calculadora para muelles cónicos"
+msgstr "Rechner für konische Federn"
+
+msgid "Muelle cónico"
+msgstr "Konische Feder"
+
+msgid "Muelles cónicos paso variable"
+msgstr "Konische Federn mit variabler Steigung"
+
+msgid "Calculadora para muelles cónicos con paso variable"
+msgstr "Rechner für konische Federn mit variabler Steigung"
+
+msgid "Muelles no lineales 2K"
+msgstr "Nichtlineare Federn 2K"
+
+msgid "Calculadora para muelles no lineales de doble constante"
+msgstr "Rechner für nichtlineare Federn mit doppelter Federkonstante"
+
+msgid "Muelle no lineal"
+msgstr "Nichtlineare Feder"
+
+msgid "Material y Configuración"
+msgstr "Werkstoff und Konfiguration"
+
+msgid "Tipo de muelle:"
+msgstr "Federtyp:"
+
+msgid "Compresión (lineal)"
+msgstr "Druck (linear)"
+
+msgid "Tracción"
+msgstr "Zug"
+
+msgid "Selecciona el tipo para ajustar el modelo de cálculo"
+msgstr "Wählen Sie den Typ, um das Berechnungsmodell anzupassen"
+
+msgid "Material:"
+msgstr "Werkstoff:"
+
+msgid "Seleccione un material..."
+msgstr "Werkstoff auswählen..."
+
+msgid "Módulo"
+msgstr "Modul"
+
+msgid "Materiales cargados desde base de datos técnica"
+msgstr "Werkstoffe aus der technischen Datenbank geladen"
+
+msgid "Diámetro del hilo (mm):"
+msgstr "Drahtdurchmesser (mm):"
+
+msgid "Tipo muelle"
+msgstr "Federtyp"
+
+msgid "Diagrama muelle compresión"
+msgstr "Diagramm Druckfeder"
+
+msgid "diagrama muelle de tracción"
+msgstr "Diagramm Zugfeder"
+
+msgid "Dimensiones del Muelle"
+msgstr "Federabmessungen"
+
+msgid "Complete solo uno de los diámetros"
+msgstr "Füllen Sie nur einen der Durchmesser aus"
+
+msgid "Diámetro exterior:"
+msgstr "Außendurchmesser:"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Longitud libre (mm):"
+msgstr "Freie Länge (mm):"
+
+msgid "Número de espiras:"
+msgstr "Windungszahl:"
+
+msgid "Tensión inicial (N):"
+msgstr "Vorspannkraft (N):"
+
+msgid "Solo aplica para muelles de tracción"
+msgstr "Gilt nur für Zugfedern"
+
+msgid "Tipo de extremos:"
+msgstr "Art der Enden:"
+
+msgid "Muelle con extremos abiertos rectificados"
+msgstr "Feder mit offenen, geschliffenen Enden"
+
+msgid "Abierto rectificado"
+msgstr "Offen, geschliffen"
+
+msgid "Muelle con extremos cerrados rectificados"
+msgstr "Feder mit angelegten, geschliffenen Enden"
+
+msgid "Cerrado rectificado"
+msgstr "Angelegt, geschliffen"
+
+msgid "Muelle con extremos abiertos no rectificados"
+msgstr "Feder mit offenen, nicht geschliffenen Enden"
+
+msgid "Abierto no rectificado"
+msgstr "Offen, nicht geschliffen"
+
+msgid "Muelle con extremos cerrados no rectificados"
+msgstr "Feder mit angelegten, nicht geschliffenen Enden"
+
+msgid "Cerrado no rectificado"
+msgstr "Angelegt, nicht geschliffen"
+
+msgid "Muelle con anillo doble aleman entero centrado"
+msgstr "Feder mit doppelter deutscher Ganzöse, zentriert"
+
+msgid "Anillo doble aleman entero centrado"
+msgstr "Doppelte deutsche Ganzöse, zentriert"
+
+msgid "Muelle con anillo doble aleman entero lateral"
+msgstr "Feder mit doppelter deutscher Ganzöse, seitlich"
+
+msgid "Anillo doble aleman entero lateral"
+msgstr "Doppelte deutsche Ganzöse, seitlich"
+
+msgid "Muelle con anillo simple aleman centrado"
+msgstr "Feder mit einfacher deutscher Öse, zentriert"
+
+msgid "Anillo simple aleman centrado"
+msgstr "Einfache deutsche Öse, zentriert"
+
+msgid "Muelle con anillo simple aleman entero lateral"
+msgstr "Feder mit einfacher deutscher Ganzöse, seitlich"
+
+msgid "Anillo simple aleman entero lateral"
+msgstr "Einfache deutsche Ganzöse, seitlich"
+
+msgid "Muelle con anillo simple aleman entero centrado"
+msgstr "Feder mit einfacher deutscher Ganzöse, zentriert"
+
+msgid "Anillo simple aleman entero centrado"
+msgstr "Einfache deutsche Ganzöse, zentriert"
+
+msgid "Muelle con anillo especial"
+msgstr "Feder mit Sonderöse"
+
+msgid "Anillo especial"
+msgstr "Sonderöse"
+
+msgid "Shot peening:"
+msgstr "Kugelstrahlen:"
+
+msgid "Activado"
+msgstr "Aktiviert"
+
+msgid "Mejora la resistencia a la fatiga"
+msgstr "Verbessert die Ermüdungsfestigkeit"
+
+msgid "Longitud inicial (mm):"
+msgstr "Anfangslänge (mm):"
+
+msgid "Longitud final (mm):"
+msgstr "Endlänge (mm):"
+
+msgid "Número de ciclos:"
+msgstr "Lastspielzahl:"
+
+msgid "Calcular"
+msgstr "Berechnen"
+
+msgid "Complete los datos del muelle para obtener sus especificaciones técnicas completas."
+msgstr "Geben Sie die Federdaten ein, um die vollständigen technischen Spezifikationen zu erhalten."
+
+msgid "Calcular Especificaciones"
+msgstr "Spezifikationen berechnen"
+
+msgid "Información sobre los cálculos:"
+msgstr "Informationen zu den Berechnungen:"
+
+msgid "Dimensiones:"
+msgstr "Abmessungen:"
+
+msgid "Diámetro medio:"
+msgstr "Mittlerer Durchmesser:"
+
+msgid "Calculado automáticamente según las dimensiones"
+msgstr "Automatisch aus den Abmessungen berechnet"
+
+msgid "Índice del muelle:"
+msgstr "Wickelverhältnis:"
+
+msgid "Relación diámetro medio / diámetro hilo"
+msgstr "Verhältnis mittlerer Durchmesser / Drahtdurchmesser"
+
+msgid "Espiras:"
+msgstr "Windungen:"
+
+msgid "Espiras útiles:"
+msgstr "Federnde Windungen:"
+
+msgid "Según tipo de extremos seleccionado"
+msgstr "Je nach gewählter Art der Enden"
+
+msgid "Pitch:"
+msgstr "Steigung:"
+
+msgid "Distancia entre espiras (longitud libre / espiras)"
+msgstr "Abstand zwischen den Windungen (freie Länge / Windungen)"
+
+msgid "Mecánica:"
+msgstr "Mechanik:"
+
+msgid "Constante del muelle:"
+msgstr "Federkonstante:"
+
+msgid "Fuerza necesaria para comprimir 1 mm"
+msgstr "Kraft, die zum Zusammendrücken um 1 mm nötig ist"
+
+msgid "Factor de Wahl:"
+msgstr "Wahl-Faktor:"
+
+msgid "Factor de corrección por curvatura"
+msgstr "Korrekturfaktor für die Krümmung"
+
+msgid "Resistencia a la tracción del material"
+msgstr "Zugfestigkeit des Werkstoffs"
+
+msgid "Tolerancias:"
+msgstr "Toleranzen:"
+
+msgid "Según normas para el diámetro del hilo"
+msgstr "Nach den Normen für den Drahtdurchmesser"
+
+msgid "Error:"
+msgstr "Fehler:"
+
+msgid "Especificaciones Tecnicas del Muelle"
+msgstr "Technische Spezifikationen der Feder"
+
+msgid "Tipo:"
+msgstr "Typ:"
+
+msgid "Modulo G:"
+msgstr "G-Modul:"
+
+msgid "Modulo E:"
+msgstr "E-Modul:"
+
+msgid "Diametro hilo:"
+msgstr "Drahtdurchmesser:"
+
+msgid "Dimensiones"
+msgstr "Abmessungen"
+
+msgid "Diametro medio:"
+msgstr "Mittlerer Durchmesser:"
+
+msgid "Diametro medio superior:"
+msgstr "Oberer mittlerer Durchmesser:"
+
+msgid "Diametro medio inferior:"
+msgstr "Unterer mittlerer Durchmesser:"
+
+msgid "Diametro exterior:"
+msgstr "Außendurchmesser:"
+
+msgid "Diametro interior:"
+msgstr "Innendurchmesser:"
+
+msgid "Longitud libre:"
+msgstr "Freie Länge:"
+
+msgid "Longitud hilo:"
+msgstr "Drahtlänge:"
+
+msgid "Longitud hilo total:"
+msgstr "Gesamte Drahtlänge:"
+
+msgid "Longitud hilo cuerpo:"
+msgstr "Drahtlänge des Federkörpers:"
+
+msgid "Espiras y Geometria"
+msgstr "Windungen und Geometrie"
+
+msgid "Numero espiras:"
+msgstr "Windungszahl:"
+
+msgid "Numero espiras utiles:"
+msgstr "Anzahl der federnden Windungen:"
+
+msgid "Tramo 1 - espiras / paso:"
+msgstr "Abschnitt 1 - Windungen / Steigung:"
+
+msgid "Tramo 2 - espiras / paso:"
+msgstr "Abschnitt 2 - Windungen / Steigung:"
+
+msgid "Tramo 3 - espiras / paso:"
+msgstr "Abschnitt 3 - Windungen / Steigung:"
+
+msgid "Ancho muelle:"
+msgstr "Federbreite:"
+
+msgid "Longitud bloqueo:"
+msgstr "Blocklänge:"
+
+msgid "Angulo libre:"
+msgstr "Freier Winkel:"
+
+msgid "Angulo tangencias:"
+msgstr "Tangentenwinkel:"
+
+msgid "Mecanicas"
+msgstr "Mechanische Werte"
+
+msgid "Constante:"
+msgstr "Konstante:"
+
+msgid "Constante K1 (inicial):"
+msgstr "Konstante K1 (anfänglich):"
+
+msgid "Constante K2 (tramo abierto):"
+msgstr "Konstante K2 (offener Abschnitt):"
+
+msgid "Indice muelle:"
+msgstr "Wickelverhältnis:"
+
+msgid "Factor Wahl:"
+msgstr "Wahl-Faktor:"
+
+msgid "Factor Wahl eval:"
+msgstr "Wahl-Faktor (ausgewertet):"
+
+msgid "Categoria Wahl:"
+msgstr "Wahl-Kategorie:"
+
+msgid "Tension inicial:"
+msgstr "Vorspannung:"
+
+msgid "Momento resistente:"
+msgstr "Widerstandsmoment:"
+
+msgid "Esfuerzos en los puntos de trabajo"
+msgstr "Spannungen an den Arbeitspunkten"
+
+msgid "Punto"
+msgstr "Punkt"
+
+msgid "Posicion"
+msgstr "Position"
+
+msgid "Recorrido"
+msgstr "Federweg"
+
+msgid "Carga"
+msgstr "Last"
+
+msgid "Tension"
+msgstr "Spannung"
+
+msgid "Parametros de Torsion"
+msgstr "Torsionsparameter"
+
+msgid "Patas y Radios"
+msgstr "Schenkel und Radien"
+
+msgid "Radio pata fija:"
+msgstr "Radius des festen Schenkels:"
+
+msgid "Longitud pata fija:"
+msgstr "Länge des festen Schenkels:"
+
+msgid "Radio pata movil:"
+msgstr "Radius des beweglichen Schenkels:"
+
+msgid "Longitud pata movil:"
+msgstr "Länge des beweglichen Schenkels:"
+
+msgid "Analisis Grafico de Fatiga"
+msgstr "Grafische Ermüdungsanalyse"
+
+msgid "Curva de esfuerzos"
+msgstr "Spannungskurve"
+
+msgid "Curva de recorrido"
+msgstr "Wegkurve"
+
+msgid "Curva de diametros"
+msgstr "Durchmesserkurve"
+
+msgid "Curva de Compresión Progresiva (2K)"
+msgstr "Kurve der progressiven Kompression (2K)"
+
+msgid "Curva de compresión progresiva"
+msgstr "Kurve der progressiven Kompression"
+
+msgid "Safety factor:"
+msgstr "Sicherheitsfaktor:"
+
+msgid "Diagrama de muelle 2K"
+msgstr "Diagramm der Feder 2K"
+
+msgid "Diámetro medio (constante) en mm"
+msgstr "Mittlerer Durchmesser (konstant) in mm"
+
+msgid "Tramo 1: paso y longitud"
+msgstr "Abschnitt 1: Steigung und Länge"
+
+msgid "Tramo 1"
+msgstr "Abschnitt 1"
+
+msgid "longitud"
+msgstr "Länge"
+
+msgid "paso (mm)"
+msgstr "Steigung (mm)"
+
+msgid "Tramo 2: paso y longitud"
+msgstr "Abschnitt 2: Steigung und Länge"
+
+msgid "Tramo 2"
+msgstr "Abschnitt 2"
+
+msgid "Tramo 3: paso y longitud"
+msgstr "Abschnitt 3: Steigung und Länge"
+
+msgid "Tramo 3"
+msgstr "Abschnitt 3"
+
+msgid "Longitud libre en mm (calculada: suma de longitudes de cada tramo)"
+msgstr "Freie Länge in mm (berechnet: Summe der Längen der Abschnitte)"
+
+msgid "Número total de espiras (calculada: suma de longitudes / paso en cada tramo)"
+msgstr "Gesamtwindungszahl (berechnet: Summe der Längen / Steigung je Abschnitt)"
+
+msgid "No total espiras"
+msgstr "Gesamtwindungszahl"
+
+msgid "1ª posición carga"
+msgstr "1. Lastposition"
+
+msgid "1 posición carga"
+msgstr "Lastposition 1"
+
+msgid "2ª posición de carga"
+msgstr "2. Lastposition"
+
+msgid "2 posición carga"
+msgstr "Lastposition 2"
+
+msgid "Complete los datos de los tres tramos del muelle 2K para obtener sus especificaciones tecnicas completas."
+msgstr "Geben Sie die Daten der drei Abschnitte der 2K-Feder ein, um die vollständigen technischen Spezifikationen zu erhalten."
+
+msgid "Calculando..."
+msgstr "Berechnung läuft..."
+
+msgid "Generando animación..."
+msgstr "Animation wird erzeugt..."
+
+msgid "Crear Animación"
+msgstr "Animation erstellen"
+
+msgid "Generando PDF..."
+msgstr "PDF wird erzeugt..."
+
+msgid "Crear Reporte PDF"
+msgstr "PDF-Bericht erstellen"
+
+msgid "Diagrama de muelle"
+msgstr "Diagramm der Feder"
+
+msgid "Diametro exterior (De) en mm"
+msgstr "Außendurchmesser (De) in mm"
+
+msgid "Diametro medio (Dm) en mm"
+msgstr "Mittlerer Durchmesser (Dm) in mm"
+
+msgid "Diametro interior (Di) en mm"
+msgstr "Innendurchmesser (Di) in mm"
+
+msgid "Numero total de espiras (nt)"
+msgstr "Gesamtwindungszahl (nt)"
+
+msgid "Numero de espiras"
+msgstr "Windungszahl"
+
+msgid "Longitud sin comprimir (L0) en mm"
+msgstr "Unbelastete Länge (L0) in mm"
+
+msgid "Primera posición de carga"
+msgstr "Erste Lastposition"
+
+msgid "Segunda posición de carga"
+msgstr "Zweite Lastposition"
+
+msgid "Longitud solida (Ls) en mm"
+msgstr "Blocklänge (Ls) in mm"
+
+msgid "Paso entre espiras (pitch) en mm"
+msgstr "Abstand zwischen den Windungen (Steigung) in mm"
+
+msgid "Complete los datos del muelle para obtener sus especificaciones tecnicas completas."
+msgstr "Geben Sie die Federdaten ein, um die vollständigen technischen Spezifikationen zu erhalten."
+
+msgid "Diagrama de muelle cónico"
+msgstr "Diagramm der konischen Feder"
+
+msgid "Diámetro superior en mm"
+msgstr "Oberer Durchmesser in mm"
+
+msgid "Diámetro medio superior"
+msgstr "Oberer mittlerer Durchmesser"
+
+msgid "Diametro medio inferior (Deu) en mm"
+msgstr "Unterer mittlerer Durchmesser (Deu) in mm"
+
+msgid "Diámetro medio inferior"
+msgstr "Unterer mittlerer Durchmesser"
+
+msgid "Paso del muelle"
+msgstr "Steigung der Feder"
+
+msgid "Paso"
+msgstr "Steigung"
+
+msgid "Longitud libre en mm"
+msgstr "Freie Länge in mm"
+
+msgid "Complete los datos del muelle cónico para obtener sus especificaciones tecnicas completas."
+msgstr "Geben Sie die Daten der konischen Feder ein, um die vollständigen technischen Spezifikationen zu erhalten."
+
+msgid "Paso en la parte superior del muelle"
+msgstr "Steigung im oberen Teil der Feder"
+
+msgid "Paso superior"
+msgstr "Obere Steigung"
+
+msgid "Paso en la parteinferiro del muelle"
+msgstr "Steigung im unteren Teil der Feder"
+
+msgid "Paso inferior"
+msgstr "Untere Steigung"
+
+msgid "Longitud de pata fija (Ls) en mm"
+msgstr "Länge des festen Schenkels (Ls) in mm"
+
+msgid "Radio de sujeción (Ra) pata móvil en mm"
+msgstr "Spannradius (Ra) des beweglichen Schenkels in mm"
+
+msgid "Primera posición de carga (A1)"
+msgstr "Erste Lastposition (A1)"
+
+msgid "Primera posición de carga (A2)"
+msgstr "Erste Lastposition (A2)"
+
+msgid "Ángulo de libre (A0)"
+msgstr "Freier Winkel (A0)"
+
+msgid "Número de espiras (nt) — número entero"
+msgstr "Windungszahl (nt) — ganze Zahl"
+
+msgid "Paso (pitch) en mm"
+msgstr "Steigung (Pitch) in mm"
+
+msgid "Primera posición de carga (L1)"
+msgstr "Erste Lastposition (L1)"
+
+msgid "Tensión inicial (F1) en N"
+msgstr "Vorspannkraft (F1) in N"
+
+msgid "Tensión inicial"
+msgstr "Vorspannung"
+
+msgid "Desactivado"
+msgstr "Deaktiviert"
+
+msgid "Numero de ciclos:"
+msgstr "Lastspielzahl:"
+
+msgid "Cambiar Contraseña"
+msgstr "Passwort ändern"
+
+msgid "Nueva Contraseña"
+msgstr "Neues Passwort"
+
+msgid "Confirmar Nueva Contraseña"
+msgstr "Neues Passwort bestätigen"
+
+msgid "¿Ya tienes cuenta? <a href=\"%(login_url)s\">Inicia sesión</a>"
+msgstr "Sie haben bereits ein Konto? <a href=\"%(login_url)s\">Anmelden</a>"
+
+msgid "Usuario"
+msgstr "Benutzer"
+
+msgid "Tu usuario y/o contraseña no coinciden. Inténtalo de nuevo."
+msgstr "Ihr Benutzername und/oder Ihr Passwort stimmen nicht überein. Bitte versuchen Sie es erneut."
+
+msgid "Entrar"
+msgstr "Eintreten"
+
+msgid "¿No tienes una cuenta? <a href=\"%(signup_url)s\">Regístrate aquí</a>."
+msgstr "Sie haben noch kein Konto? <a href=\"%(signup_url)s\">Hier registrieren</a>."
+
+msgid "¿Olvidaste tu contraseña? <a href=\"%(recall_psw_url)s\">Recupérala aquí</a>."
+msgstr "Passwort vergessen? <a href=\"%(recall_psw_url)s\">Hier zurücksetzen</a>."
+
+msgid "Recuperar Contraseña"
+msgstr "Passwort zurücksetzen"
+
+msgid "Si el email ingresado corresponde a una cuenta registrada, recibirás un correo con instrucciones para restablecer tu contraseña."
+msgstr "Wenn die eingegebene E-Mail-Adresse zu einem registrierten Konto gehört, erhalten Sie eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts."
+
+msgid "Recuperar"
+msgstr "Zurücksetzen"
+
+msgid "Registrarse"
+msgstr "Registrieren"
+
+msgid "Verificar Email"
+msgstr "E-Mail bestätigen"
+
+msgid "Hemos enviado un código de 6 dígitos a tu correo electrónico. Por favor, introdúcelo a continuación:"
+msgstr "Wir haben einen 6-stelligen Code an Ihre E-Mail-Adresse gesendet. Bitte geben Sie ihn unten ein:"
+
+msgid "Código de Verificación"
+msgstr "Bestätigungscode"
+
+msgid "Verificar y Entrar"
+msgstr "Bestätigen und eintreten"
+
+msgid "¿No recibiste el código? Revisa tu carpeta de spam o\n                    <a href=\"%(signup_url)s\">intenta registrarte de nuevo</a>."
+msgstr "Keinen Code erhalten? Prüfen Sie Ihren Spam-Ordner oder\n                    <a href=\"%(signup_url)s\">versuchen Sie, sich erneut zu registrieren</a>."
+
+msgid "Asistente Chat RAG"
+msgstr "RAG-Chat-Assistent"
+
+msgid "Lola Specs: Asistente Senior"
+msgstr "Lola Specs: Senior-Assistentin"
+
+msgid "RAG Conectado"
+msgstr "RAG verbunden"
+
+msgid "Bienvenido a Lola Specs."
+msgstr "Willkommen bei Lola Specs."
+
+msgid "Pregúntame sobre cualquier normativa (ISO, VW, BMW...) o ensayo que hayas subido previamente al sistema. Te indicaré siempre la fuente del documento en mi respuesta."
+msgstr "Fragen Sie mich zu jeder Norm (ISO, VW, BMW...) oder Prüfung, die Sie zuvor in das System hochgeladen haben. Ich nenne in meiner Antwort immer die Quelle des Dokuments."
+
+msgid "¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?"
+msgstr "Wie viele Stunden werden in der Salzsprühnebelkammer NS für BMW gefordert?"
+
+msgid "Enviar y Consultar"
+msgstr "Senden und abfragen"
+
+msgid "Mis Documentos"
+msgstr "Meine Dokumente"
+
+msgid "Mis Documentos RAG"
+msgstr "Meine RAG-Dokumente"
+
+msgid "Subir Nuevo PDF"
+msgstr "Neues PDF hochladen"
+
+msgid "Archivo / Título"
+msgstr "Datei / Titel"
+
+msgid "OEM / Empresa"
+msgstr "OEM / Firma"
+
+msgid "Fecha Subida"
+msgstr "Hochladedatum"
+
+msgid "Estado RAG"
+msgstr "RAG-Status"
+
+msgid "Acciones"
+msgstr "Aktionen"
+
+msgid "Editar"
+msgstr "Bearbeiten"
+
+msgid "Guardar"
+msgstr "Speichern"
+
+msgid "Cancelar"
+msgstr "Abbrechen"
+
+msgid "Indexado"
+msgstr "Indexiert"
+
+msgid "Pendiente"
+msgstr "Ausstehend"
+
+msgid "Ver"
+msgstr "Ansehen"
+
+msgid "¿Seguro que deseas eliminar este documento?"
+msgstr "Möchten Sie dieses Dokument wirklich löschen?"
+
+msgid "Borrar"
+msgstr "Löschen"
+
+msgid "Aún no has subido normativas."
+msgstr "Sie haben noch keine Normen hochgeladen."
+
+msgid "Sube tu primer PDF técnico para empezar a usar la búsqueda RAG."
+msgstr "Laden Sie Ihr erstes technisches PDF hoch, um die RAG-Suche zu nutzen."
+
+msgid "Empezar a subir"
+msgstr "Mit dem Hochladen beginnen"
+
+msgid "Especificaciones Técnicas"
+msgstr "Technische Spezifikationen"
+
+msgid "Gestiona, consulta y chatea con tus documentos y normativas (RAG)"
+msgstr "Verwalten, durchsuchen und chatten Sie mit Ihren Dokumenten und Normen (RAG)"
+
+msgid "Gestor de Documentos"
+msgstr "Dokumentenverwaltung"
+
+msgid "Sube PDFs, clasifícalos por OEM y verifica su estado de indexación."
+msgstr "Laden Sie PDFs hoch, ordnen Sie sie nach OEM und prüfen Sie ihren Indexierungsstatus."
+
+msgid "Ver Documentos"
+msgstr "Dokumente ansehen"
+
+msgid "Realiza consultas técnicas y normativas a tus documentos subidos. Extrae información exacta referenciada."
+msgstr "Stellen Sie technische und normative Fragen an Ihre hochgeladenen Dokumente. Erhalten Sie exakte Informationen mit Quellenangabe."
+
+msgid "Ir al Chat RAG"
+msgstr "Zum RAG-Chat"
+
+msgid "Subir Normativa"
+msgstr "Norm hochladen"
+
+msgid "Añadir Documento al RAG"
+msgstr "Dokument zum RAG hinzufügen"
+
+msgid "El PDF se almacenará de forma segura y se auto-indexará para tu asistente de usuario."
+msgstr "Das PDF wird sicher gespeichert und automatisch für Ihren Assistenten indexiert."
+
+msgid "OEM / Empresa Relacionada (Opcional)"
+msgstr "Zugehöriger OEM / Firma (optional)"
+
+msgid "Ej. VW, BMW, Ford o General"
+msgstr "z. B. VW, BMW, Ford oder Allgemein"
+
+msgid "Archivo PDF Técnico (Normativa, TL, ISO...)"
+msgstr "Technisches PDF (Norm, TL, ISO...)"
+
+msgid "Volver"
+msgstr "Zurück"
+
+msgid "Subir y Analizar Documento"
+msgstr "Dokument hochladen und analysieren"
+
+msgid "Calculadoras de Tolerancias y Ajustes Mecánicos Online"
+msgstr "Online-Rechner für mechanische Toleranzen und Passungen"
+
+msgid "Calcula ajustes eje-agujero, pin-agujero y tolerancias ISO gratis online. Herramientas para diseño mecánico e ingeniería industrial."
+msgstr "Berechnen Sie kostenlos online Welle-Bohrung- und Bolzen-Bohrung-Passungen sowie ISO-Toleranzen. Werkzeuge für die Konstruktion und das Wirtschaftsingenieurwesen."
+
+msgid "Cálculo de Tolerancias diametral Pin Agujero"
+msgstr "Berechnung der Durchmessertoleranzen Bolzen-Bohrung"
+
+msgid "Calcula el ajuste entre pin y agujero si es un ajuste apretado u holgado"
+msgstr "Berechnet die Passung zwischen Bolzen und Bohrung, ob Übermaß- oder Spielpassung"
+
+msgid "Ajuste Pin-Hole"
+msgstr "Passung Bolzen-Bohrung"
+
+msgid "Tolerancias radiales pivot-bushing-agujero"
+msgstr "Radiale Toleranzen Drehbolzen-Buchse-Bohrung"
+
+msgid "Calcula el ajuste del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
+msgstr "Berechnet die Passung der Baugruppe Drehbolzen-Buchse-Bohrung, ob Übermaß- oder Spielpassung"
+
+msgid "Eje Casquillo Agujero"
+msgstr "Bolzen Buchse Bohrung"
+
+msgid "Tolerancias axiales pivot-bushing-agujero"
+msgstr "Axiale Toleranzen Drehbolzen-Buchse-Bohrung"
+
+msgid "Calcula el ajuste axial del paquete pivot-bushing-agujero si es un ajuste apretado u holgado"
+msgstr "Berechnet die axiale Passung der Baugruppe Drehbolzen-Buchse-Bohrung, ob Übermaß- oder Spielpassung"
+
+msgid "Guías en vídeo para el cálculo de tolerancias"
+msgstr "Videoanleitungen zur Toleranzberechnung"
+
+msgid "Cálculo de tolerancias absolutas"
+msgstr "Berechnung absoluter Toleranzen"
+
+msgid "Operaciones y cálculos entre dimensiones con tolerancias absolutas"
+msgstr "Operationen und Berechnungen zwischen Maßen mit absoluten Toleranzen"
+
+msgid "Simulación de Monte Carlo en el cálculo de tolerancias"
+msgstr "Monte-Carlo-Simulation bei der Toleranzberechnung"
+
+msgid "Explicación de la simulación de Monte Carlo en el cálculo de tolerancias"
+msgstr "Erläuterung der Monte-Carlo-Simulation bei der Toleranzberechnung"
+
+msgid "Calculadora de Tolerancia para Soporte de Inserto"
+msgstr "Toleranzrechner für Einsatzhalter"
+
+msgid "Calcula el ajuste y tolerancia de un inserto en su soporte. Herramienta gratuita online para diseño mecánico de precisión."
+msgstr "Berechnet die Passung und Toleranz eines Einsatzes in seinem Halter. Kostenloses Online-Werkzeug für die Präzisionskonstruktion."
+
+msgid "Calculo de Tolerancias Axiales en un montaje de un casquillo distancial en un alojamiento de plástico"
+msgstr "Berechnung der axialen Toleranzen bei der Montage einer Distanzbuchse in einem Kunststoffgehäuse"
+
+msgid "Ingresa nominales y tolerancias para obtener el tipo de ajuste y la holgura resultante."
+msgstr "Geben Sie Nennmaße und Toleranzen ein, um die Passungsart und das resultierende Spiel zu erhalten."
+
+msgid "Diagrama pin-hole con campos editables"
+msgstr "Diagramm Bolzen-Bohrung mit editierbaren Feldern"
+
+msgid "Diagrama pin casquillo y agujero"
+msgstr "Diagramm Bolzen, Buchse und Bohrung"
+
+msgid "Altura soporte"
+msgstr "Höhe des Halters"
+
+msgid "Nominal"
+msgstr "Nennmaß"
+
+msgid "Tol. Sup"
+msgstr "Obere Tol."
+
+msgid "Tol. Inf"
+msgstr "Untere Tol."
+
+msgid "Altura inserto"
+msgstr "Höhe des Einsatzes"
+
+msgid "Diametro soporte"
+msgstr "Durchmesser des Halters"
+
+msgid "Diametro inserto"
+msgstr "Durchmesser des Einsatzes"
+
+msgid "Interference <br> spacer-support"
+msgstr "Übermaß <br> Distanzbuchse-Halter"
+
+msgid "Gap spacer support"
+msgstr "Spiel Distanzbuchse-Halter"
+
+msgid "Distribucion"
+msgstr "Verteilung"
+
+msgid "Numero de muestras"
+msgstr "Anzahl der Stichproben"
+
+msgid "Imagen 1"
+msgstr "Bild 1"
+
+msgid "Arrastra una imagen aqui o haz clic para seleccionar"
+msgstr "Ziehen Sie ein Bild hierher oder klicken Sie zum Auswählen"
+
+msgid "Vista previa imagen 1"
+msgstr "Vorschau von Bild 1"
+
+msgid "Imagen 2"
+msgstr "Bild 2"
+
+msgid "Vista previa imagen 2"
+msgstr "Vorschau von Bild 2"
+
+msgid "Volver al indice"
+msgstr "Zurück zum Index"
+
+msgid "Descargar PDF"
+msgstr "PDF herunterladen"
+
+msgid "Incoming Data"
+msgstr "Eingangsdaten"
+
+msgid "Diametro del Inserto"
+msgstr "Durchmesser des Einsatzes"
+
+msgid "Max:"
+msgstr "Max:"
+
+msgid "Min:"
+msgstr "Min:"
+
+msgid "Media:"
+msgstr "Mittelwert:"
+
+msgid "Sigma:"
+msgstr "Sigma:"
+
+msgid "Diametro del soporte"
+msgstr "Durchmesser des Halters"
+
+msgid "Altura del inserto"
+msgstr "Höhe des Einsatzes"
+
+msgid "Altura del soporte"
+msgstr "Höhe des Halters"
+
+msgid "Analysis clearance system"
+msgstr "Analyse des Spielsystems"
+
+msgid "Clearance system"
+msgstr "Spielsystem"
+
+msgid "Interferencia nominal:"
+msgstr "Nennübermaß:"
+
+msgid "Max. Interferencia:"
+msgstr "Max. Übermaß:"
+
+msgid "Min. Interferencia:"
+msgstr "Min. Übermaß:"
+
+msgid "Media (samples):"
+msgstr "Mittelwert (Stichproben):"
+
+msgid "Sigma (samples):"
+msgstr "Sigma (Stichproben):"
+
+msgid "Analysis sobrealtura"
+msgstr "Analyse der Überhöhe"
+
+msgid "Sobrealtura"
+msgstr "Überhöhe"
+
+msgid "Espesor nominal:"
+msgstr "Nennstärke:"
+
+msgid "Tol. Sup:"
+msgstr "Obere Tol.:"
+
+msgid "Tol. Inf:"
+msgstr "Untere Tol.:"
+
+msgid "Histograma del Clearance System"
+msgstr "Histogramm des Spielsystems"
+
+msgid "Histograma del gap entre el soporte y el inserto"
+msgstr "Histogramm des Spiels zwischen Halter und Einsatz"
+
+msgid "Calculadora de Tolerancia Pin-Agujero Online"
+msgstr "Online-Toleranzrechner Bolzen-Bohrung"
+
+msgid "Calcula el ajuste y tolerancia entre un pin y su agujero según norma ISO. Resultado inmediato para diseño mecánico."
+msgstr "Berechnet die Passung und Toleranz zwischen einem Bolzen und seiner Bohrung nach ISO-Norm. Sofortiges Ergebnis für die mechanische Konstruktion."
+
+msgid "Calculo Pin-Hole"
+msgstr "Berechnung Bolzen-Bohrung"
+
+msgid "Calculo de Tolerancia Pin-Hole"
+msgstr "Toleranzberechnung Bolzen-Bohrung"
+
+msgid "Tienes alguna duda? Revisa el siguiente vídeo"
+msgstr "Fragen? Sehen Sie sich das folgende Video an"
+
+msgid "Diagrama pin y agujero"
+msgstr "Diagramm Bolzen und Bohrung"
+
+msgid "Pin Nominal"
+msgstr "Bolzen nominal"
+
+msgid "Pin Tol. Sup"
+msgstr "Bolzen obere Tol."
+
+msgid "Pin Tol. Inf"
+msgstr "Bolzen untere Tol."
+
+msgid "Hole Nominal"
+msgstr "Bohrung nominal"
+
+msgid "Hole Tol. Sup"
+msgstr "Bohrung obere Tol."
+
+msgid "Hole Tol. Inf"
+msgstr "Bohrung untere Tol."
+
+msgid "Agujero"
+msgstr "Bohrung"
+
+msgid "Ajuste"
+msgstr "Passung"
+
+msgid "Holgura maxima:"
+msgstr "Maximales Spiel:"
+
+msgid "Holgura minima:"
+msgstr "Minimales Spiel:"
+
+msgid "Histograma de la Resta de Diametros (Agujero - Pin)"
+msgstr "Histogramm der Durchmesserdifferenz (Bohrung - Bolzen)"
+
+msgid "Histograma de la diferencia entre diametro del agujero y del pin"
+msgstr "Histogramm der Differenz zwischen Bohrungs- und Bolzendurchmesser"
+
+msgid "Calculadora de Ajuste Axial Pivote-Casquillo"
+msgstr "Rechner für axiale Passung Drehbolzen-Buchse"
+
+msgid "Calcula la tolerancia axial entre pivote, casquillo y agujero. Herramienta online gratuita para diseño de ajustes mecánicos."
+msgstr "Berechnet die axiale Toleranz zwischen Drehbolzen, Buchse und Bohrung. Kostenloses Online-Werkzeug für die Auslegung mechanischer Passungen."
+
+msgid "Calculo de Tolerancias Axiales en un sistema de pivotaje con casquillos"
+msgstr "Berechnung der axialen Toleranzen in einem Drehlagersystem mit Buchsen"
+
+msgid "Wall distance"
+msgstr "Wandabstand"
+
+msgid "Bushing flange"
+msgstr "Buchsenflansch"
+
+msgid "Tube Length"
+msgstr "Rohrlänge"
+
+msgid "Interference <br> bushing-tube"
+msgstr "Übermaß <br> Buchse-Rohr"
+
+msgid "Gap bushing-pin"
+msgstr "Spiel Buchse-Bolzen"
+
+msgid "Longitud del Tubo"
+msgstr "Länge des Rohrs"
+
+msgid "Distancia entre paredes"
+msgstr "Abstand zwischen den Wänden"
+
+msgid "Ancho casquillo 1"
+msgstr "Breite der Buchse 1"
+
+msgid "Ancho casquillo 2"
+msgstr "Breite der Buchse 2"
+
+msgid "Histograma del espesor de pared"
+msgstr "Histogramm der Wandstärke"
+
+msgid "Calculadora de Ajuste Radial Pivote-Casquillo"
+msgstr "Rechner für radiale Passung Drehbolzen-Buchse"
+
+msgid "Determinación del juego o interferencia en el paquete pin casquillo tubo."
+msgstr "Bestimmung des Spiels oder Übermaßes in der Baugruppe aus Bolzen, Buchse und Rohr."
+
+msgid "Calcula la tolerancia radial entre pivote, casquillo y agujero. Herramienta online gratuita para diseño de ajustes mecánicos."
+msgstr "Berechnet die radiale Toleranz zwischen Drehbolzen, Buchse und Bohrung. Kostenloses Online-Werkzeug für die Auslegung mechanischer Passungen."
+
+msgid "Calculo de Tolerancias Radiales en un sistema de pivotaje con casquillos"
+msgstr "Berechnung der radialen Toleranzen in einem Drehlagersystem mit Buchsen"
+
+msgid "Inner Tube"
+msgstr "Inneres Rohr"
+
+msgid "Outer Bushing"
+msgstr "Äußere Buchse"
+
+msgid "Inner Bushing"
+msgstr "Innere Buchse"
+
+msgid "Tubo"
+msgstr "Rohr"
+
+msgid "Casquillo Exterior"
+msgstr "Äußere Buchse"
+
+msgid "Casquillo Interior"
+msgstr "Innere Buchse"
+
+msgid "Analysis connection Buching-Tube"
+msgstr "Analyse der Verbindung Buchse-Rohr"
+
+msgid "Interferencia Tubo-Casquillo"
+msgstr "Übermaß Rohr-Buchse"
+
+msgid "Interferencia maxima:"
+msgstr "Maximales Übermaß:"
+
+msgid "Interferencia minima:"
+msgstr "Minimales Übermaß:"
+
+msgid "Histograma de la Interferencia Tubo-Casquillo"
+msgstr "Histogramm des Übermaßes Rohr-Buchse"
+
+msgid "Histograma de la diferencia entre diametro del tubo y el casquillo"
+msgstr "Histogramm der Differenz zwischen Rohr- und Buchsendurchmesser"
+
+msgid "Analysis wall thickness Buching"
+msgstr "Analyse der Wandstärke der Buchse"
+
+msgid "Espesor de Pared"
+msgstr "Wandstärke"
+
+msgid "Histograma del Espesor de Pared (Casquillo Exterior - Casquillo Interior)"
+msgstr "Histogramm der Wandstärke (äußere Buchse - innere Buchse)"
+
+msgid "Estudios de tolerancias"
+msgstr "Toleranzstudien"
+
+msgid "Si el vídeo no se carga, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" rel=\"noopener noreferrer\">mira el vídeo en YouTube</a>."
+msgstr "Wenn das Video nicht geladen wird, <a href=\"%(youtube_watch_url)s\" target=\"_blank\" rel=\"noopener noreferrer\">sehen Sie sich das Video auf YouTube an</a>."
+
+msgid "no se pudo renderizar"
+msgstr "konnte nicht dargestellt werden"
+
+msgid "Calculadora de Tolerancias"
+msgstr "Toleranzrechner"
+
+msgid "Herramienta para calcular especificaciones de tolerancias"
+msgstr "Werkzeug zur Berechnung von Toleranzspezifikationen"
+
+msgid "Diferencia de diametros (mm)"
+msgstr "Durchmesserdifferenz (mm)"
+
+msgid "Densidad"
+msgstr "Dichte"
+
+msgid "Histograma de interferencia Tubo Casquillo"
+msgstr "Histogramm des Übermaßes Rohr-Buchse"
+
+msgid "Espesor de pared (mm)"
+msgstr "Wandstärke (mm)"
+
+msgid "Histograma de espesor de pared"
+msgstr "Histogramm der Wandstärke"
+
+msgid "Usa el formulario de pivot-bushing-hole para generar el PDF."
+msgstr "Verwenden Sie das Formular Drehbolzen-Buchse-Bohrung, um das PDF zu erzeugen."
+
+msgid "Reporte de Tolerancia Pivot-Bushing-Hole"
+msgstr "Toleranzbericht Drehbolzen-Buchse-Bohrung"
+
+msgid "Datos de Entrada"
+msgstr "Eingabedaten"
+
+msgid "Resultados Calculados"
+msgstr "Berechnete Ergebnisse"
+
+msgid "Imagenes adjuntas"
+msgstr "Angehängte Bilder"
+
+msgid "Histogramas"
+msgstr "Histogramme"
+
+msgid "Interferencia Casquillo soporte"
+msgstr "Übermaß Buchse-Halter"
+
+msgid "Histograma Clearance System"
+msgstr "Histogramm des Spielsystems"
+
+msgid "Juego del Sistema"
+msgstr "Systemspiel"
+
+msgid "Error al generar PDF: %(error)s"
+msgstr "Fehler beim Erzeugen des PDF: %(error)s"
+
+msgid "Apriete (Interference fit)"
+msgstr "Übermaß (Übermaßpassung)"
+
+msgid "Juego (Clearance fit)"
+msgstr "Spiel (Spielpassung)"
+
+msgid "Transicion (Transition fit)"
+msgstr "Übergang (Übergangspassung)"
+
+msgid "Histograma de (Agujero - Pin)"
+msgstr "Histogramm von (Bohrung - Bolzen)"
+
+msgid "Usa el formulario de pin-hole para generar el PDF."
+msgstr "Verwenden Sie das Formular Bolzen-Bohrung, um das PDF zu erzeugen."
+
+msgid "Reporte de Tolerancia Pin-Hole"
+msgstr "Toleranzbericht Bolzen-Bohrung"
+
+msgid "Holgura maxima"
+msgstr "Maximales Spiel"
+
+msgid "Holgura minima"
+msgstr "Minimales Spiel"
+
+msgid "Histograma (Agujero - Pin)"
+msgstr "Histogramm (Bohrung - Bolzen)"
+
+msgid "Juego del sistema (mm)"
+msgstr "Systemspiel (mm)"
+
+msgid "Histograma del juego del sistema"
+msgstr "Histogramm des Systemspiels"
+
+msgid "Usa el formulario de pivot-bushing-hole-axial para generar el PDF."
+msgstr "Verwenden Sie das Formular axial Drehbolzen-Buchse-Wand, um das PDF zu erzeugen."
+
+msgid "Reporte de Tolerancia Pivot-Bushing-Waal Axial"
+msgstr "Toleranzbericht axial Drehbolzen-Buchse-Wand"
+
+msgid "Histograma del Sistema"
+msgstr "Histogramm des Systems"
+
+msgid "Interferencia Tubo-Casquillo (mm)"
+msgstr "Übermaß Rohr-Buchse (mm)"
+
+msgid "Histograma de Interferencia Tubo-Casquillo"
+msgstr "Histogramm des Übermaßes Rohr-Buchse"
+
+msgid "Tolerancias Absolutas"
+msgstr "Absolute Toleranzen"
+
+msgid "URL de vídeo no reconocida. Se muestra el vídeo por defecto."
+msgstr "Video-URL nicht erkannt. Es wird das Standardvideo angezeigt."
+
+msgid "Confirma tu nuevo correo - Mechanics"
+msgstr "Bestätigen Sie Ihre neue E-Mail-Adresse - Mechanics"
+
+msgid "Hola %(username)s, tu código para confirmar el nuevo correo es: %(code)s"
+msgstr "Hallo %(username)s, Ihr Code zur Bestätigung der neuen E-Mail-Adresse lautet: %(code)s"
+
+msgid "Este correo electrónico ya está en uso."
+msgstr "Diese E-Mail-Adresse wird bereits verwendet."
+
+msgid "Correo electrónico actualizado."
+msgstr "E-Mail-Adresse aktualisiert."
+
+msgid "Datos guardados."
+msgstr "Daten gespeichert."
+
+msgid "Nombre"
+msgstr "Vorname"
+
+msgid "Apellidos"
+msgstr "Nachname"
+
+msgid "Mi cuenta"
+msgstr "Mein Konto"
+
+msgid "Si cambias el correo, te enviaremos un código de verificación a la nueva dirección."
+msgstr "Wenn Sie die E-Mail-Adresse ändern, senden wir einen Bestätigungscode an die neue Adresse."
+
+msgid "Guardar cambios"
+msgstr "Änderungen speichern"
+
+msgid "Cambiar contraseña"
+msgstr "Passwort ändern"
+
+msgid "No se pudo enviar el correo de verificación. Inténtalo de nuevo más tarde."
+msgstr "Die Bestätigungs-E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut."
+
+msgid "El documento «%(filename)s» ya está en tu biblioteca."
+msgstr "Das Dokument „%(filename)s“ befindet sich bereits in Ihrer Bibliothek."
+
+msgid "«%(filename)s» ya estaba analizado: se ha añadido a tu biblioteca sin volver a procesarlo."
+msgstr "„%(filename)s“ wurde bereits analysiert: Es wurde Ihrer Bibliothek hinzugefügt, ohne erneut verarbeitet zu werden."
+
+msgid "Emisor / OEM"
+msgstr "Herausgeber / OEM"
+
+msgid "Número de norma"
+msgstr "Normnummer"
+
+msgid "Título"
+msgstr "Titel"
+
+msgid "Fecha de edición"
+msgstr "Ausgabedatum"
+
+msgid "Idioma (código ISO, ej. de, en, es)"
+msgstr "Sprache (ISO-Code, z. B. de, en, es)"
+
+msgid "Introduce el número de la norma."
+msgstr "Geben Sie die Normnummer ein."
+
+msgid "Solo quien subió el documento puede modificar sus metadatos."
+msgstr "Nur die Person, die das Dokument hochgeladen hat, kann dessen Metadaten ändern."
+
+msgid "Metadatos confirmados."
+msgstr "Metadaten bestätigt."
+
+msgid "Metadatos de la norma"
+msgstr "Metadaten der Norm"
+
+msgid "Metadatos confirmados"
+msgstr "Metadaten bestätigt"
+
+msgid "No se pudieron extraer los metadatos automáticamente. Rellénalos a mano."
+msgstr "Die Metadaten konnten nicht automatisch extrahiert werden. Füllen Sie sie manuell aus."
+
+msgid "Estos datos los ha propuesto la IA a partir de la portada. Revísalos antes de confirmar: se usarán para detectar versiones nuevas de la norma."
+msgstr "Diese Daten wurden von der KI anhand des Deckblatts vorgeschlagen. Prüfen Sie sie vor der Bestätigung: Sie werden verwendet, um neue Versionen der Norm zu erkennen."
+
+msgid "Aviso de copyright impreso"
+msgstr "Aufgedruckter Urheberrechtsvermerk"
+
+msgid "Ediciones que sustituye"
+msgstr "Ersetzte Ausgaben"
+
+msgid "Confirmar metadatos"
+msgstr "Metadaten bestätigen"
+
+msgid "Metadatos por confirmar"
+msgstr "Metadaten zu bestätigen"
+
+msgid "Ver metadatos"
+msgstr "Metadaten ansehen"
+
+msgid "Obsoleta: sustituida por %(by)s"
+msgstr "Veraltet: ersetzt durch %(by)s"
+
+msgid "Traducción: el chat usa el original %(by)s"
+msgstr "Übersetzung: Der Chat verwendet das Original %(by)s"
+
+msgid "Posible duplicado de %(by)s"
+msgstr "Mögliches Duplikat von %(by)s"
+
+msgid "Solo traducción: el original puede prevalecer"
+msgstr "Nur Übersetzung: Das Original kann Vorrang haben"
+
+msgid "«%(filename)s» es una traducción y el original no está en tu biblioteca: el original puede prevalecer."
+msgstr "„%(filename)s“ ist eine Übersetzung und das Original befindet sich nicht in Ihrer Bibliothek: Das Original kann Vorrang haben."
+
+msgid "Idioma de este documento (código ISO, ej. de, en, es)"
+msgstr "Sprache dieses Dokuments (ISO-Code, z. B. de, en, es)"
+
+msgid "Idioma original que prevalece (si es una traducción)"
+msgstr "Originalsprache, die Vorrang hat (bei einer Übersetzung)"
+
+msgid "Usa un código de idioma ISO de 2 o 3 letras, por ejemplo de, en, es."
+msgstr "Verwenden Sie einen ISO-Sprachcode mit 2 oder 3 Buchstaben, z. B. de, en, es."
+
+msgid "Alemán"
+msgstr "Deutsch"
+
+msgid "Inglés"
+msgstr "Englisch"
+
+msgid "Español"
+msgstr "Spanisch"
+
+msgid "Francés"
+msgstr "Französisch"
+
+msgid "Italiano"
+msgstr "Italienisch"
+
+msgid "Portugués"
+msgstr "Portugiesisch"
+
+msgid "Chino"
+msgstr "Chinesisch"
+
+msgid "Japonés"
+msgstr "Japanisch"
+
+msgid "Coreano"
+msgstr "Koreanisch"
+
+msgid "Neerlandés"
+msgstr "Niederländisch"
+
+msgid "Sueco"
+msgstr "Schwedisch"
+
+msgid "Danés"
+msgstr "Dänisch"
+
+msgid "Noruego"
+msgstr "Norwegisch"
+
+msgid "Finés"
+msgstr "Finnisch"
+
+msgid "Checo"
+msgstr "Tschechisch"
+
+msgid "Eslovaco"
+msgstr "Slowakisch"
+
+msgid "Polaco"
+msgstr "Polnisch"
+
+msgid "Húngaro"
+msgstr "Ungarisch"
+
+msgid "Rumano"
+msgstr "Rumänisch"
+
+msgid "Búlgaro"
+msgstr "Bulgarisch"
+
+msgid "Croata"
+msgstr "Kroatisch"
+
+msgid "Esloveno"
+msgstr "Slowenisch"
+
+msgid "Serbio"
+msgstr "Serbisch"
+
+msgid "Griego"
+msgstr "Griechisch"
+
+msgid "Turco"
+msgstr "Türkisch"
+
+msgid "Ruso"
+msgstr "Russisch"
+
+msgid "Ucraniano"
+msgstr "Ukrainisch"
+
+msgid "Árabe"
+msgstr "Arabisch"
+
+msgid "Hebreo"
+msgstr "Hebräisch"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Tailandés"
+msgstr "Thailändisch"
+
+msgid "Vietnamita"
+msgstr "Vietnamesisch"
+
+msgid "Indonesio"
+msgstr "Indonesisch"
+
+msgid "Catalán"
+msgstr "Katalanisch"
+
+msgid "Euskera"
+msgstr "Baskisch"
+
+msgid "Gallego"
+msgstr "Galicisch"
+
+msgid "Idioma de este documento"
+msgstr "Sprache dieses Dokuments"
+
+msgid "Selecciona un idioma"
+msgstr "Sprache auswählen"
+
+msgid "Igual que el idioma de este documento"
+msgstr "Wie die Sprache dieses Dokuments"
+
+msgid "Biblioteca de normas con IA"
+msgstr "KI-gestützte Normenbibliothek"
+
+msgid "Sube tus normas de OEM, incluso escaneadas: la IA detecta la edición y el idioma, y responde a tus preguntas citando las fuentes."
+msgstr "Laden Sie Ihre OEM-Normen hoch, auch eingescannte: Die KI erkennt Ausgabe und Sprache und beantwortet Ihre Fragen unter Angabe der Quellen."
+
+msgid "Es de código abierto: mira el código en "
+msgstr "Es ist Open Source: Sehen Sie sich den Code an auf"
+
+msgid "Has agotado las preguntas de la demo. Crea una cuenta gratuita para seguir usando el asistente."
+msgstr "Sie haben die Fragen der Demo aufgebraucht. Erstellen Sie ein kostenloses Konto, um den Assistenten weiter zu nutzen."
+
+msgid "La subida de documentos no está disponible en la demo."
+msgstr "Das Hochladen von Dokumenten ist in der Demo nicht verfügbar."
+
+msgid "Demasiadas demos desde tu conexión. Inténtalo más tarde o crea una cuenta."
+msgstr "Zu viele Demos von Ihrer Verbindung. Versuchen Sie es später erneut oder erstellen Sie ein Konto."
+
+msgid "La demo no está disponible en este momento."
+msgstr "Die Demo ist momentan nicht verfügbar."
+
+msgid "Probar la demo sin cuenta"
+msgstr "Demo ohne Konto ausprobieren"
+
+msgid "¿Quieres probarlo sin crear una cuenta?"
+msgstr "Möchten Sie es ausprobieren, ohne ein Konto zu erstellen?"
+
+msgid "Consulta unas normas de ejemplo con el asistente. Los datos de la demo se borran a las 24 horas."
+msgstr "Fragen Sie den Assistenten zu Beispielnormen. Die Daten der Demo werden nach 24 Stunden gelöscht."
+
+msgid "Probar la demo"
+msgstr "Demo ausprobieren"
+
+msgid "Modo demo"
+msgstr "Demo-Modus"
+
+msgid "los datos se borran a las 24 horas."
+msgstr "die Daten werden nach 24 Stunden gelöscht."
+
+msgid "Preguntas restantes"
+msgstr "Verbleibende Fragen"
+
+msgid "Crear una cuenta"
+msgstr "Konto erstellen"
+
+msgid "Prueba con una de estas preguntas:"
+msgstr "Probieren Sie eine dieser Fragen aus:"
+
+msgid "¿Cuándo debo subir la versión MAJOR según Semantic Versioning?"
+msgstr "Wann muss ich laut Semantic Versioning die MAJOR-Version erhöhen?"
+
+msgid "¿Qué prefijo se usa en un commit que corrige un error?"
+msgstr "Welches Präfix wird in einem Commit verwendet, der einen Fehler behebt?"
+
+msgid "¿Cómo ignoro un archivo en todos los directorios con gitignore?"
+msgstr "Wie ignoriere ich eine Datei in allen Verzeichnissen mit gitignore?"
+
+msgid "Estás en modo demo"
+msgstr "Sie befinden sich im Demo-Modus"
+
+msgid "Los datos de la demo se borran a las 24 horas."
+msgstr "Die Daten der Demo werden nach 24 Stunden gelöscht."
+
+msgid "Continuar con la demo"
+msgstr "Mit der Demo fortfahren"
+
+msgid "Esta acción no está disponible en la demo."
+msgstr "Diese Aktion ist in der Demo nicht verfügbar."
+
+msgid "No disponible en la demo"
+msgstr "In der Demo nicht verfügbar"
+
+msgid "Esta es la biblioteca de ejemplo. Pulsa «Ir al Chat RAG» para hacerle preguntas. La subida de documentos está desactivada."
+msgstr "Dies ist die Beispielbibliothek. Klicken Sie auf „Zum RAG-Chat“, um Fragen zu stellen. Das Hochladen von Dokumenten ist deaktiviert."
+
+msgid "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."
+msgstr "Demo-Modus: Die von Ihnen bestätigten Metadaten werden gespeichert und sind für alle Besucher sichtbar."
+
+msgid "Formato no admitido. Adjunta un PDF, una imagen (PNG, JPG, WEBP) o un archivo de texto."
+msgstr "Nicht unterstütztes Format. Fügen Sie ein PDF, ein Bild (PNG, JPG, WEBP) oder eine Textdatei an."
+
+msgid "El archivo es demasiado grande (máximo %(mb)s MB)."
+msgstr "Die Datei ist zu groß (maximal %(mb)s MB)."
+
+msgid "No se ha podido extraer texto del archivo adjunto."
+msgstr "Der Text konnte nicht aus der angehängten Datei extrahiert werden."
+
+msgid "No se ha podido leer el PDF adjunto."
+msgstr "Das angehängte PDF konnte nicht gelesen werden."
+
+msgid "El PDF adjunto no contiene texto (¿es un escaneo?). Adjúntalo como imagen."
+msgstr "Das angehängte PDF enthält keinen Text (ist es ein Scan?). Fügen Sie es als Bild an."
+
+msgid "No se ha podido analizar la imagen adjunta."
+msgstr "Das angehängte Bild konnte nicht analysiert werden."
+
+msgid "El archivo adjunto es muy largo: solo se ha analizado la primera parte."
+msgstr "Die angehängte Datei ist sehr lang: Nur der erste Teil wurde analysiert."
+
+msgid "Quitar archivo adjunto"
+msgstr "Angehängte Datei entfernen"
+
+msgid "Adjunta un pliego de condiciones, un plano o un texto (PDF, imagen o TXT, máx. 10 MB). Lo revisaré con tus normativas: especificaciones que faltan, requisitos importantes, si están bien definidas y si son las que corresponden."
+msgstr "Fügen Sie ein Lastenheft, eine Zeichnung oder einen Text an (PDF, Bild oder TXT, max. 10 MB). Ich prüfe es anhand Ihrer Normen: fehlende Spezifikationen, wichtige Anforderungen, ob sie gut definiert und ob sie die richtigen sind."
+
+msgid "Adjuntar un archivo para analizar"
+msgstr "Datei zur Analyse anhängen"
+
+msgid "Filtrar por nombre, empresa o normativa..."
+msgstr "Nach Name, Firma oder Norm filtern..."
+
+msgid "Filtrar documentos"
+msgstr "Dokumente filtern"
+
+msgid "Filtrar por estado"
+msgstr "Nach Status filtern"
+
+msgid "Todos los estados"
+msgstr "Alle Status"
+
+msgid "Ningún documento coincide con el filtro."
+msgstr "Kein Dokument entspricht dem Filter."

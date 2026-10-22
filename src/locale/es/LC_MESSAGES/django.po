@@ -3643,3 +3643,48 @@ msgstr "Esta es la biblioteca de ejemplo. Pulsa «Ir al Chat RAG» para hacerle 
 
 msgid "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."
 msgstr "Modo demo: los metadatos que confirmes se guardan y los verán todos los visitantes."
+
+msgid "Formato no admitido. Adjunta un PDF, una imagen (PNG, JPG, WEBP) o un archivo de texto."
+msgstr "Formato no admitido. Adjunta un PDF, una imagen (PNG, JPG, WEBP) o un archivo de texto."
+
+msgid "El archivo es demasiado grande (máximo %(mb)s MB)."
+msgstr "El archivo es demasiado grande (máximo %(mb)s MB)."
+
+msgid "No se ha podido extraer texto del archivo adjunto."
+msgstr "No se ha podido extraer texto del archivo adjunto."
+
+msgid "No se ha podido leer el PDF adjunto."
+msgstr "No se ha podido leer el PDF adjunto."
+
+msgid "El PDF adjunto no contiene texto (¿es un escaneo?). Adjúntalo como imagen."
+msgstr "El PDF adjunto no contiene texto (¿es un escaneo?). Adjúntalo como imagen."
+
+msgid "No se ha podido analizar la imagen adjunta."
+msgstr "No se ha podido analizar la imagen adjunta."
+
+msgid "El archivo adjunto es muy largo: solo se ha analizado la primera parte."
+msgstr "El archivo adjunto es muy largo: solo se ha analizado la primera parte."
+
+msgid "Quitar archivo adjunto"
+msgstr "Quitar archivo adjunto"
+
+msgid "Adjunta un pliego de condiciones, un plano o un texto (PDF, imagen o TXT, máx. 10 MB). Lo revisaré con tus normativas: especificaciones que faltan, requisitos importantes, si están bien definidas y si son las que corresponden."
+msgstr "Adjunta un pliego de condiciones, un plano o un texto (PDF, imagen o TXT, máx. 10 MB). Lo revisaré con tus normativas: especificaciones que faltan, requisitos importantes, si están bien definidas y si son las que corresponden."
+
+msgid "Adjuntar un archivo para analizar"
+msgstr "Adjuntar un archivo para analizar"
+
+msgid "Filtrar por nombre, empresa o normativa..."
+msgstr "Filtrar por nombre, empresa o normativa..."
+
+msgid "Filtrar documentos"
+msgstr "Filtrar documentos"
+
+msgid "Filtrar por estado"
+msgstr "Filtrar por estado"
+
+msgid "Todos los estados"
+msgstr "Todos los estados"
+
+msgid "Ningún documento coincide con el filtro."
+msgstr "Ningún documento coincide con el filtro."

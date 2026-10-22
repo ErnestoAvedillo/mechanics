@@ -6,6 +6,50 @@
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'specs/css/specs-common.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+    <style>
+/* Chat: attach button with hover legend, attached-file chip, source links */
+.attach-btn { position: relative; padding-left: 0.9rem; padding-right: 0.9rem; }
+.attach-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 280px;
+    padding: 0.6rem 0.75rem;
+    background: #2d3748;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+    white-space: normal;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 20;
+}
+.attach-btn:hover::after, .attach-btn:focus-visible::after { opacity: 1; visibility: visible; }
+.attachment-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    color: #2c5282;
+}
+.attachment-chip[hidden] { display: none; }
+.attachment-chip button { border: 0; background: none; cursor: pointer; color: #2c5282; }
+.source-link { text-decoration: none; }
+.source-link:hover { background: #bee3f8; color: #2c5282; }
+
+    </style>
 {% endblock %}
 
 {% block extra_js %}
@@ -53,7 +97,15 @@
         <div class="chat-input-area">
             <form id="chat-form">
                 {% csrf_token %}
+                <div id="attachment-chip" class="attachment-chip" hidden>
+                    <span>📎 <span id="attachment-name"></span></span>
+                    <button type="button" id="attachment-remove" aria-label="{% trans 'Quitar archivo adjunto' %}">✕</button>
+                </div>
                 <div class="chat-input-group">
+                    <input type="file" id="attachment-input" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md,.csv" hidden>
+                    <button type="button" id="attach-btn" class="btn btn-secondary attach-btn"
+                            data-tooltip="{% trans 'Adjunta un pliego de condiciones, un plano o un texto (PDF, imagen o TXT, máx. 10 MB). Lo revisaré con tus normativas: especificaciones que faltan, requisitos importantes, si están bien definidas y si son las que corresponden.' %}"
+                            aria-label="{% trans 'Adjuntar un archivo para analizar' %}">📎</button>
                     <input type="text" id="user-input" class="form-control" placeholder="{% trans '¿Cuántas horas se exigen en cámara de niebla salina NS para BMW?' %}" required>
                     <button class="btn btn-primary" type="submit" id="send-btn" style="white-space: nowrap;">{% trans "Enviar y Consultar" %} ✨</button>
                 </div>
@@ -104,16 +156,39 @@ function renderMathIn(element) {
     }
 }
 
+const attachmentInput = document.getElementById('attachment-input');
+const attachmentChip = document.getElementById('attachment-chip');
+function clearAttachment() {
+    attachmentInput.value = '';
+    attachmentChip.hidden = true;
+}
+document.getElementById('attach-btn').addEventListener('click', () => attachmentInput.click());
+document.getElementById('attachment-remove').addEventListener('click', clearAttachment);
+attachmentInput.addEventListener('change', () => {
+    const file = attachmentInput.files[0];
+    if (!file) return clearAttachment();
+    if (file.size > 10 * 1024 * 1024) {
+        alert(gettext('El archivo es demasiado grande (máximo 10 MB).'));
+        return clearAttachment();
+    }
+    document.getElementById('attachment-name').textContent = file.name;
+    attachmentChip.hidden = false;
+});
+
 document.getElementById('chat-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const input = document.getElementById('user-input');
     const window = document.getElementById('chat-window');
+    const fileInput = document.getElementById('attachment-input');
     const query = input.value;
     if (!query) return;
+    const attachment = fileInput.files[0];
 
     // Add the user message (user bubble)
-    window.innerHTML += `<div class="message-user">${escapeHtml(query)}</div><div style="clear: both;"></div>`;
+    const attachmentLabel = attachment ? `<div style="font-size: 0.8rem; opacity: 0.85;">📎 ${escapeHtml(attachment.name)}</div>` : '';
+    window.innerHTML += `<div class="message-user">${escapeHtml(query)}${attachmentLabel}</div><div style="clear: both;"></div>`;
     input.value = '';
+    clearAttachment();
 
     // Loading spinner
     const loaderId = 'loader-' + Date.now();
@@ -123,13 +198,13 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
     try {
         // Retrieve standard Django CSRF token properly from the DOM.
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const formData = new FormData();
+        formData.append('query', query);
+        if (attachment) formData.append('attachment', attachment);
         const response = await fetch('{% url "specs:chat_query" %}', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': csrfToken
-            },
-            body: `query=${encodeURIComponent(query)}`
+            headers: {'X-CSRFToken': csrfToken},
+            body: formData
         });
         
         const data = await response.json();
@@ -138,8 +213,13 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
         document.getElementById(loaderId).remove();
         console.log('RAG server response:', data);
         if (data.response) {
-            let sourcesHtml = data.sources.map(s => `<span class="source-badge">📄 ${s.filename} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)</span>`).join('');
-            let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${n}</div>`).join('');
+            let sourcesHtml = data.sources.map(s => {
+                const label = `📄 ${escapeHtml(s.filename)} (${gettext('Relevancia')}: ${Math.round(s.score*100)}%)`;
+                return s.url
+                    ? `<a class="source-badge source-link" href="${escapeHtml(s.url)}" target="_blank" rel="noopener" title="${gettext('Abrir el documento')}">${label} ↗</a>`
+                    : `<span class="source-badge">${label}</span>`;
+            }).join('');
+            let notesHtml = (data.notes || []).map(n => `<div style="font-size: 0.85rem; color: #975a16; margin-bottom: 0.5rem;">⚠️ ${escapeHtml(n)}</div>`).join('');
             const responseHtml = renderChatMarkdown(data.response);
             let springLinkHtml = data.spring_link
                 ? `<div style="margin-bottom: 0.75rem;"><a href="${data.spring_link}" target="_blank" class="btn btn-primary" style="text-decoration: none;">🧮 ${gettext('Abrir en la calculadora de muelles')}</a></div>`

@@ -105,6 +105,8 @@ USE_TZ = True
 LANGUAGES = [
     ('es', 'Español'),
     ('en', 'English'),
+    ('fr', 'Français'),
+    ('de', 'Deutsch'),
 ]
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
@@ -200,6 +202,8 @@ NEBIUS_API_KEY = os.environ.get('NEBIUS_API_KEY', '')
 NEBIUS_BASE_URL = os.environ.get('NEBIUS_BASE_URL', 'https://api.tokenfactory.nebius.com/v1/')
 NEBIUS_LLM_MODEL = os.environ.get('NEBIUS_LLM_MODEL', 'nvidia/nemotron-3-super-120b-a12b')
 NEBIUS_EMBED_MODEL = os.environ.get('NEBIUS_EMBED_MODEL', 'Qwen/Qwen3-Embedding-8B')
+# Vision model that reads drawings attached to the specs chat (the text LLM above cannot see images)
+NEBIUS_VISION_MODEL = os.environ.get('NEBIUS_VISION_MODEL', 'Qwen/Qwen2.5-VL-72B-Instruct')
 HF_TOKEN = os.environ.get('HF_TOKEN', '')
 # CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
 # CELERY_RESULT_BACKEND = CELERY_BROKER_URL

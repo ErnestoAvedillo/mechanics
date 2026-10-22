@@ -1,0 +1,104 @@
+# djangojs translations for de.
+msgid ""
+msgstr ""
+"Project-Id-Version: mechanics2\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Activado"
+msgstr "Aktiviert"
+
+msgid "Desactivado"
+msgstr "Deaktiviert"
+
+msgid "Propiedades del Material"
+msgstr "Werkstoffeigenschaften"
+
+msgid "Módulo de corte"
+msgstr "Schubmodul"
+
+msgid "Factor límite elástico"
+msgstr "Streckgrenzenfaktor"
+
+msgid "Por favor complete todos los campos obligatorios"
+msgstr "Bitte füllen Sie alle Pflichtfelder aus"
+
+msgid "El paso no puede ser inferior al diámetro del hilo"
+msgstr "Die Steigung darf nicht kleiner als der Drahtdurchmesser sein"
+
+msgid "El paso no puede ser inferior al diámetro del hilo."
+msgstr "Die Steigung darf nicht kleiner als der Drahtdurchmesser sein."
+
+msgid "Longitud inicial estirada (mm):"
+msgstr "Gedehnte Anfangslänge (mm):"
+
+msgid "Longitud inicial (mm):"
+msgstr "Anfangslänge (mm):"
+
+msgid "Longitud final estirada (mm):"
+msgstr "Gedehnte Endlänge (mm):"
+
+msgid "Longitud final (mm):"
+msgstr "Endlänge (mm):"
+
+msgid "Geometría bloqueada: selecciona material y diámetro de hilo"
+msgstr "Geometrie gesperrt: Wählen Sie Werkstoff und Drahtdurchmesser"
+
+msgid "Pitch no válido"
+msgstr "Ungültige Steigung"
+
+msgid "El pitch calculado es menor o igual al diámetro del hilo, lo que no es físicamente posible. Por favor, revisa los datos ingresados."
+msgstr "Die berechnete Steigung ist kleiner oder gleich dem Drahtdurchmesser, was physikalisch nicht möglich ist. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "Longitud inicial no válida"
+msgstr "Ungültige Anfangslänge"
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "Die Anfangslänge darf nicht größer oder gleich der freien Länge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "La longitud inicial no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "Die Anfangslänge darf nicht kleiner oder gleich der Blocklänge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "La longitud inicial no puede ser mayor o igual a la longitud final. Por favor, revisa los datos ingresados."
+msgstr "Die Anfangslänge darf nicht größer oder gleich der Endlänge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "Longitud final no válida"
+msgstr "Ungültige Endlänge"
+
+msgid "La longitud final no puede ser mayor o igual a la longitud libre. Por favor, revisa los datos ingresados."
+msgstr "Die Endlänge darf nicht größer oder gleich der freien Länge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "La longitud final no puede ser menor o igual a la longitud sólida. Por favor, revisa los datos ingresados."
+msgstr "Die Endlänge darf nicht kleiner oder gleich der Blocklänge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "La longitud final no puede ser menor o igual a la longitud inicial. Por favor, revisa los datos ingresados."
+msgstr "Die Endlänge darf nicht kleiner oder gleich der Anfangslänge sein. Bitte überprüfen Sie die eingegebenen Daten."
+
+msgid "Material no seleccionado"
+msgstr "Werkstoff nicht ausgewählt"
+
+msgid "Debes seleccionar un material antes de calcular."
+msgstr "Sie müssen vor der Berechnung einen Werkstoff auswählen."
+
+msgid "Entendido"
+msgstr "Verstanden"
+
+msgid "Buscando en tus normativas..."
+msgstr "Ihre Normen werden durchsucht..."
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Error interno de conexión al servidor RAG."
+msgstr "Interner Verbindungsfehler zum RAG-Server."
+
+msgid "Relevancia"
+msgstr "Relevanz"
+
+msgid "El archivo es demasiado grande (máximo 10 MB)."
+msgstr "Die Datei ist zu groß (maximal 10 MB)."
+
+msgid "Abrir el documento"
+msgstr "Dokument öffnen"

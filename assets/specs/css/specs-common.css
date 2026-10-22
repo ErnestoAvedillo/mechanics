@@ -310,3 +310,7 @@
 }
 .status-success { background: #c6f6d5; color: #22543d; }
 .status-warning { background: #feebc8; color: #744210; }
+/* Document list filter */
+.doc-filter { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+.doc-filter input[type="search"] { flex: 1; min-width: 220px; }
+.doc-filter-count { font-size: 0.85rem; color: #718096; }

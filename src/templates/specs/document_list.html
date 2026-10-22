@@ -84,6 +84,15 @@
         {% endif %}
 
         {% if documents %}
+            <div class="doc-filter">
+                <input type="search" id="doc-filter-text" class="form-control" placeholder="{% trans 'Filtrar por nombre, empresa o normativa...' %}" aria-label="{% trans 'Filtrar documentos' %}">
+                <select id="doc-filter-status" class="form-control" style="width: auto;" aria-label="{% trans 'Filtrar por estado' %}">
+                    <option value="">{% trans "Todos los estados" %}</option>
+                    <option value="indexed">{% trans "Indexado" %}</option>
+                    <option value="pending">{% trans "Pendiente" %}</option>
+                </select>
+                <span class="doc-filter-count" id="doc-filter-count" aria-live="polite"></span>
+            </div>
             <div style="overflow-x: auto;">
                 <table class="specs-table">
                     <thead>
@@ -97,7 +106,8 @@
                     </thead>
                     <tbody>
                         {% for doc in documents %}
-                            <tr>
+                            <tr class="doc-row" data-status="{% if doc.document.is_indexed %}indexed{% else %}pending{% endif %}"
+                                data-search="{{ doc.filename }} {{ doc.company|default:'' }} {{ doc.document.spec_issuer }} {{ doc.document.spec_number }} {{ doc.document.title }}">
                                 <form action="{% url 'specs:document_update' doc.id %}" method="post" style="display: flex; gap: 6px; align-items: center;">
                                     <td style="min-width: 200px;">
                                         {% csrf_token %}
@@ -149,7 +159,33 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <p id="doc-filter-empty" class="text-center" style="display: none; color: #718096; padding: 2rem 0;">{% trans "Ningún documento coincide con el filtro." %}</p>
             </div>
+            <script>
+                (function () {
+                    const textInput = document.getElementById('doc-filter-text');
+                    const statusSelect = document.getElementById('doc-filter-status');
+                    const rows = Array.from(document.querySelectorAll('.doc-row'));
+                    const count = document.getElementById('doc-filter-count');
+                    const empty = document.getElementById('doc-filter-empty');
+                    function applyFilter() {
+                        const words = textInput.value.toLowerCase().split(/\s+/).filter(Boolean);
+                        const status = statusSelect.value;
+                        let shown = 0;
+                        rows.forEach(row => {
+                            const haystack = row.dataset.search.toLowerCase();
+                            const visible = words.every(w => haystack.includes(w)) && (!status || row.dataset.status === status);
+                            row.style.display = visible ? '' : 'none';
+                            if (visible) shown++;
+                        });
+                        count.textContent = shown + ' / ' + rows.length;
+                        empty.style.display = shown ? 'none' : '';
+                    }
+                    textInput.addEventListener('input', applyFilter);
+                    statusSelect.addEventListener('change', applyFilter);
+                    applyFilter();
+                })();
+            </script>
         {% else %}
             <div class="text-center" style="padding: 4rem 1rem;">
                 <h3 style="color: #4a5568; margin-bottom: 1rem;">{% trans "Aún no has subido normativas." %}</h3>

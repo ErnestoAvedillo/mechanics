@@ -10,6 +10,7 @@ from datetime import date, datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
 
 from django.contrib.auth.models import User
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 
 from specs.metadata import parse_extraction
@@ -204,7 +205,7 @@ class LibraryViewTests(LibraryMixin, TestCase):
         for text in ("Obsoleta", "Solo traducción", "Posible duplicado", "Traducción:"):
             self.assertNotIn(text, page)
 
-    def _ask(self, documents):
+    def _ask(self, documents, **post):
         nodes = []
         for document in documents:
             node = MagicMock()
@@ -215,7 +216,8 @@ class LibraryViewTests(LibraryMixin, TestCase):
         engine = MagicMock()
         engine.query.return_value = MagicMock(source_nodes=nodes, __str__=lambda self: "answer")
         with patch("specs.views.get_rag_engine", return_value=engine):
-            return self.client.post("/specs/chat/query/", {"query": "salt spray?"}).json()
+            self.engine = engine
+            return self.client.post("/specs/chat/query/", {"query": "salt spray?", **post}).json()
 
     def test_the_chat_warns_when_an_answer_rests_on_a_translation(self):
         translation = self.make(self.user, language="en", original="de")
@@ -226,6 +228,26 @@ class LibraryViewTests(LibraryMixin, TestCase):
     def test_the_chat_does_not_warn_for_an_original(self):
         original = self.make(self.user)
         self.assertEqual(self._ask([original])["notes"], [])
+
+    def test_each_source_links_to_the_users_copy_of_the_document(self):
+        document = self.make(self.user)
+        entry = UserDocument.objects.get(user=self.user, document=document)
+        source = self._ask([document])["sources"][0]
+        self.assertEqual(source["url"], f"/specs/handling/view/{entry.id}/")
+
+    def test_an_attached_file_is_sent_to_the_model_with_the_question(self):
+        document = self.make(self.user)
+        attachment = SimpleUploadedFile("pliego.txt", b"salt spray 240 h")
+        data = self._ask([document], attachment=attachment)
+        prompt = self.engine.query.call_args[0][0].query_str
+        self.assertIn("salt spray?", prompt)
+        self.assertIn("salt spray 240 h", prompt)
+        self.assertEqual(data["response"], "answer")
+
+    def test_an_unsupported_attachment_is_rejected(self):
+        response = self.client.post("/specs/chat/query/", {
+            "query": "q", "attachment": SimpleUploadedFile("virus.exe", b"x")})
+        self.assertEqual(response.status_code, 400)
 
 
 class ReviewFormTests(LibraryMixin, TestCase):
