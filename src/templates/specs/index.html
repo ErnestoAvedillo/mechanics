@@ -28,10 +28,14 @@
                 <h2 style="margin: 0 0 0.5rem 0;">{% trans "¿Quieres probarlo sin crear una cuenta?" %}</h2>
                 <p style="margin: 0 0 1.25rem 0; opacity: 0.9;">{% trans "Consulta unas normas de ejemplo con el asistente. Los datos de la demo se borran a las 24 horas." %}</p>
                 <p style="margin: 0 0 1.25rem 0; opacity: 0.9;">{% trans "En el siguiente video se muestra cómo usar el asistente con normas de ejemplo." %}</p> 
-                <video controls style="max-width: 100%; border-radius: 12px; margin-bottom: 1.25rem;">
-                    <source src="https://www.youtube.com/embed/Dp7_NqsXw4w" type="text/html">
-                    {% trans "Tu navegador no soporta la reproducción de video." %}
-                </video>
+                <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto 1.25rem; aspect-ratio: 16 / 9;">
+                    <iframe src="https://www.youtube.com/embed/Dp7_NqsXw4w"
+                            title="{% trans 'Demo del asistente' %}"
+                            style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
+                </div>
                 <form method="post" action="{% url 'specs:demo_start' %}">
                     {% csrf_token %}
                     <button type="submit" class="btn" style="background: white; color: #2c3e50; font-weight: 700; font-size: 1.1rem; padding: 0.9rem 2rem;">{% trans "Probar la demo" %} ✨</button>
