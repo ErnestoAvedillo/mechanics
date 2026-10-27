@@ -8,6 +8,9 @@ class SignupForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Confirmar Contraseña')}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Correo electrónico')}))
 
+    accept_privacy = forms.BooleanField(
+        error_messages={'required': _('Debes aceptar la política de privacidad para crear una cuenta.')})
+
     class Meta:
         model = User
         fields = ['username', 'email', 'password']

@@ -16,7 +16,8 @@ import re
 import base64
 import hashlib
 from .forms import SignupForm, VerificationForm, ProfileForm
-from .models import EmailVerification
+from specs.demo import is_demo
+from .models import EmailVerification, PrivacyConsent
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -41,6 +42,9 @@ def signup_view(request):
             user.set_password(form.cleaned_data['password'])
             user.is_active = False
             user.save()
+            PrivacyConsent.objects.create(
+                user=user, policy_version=settings.PRIVACY_POLICY_VERSION,
+                ip_address=request.META.get('REMOTE_ADDR') or None)
 
             code = EmailVerification.generate_code()
             EmailVerification.objects.create(user=user, code=code)
@@ -68,6 +72,17 @@ def signup_view(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def privacy_view(request):
+    """Privacy policy, with the controller's details taken from the settings."""
+    return render(request, 'menuapp/privacy.html', {
+        'policy_version': settings.PRIVACY_POLICY_VERSION,
+        'legal_name': settings.LEGAL_NAME,
+        'legal_id': settings.LEGAL_ID,
+        'legal_address': settings.LEGAL_ADDRESS,
+        'contact_email': settings.PRIVACY_CONTACT_EMAIL,
+    })
 
 
 def verify_email_view(request):
@@ -207,6 +222,9 @@ def change_psw_view(request):
 def profile_view(request):
     """Personal data editor: name, username, email (confirmed with a code) and password."""
     user = request.user
+    if is_demo(user):
+        messages.info(request, _('La cuenta no está disponible en la demo.'))
+        return redirect('menuapp:home')
     profile_form = ProfileForm(instance=user, initial={'email': user.email})
     password_form = PasswordChangeForm(user)
 

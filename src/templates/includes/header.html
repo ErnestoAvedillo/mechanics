@@ -23,7 +23,7 @@
             <li><a href="{% url 'menuapp:signup' %}" class="nav-link">{% trans "Crear Cuenta" %}</a></li>
           {% else %}
             <li><p class="text-success">{% blocktrans with username=user.username %}Bienvenido, <strong>{{ username }}</strong>. Puedes acceder a las herramientas desde el menú lateral.{% endblocktrans %}</p></li>
-            <li><a href="{% url 'menuapp:profile' %}" class="nav-link">{% trans "Mi cuenta" %}</a></li>
+            {% if not is_demo_user %}<li><a href="{% url 'menuapp:profile' %}" class="nav-link">{% trans "Mi cuenta" %}</a></li>{% endif %}
             <li><a href="{% url 'menuapp:logout' %}" class="nav-link">{% trans "Cerrar Sesión" %}</a></li>
           {% endif %}
           <li class="lang-switcher-item">

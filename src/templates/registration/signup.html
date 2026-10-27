@@ -22,6 +22,16 @@
           <div class="error-msg">{% for error in form.non_field_errors %}{{ error }} {% endfor %}</div>
         {% endif %}
         {% for field in form %}
+          {% if field.name == 'accept_privacy' %}
+          <div class="form-group consent">
+            <label for="{{ field.id_for_label }}">
+              {{ field }}
+              {% url 'menuapp:privacy' as privacy_url %}
+              {% blocktrans %}He leído y acepto la <a href="{{ privacy_url }}" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para gestionar mi cuenta y prestar el servicio.{% endblocktrans %}
+            </label>
+            {{ field.errors }}
+          </div>
+          {% else %}
           <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
             {{ field }}
@@ -32,6 +42,7 @@
               {{ field.errors }}
             {% endif %}
           </div>
+          {% endif %}
         {% endfor %}
 
         <button type="submit" class="button button-submit">{% trans "Registrarse" %}</button>

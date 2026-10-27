@@ -15,7 +15,8 @@
   <li><a href="/specs/index/">📄 {% trans "Especificaciones" %}</a></li>
   <li><a href="/reqif/">📋 {% trans "Visualizador ReqIF" %}</a></li>
   <li><a href="/contacto/">📞 {% trans "Contacto" %}</a></li>
-  {% if user.is_authenticated %}
+  <li><a href="{% url 'menuapp:privacy' %}">🔒 {% trans "Política de privacidad" %}</a></li>
+  {% if user.is_authenticated and not is_demo_user %}
   <li><a href="{% url 'menuapp:profile' %}">👤 {% trans "Mi cuenta" %}</a></li>
   {% endif %}
 </ul>

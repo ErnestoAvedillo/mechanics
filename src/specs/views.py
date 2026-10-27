@@ -392,7 +392,16 @@ def upload_document(request):
         form = DocumentUploadForm(request.POST, request.FILES)
         if form.is_valid():
             pdf_files = request.FILES.getlist('pdf_file')
-            
+
+            # Every new file costs LLM and embedding calls: cap how many documents a user can hold
+            limit = settings.MAX_DOCUMENTS_PER_USER
+            current = UserDocument.objects.filter(user=request.user).count()
+            if limit and current + len(pdf_files) > limit:
+                messages.error(request, _(
+                    'Has alcanzado el límite de %(limit)s documentos por usuario (tienes %(current)s). '
+                    'Elimina alguno de tu biblioteca para subir más.') % {'limit': limit, 'current': current})
+                return redirect('specs:upload_document')
+
             try:
                 fs = _gridfs()
                 analyzing = 0

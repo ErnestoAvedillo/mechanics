@@ -152,5 +152,5 @@ Take a `make backup` before every update once there is real data.
 - Project documents: [README.md](README.md) (what it is, how to run), [DEVPOST.md](DEVPOST.md) (hackathon
   submission text), this file (deployment).
 - Hackathon: Nebius x NVIDIA Global AI Hackathon on Devpost, deadline **2026-10-30 10:00 PDT (18:00 in Spain)**.
-  Still to do at the time of writing: public demo URL, demo video (under 3 minutes, public on YouTube), product
-  feedback on the Nebius/NVIDIA tools, and the submission form.
+  The demo video is done (https://youtu.be/cFhAQLos_HY). Still to do at the time of writing: public demo URL,
+  product feedback on the Nebius/NVIDIA tools, and the submission form.

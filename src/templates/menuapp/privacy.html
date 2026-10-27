@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Política de privacidad" %}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'menuapp/css/estiloss.css' %}">
+  <link rel="stylesheet" href="{% static 'menuapp/css/sidebar.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="page-background" style="background-image: url('{% static 'global/images/header-background.jpeg' %}');"></div>
+  <div class="sidebar-overlay"></div>
+
+  <div class="letter-page">
+    <article class="letter-card">
+      <h1>{% trans "Política de privacidad" %}</h1>
+      <p><small>{% trans "Versión" %}: {{ policy_version }}</small></p>
+
+      <h2>{% trans "1. Responsable del tratamiento" %}</h2>
+      <ul>
+        <li>{% trans "Titular" %}: {{ legal_name }}</li>
+        {% if legal_id %}<li>{% trans "NIF" %}: {{ legal_id }}</li>{% endif %}
+        {% if legal_address %}<li>{% trans "Domicilio" %}: {{ legal_address }}</li>{% endif %}
+        <li>{% trans "Correo de contacto para privacidad" %}: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></li>
+      </ul>
+      <p>{% trans "Esta web es un proyecto personal y profesional con calculadoras de ingeniería y un asistente de consulta de especificaciones técnicas." %}</p>
+
+      <h2>{% trans "2. Qué datos recogemos" %}</h2>
+      <ul>
+        <li>{% trans "Datos de la cuenta: nombre de usuario, correo electrónico y contraseña (almacenada cifrada). Opcionalmente, nombre y apellidos si los añades en tu perfil." %}</li>
+        <li>{% trans "Registro de la aceptación de esta política: versión, fecha y dirección IP." %}</li>
+        <li>{% trans "Los documentos PDF que subes a tu biblioteca y las preguntas y archivos adjuntos que envías al asistente." %}</li>
+        <li>{% trans "Datos técnicos mínimos necesarios para el funcionamiento del servicio (sesión y seguridad)." %}</li>
+      </ul>
+
+      <h2>{% trans "3. Para qué los usamos y base jurídica" %}</h2>
+      <ul>
+        <li>{% trans "Crear y gestionar tu cuenta, verificar tu correo y recuperar tu contraseña." %}</li>
+        <li>{% trans "Prestar el servicio que solicitas: analizar tus documentos y responder a tus preguntas." %}</li>
+      </ul>
+      <p>{% trans "La base jurídica es la ejecución del servicio que solicitas al registrarte (art. 6.1.b RGPD) y tu consentimiento al aceptar esta política (art. 6.1.a RGPD). No tomamos decisiones automatizadas sobre ti, no elaboramos perfiles y no enviamos boletines, publicidad ni correos promocionales." %}</p>
+
+      <h2>{% trans "4. Herramientas de inteligencia artificial y otros destinatarios" %}</h2>
+      <p>{% trans "Para responder a tus preguntas y analizar los documentos, su contenido se envía a proveedores externos que actúan como encargados del tratamiento:" %}</p>
+      <ul>
+        <li>{% trans "Nebius (Token Factory): modelos de lenguaje y de incrustación vectorial." %}</li>
+        <li>{% trans "LlamaIndex (LlamaParse): lectura del texto de los PDF mediante OCR. Este proveedor está en EE. UU., por lo que sus datos se transfieren fuera de la Unión Europea con las garantías previstas en el RGPD." %}</li>
+      </ul>
+      <p>{% trans "No subas documentos con datos personales de terceros ni información confidencial que no tengas derecho a compartir. No vendemos ni cedemos tus datos a nadie más." %}</p>
+
+      <h2>{% trans "5. Cookies y servicios externos" %}</h2>
+      <p>{% trans "Usamos únicamente cookies técnicas necesarias (sesión, seguridad CSRF e idioma), que no requieren consentimiento. No usamos cookies de analítica ni de publicidad." %}</p>
+      <p>{% trans "Algunas páginas incorporan servicios de Google: vídeos de YouTube y reCAPTCHA en el formulario de compartir por correo de las calculadoras. Google puede tratar datos técnicos de tu navegador según su propia política de privacidad." %}</p>
+
+      <h2>{% trans "6. Cuánto tiempo conservamos los datos" %}</h2>
+      <p>{% trans "Mientras mantengas tu cuenta. Si la eliminas o nos lo pides, borraremos tus datos y tus documentos, salvo lo que debamos conservar por obligación legal. Las cuentas de demostración son temporales y se eliminan al caducar." %}</p>
+
+      <h2>{% trans "7. Tus derechos" %}</h2>
+      <p>{% trans "Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, oposición y portabilidad, y retirar tu consentimiento en cualquier momento, escribiendo al correo indicado arriba. Si consideras que tus datos no se tratan correctamente, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es)." %}</p>
+    </article>
+  </div>
+{% endblock %}

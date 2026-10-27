@@ -19,3 +19,11 @@ class EmailVerification(models.Model):
     @staticmethod
     def generate_code():
         return ''.join(random.choices(string.digits, k=6))
+
+
+class PrivacyConsent(models.Model):
+    """Proof that a user accepted the privacy policy at sign-up: which version, when and from where."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='privacy_consents')
+    policy_version = models.CharField(max_length=20)
+    accepted_at = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)

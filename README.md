@@ -3,7 +3,7 @@
 > Built for the **Nebius x NVIDIA Global AI Hackathon**. Runs on **Nebius Token Factory** with the
 > **NVIDIA Nemotron 3 Super** open model. Licensed under the [MIT License](LICENSE).
 
-**Demo video:** https://youtu.be/Dp7_NqsXw4w
+**Demo video:** https://youtu.be/cFhAQLos_HY
 
 Specs lets automotive suppliers keep their OEM standards (VW TL, BMW GS, ISO, GB/T...) in a private
 library and ask questions about them. It reads scanned PDFs, works out which edition and language of

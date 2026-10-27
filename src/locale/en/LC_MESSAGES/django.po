@@ -3679,3 +3679,102 @@ msgstr "All statuses"
 
 msgid "Ningún documento coincide con el filtro."
 msgstr "No document matches the filter."
+
+msgid "Política de privacidad"
+msgstr "Privacy policy"
+
+msgid "Versión"
+msgstr "Version"
+
+msgid "1. Responsable del tratamiento"
+msgstr "1. Data controller"
+
+msgid "Titular"
+msgstr "Owner"
+
+msgid "NIF"
+msgstr "Tax ID (NIF)"
+
+msgid "Domicilio"
+msgstr "Address"
+
+msgid "Correo de contacto para privacidad"
+msgstr "Privacy contact email"
+
+msgid "Esta web es un proyecto personal y profesional con calculadoras de ingeniería y un asistente de consulta de especificaciones técnicas."
+msgstr "This website is a personal and professional project with engineering calculators and an assistant for consulting technical specifications."
+
+msgid "2. Qué datos recogemos"
+msgstr "2. What data we collect"
+
+msgid "Datos de la cuenta: nombre de usuario, correo electrónico y contraseña (almacenada cifrada). Opcionalmente, nombre y apellidos si los añades en tu perfil."
+msgstr "Account data: username, email address and password (stored hashed). Optionally, first and last name if you add them to your profile."
+
+msgid "Registro de la aceptación de esta política: versión, fecha y dirección IP."
+msgstr "Record of your acceptance of this policy: version, date and IP address."
+
+msgid "Los documentos PDF que subes a tu biblioteca y las preguntas y archivos adjuntos que envías al asistente."
+msgstr "The PDF documents you upload to your library and the questions and attached files you send to the assistant."
+
+msgid "Datos técnicos mínimos necesarios para el funcionamiento del servicio (sesión y seguridad)."
+msgstr "Minimal technical data needed for the service to work (session and security)."
+
+msgid "3. Para qué los usamos y base jurídica"
+msgstr "3. What we use it for and legal basis"
+
+msgid "Crear y gestionar tu cuenta, verificar tu correo y recuperar tu contraseña."
+msgstr "Creating and managing your account, verifying your email and recovering your password."
+
+msgid "Prestar el servicio que solicitas: analizar tus documentos y responder a tus preguntas."
+msgstr "Providing the service you request: analyzing your documents and answering your questions."
+
+msgid "La base jurídica es la ejecución del servicio que solicitas al registrarte (art. 6.1.b RGPD) y tu consentimiento al aceptar esta política (art. 6.1.a RGPD). No tomamos decisiones automatizadas sobre ti, no elaboramos perfiles y no enviamos boletines, publicidad ni correos promocionales."
+msgstr "The legal basis is the performance of the service you request when you sign up (Art. 6(1)(b) GDPR) and your consent when you accept this policy (Art. 6(1)(a) GDPR). We make no automated decisions about you, do not build profiles and do not send newsletters, advertising or promotional emails."
+
+msgid "4. Herramientas de inteligencia artificial y otros destinatarios"
+msgstr "4. Artificial intelligence tools and other recipients"
+
+msgid "Para responder a tus preguntas y analizar los documentos, su contenido se envía a proveedores externos que actúan como encargados del tratamiento:"
+msgstr "To answer your questions and analyze the documents, their content is sent to external providers acting as data processors:"
+
+msgid "Nebius (Token Factory): modelos de lenguaje y de incrustación vectorial."
+msgstr "Nebius (Token Factory): language and vector embedding models."
+
+msgid "LlamaIndex (LlamaParse): lectura del texto de los PDF mediante OCR. Este proveedor está en EE. UU., por lo que sus datos se transfieren fuera de la Unión Europea con las garantías previstas en el RGPD."
+msgstr "LlamaIndex (LlamaParse): reading the text of PDFs through OCR. This provider is in the USA, so your data is transferred outside the European Union with the safeguards provided for by the GDPR."
+
+msgid "No subas documentos con datos personales de terceros ni información confidencial que no tengas derecho a compartir. No vendemos ni cedemos tus datos a nadie más."
+msgstr "Do not upload documents containing third-party personal data or confidential information you have no right to share. We do not sell or disclose your data to anyone else."
+
+msgid "5. Cookies y servicios externos"
+msgstr "5. Cookies and external services"
+
+msgid "Usamos únicamente cookies técnicas necesarias (sesión, seguridad CSRF e idioma), que no requieren consentimiento. No usamos cookies de analítica ni de publicidad."
+msgstr "We only use strictly necessary technical cookies (session, CSRF security and language), which do not require consent. We do not use analytics or advertising cookies."
+
+msgid "Algunas páginas incorporan servicios de Google: vídeos de YouTube y reCAPTCHA en el formulario de compartir por correo de las calculadoras. Google puede tratar datos técnicos de tu navegador según su propia política de privacidad."
+msgstr "Some pages embed Google services: YouTube videos and reCAPTCHA in the calculators' share-by-email form. Google may process technical data from your browser under its own privacy policy."
+
+msgid "6. Cuánto tiempo conservamos los datos"
+msgstr "6. How long we keep the data"
+
+msgid "Mientras mantengas tu cuenta. Si la eliminas o nos lo pides, borraremos tus datos y tus documentos, salvo lo que debamos conservar por obligación legal. Las cuentas de demostración son temporales y se eliminan al caducar."
+msgstr "For as long as you keep your account. If you delete it or ask us to, we will erase your data and documents, except what we must keep by legal obligation. Demo accounts are temporary and are deleted when they expire."
+
+msgid "7. Tus derechos"
+msgstr "7. Your rights"
+
+msgid "Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, oposición y portabilidad, y retirar tu consentimiento en cualquier momento, escribiendo al correo indicado arriba. Si consideras que tus datos no se tratan correctamente, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es)."
+msgstr "You can exercise your rights of access, rectification, erasure, restriction, objection and portability, and withdraw your consent at any time, by writing to the email address above. If you believe your data is not being handled properly, you can lodge a complaint with the Spanish Data Protection Agency (www.aepd.es)."
+
+msgid "He leído y acepto la <a href=\"%(privacy_url)s\" target=\"_blank\" rel=\"noopener\">política de privacidad</a> y el tratamiento de mis datos para gestionar mi cuenta y prestar el servicio."
+msgstr "I have read and accept the <a href=\"%(privacy_url)s\" target=\"_blank\" rel=\"noopener\">privacy policy</a> and the processing of my data to manage my account and provide the service."
+
+msgid "Debes aceptar la política de privacidad para crear una cuenta."
+msgstr "You must accept the privacy policy to create an account."
+
+msgid "Has alcanzado el límite de %(limit)s documentos por usuario (tienes %(current)s). Elimina alguno de tu biblioteca para subir más."
+msgstr "You have reached the limit of %(limit)s documents per user (you have %(current)s). Delete some from your library to upload more."
+
+msgid "La cuenta no está disponible en la demo."
+msgstr "The account is not available in the demo."

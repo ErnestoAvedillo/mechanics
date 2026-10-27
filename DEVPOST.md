@@ -1,4 +1,4 @@
-**Demo video:** https://youtu.be/Dp7_NqsXw4w
+**Demo video:** https://youtu.be/cFhAQLos_HY
 
 ## Inspiration
 Automotive Tier-1 and Tier-2 suppliers spend thousands of engineering hours searching, verifying and cross-referencing OEM specifications (VW, BMW, Ford, JLR, Stellantis, and increasingly BYD, Geely and other Chinese OEMs). The requirements sit in legacy PDFs, often scanned, in several languages and in several editions. Using an outdated edition, or trusting a bad translation, can trigger costly re-tooling. We wanted engineers to ask their own specification library a question and get an answer grounded in the right edition of the right document.

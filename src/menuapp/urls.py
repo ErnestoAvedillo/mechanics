@@ -6,6 +6,7 @@ app_name = 'menuapp'
 urlpatterns = [
     path('', views.home, name='home'),
     path('signup/', views.signup_view, name='signup'),
+    path('privacy/', views.privacy_view, name='privacy'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('verify-email/', views.verify_email_view, name='verify_email'),

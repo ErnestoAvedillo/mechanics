@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
                 'muelles.context_processors.recaptcha',
+                'specs.context_processors.demo_user',
             ],
         },
     },
@@ -205,6 +206,15 @@ NEBIUS_EMBED_MODEL = os.environ.get('NEBIUS_EMBED_MODEL', 'Qwen/Qwen3-Embedding-
 # Vision model that reads drawings attached to the specs chat (the text LLM above cannot see images)
 NEBIUS_VISION_MODEL = os.environ.get('NEBIUS_VISION_MODEL', 'Qwen/Qwen2.5-VL-72B-Instruct')
 HF_TOKEN = os.environ.get('HF_TOKEN', '')
+# Privacy policy: bump the version whenever its text changes. The controller's details are
+# shown in the policy page; the ID (NIF) and address are optional until you set them.
+PRIVACY_POLICY_VERSION = '2026-10-27'
+LEGAL_NAME = os.environ.get('LEGAL_NAME', 'Ernesto Avedillo')
+LEGAL_ID = os.environ.get('LEGAL_ID', '')
+LEGAL_ADDRESS = os.environ.get('LEGAL_ADDRESS', '')
+PRIVACY_CONTACT_EMAIL = os.environ.get('PRIVACY_CONTACT_EMAIL', 'eavedillo@yahoo.es')
+# Documents each user can keep in their library (each new one costs LLM/embedding calls); 0 = no limit
+MAX_DOCUMENTS_PER_USER = int(os.environ.get('MAX_DOCUMENTS_PER_USER', 20))
 # CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
 # CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # CELERY_ACCEPT_CONTENT = ['json']
