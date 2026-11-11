@@ -68,7 +68,7 @@ setup-selfsigned: $(CERTS_SELFSIGNED)
 
 rm-selfsigned:
 	@echo "Eliminando certificados autofirmados..."
-	@rm -f selfsigned.crt selfsigned.key
+	@sudo rm -f selfsigned.crt selfsigned.key
 	
 $(CERTS_SELFSIGNED):
 	@echo "Generating self-signed certificates..."
@@ -81,14 +81,14 @@ setup-letsencrypt:
 	# Copiamos la config de DEV que NO pide certificados SSL
 	@cp ./config/nginx/nginx.conf.dev ./config/nginx/nginx.conf
 	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d nginx
+	@sleep 5
 	@# ELIMINAMOS EL AUTOFIRMADO GENERADO POR EL ENTRYPOINT DE NGINX
-	echo "  2. Eliminando certificados autofirmados (si existen) estos certificados los crea el entrypoint de nginx	..."
+	@echo "  2. Eliminando certificados autofirmados (si existen) estos certificados los crea el entrypoint de nginx	..."
 	@sudo rm -rf ./certs/live/$(DOMAIN)
 	@sudo rm -rf ./certs/archive/$(DOMAIN)
 	@sudo rm -rf ./certs/renewal/$(DOMAIN).conf
-	@sleep 5
 	@echo "  2. Generando certificados con certbot..."
-	$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot certonly \
 		--verbose \
 		--webroot \
 		-w /var/www/certbot \
@@ -98,7 +98,6 @@ setup-letsencrypt:
 		--agree-tos \
 		--no-eff-email \
 		--duplicate \
-		--staging \
 		--non-interactive \
 		--force-renewal  || { \
 			echo "❌ Error: Falló la generación de certificados Let's Encrypt para $(DOMAIN)"; \
@@ -116,8 +115,18 @@ setup-letsencrypt:
 		echo "❌ Error: No se encontraron los certificados en ./certs/live/$(DOMAIN)/"; \
 		exit 1; \
 	fi
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) restart nginx; \
 
 renew-certificates:rm-letsencrypt setup-letsencrypt
+
+auto-renew-certificates:
+	@echo "Iniciando renovación automática de certificados Let's Encrypt..."
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) run --rm certbot renew \
+			--webroot \
+			-w /var/www/certbot \
+	        --non-interactive
+	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) exec nginx nginx -s reload
+	@echo "✓ Renovación automática completada"
 
 verify-cert:
 	@echo "Verificando certificado sirvido por nginx..."
@@ -126,9 +135,9 @@ verify-cert:
 rm-letsencrypt:
 	@echo "Eliminando certificados Let's Encrypt..."
 	@$(COMPOSE) -f $(DOCKER_COMPOSE_FILE) stop certbot nginx || true
-	@rm -rfd ./certs ./certs-www
-	@ls .certs 2>/dev/null || echo "✓ Certificados eliminados"
-	@ls .certs-www 2>/dev/null || echo "✓ Certificados eliminados"
+	@sudo rm -rfd ./certs ./certs-www
+	@ls ./certs 2>/dev/null || echo "✓ Certificados ./certs eliminados"
+	@ls ./certs-www 2>/dev/null || echo "✓ Certificados ./certs-www eliminados"
 	@mkdir -p certs certs-www
 	@chmod 755 certs-www
 	@chmod 755 certs
@@ -250,6 +259,10 @@ help:
 	@echo "  show-nginx-config  - Ver configuración actual"
 	@echo "  rm-selfsigned      - Eliminar certificados autofirmados"
 	@echo "  rm-letsencrypt     - Eliminar certificados Let's Encrypt"
+	@echo "  renew-certificates - Eliminar y regenerar certificados Let's Encrypt (pide sudo)"
+	@echo "  auto-renew-certificates"
+	@echo "                     - Renovar solo si caducan en < 30 días (sin sudo, para cron)"
+	@echo "  verify-cert        - Ver el certificado que sirve nginx"
 	@echo ""
 	@echo "TRADUCCIONES (i18n)"
 	@echo "═══════════════════════════════════════════════════════════════"
@@ -287,4 +300,4 @@ help:
 	@echo "  3. make switch-prod        (HTTPS con certificados válidos)"
 	@echo ""
 
-.PHONY: all build build-nocache down wipe backup restore restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan makemessages compilemessages
+.PHONY: all build build-nocache down wipe backup restore restart logs stop start rebuild re status rm_none clean in_nginx in_django help setup-selfsigned setup-letsencrypt rm-selfsigned rm-letsencrypt switch-dev switch-prod show-nginx-config production clean-orphan makemessages compilemessages renew-certificates auto-renew-certificates verify-cert
