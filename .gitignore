@@ -21,7 +21,7 @@ src/tmp/
 *.env*
 *.crt
 *.key
-*.log
+*.log*
 *.bak
 *.backup
 *.tmp
